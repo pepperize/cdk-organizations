@@ -92,7 +92,7 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 A container for accounts within a root.
 
-An OU also can contain other OUs, enabling you to create a hierarchy that resembles an upside-down tree, with a root at the top and branches of OUs that reach down, ending in accounts that are the leaves of the tree. When you attach a policy to one of the nodes in the hierarchy, it flows down and affects all the branches (OUs) and leaves (accounts) beneath it. An OU can have exactly one parent, and currently each account can be a member of exactly one OU.
+An OU also can contain other OUs, enabling you to create a hierarchy that resembles an upside-down tree, with a root at the top and branches of OUs that reach down, ending in accounts that are the leaves of the tree. When you attach a policy to one of the nodes in the hierarchy, it flows down and affects all the branches (OUs) and leaves (accounts) beneath it. An OU can have exactly one parent, and currently each account can be a member of exactly one OU.  <strong>You must first move all accounts out of the OU and any child OUs, and then you can delete the child OUs.</strong>
 
 #### Initializers <a name="@pepperize/cdk-organizations.OrganizationalUnit.Initializer" id="pepperizecdkorganizationsorganizationalunitinitializer"></a>
 
@@ -297,7 +297,7 @@ const organizationProps: OrganizationProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`featureSet`](#pepperizecdkorganizationsorganizationpropspropertyfeatureset) | [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet) | Specifies the feature set supported by the new organization. |
+| [`featureSet`](#pepperizecdkorganizationsorganizationpropspropertyfeatureset) | [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet) | Enabling features in your organization. |
 
 ---
 
@@ -310,9 +310,9 @@ public readonly featureSet: FeatureSet;
 - *Type:* [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet)
 - *Default:* ALL
 
-Specifies the feature set supported by the new organization.
+Enabling features in your organization.
 
-Each feature set supports different levels of functionality.
+> https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html
 
 ---
 
@@ -328,6 +328,10 @@ Each feature set supports different levels of functionality.
 | [`ALL`](#pepperizecdkorganizationsfeaturesetall) | In addition to all the features supported by the consolidated billing feature set, the management account can also apply any policy type to any member account in the organization. |
 
 ---
+
+Specifies the feature set supported by the new organization.
+
+Each feature set supports different levels of functionality.
 
 > https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set
 
