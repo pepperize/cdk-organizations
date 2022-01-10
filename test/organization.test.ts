@@ -4,7 +4,7 @@ import { AwsSolutionsChecks } from "cdk-nag";
 import { FeatureSet, Organization } from "../src";
 
 describe("Organization", () => {
-  it("Should match snapshot", () => {
+  xit("Should match snapshot", () => {
     // Given
     const app = new App();
     const stack = new Stack(app, "Stack");
