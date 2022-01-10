@@ -9,12 +9,12 @@
 ```typescript
 import { Account } from '@pepperize/cdk-organizations'
 
-new Account(scope: Stack, id: string, props: AccountProps)
+new Account(scope: Construct, id: string, props: AccountProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsaccountparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsaccountparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsaccountparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsaccountparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.AccountProps`](#@pepperize/cdk-organizations.AccountProps) | *No description.* |
 
@@ -22,7 +22,7 @@ new Account(scope: Stack, id: string, props: AccountProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.parameter.scope" id="pepperizecdkorganizationsaccountparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -55,12 +55,12 @@ An organization has one management account along with zero or more member accoun
 ```typescript
 import { Organization } from '@pepperize/cdk-organizations'
 
-new Organization(scope: Stack, id: string, props: OrganizationProps)
+new Organization(scope: Construct, id: string, props: OrganizationProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsorganizationparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsorganizationparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsorganizationparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsorganizationparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.OrganizationProps`](#@pepperize/cdk-organizations.OrganizationProps) | *No description.* |
 
@@ -68,7 +68,7 @@ new Organization(scope: Stack, id: string, props: OrganizationProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.parameter.scope" id="pepperizecdkorganizationsorganizationparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -99,12 +99,12 @@ An OU also can contain other OUs, enabling you to create a hierarchy that resemb
 ```typescript
 import { OrganizationalUnit } from '@pepperize/cdk-organizations'
 
-new OrganizationalUnit(scope: Stack, id: string, props: OrganizationalUnitProps)
+new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsorganizationalunitparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsorganizationalunitparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsorganizationalunitparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsorganizationalunitparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.OrganizationalUnitProps`](#@pepperize/cdk-organizations.OrganizationalUnitProps) | *No description.* |
 
@@ -112,7 +112,7 @@ new OrganizationalUnit(scope: Stack, id: string, props: OrganizationalUnitProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnit.parameter.scope" id="pepperizecdkorganizationsorganizationalunitparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
