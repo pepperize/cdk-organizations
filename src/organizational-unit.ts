@@ -1,20 +1,21 @@
-import { Construct } from "constructs";
+import { Construct } from "@aws-cdk/core";
+import { AwsCustomResource, AwsCustomResourcePolicy } from "@aws-cdk/custom-resources";
 
 export interface OrganizationalUnitProps {
   /**
    * The friendly name to assign to the new OU.
    */
-  organizationalUnitName: string;
+  readonly organizationalUnitName: string;
 
   /**
    * The unique identifier (ID) of the parent root or OU that you want to create the new OU in.
    */
-  parentId: string;
+  readonly parentId: string;
 
   /**
    * A list of tags that you want to attach to the newly created organizational unit. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.
    */
-  tags: { [key: string]: string };
+  readonly tags: { [key: string]: string };
 }
 
 /**
@@ -25,5 +26,9 @@ export class OrganizationalUnitProps extends Construct {
     super(scope, id);
 
     props;
+
+    new AwsCustomResource(this, "OUCustomResource", {
+      policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
+    });
   }
 }

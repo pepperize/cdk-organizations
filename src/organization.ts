@@ -1,4 +1,5 @@
-import { Construct } from "constructs";
+import { Construct } from "@aws-cdk/core";
+import { AwsCustomResource, AwsCustomResourcePolicy } from "@aws-cdk/custom-resources";
 
 /**
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set
@@ -25,5 +26,9 @@ export class Organization extends Construct {
     super(scope, id);
 
     props;
+
+    new AwsCustomResource(this, "OrgCustomResource", {
+      policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
+    });
   }
 }

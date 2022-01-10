@@ -1,4 +1,5 @@
-import { Construct } from "constructs";
+import { Construct } from "@aws-cdk/core";
+import { AwsCustomResource, AwsCustomResourcePolicy } from "@aws-cdk/custom-resources";
 
 export enum IamUserAccessToBilling {
   ALLOW = "ALLOW",
@@ -37,5 +38,9 @@ export class Account extends Construct {
     super(scope, id);
 
     props;
+
+    new AwsCustomResource(this, "AccCustomResource", {
+      policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
+    });
   }
 }

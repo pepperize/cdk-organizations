@@ -110,12 +110,22 @@
       "type": "peer"
     },
     {
+      "name": "@aws-cdk/custom-resources",
+      "version": "^1.138.0",
+      "type": "peer"
+    },
+    {
       "name": "constructs",
       "version": "^3.2.27",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/core",
+      "version": "^1.138.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/custom-resources",
       "version": "^1.138.0",
       "type": "runtime"
     },

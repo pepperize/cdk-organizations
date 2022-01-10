@@ -12,7 +12,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   keywords: ["AWS", "CDK", "Organizations"],
   repositoryUrl: "https://github.com/pepperize/cdk-organizations.git",
 
-  cdkDependencies: ["@aws-cdk/core"],
+  cdkDependencies: ["@aws-cdk/core", "@aws-cdk/custom-resources"],
   cdkTestDependencies: ["@aws-cdk/assertions"],
   devDeps: ["cdk-nag"],
 

@@ -66,10 +66,12 @@
   },
   "peerDependencies": {
     "@aws-cdk/core": "^1.138.0",
+    "@aws-cdk/custom-resources": "^1.138.0",
     "constructs": "^3.2.27"
   },
   "dependencies": {
-    "@aws-cdk/core": "^1.138.0"
+    "@aws-cdk/core": "^1.138.0",
+    "@aws-cdk/custom-resources": "^1.138.0"
   },
   "keywords": [
     "AWS",

@@ -1009,7 +1009,7 @@
     ignore "^5.2.0"
     minimatch "^3.0.4"
 
-"@aws-cdk/custom-resources@1.138.2":
+"@aws-cdk/custom-resources@1.138.2", "@aws-cdk/custom-resources@^1.138.0":
   version "1.138.2"
   resolved "https://registry.yarnpkg.com/@aws-cdk/custom-resources/-/custom-resources-1.138.2.tgz#8ee680b18655fa997c4e93452ba34a36da888a94"
   integrity sha512-36/Dl7HGTiJQMKu8JA6s85HHU+InQS40Qzw4KIl7FFDcRwsoZUDaCKf92Mh+A26+hgpCsVyrKM8fEMrdLQMcow==
