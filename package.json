@@ -38,8 +38,8 @@
     "organization": true
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.138.0",
-    "@aws-cdk/assertions": "^1.138.0",
+    "@aws-cdk/assert": "^1.138.2",
+    "@aws-cdk/assertions": "^1.138.2",
     "@types/jest": "^27.4.0",
     "@types/node": "^12",
     "@typescript-eslint/eslint-plugin": "^5",
@@ -59,17 +59,19 @@
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
     "prettier": "^2.5.1",
-    "projen": "^0.50.17",
+    "projen": "0.50.17",
     "standard-version": "^9",
     "ts-jest": "^27.1.2",
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
-    "@aws-cdk/core": "^1.138.0",
+    "@aws-cdk/core": "^1.138.2",
+    "@aws-cdk/custom-resources": "^1.138.2",
     "constructs": "^3.2.27"
   },
   "dependencies": {
-    "@aws-cdk/core": "^1.138.0"
+    "@aws-cdk/core": "^1.138.2",
+    "@aws-cdk/custom-resources": "^1.138.2"
   },
   "keywords": [
     "AWS",

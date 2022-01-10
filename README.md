@@ -9,6 +9,15 @@
 
 This project provides a CDK construct creating AWS organizations.
 
+> Project status: WIP
+>
+> Currently there is no `@aws-cdk/organizations` available. See this [AWS CDK Issue](https://github.com/aws/aws-cdk/issues/2877).
+
+- [AWS User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
+- [AWS API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html)
+- [AWS Bootstrapkit](https://github.com/awslabs/aws-bootstrap-kit)
+- [AWS CDK Custom Resources](https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#custom-resources-for-aws-apis)
+
 See [API.md](https://github.com/pepperize/cdk-organizations/blob/main/API.md)
 
 ## Install
