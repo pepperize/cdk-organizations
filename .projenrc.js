@@ -5,7 +5,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorOrganization: true,
   license: "MIT",
   copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
-  cdkVersion: "1.138.0",
+  cdkVersion: "1.138.2",
   defaultReleaseBranch: "main",
   name: "@pepperize/cdk-organizations",
   description: "This project provides a CDK construct creating AWS organizations.",
