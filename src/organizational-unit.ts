@@ -1,5 +1,5 @@
-import { Construct } from "@aws-cdk/core";
-import { AwsCustomResource, AwsCustomResourcePolicy } from "@aws-cdk/custom-resources";
+import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "@aws-cdk/custom-resources";
+import { Construct } from "constructs";
 
 export interface OrganizationalUnitProps {
   /**
@@ -28,6 +28,12 @@ export class OrganizationalUnitProps extends Construct {
     props;
 
     new AwsCustomResource(this, "OUCustomResource", {
+      onCreate: {
+        service: "Organization",
+        action: "createOrganizationalUnit",
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
+      },
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
   }

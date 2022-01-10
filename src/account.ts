@@ -1,5 +1,5 @@
-import { Construct } from "@aws-cdk/core";
-import { AwsCustomResource, AwsCustomResourcePolicy } from "@aws-cdk/custom-resources";
+import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "@aws-cdk/custom-resources";
+import { Construct } from "constructs";
 
 export enum IamUserAccessToBilling {
   ALLOW = "ALLOW",
@@ -40,6 +40,12 @@ export class Account extends Construct {
     props;
 
     new AwsCustomResource(this, "AccCustomResource", {
+      onCreate: {
+        service: "Organization",
+        action: "createAccount",
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.fromResponse("CreateAccountStatus.AccountId"),
+      },
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
   }

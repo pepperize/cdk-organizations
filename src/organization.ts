@@ -1,5 +1,5 @@
-import { Construct } from "@aws-cdk/core";
-import { AwsCustomResource, AwsCustomResourcePolicy } from "@aws-cdk/custom-resources";
+import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "@aws-cdk/custom-resources";
+import { Construct } from "constructs";
 
 /**
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set
@@ -28,6 +28,12 @@ export class Organization extends Construct {
     props;
 
     new AwsCustomResource(this, "OrgCustomResource", {
+      onCreate: {
+        service: "Organization",
+        action: "createOrganization",
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.fromResponse("Organization.Id"),
+      },
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
   }
