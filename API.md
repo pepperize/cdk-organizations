@@ -132,6 +132,52 @@ new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitPr
 
 
 
+### Policy <a name="@pepperize/cdk-organizations.Policy" id="pepperizecdkorganizationspolicy"></a>
+
+Policies in AWS Organizations enable you to apply additional types of management to the AWS accounts in your organization.
+
+<strong>You can use policies when all features are enabled in your organization.</strong>
+
+> FeatureSet
+
+#### Initializers <a name="@pepperize/cdk-organizations.Policy.Initializer" id="pepperizecdkorganizationspolicyinitializer"></a>
+
+```typescript
+import { Policy } from '@pepperize/cdk-organizations'
+
+new Policy(scope: Construct, id: string, props: PolicyProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`scope`](#pepperizecdkorganizationspolicyparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationspolicyparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationspolicyparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.PolicyProps`](#@pepperize/cdk-organizations.PolicyProps) | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Policy.parameter.scope" id="pepperizecdkorganizationspolicyparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Policy.parameter.id" id="pepperizecdkorganizationspolicyparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Policy.parameter.props" id="pepperizecdkorganizationspolicyparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.PolicyProps`](#@pepperize/cdk-organizations.PolicyProps)
+
+---
+
+
+
+
+
 ## Structs <a name="Structs" id="structs"></a>
 
 ### AccountProps <a name="@pepperize/cdk-organizations.AccountProps" id="pepperizecdkorganizationsaccountprops"></a>
@@ -316,6 +362,94 @@ Enabling features in your organization.
 
 ---
 
+### PolicyProps <a name="@pepperize/cdk-organizations.PolicyProps" id="pepperizecdkorganizationspolicyprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { PolicyProps } from '@pepperize/cdk-organizations'
+
+const policyProps: PolicyProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`content`](#pepperizecdkorganizationspolicypropspropertycontent)<span title="Required">*</span> | `string` | The policy text content to add to the new policy. |
+| [`policyName`](#pepperizecdkorganizationspolicypropspropertypolicyname)<span title="Required">*</span> | `string` | The friendly name to assign to the policy. |
+| [`policyType`](#pepperizecdkorganizationspolicypropspropertypolicytype)<span title="Required">*</span> | [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType) | The type of policy to create. |
+| [`tags`](#pepperizecdkorganizationspolicypropspropertytags)<span title="Required">*</span> | {[ key: string ]: `string`} | A list of tags that you want to attach to the newly created policy. |
+| [`description`](#pepperizecdkorganizationspolicypropspropertydescription) | `string` | An optional description to assign to the policy. |
+
+---
+
+##### `content`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyProps.property.content" id="pepperizecdkorganizationspolicypropspropertycontent"></a>
+
+```typescript
+public readonly content: string;
+```
+
+- *Type:* `string`
+
+The policy text content to add to the new policy.
+
+The text that you supply must adhere to the rules of the policy type you specify in the Type parameter.
+
+---
+
+##### `policyName`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyProps.property.policyName" id="pepperizecdkorganizationspolicypropspropertypolicyname"></a>
+
+```typescript
+public readonly policyName: string;
+```
+
+- *Type:* `string`
+
+The friendly name to assign to the policy.
+
+---
+
+##### `policyType`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyProps.property.policyType" id="pepperizecdkorganizationspolicypropspropertypolicytype"></a>
+
+```typescript
+public readonly policyType: PolicyType;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType)
+
+The type of policy to create.
+
+You can specify one of the following values:
+
+---
+
+##### `tags`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyProps.property.tags" id="pepperizecdkorganizationspolicypropspropertytags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: `string`}
+
+A list of tags that you want to attach to the newly created policy.
+
+For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.PolicyProps.property.description" id="pepperizecdkorganizationspolicypropspropertydescription"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* `string`
+
+An optional description to assign to the policy.
+
+---
+
 
 
 ## Enums <a name="Enums" id="enums"></a>
@@ -368,6 +502,49 @@ For more information, see [All features]{@link https://docs.aws.amazon.com/organ
 
 
 #### `DENY` <a name="@pepperize/cdk-organizations.IamUserAccessToBilling.DENY" id="pepperizecdkorganizationsiamuseraccesstobillingdeny"></a>
+
+---
+
+
+### PolicyType <a name="PolicyType" id="policytype"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`SERVICE_CONTROL_POLICY`](#pepperizecdkorganizationspolicytypeservicecontrolpolicy) | Service control policies (SCPs) offer central control over the maximum available permissions for all of the accounts in your organization. |
+| [`TAG_POLICY`](#pepperizecdkorganizationspolicytypetagpolicy) | Tag policies help you standardize the tags attached to the AWS resources in your organization's accounts. |
+| [`BACKUP_POLICY`](#pepperizecdkorganizationspolicytypebackuppolicy) | Backup policies help you centrally manage and apply backup plans to the AWS resources across your organization's accounts. |
+| [`AISERVICES_OPT_OUT_POLICY`](#pepperizecdkorganizationspolicytypeaiservicesoptoutpolicy) | Artificial Intelligence (AI) services opt-out policies enable you to control data collection for AWS AI services for all of your organization's accounts. |
+
+---
+
+Organizations offers policy types in the following two broad categories: <ol>      <li>Authorization policies help you to centrally manage the security of the AWS accounts in your organization.</li>      <li>Management policies enable you to centrally configure and manage AWS services and their features.</li> </ol>.
+
+> https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types
+
+#### `SERVICE_CONTROL_POLICY` <a name="@pepperize/cdk-organizations.PolicyType.SERVICE_CONTROL_POLICY" id="pepperizecdkorganizationspolicytypeservicecontrolpolicy"></a>
+
+Service control policies (SCPs) offer central control over the maximum available permissions for all of the accounts in your organization.
+
+---
+
+
+#### `TAG_POLICY` <a name="@pepperize/cdk-organizations.PolicyType.TAG_POLICY" id="pepperizecdkorganizationspolicytypetagpolicy"></a>
+
+Tag policies help you standardize the tags attached to the AWS resources in your organization's accounts.
+
+---
+
+
+#### `BACKUP_POLICY` <a name="@pepperize/cdk-organizations.PolicyType.BACKUP_POLICY" id="pepperizecdkorganizationspolicytypebackuppolicy"></a>
+
+Backup policies help you centrally manage and apply backup plans to the AWS resources across your organization's accounts.
+
+---
+
+
+#### `AISERVICES_OPT_OUT_POLICY` <a name="@pepperize/cdk-organizations.PolicyType.AISERVICES_OPT_OUT_POLICY" id="pepperizecdkorganizationspolicytypeaiservicesoptoutpolicy"></a>
+
+Artificial Intelligence (AI) services opt-out policies enable you to control data collection for AWS AI services for all of your organization's accounts.
 
 ---
 
