@@ -14,7 +14,16 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   cdkDependencies: ["@aws-cdk/core", "@aws-cdk/custom-resources"],
   cdkTestDependencies: ["@aws-cdk/assertions"],
-  devDeps: ["cdk-nag"],
+  bundledDeps: ["aws-lambda", "aws-sdk"],
+  deps: ["aws-lambda", "aws-sdk"],
+  devDeps: ["@types/aws-lambda", "cdk-nag"],
+
+  lambdaOptions: {
+    runtime: awscdk.LambdaRuntime.NODEJS_14_X,
+    bundlingOptions: {
+      sourcemap: true,
+    },
+  },
 
   autoApproveUpgrades: true,
   autoApproveOptions: { allowedUsernames: ["pflorek"], secret: "GITHUB_TOKEN" },

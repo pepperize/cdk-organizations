@@ -8,6 +8,11 @@
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",
+    "bundle": "npx projen bundle",
+    "bundle:account-provider/is-complete-handler.lambda": "npx projen bundle:account-provider/is-complete-handler.lambda",
+    "bundle:account-provider/is-complete-handler.lambda:watch": "npx projen bundle:account-provider/is-complete-handler.lambda:watch",
+    "bundle:account-provider/on-event-handler.lambda": "npx projen bundle:account-provider/on-event-handler.lambda",
+    "bundle:account-provider/on-event-handler.lambda:watch": "npx projen bundle:account-provider/on-event-handler.lambda:watch",
     "clobber": "npx projen clobber",
     "compat": "npx projen compat",
     "compile": "npx projen compile",
@@ -40,11 +45,13 @@
   "devDependencies": {
     "@aws-cdk/assert": "^1.138.2",
     "@aws-cdk/assertions": "^1.138.2",
+    "@types/aws-lambda": "^8.10.89",
     "@types/jest": "^27.4.0",
     "@types/node": "^12",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "cdk-nag": "^1.4.25",
+    "esbuild": "^0.14.11",
     "eslint": "^8",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -65,14 +72,22 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
+    "@aws-cdk/aws-lambda": "^1.138.2",
     "@aws-cdk/core": "^1.138.2",
     "@aws-cdk/custom-resources": "^1.138.2",
     "constructs": "^3.2.27"
   },
   "dependencies": {
+    "@aws-cdk/aws-lambda": "^1.138.2",
     "@aws-cdk/core": "^1.138.2",
-    "@aws-cdk/custom-resources": "^1.138.2"
+    "@aws-cdk/custom-resources": "^1.138.2",
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1054.0"
   },
+  "bundledDependencies": [
+    "aws-lambda",
+    "aws-sdk"
+  ],
   "keywords": [
     "AWS",
     "CDK",

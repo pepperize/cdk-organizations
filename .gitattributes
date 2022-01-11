@@ -21,5 +21,7 @@
 /.projen/tasks.json linguist-generated
 /LICENSE linguist-generated
 /package.json linguist-generated
+/src/account-provider/is-complete-handler-function.ts linguist-generated
+/src/account-provider/on-event-handler-function.ts linguist-generated
 /tsconfig.dev.json linguist-generated
 /yarn.lock linguist-generated
