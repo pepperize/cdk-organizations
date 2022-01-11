@@ -40,6 +40,54 @@
       ],
       "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
     },
+    "bundle": {
+      "name": "bundle",
+      "description": "Prepare assets",
+      "steps": [
+        {
+          "spawn": "bundle:account-provider/is-complete-handler.lambda"
+        },
+        {
+          "spawn": "bundle:account-provider/on-event-handler.lambda"
+        }
+      ]
+    },
+    "bundle:account-provider/is-complete-handler.lambda": {
+      "name": "bundle:account-provider/is-complete-handler.lambda",
+      "description": "Create a JavaScript bundle from src/account-provider/is-complete-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+        }
+      ]
+    },
+    "bundle:account-provider/is-complete-handler.lambda:watch": {
+      "name": "bundle:account-provider/is-complete-handler.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/account-provider/is-complete-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+        }
+      ]
+    },
+    "bundle:account-provider/on-event-handler.lambda": {
+      "name": "bundle:account-provider/on-event-handler.lambda",
+      "description": "Create a JavaScript bundle from src/account-provider/on-event-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+        }
+      ]
+    },
+    "bundle:account-provider/on-event-handler.lambda:watch": {
+      "name": "bundle:account-provider/on-event-handler.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/account-provider/on-event-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+        }
+      ]
+    },
     "clobber": {
       "name": "clobber",
       "description": "hard resets to HEAD of origin and cleans the local repo",
@@ -191,7 +239,12 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation"
+      "description": "Prepare the project for compilation",
+      "steps": [
+        {
+          "spawn": "bundle"
+        }
+      ]
     },
     "release": {
       "name": "release",
@@ -288,7 +341,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-cdk/assertions @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser cdk-nag eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii jsii-diff jsii-docgen json-schema npm-check-updates prettier standard-version ts-jest typescript @aws-cdk/core @aws-cdk/custom-resources constructs @aws-cdk/core @aws-cdk/custom-resources @aws-cdk/assert @aws-cdk/assertions"
+          "exec": "yarn upgrade @aws-cdk/assertions @types/aws-lambda @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser cdk-nag esbuild eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii jsii-diff jsii-docgen json-schema npm-check-updates prettier standard-version ts-jest typescript aws-lambda aws-sdk @aws-cdk/aws-lambda @aws-cdk/core @aws-cdk/custom-resources constructs @aws-cdk/aws-lambda @aws-cdk/core @aws-cdk/custom-resources aws-lambda aws-sdk @aws-cdk/assert @aws-cdk/assertions"
         },
         {
           "exec": "npx projen"

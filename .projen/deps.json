@@ -6,6 +6,10 @@
       "type": "build"
     },
     {
+      "name": "@types/aws-lambda",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -26,6 +30,10 @@
     },
     {
       "name": "cdk-nag",
+      "type": "build"
+    },
+    {
+      "name": "esbuild",
       "type": "build"
     },
     {
@@ -105,6 +113,19 @@
       "type": "build"
     },
     {
+      "name": "aws-lambda",
+      "type": "bundled"
+    },
+    {
+      "name": "aws-sdk",
+      "type": "bundled"
+    },
+    {
+      "name": "@aws-cdk/aws-lambda",
+      "version": "^1.138.2",
+      "type": "peer"
+    },
+    {
       "name": "@aws-cdk/core",
       "version": "^1.138.2",
       "type": "peer"
@@ -120,6 +141,11 @@
       "type": "peer"
     },
     {
+      "name": "@aws-cdk/aws-lambda",
+      "version": "^1.138.2",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/core",
       "version": "^1.138.2",
       "type": "runtime"
@@ -127,6 +153,14 @@
     {
       "name": "@aws-cdk/custom-resources",
       "version": "^1.138.2",
+      "type": "runtime"
+    },
+    {
+      "name": "aws-lambda",
+      "type": "runtime"
+    },
+    {
+      "name": "aws-sdk",
       "type": "runtime"
     },
     {

@@ -55,7 +55,9 @@
       {
         "devDependencies": [
           "**/test/**",
-          "**/build-tools/**"
+          "**/build-tools/**",
+          "src/account-provider/is-complete-handler.lambda.ts",
+          "src/account-provider/on-event-handler.lambda.ts"
         ],
         "optionalDependencies": false,
         "peerDependencies": true

@@ -54,4 +54,7 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+/assets/
+!/src/account-provider/is-complete-handler-function.ts
+!/src/account-provider/on-event-handler-function.ts
 !/.github/workflows/upgrade-main.yml
