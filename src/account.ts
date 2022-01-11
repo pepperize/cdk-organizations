@@ -1,8 +1,17 @@
-import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "@aws-cdk/custom-resources";
-import { Construct } from "constructs";
+import { Construct, CustomResource } from "@aws-cdk/core";
+import { AccountProvider } from "./account-provider";
 
+/**
+ * @see https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate
+ */
 export enum IamUserAccessToBilling {
+  /**
+   * If set to ALLOW, the new account enables IAM users to access account billing information if they have the required permissions.
+   */
   ALLOW = "ALLOW",
+  /**
+   * If set to DENY, only the root user of the new account can access account billing information.
+   */
   DENY = "DENY",
 }
 
@@ -34,19 +43,26 @@ export interface AccountProps {
 }
 
 export class Account extends Construct {
+  /**
+   * If the account was created successfully, the unique identifier (ID) of the new account. Exactly 12 digits.
+   */
+  public readonly accountId: string;
   public constructor(scope: Construct, id: string, props: AccountProps) {
     super(scope, id);
 
-    props;
+    const { email, accountName, roleName, iamUserAccessToBilling } = props;
 
-    new AwsCustomResource(this, "AccCustomResource", {
-      onCreate: {
-        service: "Organization",
-        action: "createAccount",
-        region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.fromResponse("CreateAccountStatus.AccountId"),
+    const accountProvider = AccountProvider.getOrCreate(this);
+    const account = new CustomResource(this, `AccountProvider-${accountName}`, {
+      serviceToken: accountProvider.provider.serviceToken,
+      resourceType: "Custom::Organization.Account",
+      properties: {
+        Email: email,
+        AccountName: accountName,
+        RoleName: roleName || "OrganizationAccountAccessRole",
+        IamUserAccessToBilling: iamUserAccessToBilling || IamUserAccessToBilling.ALLOW,
       },
-      policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
+    this.accountId = account.getAtt("AccountId").toString();
   }
 }

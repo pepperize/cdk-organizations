@@ -14,7 +14,7 @@ new Account(scope: Construct, id: string, props: AccountProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsaccountparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsaccountparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsaccountparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsaccountparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.AccountProps`](#@pepperize/cdk-organizations.AccountProps) | *No description.* |
 
@@ -22,7 +22,7 @@ new Account(scope: Construct, id: string, props: AccountProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.parameter.scope" id="pepperizecdkorganizationsaccountparameterscope"></a>
 
-- *Type:* [`constructs.Construct`](#constructs.Construct)
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
 
 ---
 
@@ -40,6 +40,27 @@ new Account(scope: Construct, id: string, props: AccountProps)
 
 
 
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`accountId`](#pepperizecdkorganizationsaccountpropertyaccountid)<span title="Required">*</span> | `string` | If the account was created successfully, the unique identifier (ID) of the new account. |
+
+---
+
+##### `accountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.property.accountId" id="pepperizecdkorganizationsaccountpropertyaccountid"></a>
+
+```typescript
+public readonly accountId: string;
+```
+
+- *Type:* `string`
+
+If the account was created successfully, the unique identifier (ID) of the new account.
+
+Exactly 12 digits.
+
+---
 
 
 ### Organization <a name="@pepperize/cdk-organizations.Organization" id="pepperizecdkorganizationsorganization"></a>
@@ -491,17 +512,23 @@ For more information, see [All features]{@link https://docs.aws.amazon.com/organ
 
 | **Name** | **Description** |
 | --- | --- |
-| [`ALLOW`](#pepperizecdkorganizationsiamuseraccesstobillingallow) | *No description.* |
-| [`DENY`](#pepperizecdkorganizationsiamuseraccesstobillingdeny) | *No description.* |
+| [`ALLOW`](#pepperizecdkorganizationsiamuseraccesstobillingallow) | If set to ALLOW, the new account enables IAM users to access account billing information if they have the required permissions. |
+| [`DENY`](#pepperizecdkorganizationsiamuseraccesstobillingdeny) | If set to DENY, only the root user of the new account can access account billing information. |
 
 ---
 
+> https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate
+
 #### `ALLOW` <a name="@pepperize/cdk-organizations.IamUserAccessToBilling.ALLOW" id="pepperizecdkorganizationsiamuseraccesstobillingallow"></a>
+
+If set to ALLOW, the new account enables IAM users to access account billing information if they have the required permissions.
 
 ---
 
 
 #### `DENY` <a name="@pepperize/cdk-organizations.IamUserAccessToBilling.DENY" id="pepperizecdkorganizationsiamuseraccesstobillingdeny"></a>
+
+If set to DENY, only the root user of the new account can access account billing information.
 
 ---
 
