@@ -121,6 +121,11 @@
       "type": "bundled"
     },
     {
+      "name": "@aws-cdk/aws-iam",
+      "version": "^1.138.2",
+      "type": "peer"
+    },
+    {
       "name": "@aws-cdk/aws-lambda",
       "version": "^1.138.2",
       "type": "peer"
@@ -139,6 +144,11 @@
       "name": "constructs",
       "version": "^3.2.27",
       "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-iam",
+      "version": "^1.138.2",
+      "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-lambda",

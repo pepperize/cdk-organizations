@@ -72,12 +72,14 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
+    "@aws-cdk/aws-iam": "^1.138.2",
     "@aws-cdk/aws-lambda": "^1.138.2",
     "@aws-cdk/core": "^1.138.2",
     "@aws-cdk/custom-resources": "^1.138.2",
     "constructs": "^3.2.27"
   },
   "dependencies": {
+    "@aws-cdk/aws-iam": "^1.138.2",
     "@aws-cdk/aws-lambda": "^1.138.2",
     "@aws-cdk/core": "^1.138.2",
     "@aws-cdk/custom-resources": "^1.138.2",

@@ -1,24 +1,70 @@
+import { PolicyStatement } from "@aws-cdk/aws-iam";
 import { Function } from "@aws-cdk/aws-lambda";
-import { Construct, Duration } from "@aws-cdk/core";
+import { Construct, Duration, NestedStack, NestedStackProps, Stack } from "@aws-cdk/core";
 import { Provider } from "@aws-cdk/custom-resources";
 import { IsCompleteHandlerFunction } from "./is-complete-handler-function";
 import { OnEventHandlerFunction } from "./on-event-handler-function";
 
-export interface AccountProviderProps {}
+export interface AccountProviderProps extends NestedStackProps {}
 
-export class AccountProvider extends Construct {
+/**
+ * Creates a custom resource provider to asynchronously create Accounts in AWS organization. <strong>Account deletion is currently not supported!</strong>
+ *
+ * @see https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#provider-framework
+ */
+export class AccountProvider extends NestedStack {
+  /**
+   * Retrieve AccountProvider as stack singleton resource.
+   *
+   * @see https://github.com/aws/aws-cdk/issues/5023
+   */
+  public static getOrCreate(scope: Construct): AccountProvider {
+    const stack = Stack.of(scope);
+    const id = "@pepperize/cdk-organizations.AccountProvider";
+    const existing = stack.node.tryFindChild(id);
+    return (existing as AccountProvider) || new AccountProvider(scope, id, {});
+  }
+  /**
+   * Creates an Account and returns the CreateAccountStatus ID on Create. Passes the PhysicalResourceId on Update through. Fails on Delete.
+   *
+   * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createAccount-property
+   */
   public readonly onEventHandler: Function;
+  /**
+   * Describes the CreateAccountStatus and returns the completions status. Fails on Delete.
+   *
+   * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeCreateAccountStatus-property
+   */
   public readonly isCompleteHandler: Function;
+  /**
+   * The asynchronuos provider to create or update an Account.
+   *
+   * @see https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#asynchronous-providers-iscomplete
+   */
   public readonly provider: Provider;
 
-  public constructor(scope: Construct, id: string, props: AccountProviderProps) {
-    super(scope, id);
+  constructor(scope: Construct, id: string, props: AccountProviderProps) {
+    super(scope, id, props);
 
-    props;
+    this.onEventHandler = new OnEventHandlerFunction(this, "OnEventHandlerFunction", {
+      timeout: Duration.minutes(10),
+      initialPolicy: [
+        new PolicyStatement({
+          actions: ["organizations:CreateAccount"],
+          resources: ["*"],
+        }),
+      ],
+    });
 
-    this.onEventHandler = new OnEventHandlerFunction(this, "OnEventHandlerFunction", {});
-
-    this.isCompleteHandler = new IsCompleteHandlerFunction(this, "IsCompleteHandlerFunction", {});
+    this.isCompleteHandler = new IsCompleteHandlerFunction(this, "IsCompleteHandlerFunction", {
+      timeout: Duration.minutes(1),
+      initialPolicy: [
+        new PolicyStatement({
+          actions: ["organizations:DescribeCreateAccountStatus"],
+          resources: ["*"],
+        }),
+      ],
+    });
 
     this.provider = new Provider(this, "Provider", {
       onEventHandler: this.onEventHandler,

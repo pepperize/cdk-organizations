@@ -17,6 +17,8 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
       .createAccount({
         Email: event.ResourceProperties.Email,
         AccountName: event.ResourceProperties.AccountName,
+        RoleName: event.ResourceProperties.RoleName,
+        IamUserAccessToBilling: event.ResourceProperties.IamUserAccessToBilling,
       })
       .promise();
     console.log("Creating account: %j", response);
