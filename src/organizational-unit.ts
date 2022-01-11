@@ -71,7 +71,6 @@ export class OrganizationalUnit extends Construct {
         parameters: {
           OrganizationalUnitId: new PhysicalResourceIdReference(),
         },
-        physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
       },
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
