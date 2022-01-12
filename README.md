@@ -50,9 +50,10 @@ See [example.ts](./src/example/example.ts)
 
 ```typescript
 import { App, Stack } from "@aws-cdk/core";
-import { Account, IamUserAccessToBilling } from "../account";
 import {
+  Account,
   FeatureSet,
+  IamUserAccessToBilling,
   Organization,
   OrganizationalUnit,
   Policy,
