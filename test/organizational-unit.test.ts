@@ -1,7 +1,7 @@
 import { Template } from "@aws-cdk/assertions";
 import { App, Aspects, Stack } from "@aws-cdk/core";
 import { AwsSolutionsChecks } from "cdk-nag";
-import { FeatureSet, Organization } from "../src";
+import { OrganizationalUnit } from "../src";
 
 describe("Organization", () => {
   it("Should match snapshot", () => {
@@ -10,8 +10,10 @@ describe("Organization", () => {
     const stack = new Stack(app, "Stack");
 
     // When
-    new Organization(stack, "Organization", {
-      featureSet: FeatureSet.ALL,
+    new OrganizationalUnit(stack, "OrganizationalUnit", {
+      organizationalUnitName: "TestOrganization",
+      parentId: "r-1234",
+      tags: {},
     });
 
     // Then
@@ -25,7 +27,11 @@ describe("Organization", () => {
     const stack = new Stack(app, "Stack");
 
     // When
-    new Organization(stack, "Organization", {});
+    new OrganizationalUnit(stack, "OrganizationalUnit", {
+      organizationalUnitName: "TestOrganization",
+      parentId: "r-1234",
+      tags: {},
+    });
 
     // Then
     Aspects.of(app).add(new AwsSolutionsChecks({ verbose: true }));

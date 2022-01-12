@@ -1,10 +1,10 @@
+import { Construct } from "@aws-cdk/core";
 import {
   AwsCustomResource,
   AwsCustomResourcePolicy,
   PhysicalResourceId,
   PhysicalResourceIdReference,
 } from "@aws-cdk/custom-resources";
-import { Construct } from "constructs";
 
 export interface OrganizationalUnitProps {
   /**
@@ -43,6 +43,7 @@ export class OrganizationalUnit extends Construct {
     }
 
     new AwsCustomResource(this, "OrganizationalUnitCustomResource", {
+      resourceType: "Custom::Organization_OrganizationalUnit",
       onCreate: {
         service: "Organization",
         action: "createOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createOrganizationalUnit-property

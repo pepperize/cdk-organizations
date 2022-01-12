@@ -1,10 +1,10 @@
+import { Construct } from "@aws-cdk/core";
 import {
   AwsCustomResource,
   AwsCustomResourcePolicy,
   PhysicalResourceId,
   PhysicalResourceIdReference,
 } from "@aws-cdk/custom-resources";
-import { Construct } from "constructs";
 
 /**
  * Organizations offers policy types in the following two broad categories:
@@ -70,6 +70,7 @@ export class Policy extends Construct {
     const { content, description, policyName, policyType } = props;
 
     new AwsCustomResource(this, "PolicyCustomResource", {
+      resourceType: "Custom::Organization_Policy",
       onCreate: {
         service: "Organization",
         action: "createPolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createPolicy-property

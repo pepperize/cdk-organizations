@@ -67,7 +67,7 @@ Exactly 12 digits.
 
 Creates an organization to consolidate your AWS accounts so that you can administer them as a single unit.
 
-An organization has one management account along with zero or more member accounts. You can organize the accounts in a hierarchical, tree-like structure with a root at the top and organizational units nested under the root. Each account can be directly in the root, or placed in one of the OUs in the hierarchy. An organization has the functionality that is determined by the feature set that you enable.  <strong>For deletion of an organization you must previously remove all the member accounts, OUs, and policies from the organization!</strong>
+An organization has one management account along with zero or more member accounts. You can organize the accounts in a hierarchical, tree-like structure with a root at the top and organizational units nested under the root. Each account can be directly in the root, or placed in one of the OUs in the hierarchy. An organization has the functionality that is determined by the feature set that you enable.  <strong>The account whose user is calling the CreateOrganization operation automatically becomes the management account of the new organization.</strong>  <strong>For deletion of an organization you must previously remove all the member accounts, OUs, and policies from the organization!</strong>
 
 > https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org
 
@@ -81,7 +81,7 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsorganizationparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsorganizationparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsorganizationparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsorganizationparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.OrganizationProps`](#@pepperize/cdk-organizations.OrganizationProps) | *No description.* |
 
@@ -89,7 +89,7 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.parameter.scope" id="pepperizecdkorganizationsorganizationparameterscope"></a>
 
-- *Type:* [`constructs.Construct`](#constructs.Construct)
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
 
 ---
 
@@ -107,6 +107,42 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 
 
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`organizationId`](#pepperizecdkorganizationsorganizationpropertyorganizationid)<span title="Required">*</span> | `string` | The unique identifier (ID) of an organization. |
+| [`rootId`](#pepperizecdkorganizationsorganizationpropertyrootid)<span title="Required">*</span> | `string` | The unique identifier (ID) for the root. |
+
+---
+
+##### `organizationId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.organizationId" id="pepperizecdkorganizationsorganizationpropertyorganizationid"></a>
+
+```typescript
+public readonly organizationId: string;
+```
+
+- *Type:* `string`
+
+The unique identifier (ID) of an organization.
+
+The regex pattern for an organization ID string requires "o-" followed by from 10 to 32 lowercase letters or digits.
+
+---
+
+##### `rootId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.rootId" id="pepperizecdkorganizationsorganizationpropertyrootid"></a>
+
+```typescript
+public readonly rootId: string;
+```
+
+- *Type:* `string`
+
+The unique identifier (ID) for the root.
+
+The regex pattern for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits.
+
+---
 
 
 ### OrganizationalUnit <a name="@pepperize/cdk-organizations.OrganizationalUnit" id="pepperizecdkorganizationsorganizationalunit"></a>
@@ -125,7 +161,7 @@ new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitPr
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsorganizationalunitparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsorganizationalunitparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsorganizationalunitparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsorganizationalunitparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.OrganizationalUnitProps`](#@pepperize/cdk-organizations.OrganizationalUnitProps) | *No description.* |
 
@@ -133,7 +169,7 @@ new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitPr
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnit.parameter.scope" id="pepperizecdkorganizationsorganizationalunitparameterscope"></a>
 
-- *Type:* [`constructs.Construct`](#constructs.Construct)
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
 
 ---
 
@@ -171,7 +207,7 @@ new Policy(scope: Construct, id: string, props: PolicyProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationspolicyparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationspolicyparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationspolicyparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationspolicyparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.PolicyProps`](#@pepperize/cdk-organizations.PolicyProps) | *No description.* |
 
@@ -179,7 +215,7 @@ new Policy(scope: Construct, id: string, props: PolicyProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Policy.parameter.scope" id="pepperizecdkorganizationspolicyparameterscope"></a>
 
-- *Type:* [`constructs.Construct`](#constructs.Construct)
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
 
 ---
 

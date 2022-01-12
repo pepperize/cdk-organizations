@@ -55,7 +55,7 @@ export class Account extends Construct {
     const accountProvider = AccountProvider.getOrCreate(this);
     const account = new CustomResource(this, `AccountProvider-${accountName}`, {
       serviceToken: accountProvider.provider.serviceToken,
-      resourceType: "Custom::Organization.Account",
+      resourceType: "Custom::Organization_Account",
       properties: {
         Email: email,
         AccountName: accountName,

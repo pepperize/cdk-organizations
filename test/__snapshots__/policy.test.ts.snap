@@ -103,14 +103,14 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "OrganizationOrganizationCustomResource620D04AC": Object {
+    "PolicyPolicyCustomResource79938510": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
+        "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
       ],
       "Properties": Object {
-        "Create": "{\\"service\\":\\"Organization\\",\\"action\\":\\"createOrganization\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"FeatureSet\\":\\"ALL\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Organization.Id\\"}}",
-        "Delete": "{\\"service\\":\\"Organization\\",\\"action\\":\\"deleteOrganization\\",\\"region\\":\\"us-east-1\\"}",
+        "Create": "{\\"service\\":\\"Organization\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\\\\\\\\\\\"Version\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2012-10-17\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Statement\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\"Effect\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Allow\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Action\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"s3:*\\\\\\\\\\\\\\"}}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Delete": "{\\"service\\":\\"Organization\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"OrganizationalUnitId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
         "InstallLatestAwsSdk": true,
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
@@ -118,81 +118,34 @@ Object {
             "Arn",
           ],
         },
-        "Update": "{\\"service\\":\\"Organization\\",\\"action\\":\\"describeOrganization\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Organization.Id\\"}}",
+        "Update": "{\\"service\\":\\"Organization\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\\\\\\\\\\\"Version\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2012-10-17\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Statement\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\"Effect\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Allow\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Action\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"s3:*\\\\\\\\\\\\\\"}}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
       },
-      "Type": "Custom::Organization_Organization",
+      "Type": "Custom::Organization_Policy",
       "UpdateReplacePolicy": "Delete",
     },
-    "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D": Object {
+    "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4": Object {
       "Properties": Object {
         "PolicyDocument": Object {
           "Statement": Array [
             Object {
-              "Action": "organization:CreateOrganization",
+              "Action": "organization:CreatePolicy",
               "Effect": "Allow",
               "Resource": "*",
             },
             Object {
-              "Action": "organization:DescribeOrganization",
+              "Action": "organization:UpdatePolicy",
               "Effect": "Allow",
               "Resource": "*",
             },
             Object {
-              "Action": "organization:DeleteOrganization",
+              "Action": "organization:DeletePolicy",
               "Effect": "Allow",
               "Resource": "*",
             },
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
-        "Roles": Array [
-          Object {
-            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "OrganizationRootCustomResource9416950B": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
-        "OrganizationOrganizationCustomResource620D04AC",
-        "OrganizationRootCustomResourceCustomResourcePolicyC9B8B67A",
-      ],
-      "Properties": Object {
-        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
-        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\"}",
-        "InstallLatestAwsSdk": true,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
-            "Arn",
-          ],
-        },
-        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
-      },
-      "Type": "Custom::Organization_Root",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "OrganizationRootCustomResourceCustomResourcePolicyC9B8B67A": Object {
-      "DependsOn": Array [
-        "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
-        "OrganizationOrganizationCustomResource620D04AC",
-      ],
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "organizations:ListRoots",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "OrganizationRootCustomResourceCustomResourcePolicyC9B8B67A",
+        "PolicyName": "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
         "Roles": Array [
           Object {
             "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
