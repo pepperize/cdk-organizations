@@ -9,8 +9,6 @@
 
 This project provides a CDK construct creating AWS organizations.
 
-> Project status: WIP
->
 > Currently there is no `@aws-cdk/organizations` available. See this [AWS CDK Issue](https://github.com/aws/aws-cdk/issues/2877).
 
 - [AWS User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
@@ -44,4 +42,77 @@ pip install pepperize.cdk-organizations
 
 ```
 dotnet add package Pepperize.CDK.Organizations
+```
+
+# Example
+
+See [example.ts](./src/example/example.ts)
+
+```typescript
+import { App, Stack } from "@aws-cdk/core";
+import { Account, IamUserAccessToBilling } from "../account";
+import {
+  FeatureSet,
+  Organization,
+  OrganizationalUnit,
+  Policy,
+  PolicyAttachment,
+  PolicyType,
+} from "@pepperize/cdk-organizations";
+
+const app = new App();
+const stack = new Stack(app);
+
+// Create the organization
+const organization = new Organization(stack, "Organization", {
+  featureSet: FeatureSet.ALL,
+});
+
+// Create an Account in the current organization
+new Account(stack, "SharedAccount", {
+  accountName: "SharedAccount",
+  email: "info+shared-account@pepperize.com",
+  roleName: "OrganizationAccountAccessRole",
+  iamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
+  parent: organization.root,
+});
+
+// Create an OU in the current organizations root
+const projects = new OrganizationalUnit(stack, "ProjectsOU", {
+  organizationalUnitName: "Projects",
+  parent: organization.root,
+});
+new Account(stack, "Project1Account", {
+  accountName: "SharedAccount",
+  email: "info+project1@pepperize.com",
+  parent: projects,
+});
+
+// Create a nested OU and attach two accounts
+const project2 = new OrganizationalUnit(stack, "Project2OU", {
+  organizationalUnitName: "Project2",
+  parent: projects,
+});
+new Account(stack, "Project2DevAccount", {
+  accountName: "Project 2 Dev",
+  email: "info+project2-dev@pepperize.com",
+  parent: project2,
+});
+new Account(stack, "Project2ProdAccount", {
+  accountName: "Project 2 Prod",
+  email: "info+project2-prod@pepperize.com",
+  parent: project2,
+});
+
+// Attach a policy to an attachment target
+const policy = new Policy(stack, "Policy", {
+  content: '{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"}}',
+  description: "Enables admins of attached accounts to delegate all S3 permissions",
+  policyName: "AllowAllS3Actions",
+  policyType: PolicyType.SERVICE_CONTROL_POLICY,
+});
+new PolicyAttachment(stack, "PolicyAttachment", {
+  target: organization.root,
+  policy: policy,
+});
 ```

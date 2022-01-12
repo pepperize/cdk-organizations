@@ -1,5 +1,8 @@
 import { Construct, CustomResource } from "@aws-cdk/core";
+import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "@aws-cdk/custom-resources";
 import { AccountProvider } from "./account-provider";
+import { IParent } from "./parent";
+import { IPolicyAttachmentTarget } from "./policy-attachment";
 
 /**
  * @see https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate
@@ -36,21 +39,23 @@ export interface AccountProps {
    * @default ALLOW
    */
   readonly iamUserAccessToBilling?: IamUserAccessToBilling;
+
   /**
-   * A list of tags that you want to attach to the newly created account. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.
+   * The parent root or OU that you want to create the new Account in.
    */
-  readonly tags: { [key: string]: string };
+  readonly parent?: IParent;
 }
 
-export class Account extends Construct {
+export class Account extends Construct implements IPolicyAttachmentTarget {
   /**
    * If the account was created successfully, the unique identifier (ID) of the new account. Exactly 12 digits.
    */
   public readonly accountId: string;
+
   public constructor(scope: Construct, id: string, props: AccountProps) {
     super(scope, id);
 
-    const { email, accountName, roleName, iamUserAccessToBilling } = props;
+    const { email, accountName, roleName, iamUserAccessToBilling, parent } = props;
 
     const accountProvider = AccountProvider.getOrCreate(this);
     const account = new CustomResource(this, `AccountProvider-${accountName}`, {
@@ -64,5 +69,75 @@ export class Account extends Construct {
       },
     });
     this.accountId = account.getAtt("AccountId").toString();
+
+    if (parent) {
+      const sourceParentId = this.currentParentId();
+      const targetParentId = parent.identifier();
+      this.move(targetParentId, sourceParentId);
+    }
+  }
+
+  currentParentId(): string {
+    const parent = new AwsCustomResource(this, "ListParentsCustomResource", {
+      onCreate: {
+        service: "Organizations",
+        action: "listParents", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listParents-property
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.fromResponse("Parents.0.Id"),
+        parameters: {
+          ChildId: this.accountId,
+        },
+      },
+      onUpdate: {
+        service: "Organizations",
+        action: "listParents", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listParents-property
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.fromResponse("Parents.0.Id"),
+        parameters: {
+          ChildId: this.accountId,
+        },
+      },
+      onDelete: {
+        service: "Organizations",
+        action: "listParents", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listParents-property
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.fromResponse("Parents.0.Id"),
+        parameters: {
+          ChildId: this.accountId,
+        },
+      },
+      policy: AwsCustomResourcePolicy.fromSdkCalls({
+        resources: AwsCustomResourcePolicy.ANY_RESOURCE,
+      }),
+    });
+
+    return parent.getResponseField("Parents.0.Id");
+  }
+
+  move(destinationParentId: string, sourceParentId: string): void {
+    if (destinationParentId == sourceParentId) {
+      return;
+    }
+
+    new AwsCustomResource(this, "MoveAccountCustomResource", {
+      onUpdate: {
+        service: "Organizations",
+        action: "moveAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#moveAccount-property
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.of(this.accountId),
+        parameters: {
+          AccountId: this.accountId,
+          DestinationParentId: destinationParentId,
+          SourceParentId: sourceParentId,
+        },
+      },
+      policy: AwsCustomResourcePolicy.fromSdkCalls({
+        resources: AwsCustomResourcePolicy.ANY_RESOURCE,
+      }),
+    });
+  }
+
+  identifier(): string {
+    return this.accountId;
   }
 }
