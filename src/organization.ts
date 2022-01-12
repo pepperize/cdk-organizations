@@ -1,5 +1,7 @@
 import { Construct } from "@aws-cdk/core";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "@aws-cdk/custom-resources";
+import { IParent } from "./parent";
+import { IPolicyAttachmentTarget } from "./policy-attachment";
 
 /**
  * Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
@@ -8,11 +10,11 @@ import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "
  */
 export enum FeatureSet {
   /**
-   * All member accounts have their bills consolidated to and paid by the management account. For more information, see [Consolidated billing]{@link https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only} in the AWS Organizations User Guide. The consolidated billing feature subset isn’t available for organizations in the AWS GovCloud (US) Region.
+   * All member accounts have their bills consolidated to and paid by the management account. For more information, see [Consolidated billing](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only) in the AWS Organizations User Guide. The consolidated billing feature subset isn’t available for organizations in the AWS GovCloud (US) Region.
    */
   CONSOLIDATED_BILLING = "CONSOLIDATED_BILLING",
   /**
-   * In addition to all the features supported by the consolidated billing feature set, the management account can also apply any policy type to any member account in the organization. For more information, see [All features]{@link https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all} in the AWS Organizations User Guide.
+   * In addition to all the features supported by the consolidated billing feature set, the management account can also apply any policy type to any member account in the organization. For more information, see [All features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all) in the AWS Organizations User Guide.
    */
   ALL = "ALL",
 }
@@ -43,9 +45,25 @@ export class Organization extends Construct {
    */
   public readonly organizationId: string;
   /**
-   * The unique identifier (ID) for the root. The regex pattern for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits.
+   * The Amazon Resource Name (ARN) of an organization.
    */
-  public readonly rootId: string;
+  public readonly organizationArn: string;
+  /**
+   * The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization.
+   */
+  public readonly masterAccountArn: string;
+  /**
+   * The unique identifier (ID) of the management account of an organization.
+   */
+  public readonly masterAccountId: string;
+  /**
+   * The email address that is associated with the AWS account that is designated as the management account for the organization.
+   */
+  public readonly masterAccountEmail: string;
+  /**
+   * The root of the current organization, which is automatically created.
+   */
+  public readonly root: Root;
   public constructor(scope: Construct, id: string, props: OrganizationProps) {
     super(scope, id);
 
@@ -76,20 +94,36 @@ export class Organization extends Construct {
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
     this.organizationId = organization.getResponseField("Organization.Id");
+    this.organizationArn = organization.getResponseField("Organization.Arn");
+    this.masterAccountArn = organization.getResponseField("Organization.MasterAccountArn");
+    this.masterAccountId = organization.getResponseField("Organization.MasterAccountId");
+    this.masterAccountEmail = organization.getResponseField("Organization.MasterAccountEmail");
 
-    const root = this.getRoot();
-    root.node.addDependency(organization);
-    this.rootId = root.getResponseField("Roots.0.Id"); // Returns first root id. It seems AWS Organizations doesn't contain multiple roots.
+    this.root = new Root(this, "Root", { organization: this });
   }
+}
 
+export interface RootProps {
+  readonly organization: Organization;
+}
+
+/**
+ * The parent container for all the accounts for your organization. If you apply a policy to the root, it applies to all organizational units (OUs) and accounts in the organization.
+ * <strong>Currently, you can have only one root. AWS Organizations automatically creates it for you when you create an organization.</strong>
+ * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html
+ */
+export class Root extends Construct implements IParent, IPolicyAttachmentTarget {
   /**
-   * The parent container for all the accounts for your organization. If you apply a policy to the root, it applies to all organizational units (OUs) and accounts in the organization.
-   * <strong>Currently, you can have only one root. AWS Organizations automatically creates it for you when you create an organization.</strong>
-   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html
-   * @private
+   * The unique identifier (ID) for the root. The regex pattern for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits.
    */
-  private getRoot(): AwsCustomResource {
-    return new AwsCustomResource(this, "RootCustomResource", {
+  public readonly rootId: string;
+  public constructor(scope: Construct, id: string, props: RootProps) {
+    super(scope, id);
+
+    const { organization } = props;
+    this.node.addDependency(organization);
+
+    const root = new AwsCustomResource(this, "RootCustomResource", {
       resourceType: "Custom::Organization_Root",
       onCreate: {
         service: "Organizations",
@@ -112,5 +146,11 @@ export class Organization extends Construct {
         resources: AwsCustomResourcePolicy.ANY_RESOURCE,
       }),
     });
+
+    this.rootId = root.getResponseField("Roots.0.Id"); // Returns first root id. It seems AWS Organizations doesn't contain multiple roots.
+  }
+
+  identifier(): string {
+    return this.rootId;
   }
 }

@@ -1,19 +1,19 @@
 import { Template } from "@aws-cdk/assertions";
 import { App, Aspects, Stack } from "@aws-cdk/core";
 import { AwsSolutionsChecks } from "cdk-nag";
-import { OrganizationalUnit } from "../src";
+import { Organization, OrganizationalUnit } from "../src";
 
 describe("Organization", () => {
   it("Should match snapshot", () => {
     // Given
     const app = new App();
     const stack = new Stack(app, "Stack");
+    const organization = new Organization(stack, "Organization", {});
 
     // When
     new OrganizationalUnit(stack, "OrganizationalUnit", {
       organizationalUnitName: "TestOrganization",
-      parentId: "r-1234",
-      tags: {},
+      parent: organization.root,
     });
 
     // Then
@@ -25,12 +25,12 @@ describe("Organization", () => {
     // Given
     const app = new App();
     const stack = new Stack(app, "Stack");
+    const organization = new Organization(stack, "Organization", {});
 
     // When
     new OrganizationalUnit(stack, "OrganizationalUnit", {
       organizationalUnitName: "TestOrganization",
-      parentId: "r-1234",
-      tags: {},
+      parent: organization.root,
     });
 
     // Then

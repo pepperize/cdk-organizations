@@ -5,6 +5,8 @@ import {
   PhysicalResourceId,
   PhysicalResourceIdReference,
 } from "@aws-cdk/custom-resources";
+import { IParent } from "./parent";
+import { IPolicyAttachmentTarget } from "./policy-attachment";
 
 export interface OrganizationalUnitProps {
   /**
@@ -13,14 +15,9 @@ export interface OrganizationalUnitProps {
   readonly organizationalUnitName: string;
 
   /**
-   * The unique identifier (ID) of the parent root or OU that you want to create the new OU in.
+   * The parent root or OU that you want to create the new OrganizationalUnit in.
    */
-  readonly parentId: string;
-
-  /**
-   * A list of tags that you want to attach to the newly created organizational unit. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.
-   */
-  readonly tags: { [key: string]: string };
+  readonly parent: IParent;
 }
 
 /**
@@ -28,21 +25,26 @@ export interface OrganizationalUnitProps {
  *
  * <strong>You must first move all accounts out of the OU and any child OUs, and then you can delete the child OUs.</strong>
  */
-export class OrganizationalUnit extends Construct {
+export class OrganizationalUnit extends Construct implements IParent, IPolicyAttachmentTarget {
+  /**
+   * The unique identifier (ID) associated with this OU. The regex pattern for an organizational unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
+   */
+  public readonly organizationalUnitId: string;
+  /**
+   * The Amazon Resource Name (ARN) of this OU. For more information about ARNs in Organizations, see [ARN Formats Supported by Organizations](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies) in the AWS Service Authorization Reference.
+   */
+  public readonly organizationalUnitArn: string;
+  /**
+   * The friendly name of this OU.
+   */
+  public readonly organizationalUnitName: string;
   public constructor(scope: Construct, id: string, props: OrganizationalUnitProps) {
     super(scope, id);
 
-    const { organizationalUnitName, parentId } = props;
+    const { organizationalUnitName, parent } = props;
+    this.node.addDependency(parent);
 
-    const tags: { Key: string; Value: string }[] = [];
-    for (const [key, value] of Object.entries(props.tags)) {
-      tags.push({
-        Key: key,
-        Value: value,
-      });
-    }
-
-    new AwsCustomResource(this, "OrganizationalUnitCustomResource", {
+    const organizationalUnit = new AwsCustomResource(this, "OrganizationalUnitCustomResource", {
       resourceType: "Custom::Organization_OrganizationalUnit",
       onCreate: {
         service: "Organization",
@@ -50,8 +52,7 @@ export class OrganizationalUnit extends Construct {
         region: "us-east-1",
         parameters: {
           Name: organizationalUnitName,
-          ParentId: parentId,
-          Tags: tags,
+          ParentId: parent.identifier(),
         },
         physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
       },
@@ -75,7 +76,14 @@ export class OrganizationalUnit extends Construct {
       },
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
+    this.organizationalUnitId = organizationalUnit.getResponseField("OrganizationalUnit.Id");
+    this.organizationalUnitArn = organizationalUnit.getResponseField("OrganizationalUnit.Arn");
+    this.organizationalUnitName = organizationalUnit.getResponseField("OrganizationalUnit.Name");
 
     // TODO: https://docs.aws.amazon.com/cdk/api/v1/docs/@aws-cdk_core.Tags.html
+  }
+
+  identifier(): string {
+    return this.organizationalUnitId;
   }
 }

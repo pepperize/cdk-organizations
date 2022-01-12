@@ -154,12 +154,12 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
-    "OrganizationRootCustomResource9416950B": Object {
+    "OrganizationRootRootCustomResourceBB74F060": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
         "OrganizationOrganizationCustomResource620D04AC",
-        "OrganizationRootCustomResourceCustomResourcePolicyC9B8B67A",
+        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
       ],
       "Properties": Object {
         "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
@@ -176,10 +176,11 @@ Object {
       "Type": "Custom::Organization_Root",
       "UpdateReplacePolicy": "Delete",
     },
-    "OrganizationRootCustomResourceCustomResourcePolicyC9B8B67A": Object {
+    "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E": Object {
       "DependsOn": Array [
         "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
         "OrganizationOrganizationCustomResource620D04AC",
+        "OrganizationRootRootCustomResourceBB74F060",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -192,7 +193,7 @@ Object {
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "OrganizationRootCustomResourceCustomResourcePolicyC9B8B67A",
+        "PolicyName": "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "Roles": Array [
           Object {
             "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",

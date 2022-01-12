@@ -1,19 +1,20 @@
 import { Template } from "@aws-cdk/assertions";
 import { App, Aspects, Stack } from "@aws-cdk/core";
 import { AwsSolutionsChecks } from "cdk-nag";
-import { Account, IamUserAccessToBilling } from "../src";
+import { Account, IamUserAccessToBilling, Organization } from "../src";
 
 describe("Organization", () => {
   it("Should match snapshot", () => {
     // Given
     const app = new App();
     const stack = new Stack(app, "Stack");
+    const organization = new Organization(stack, "Organization", {});
 
     // When
     new Account(stack, "Account", {
       email: "info@pepperize.com",
       accountName: "test",
-      tags: {},
+      parent: organization.root,
     });
 
     // Then
@@ -25,6 +26,7 @@ describe("Organization", () => {
     // Given
     const app = new App();
     const stack = new Stack(app, "Stack");
+    const organization = new Organization(stack, "Organization", {});
 
     // When
     new Account(stack, "Account", {
@@ -32,7 +34,7 @@ describe("Organization", () => {
       accountName: "test",
       roleName: "PreconfiguredRoleForNewMemberAccounts",
       iamUserAccessToBilling: IamUserAccessToBilling.DENY,
-      tags: {},
+      parent: organization.root,
     });
 
     // Then

@@ -51,10 +51,6 @@ export interface PolicyProps {
    * The type of policy to create. You can specify one of the following values:
    */
   readonly policyType: PolicyType;
-  /**
-   * A list of tags that you want to attach to the newly created policy. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.
-   */
-  readonly tags: { [key: string]: string };
 }
 
 /**
@@ -64,12 +60,16 @@ export interface PolicyProps {
  * @see FeatureSet
  */
 export class Policy extends Construct {
+  /**
+   * The unique identifier (ID) of the policy. The regex pattern for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
+   */
+  public readonly policyId: string;
   public constructor(scope: Construct, id: string, props: PolicyProps) {
     super(scope, id);
 
     const { content, description, policyName, policyType } = props;
 
-    new AwsCustomResource(this, "PolicyCustomResource", {
+    const policy = new AwsCustomResource(this, "PolicyCustomResource", {
       resourceType: "Custom::Organization_Policy",
       onCreate: {
         service: "Organization",
@@ -105,5 +105,6 @@ export class Policy extends Construct {
       },
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
+    this.policyId = policy.getResponseField("Policy.PolicySummary.Id");
   }
 }

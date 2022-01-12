@@ -4,6 +4,8 @@
 
 ### Account <a name="@pepperize/cdk-organizations.Account" id="pepperizecdkorganizationsaccount"></a>
 
+- *Implements:* [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
+
 #### Initializers <a name="@pepperize/cdk-organizations.Account.Initializer" id="pepperizecdkorganizationsaccountinitializer"></a>
 
 ```typescript
@@ -38,6 +40,45 @@ new Account(scope: Construct, id: string, props: AccountProps)
 
 ---
 
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`currentParentId`](#pepperizecdkorganizationsaccountcurrentparentid) | *No description.* |
+| [`identifier`](#pepperizecdkorganizationsaccountidentifier) | *No description.* |
+| [`move`](#pepperizecdkorganizationsaccountmove) | *No description.* |
+
+---
+
+##### `currentParentId` <a name="@pepperize/cdk-organizations.Account.currentParentId" id="pepperizecdkorganizationsaccountcurrentparentid"></a>
+
+```typescript
+public currentParentId()
+```
+
+##### `identifier` <a name="@pepperize/cdk-organizations.Account.identifier" id="pepperizecdkorganizationsaccountidentifier"></a>
+
+```typescript
+public identifier()
+```
+
+##### `move` <a name="@pepperize/cdk-organizations.Account.move" id="pepperizecdkorganizationsaccountmove"></a>
+
+```typescript
+public move(destinationParentId: string, sourceParentId: string)
+```
+
+###### `destinationParentId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.parameter.destinationParentId" id="pepperizecdkorganizationsaccountparameterdestinationparentid"></a>
+
+- *Type:* `string`
+
+---
+
+###### `sourceParentId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.parameter.sourceParentId" id="pepperizecdkorganizationsaccountparametersourceparentid"></a>
+
+- *Type:* `string`
+
+---
 
 
 #### Properties <a name="Properties" id="properties"></a>
@@ -111,8 +152,60 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| [`masterAccountArn`](#pepperizecdkorganizationsorganizationpropertymasteraccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
+| [`masterAccountEmail`](#pepperizecdkorganizationsorganizationpropertymasteraccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
+| [`masterAccountId`](#pepperizecdkorganizationsorganizationpropertymasteraccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
+| [`organizationArn`](#pepperizecdkorganizationsorganizationpropertyorganizationarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of an organization. |
 | [`organizationId`](#pepperizecdkorganizationsorganizationpropertyorganizationid)<span title="Required">*</span> | `string` | The unique identifier (ID) of an organization. |
-| [`rootId`](#pepperizecdkorganizationsorganizationpropertyrootid)<span title="Required">*</span> | `string` | The unique identifier (ID) for the root. |
+| [`root`](#pepperizecdkorganizationsorganizationpropertyroot)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root) | The root of the current organization, which is automatically created. |
+
+---
+
+##### `masterAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.masterAccountArn" id="pepperizecdkorganizationsorganizationpropertymasteraccountarn"></a>
+
+```typescript
+public readonly masterAccountArn: string;
+```
+
+- *Type:* `string`
+
+The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization.
+
+---
+
+##### `masterAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.masterAccountEmail" id="pepperizecdkorganizationsorganizationpropertymasteraccountemail"></a>
+
+```typescript
+public readonly masterAccountEmail: string;
+```
+
+- *Type:* `string`
+
+The email address that is associated with the AWS account that is designated as the management account for the organization.
+
+---
+
+##### `masterAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.masterAccountId" id="pepperizecdkorganizationsorganizationpropertymasteraccountid"></a>
+
+```typescript
+public readonly masterAccountId: string;
+```
+
+- *Type:* `string`
+
+The unique identifier (ID) of the management account of an organization.
+
+---
+
+##### `organizationArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.organizationArn" id="pepperizecdkorganizationsorganizationpropertyorganizationarn"></a>
+
+```typescript
+public readonly organizationArn: string;
+```
+
+- *Type:* `string`
+
+The Amazon Resource Name (ARN) of an organization.
 
 ---
 
@@ -130,22 +223,22 @@ The regex pattern for an organization ID string requires "o-" followed by from 1
 
 ---
 
-##### `rootId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.rootId" id="pepperizecdkorganizationsorganizationpropertyrootid"></a>
+##### `root`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.root" id="pepperizecdkorganizationsorganizationpropertyroot"></a>
 
 ```typescript
-public readonly rootId: string;
+public readonly root: Root;
 ```
 
-- *Type:* `string`
+- *Type:* [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root)
 
-The unique identifier (ID) for the root.
-
-The regex pattern for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits.
+The root of the current organization, which is automatically created.
 
 ---
 
 
 ### OrganizationalUnit <a name="@pepperize/cdk-organizations.OrganizationalUnit" id="pepperizecdkorganizationsorganizationalunit"></a>
+
+- *Implements:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
 
 A container for accounts within a root.
 
@@ -185,8 +278,70 @@ new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitPr
 
 ---
 
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`identifier`](#pepperizecdkorganizationsorganizationalunitidentifier) | The unique identifier (ID) of the parent root or OU that you want to create the new OU in. |
+
+---
+
+##### `identifier` <a name="@pepperize/cdk-organizations.OrganizationalUnit.identifier" id="pepperizecdkorganizationsorganizationalunitidentifier"></a>
+
+```typescript
+public identifier()
+```
 
 
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`organizationalUnitArn`](#pepperizecdkorganizationsorganizationalunitpropertyorganizationalunitarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of this OU. |
+| [`organizationalUnitId`](#pepperizecdkorganizationsorganizationalunitpropertyorganizationalunitid)<span title="Required">*</span> | `string` | The unique identifier (ID) associated with this OU. |
+| [`organizationalUnitName`](#pepperizecdkorganizationsorganizationalunitpropertyorganizationalunitname)<span title="Required">*</span> | `string` | The friendly name of this OU. |
+
+---
+
+##### `organizationalUnitArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnit.property.organizationalUnitArn" id="pepperizecdkorganizationsorganizationalunitpropertyorganizationalunitarn"></a>
+
+```typescript
+public readonly organizationalUnitArn: string;
+```
+
+- *Type:* `string`
+
+The Amazon Resource Name (ARN) of this OU.
+
+For more information about ARNs in Organizations, see [ARN Formats Supported by Organizations](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies) in the AWS Service Authorization Reference.
+
+---
+
+##### `organizationalUnitId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnit.property.organizationalUnitId" id="pepperizecdkorganizationsorganizationalunitpropertyorganizationalunitid"></a>
+
+```typescript
+public readonly organizationalUnitId: string;
+```
+
+- *Type:* `string`
+
+The unique identifier (ID) associated with this OU.
+
+The regex pattern for an organizational unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
+
+---
+
+##### `organizationalUnitName`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnit.property.organizationalUnitName" id="pepperizecdkorganizationsorganizationalunitpropertyorganizationalunitname"></a>
+
+```typescript
+public readonly organizationalUnitName: string;
+```
+
+- *Type:* `string`
+
+The friendly name of this OU.
+
+---
 
 
 ### Policy <a name="@pepperize/cdk-organizations.Policy" id="pepperizecdkorganizationspolicy"></a>
@@ -233,6 +388,153 @@ new Policy(scope: Construct, id: string, props: PolicyProps)
 
 
 
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`policyId`](#pepperizecdkorganizationspolicypropertypolicyid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the policy. |
+
+---
+
+##### `policyId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Policy.property.policyId" id="pepperizecdkorganizationspolicypropertypolicyid"></a>
+
+```typescript
+public readonly policyId: string;
+```
+
+- *Type:* `string`
+
+The unique identifier (ID) of the policy.
+
+The regex pattern for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
+
+---
+
+
+### PolicyAttachment <a name="@pepperize/cdk-organizations.PolicyAttachment" id="pepperizecdkorganizationspolicyattachment"></a>
+
+Attaches a policy to a root, an organizational unit (OU), or an individual account.
+
+How the policy affects accounts depends on the type of policy. Refer to the AWS Organizations User Guide for information about each policy type:
+
+#### Initializers <a name="@pepperize/cdk-organizations.PolicyAttachment.Initializer" id="pepperizecdkorganizationspolicyattachmentinitializer"></a>
+
+```typescript
+import { PolicyAttachment } from '@pepperize/cdk-organizations'
+
+new PolicyAttachment(scope: Construct, id: string, props: PolicyAttachmentProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`scope`](#pepperizecdkorganizationspolicyattachmentparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationspolicyattachmentparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationspolicyattachmentparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.PolicyAttachmentProps`](#@pepperize/cdk-organizations.PolicyAttachmentProps) | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyAttachment.parameter.scope" id="pepperizecdkorganizationspolicyattachmentparameterscope"></a>
+
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyAttachment.parameter.id" id="pepperizecdkorganizationspolicyattachmentparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyAttachment.parameter.props" id="pepperizecdkorganizationspolicyattachmentparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.PolicyAttachmentProps`](#@pepperize/cdk-organizations.PolicyAttachmentProps)
+
+---
+
+
+
+
+
+### Root <a name="@pepperize/cdk-organizations.Root" id="pepperizecdkorganizationsroot"></a>
+
+- *Implements:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
+
+The parent container for all the accounts for your organization.
+
+If you apply a policy to the root, it applies to all organizational units (OUs) and accounts in the organization. <strong>Currently, you can have only one root. AWS Organizations automatically creates it for you when you create an organization.</strong>
+
+> https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html
+
+#### Initializers <a name="@pepperize/cdk-organizations.Root.Initializer" id="pepperizecdkorganizationsrootinitializer"></a>
+
+```typescript
+import { Root } from '@pepperize/cdk-organizations'
+
+new Root(scope: Construct, id: string, props: RootProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`scope`](#pepperizecdkorganizationsrootparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationsrootparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationsrootparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.RootProps`](#@pepperize/cdk-organizations.RootProps) | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Root.parameter.scope" id="pepperizecdkorganizationsrootparameterscope"></a>
+
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Root.parameter.id" id="pepperizecdkorganizationsrootparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Root.parameter.props" id="pepperizecdkorganizationsrootparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.RootProps`](#@pepperize/cdk-organizations.RootProps)
+
+---
+
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`identifier`](#pepperizecdkorganizationsrootidentifier) | The unique identifier (ID) of the parent root or OU that you want to create the new OU in. |
+
+---
+
+##### `identifier` <a name="@pepperize/cdk-organizations.Root.identifier" id="pepperizecdkorganizationsrootidentifier"></a>
+
+```typescript
+public identifier()
+```
+
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`rootId`](#pepperizecdkorganizationsrootpropertyrootid)<span title="Required">*</span> | `string` | The unique identifier (ID) for the root. |
+
+---
+
+##### `rootId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Root.property.rootId" id="pepperizecdkorganizationsrootpropertyrootid"></a>
+
+```typescript
+public readonly rootId: string;
+```
+
+- *Type:* `string`
+
+The unique identifier (ID) for the root.
+
+The regex pattern for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits.
+
+---
 
 
 ## Structs <a name="Structs" id="structs"></a>
@@ -253,8 +555,8 @@ const accountProps: AccountProps = { ... }
 | --- | --- | --- |
 | [`accountName`](#pepperizecdkorganizationsaccountpropspropertyaccountname)<span title="Required">*</span> | `string` | The friendly name of the member account. |
 | [`email`](#pepperizecdkorganizationsaccountpropspropertyemail)<span title="Required">*</span> | `string` | The email address of the owner to assign to the new member account. |
-| [`tags`](#pepperizecdkorganizationsaccountpropspropertytags)<span title="Required">*</span> | {[ key: string ]: `string`} | A list of tags that you want to attach to the newly created account. |
 | [`iamUserAccessToBilling`](#pepperizecdkorganizationsaccountpropspropertyiamuseraccesstobilling) | [`@pepperize/cdk-organizations.IamUserAccessToBilling`](#@pepperize/cdk-organizations.IamUserAccessToBilling) | If set to ALLOW , the new account enables IAM users to access account billing information if they have the required permissions. |
+| [`parent`](#pepperizecdkorganizationsaccountpropspropertyparent) | [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent) | The parent root or OU that you want to create the new Account in. |
 | [`roleName`](#pepperizecdkorganizationsaccountpropspropertyrolename) | `string` | The name of an IAM role that AWS Organizations automatically preconfigures in the new member account. |
 
 ---
@@ -285,20 +587,6 @@ This email address must not already be associated with another AWS account. You 
 
 ---
 
-##### `tags`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountProps.property.tags" id="pepperizecdkorganizationsaccountpropspropertytags"></a>
-
-```typescript
-public readonly tags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: `string`}
-
-A list of tags that you want to attach to the newly created account.
-
-For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.
-
----
-
 ##### `iamUserAccessToBilling`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.AccountProps.property.iamUserAccessToBilling" id="pepperizecdkorganizationsaccountpropspropertyiamuseraccesstobilling"></a>
 
 ```typescript
@@ -311,6 +599,18 @@ public readonly iamUserAccessToBilling: IamUserAccessToBilling;
 If set to ALLOW , the new account enables IAM users to access account billing information if they have the required permissions.
 
 If set to DENY , only the root user of the new account can access account billing information.
+
+---
+
+##### `parent`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.AccountProps.property.parent" id="pepperizecdkorganizationsaccountpropspropertyparent"></a>
+
+```typescript
+public readonly parent: IParent;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
+
+The parent root or OU that you want to create the new Account in.
 
 ---
 
@@ -343,8 +643,7 @@ const organizationalUnitProps: OrganizationalUnitProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | [`organizationalUnitName`](#pepperizecdkorganizationsorganizationalunitpropspropertyorganizationalunitname)<span title="Required">*</span> | `string` | The friendly name to assign to the new OU. |
-| [`parentId`](#pepperizecdkorganizationsorganizationalunitpropspropertyparentid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the parent root or OU that you want to create the new OU in. |
-| [`tags`](#pepperizecdkorganizationsorganizationalunitpropspropertytags)<span title="Required">*</span> | {[ key: string ]: `string`} | A list of tags that you want to attach to the newly created organizational unit. |
+| [`parent`](#pepperizecdkorganizationsorganizationalunitpropspropertyparent)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent) | The parent root or OU that you want to create the new OrganizationalUnit in. |
 
 ---
 
@@ -360,29 +659,15 @@ The friendly name to assign to the new OU.
 
 ---
 
-##### `parentId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnitProps.property.parentId" id="pepperizecdkorganizationsorganizationalunitpropspropertyparentid"></a>
+##### `parent`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnitProps.property.parent" id="pepperizecdkorganizationsorganizationalunitpropspropertyparent"></a>
 
 ```typescript
-public readonly parentId: string;
+public readonly parent: IParent;
 ```
 
-- *Type:* `string`
+- *Type:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
 
-The unique identifier (ID) of the parent root or OU that you want to create the new OU in.
-
----
-
-##### `tags`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnitProps.property.tags" id="pepperizecdkorganizationsorganizationalunitpropspropertytags"></a>
-
-```typescript
-public readonly tags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: `string`}
-
-A list of tags that you want to attach to the newly created organizational unit.
-
-For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.
+The parent root or OU that you want to create the new OrganizationalUnit in.
 
 ---
 
@@ -419,6 +704,49 @@ Enabling features in your organization.
 
 ---
 
+### PolicyAttachmentProps <a name="@pepperize/cdk-organizations.PolicyAttachmentProps" id="pepperizecdkorganizationspolicyattachmentprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { PolicyAttachmentProps } from '@pepperize/cdk-organizations'
+
+const policyAttachmentProps: PolicyAttachmentProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`policy`](#pepperizecdkorganizationspolicyattachmentpropspropertypolicy)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy) | The policy that you want to attach to the target. |
+| [`target`](#pepperizecdkorganizationspolicyattachmentpropspropertytarget)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget) | The root, OU, or account that you want to attach the policy to. |
+
+---
+
+##### `policy`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyAttachmentProps.property.policy" id="pepperizecdkorganizationspolicyattachmentpropspropertypolicy"></a>
+
+```typescript
+public readonly policy: Policy;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy)
+
+The policy that you want to attach to the target.
+
+---
+
+##### `target`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyAttachmentProps.property.target" id="pepperizecdkorganizationspolicyattachmentpropspropertytarget"></a>
+
+```typescript
+public readonly target: IPolicyAttachmentTarget;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
+
+The root, OU, or account that you want to attach the policy to.
+
+---
+
 ### PolicyProps <a name="@pepperize/cdk-organizations.PolicyProps" id="pepperizecdkorganizationspolicyprops"></a>
 
 #### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
@@ -436,7 +764,6 @@ const policyProps: PolicyProps = { ... }
 | [`content`](#pepperizecdkorganizationspolicypropspropertycontent)<span title="Required">*</span> | `string` | The policy text content to add to the new policy. |
 | [`policyName`](#pepperizecdkorganizationspolicypropspropertypolicyname)<span title="Required">*</span> | `string` | The friendly name to assign to the policy. |
 | [`policyType`](#pepperizecdkorganizationspolicypropspropertypolicytype)<span title="Required">*</span> | [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType) | The type of policy to create. |
-| [`tags`](#pepperizecdkorganizationspolicypropspropertytags)<span title="Required">*</span> | {[ key: string ]: `string`} | A list of tags that you want to attach to the newly created policy. |
 | [`description`](#pepperizecdkorganizationspolicypropspropertydescription) | `string` | An optional description to assign to the policy. |
 
 ---
@@ -481,20 +808,6 @@ You can specify one of the following values:
 
 ---
 
-##### `tags`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyProps.property.tags" id="pepperizecdkorganizationspolicypropspropertytags"></a>
-
-```typescript
-public readonly tags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: `string`}
-
-A list of tags that you want to attach to the newly created policy.
-
-For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.
-
----
-
 ##### `description`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.PolicyProps.property.description" id="pepperizecdkorganizationspolicypropspropertydescription"></a>
 
 ```typescript
@@ -507,6 +820,77 @@ An optional description to assign to the policy.
 
 ---
 
+### RootProps <a name="@pepperize/cdk-organizations.RootProps" id="pepperizecdkorganizationsrootprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { RootProps } from '@pepperize/cdk-organizations'
+
+const rootProps: RootProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`organization`](#pepperizecdkorganizationsrootpropspropertyorganization)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Organization`](#@pepperize/cdk-organizations.Organization) | *No description.* |
+
+---
+
+##### `organization`<sup>Required</sup> <a name="@pepperize/cdk-organizations.RootProps.property.organization" id="pepperizecdkorganizationsrootpropspropertyorganization"></a>
+
+```typescript
+public readonly organization: Organization;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.Organization`](#@pepperize/cdk-organizations.Organization)
+
+---
+
+
+## Protocols <a name="Protocols" id="protocols"></a>
+
+### IParent <a name="@pepperize/cdk-organizations.IParent" id="pepperizecdkorganizationsiparent"></a>
+
+- *Extends:* [`@aws-cdk/core.IDependable`](#@aws-cdk/core.IDependable)
+
+- *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
+
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`identifier`](#pepperizecdkorganizationsiparentidentifier) | The unique identifier (ID) of the parent root or OU that you want to create the new OU in. |
+
+---
+
+##### `identifier` <a name="@pepperize/cdk-organizations.IParent.identifier" id="pepperizecdkorganizationsiparentidentifier"></a>
+
+```typescript
+public identifier()
+```
+
+
+### IPolicyAttachmentTarget <a name="@pepperize/cdk-organizations.IPolicyAttachmentTarget" id="pepperizecdkorganizationsipolicyattachmenttarget"></a>
+
+- *Extends:* [`@aws-cdk/core.IDependable`](#@aws-cdk/core.IDependable)
+
+- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
+
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`identifier`](#pepperizecdkorganizationsipolicyattachmenttargetidentifier) | *No description.* |
+
+---
+
+##### `identifier` <a name="@pepperize/cdk-organizations.IPolicyAttachmentTarget.identifier" id="pepperizecdkorganizationsipolicyattachmenttargetidentifier"></a>
+
+```typescript
+public identifier()
+```
 
 
 ## Enums <a name="Enums" id="enums"></a>
@@ -530,7 +914,7 @@ Each feature set supports different levels of functionality.
 
 All member accounts have their bills consolidated to and paid by the management account.
 
-For more information, see [Consolidated billing]{@link https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only} in the AWS Organizations User Guide. The consolidated billing feature subset isn’t available for organizations in the AWS GovCloud (US) Region.
+For more information, see [Consolidated billing](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only) in the AWS Organizations User Guide. The consolidated billing feature subset isn’t available for organizations in the AWS GovCloud (US) Region.
 
 ---
 
@@ -539,7 +923,7 @@ For more information, see [Consolidated billing]{@link https://docs.aws.amazon.c
 
 In addition to all the features supported by the consolidated billing feature set, the management account can also apply any policy type to any member account in the organization.
 
-For more information, see [All features]{@link https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all} in the AWS Organizations User Guide.
+For more information, see [All features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all) in the AWS Organizations User Guide.
 
 ---
 
