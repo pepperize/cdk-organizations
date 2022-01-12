@@ -38,7 +38,7 @@ yarn add @pepperize/cdk-organizations
 pip install pepperize.cdk-organizations
 ```
 
-### C# / .Net
+### C\# / .Net
 
 ```
 dotnet add package Pepperize.CDK.Organizations
