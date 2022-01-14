@@ -62,7 +62,7 @@
     "jest-junit": "^13",
     "jsii": "^1.52.1",
     "jsii-diff": "^1.52.1",
-    "jsii-docgen": "^4.2.39",
+    "jsii-docgen": "^4.2.40",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
     "prettier": "^2.5.1",
@@ -84,7 +84,7 @@
     "@aws-cdk/core": "^1.138.2",
     "@aws-cdk/custom-resources": "^1.138.2",
     "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1056.0"
+    "aws-sdk": "^2.1057.0"
   },
   "bundledDependencies": [
     "aws-lambda",
