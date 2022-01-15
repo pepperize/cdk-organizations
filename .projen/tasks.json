@@ -49,6 +49,9 @@
         },
         {
           "spawn": "bundle:account-provider/on-event-handler.lambda"
+        },
+        {
+          "spawn": "bundle:tag-resource-provider/on-event-handler.lambda"
         }
       ]
     },
@@ -85,6 +88,24 @@
       "steps": [
         {
           "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+        }
+      ]
+    },
+    "bundle:tag-resource-provider/on-event-handler.lambda": {
+      "name": "bundle:tag-resource-provider/on-event-handler.lambda",
+      "description": "Create a JavaScript bundle from src/tag-resource-provider/on-event-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+        }
+      ]
+    },
+    "bundle:tag-resource-provider/on-event-handler.lambda:watch": {
+      "name": "bundle:tag-resource-provider/on-event-handler.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/tag-resource-provider/on-event-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
         }
       ]
     },

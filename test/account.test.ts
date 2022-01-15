@@ -3,7 +3,7 @@ import { App, Aspects, Stack } from "@aws-cdk/core";
 import { AwsSolutionsChecks } from "cdk-nag";
 import { Account, IamUserAccessToBilling, Organization } from "../src";
 
-describe("Organization", () => {
+describe("Account", () => {
   it("Should match snapshot", () => {
     // Given
     const app = new App();

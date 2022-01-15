@@ -13,6 +13,8 @@
     "bundle:account-provider/is-complete-handler.lambda:watch": "npx projen bundle:account-provider/is-complete-handler.lambda:watch",
     "bundle:account-provider/on-event-handler.lambda": "npx projen bundle:account-provider/on-event-handler.lambda",
     "bundle:account-provider/on-event-handler.lambda:watch": "npx projen bundle:account-provider/on-event-handler.lambda:watch",
+    "bundle:tag-resource-provider/on-event-handler.lambda": "npx projen bundle:tag-resource-provider/on-event-handler.lambda",
+    "bundle:tag-resource-provider/on-event-handler.lambda:watch": "npx projen bundle:tag-resource-provider/on-event-handler.lambda:watch",
     "clobber": "npx projen clobber",
     "compat": "npx projen compat",
     "compile": "npx projen compile",

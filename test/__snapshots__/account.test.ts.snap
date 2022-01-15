@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Organization Should match snapshot 1`] = `
+exports[`Account Should match snapshot 1`] = `
 Object {
   "Parameters": Object {
     "AssetParameters54f5c25b52b89fa78743528d73d20ba1ca990af0d5b51909094a9430bbf57affArtifactHashF8D62646": Object {

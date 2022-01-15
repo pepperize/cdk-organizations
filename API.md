@@ -627,6 +627,50 @@ The regex pattern for a root ID string requires "r-" followed by from 4 to 32 lo
 ---
 
 
+### TagResource <a name="@pepperize/cdk-organizations.TagResource" id="pepperizecdkorganizationstagresource"></a>
+
+Add tags to an AWS Organizations resource to make it easier to identify, organize, and search.
+
+> https://docs.aws.amazon.com/ARG/latest/APIReference/API_Tag.html
+
+#### Initializers <a name="@pepperize/cdk-organizations.TagResource.Initializer" id="pepperizecdkorganizationstagresourceinitializer"></a>
+
+```typescript
+import { TagResource } from '@pepperize/cdk-organizations'
+
+new TagResource(scope: Construct, id: string, props: TagResourceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`scope`](#pepperizecdkorganizationstagresourceparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationstagresourceparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationstagresourceparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.TagResourceProps`](#@pepperize/cdk-organizations.TagResourceProps) | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.TagResource.parameter.scope" id="pepperizecdkorganizationstagresourceparameterscope"></a>
+
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.TagResource.parameter.id" id="pepperizecdkorganizationstagresourceparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.TagResource.parameter.props" id="pepperizecdkorganizationstagresourceparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.TagResourceProps`](#@pepperize/cdk-organizations.TagResourceProps)
+
+---
+
+
+
+
+
 ## Structs <a name="Structs" id="structs"></a>
 
 ### AccountProps <a name="@pepperize/cdk-organizations.AccountProps" id="pepperizecdkorganizationsaccountprops"></a>
@@ -1013,6 +1057,34 @@ public readonly organization: Organization;
 
 ---
 
+### TagResourceProps <a name="@pepperize/cdk-organizations.TagResourceProps" id="pepperizecdkorganizationstagresourceprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { TagResourceProps } from '@pepperize/cdk-organizations'
+
+const tagResourceProps: TagResourceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`resource`](#pepperizecdkorganizationstagresourcepropspropertyresource)<span title="Required">*</span> | [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource) | *No description.* |
+
+---
+
+##### `resource`<sup>Required</sup> <a name="@pepperize/cdk-organizations.TagResourceProps.property.resource" id="pepperizecdkorganizationstagresourcepropspropertyresource"></a>
+
+```typescript
+public readonly resource: ITaggableResource;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
+
+---
+
 
 ## Protocols <a name="Protocols" id="protocols"></a>
 
@@ -1057,6 +1129,46 @@ public identifier()
 public identifier()
 ```
 
+
+### ITaggableResource <a name="@pepperize/cdk-organizations.ITaggableResource" id="pepperizecdkorganizationsitaggableresource"></a>
+
+- *Extends:* [`@aws-cdk/core.ITaggable`](#@aws-cdk/core.ITaggable)
+
+- *Implemented By:* [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
+
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`identifier`](#pepperizecdkorganizationsitaggableresourceidentifier) | The unique identifier (ID) of the account, Organizational unit (OU), parent root or Policy (any type) that you want to tag. |
+
+---
+
+##### `identifier` <a name="@pepperize/cdk-organizations.ITaggableResource.identifier" id="pepperizecdkorganizationsitaggableresourceidentifier"></a>
+
+```typescript
+public identifier()
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`tags`](#pepperizecdkorganizationsitaggableresourcepropertytags)<span title="Required">*</span> | [`@aws-cdk/core.TagManager`](#@aws-cdk/core.TagManager) | TagManager to set, remove and format tags. |
+
+---
+
+##### `tags`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ITaggableResource.property.tags" id="pepperizecdkorganizationsitaggableresourcepropertytags"></a>
+
+```typescript
+public readonly tags: TagManager;
+```
+
+- *Type:* [`@aws-cdk/core.TagManager`](#@aws-cdk/core.TagManager)
+
+TagManager to set, remove and format tags.
+
+---
 
 ## Enums <a name="Enums" id="enums"></a>
 

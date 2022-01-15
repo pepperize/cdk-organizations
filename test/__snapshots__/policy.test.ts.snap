@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Organization Should match snapshot 1`] = `
+exports[`Policy Should match snapshot 1`] = `
 Object {
   "Parameters": Object {
     "AssetParameters70893b631249dc61260989e92e90d60ae94fbbec490a1e065680d77383084d8dArtifactHash6BDDF757": Object {

@@ -57,4 +57,5 @@ tsconfig.json
 /assets/
 !/src/account-provider/is-complete-handler-function.ts
 !/src/account-provider/on-event-handler-function.ts
+!/src/tag-resource-provider/on-event-handler-function.ts
 !/.github/workflows/upgrade-main.yml

@@ -3,7 +3,7 @@ import { App, Aspects, Stack } from "@aws-cdk/core";
 import { AwsSolutionsChecks } from "cdk-nag";
 import { Organization, OrganizationalUnit } from "../src";
 
-describe("Organization", () => {
+describe("OrganizationalUnit", () => {
   it("Should match snapshot", () => {
     // Given
     const app = new App();
