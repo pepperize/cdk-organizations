@@ -1,4 +1,4 @@
-import { App, Stack } from "@aws-cdk/core";
+import { App, Stack } from "aws-cdk-lib/core";
 import { Account, IamUserAccessToBilling } from "../account";
 import { DelegatedAdministrator } from "../delegated-administrator";
 import { EnableAwsServiceAccess } from "../enable-aws-service-access";

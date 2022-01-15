@@ -5,18 +5,16 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorOrganization: true,
   license: "MIT",
   copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
-  cdkVersion: "1.138.2",
+  cdkVersion: "2.8.0",
   defaultReleaseBranch: "main",
   name: "@pepperize/cdk-organizations",
   description: "This project provides a CDK construct creating AWS organizations.",
   keywords: ["AWS", "CDK", "Organizations"],
   repositoryUrl: "https://github.com/pepperize/cdk-organizations.git",
 
-  cdkDependencies: ["@aws-cdk/aws-iam", "@aws-cdk/core", "@aws-cdk/custom-resources"],
-  cdkTestDependencies: ["@aws-cdk/assertions"],
   bundledDeps: ["aws-lambda", "aws-sdk"],
   deps: ["aws-lambda", "aws-sdk"],
-  devDeps: ["@types/aws-lambda", "cdk-nag"],
+  devDeps: ["@types/aws-lambda", "cdk-nag@^2.0.0"],
 
   lambdaOptions: {
     runtime: awscdk.LambdaRuntime.NODEJS_14_X,

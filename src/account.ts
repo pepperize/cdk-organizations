@@ -1,9 +1,9 @@
-import { Construct, CustomResource } from "@aws-cdk/core";
-import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "@aws-cdk/custom-resources";
+import { CustomResource } from "aws-cdk-lib/core";
+import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
+import { Construct } from "constructs";
 import { AccountProvider } from "./account-provider";
 import { IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
-
 /**
  * @see https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate
  */

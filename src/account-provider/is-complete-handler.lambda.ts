@@ -1,4 +1,4 @@
-import { IsCompleteRequest, IsCompleteResponse } from "@aws-cdk/custom-resources/lib/provider-framework/types";
+import { IsCompleteRequest, IsCompleteResponse } from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
 import { Organizations } from "aws-sdk";
 const organizationsClient = new Organizations({ region: "us-east-1" });
 

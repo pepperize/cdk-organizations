@@ -1,5 +1,5 @@
-import { Construct } from "@aws-cdk/core";
-import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "@aws-cdk/custom-resources";
+import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
+import { Construct } from "constructs";
 import { Root } from "./organization";
 import { PolicyType } from "./policy";
 

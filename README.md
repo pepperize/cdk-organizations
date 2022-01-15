@@ -49,7 +49,7 @@ dotnet add package Pepperize.CDK.Organizations
 See [example.ts](./src/example/example.ts)
 
 ```typescript
-import { App, Stack } from "@aws-cdk/core";
+import { App, Stack } from "aws-cdk-lib/core";
 import {
   Account,
   DelegatedAdministrator,
@@ -137,7 +137,7 @@ new PolicyAttachment(stack, "PolicyAttachment", {
 
 # Alternatives
 
-- [AWS Bootstrapkit](https://github.com/awslabs/aws-bootstrap-kit)
-- [Terraform aws provider](https://registry.terraform.io/providers/hashicorp/aws/latest)
+- [AWS Bootstrap Kit](https://github.com/awslabs/aws-bootstrap-kit)
+- [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest)
 - [AWS Deployment Framework (ADF)](https://github.com/awslabs/aws-deployment-framework)
 - [AWS Organization Formation](https://github.com/org-formation)

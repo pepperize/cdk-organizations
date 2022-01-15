@@ -1,10 +1,10 @@
-import { Construct } from "@aws-cdk/core";
 import {
   AwsCustomResource,
   AwsCustomResourcePolicy,
   PhysicalResourceId,
   PhysicalResourceIdReference,
-} from "@aws-cdk/custom-resources";
+} from "aws-cdk-lib/custom-resources";
+import { Construct } from "constructs";
 
 /**
  * Organizations offers policy types in the following two broad categories:

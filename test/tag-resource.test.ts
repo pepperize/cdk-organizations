@@ -1,6 +1,7 @@
-import { Template } from "@aws-cdk/assertions";
-import { App, Aspects, Construct, Stack, TagManager, Tags, TagType } from "@aws-cdk/core";
+import { Template } from "aws-cdk-lib/assertions";
+import { App, Aspects, Stack, TagManager, Tags, TagType } from "aws-cdk-lib/core";
 import { AwsSolutionsChecks } from "cdk-nag";
+import { Construct } from "constructs";
 import { ITaggableResource, TagResource } from "../src";
 
 describe("TagResource", () => {

@@ -45,14 +45,14 @@
     "organization": true
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.138.2",
-    "@aws-cdk/assertions": "^1.138.2",
     "@types/aws-lambda": "^8.10.89",
     "@types/jest": "^27.4.0",
     "@types/node": "^12",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "cdk-nag": "^1.4.25",
+    "aws-cdk-lib": "2.8.0",
+    "cdk-nag": "^2.0.0",
+    "constructs": "10.0.5",
     "esbuild": "^0.14.11",
     "eslint": "^8",
     "eslint-config-prettier": "^8.3.0",
@@ -74,17 +74,10 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-iam": "^1.138.2",
-    "@aws-cdk/aws-lambda": "^1.138.2",
-    "@aws-cdk/core": "^1.138.2",
-    "@aws-cdk/custom-resources": "^1.138.2",
-    "constructs": "^3.2.27"
+    "aws-cdk-lib": "^2.8.0",
+    "constructs": "^10.0.5"
   },
   "dependencies": {
-    "@aws-cdk/aws-iam": "^1.138.2",
-    "@aws-cdk/aws-lambda": "^1.138.2",
-    "@aws-cdk/core": "^1.138.2",
-    "@aws-cdk/custom-resources": "^1.138.2",
     "aws-lambda": "^1.0.7",
     "aws-sdk": "^2.1058.0"
   },

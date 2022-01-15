@@ -1,10 +1,10 @@
-import { Construct } from "@aws-cdk/core";
 import {
   AwsCustomResource,
   AwsCustomResourcePolicy,
   PhysicalResourceId,
   PhysicalResourceIdReference,
-} from "@aws-cdk/custom-resources";
+} from "aws-cdk-lib/custom-resources";
+import { Construct } from "constructs";
 import { IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
 

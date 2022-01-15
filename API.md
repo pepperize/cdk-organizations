@@ -16,7 +16,7 @@ new Account(scope: Construct, id: string, props: AccountProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsaccountparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsaccountparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsaccountparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsaccountparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.AccountProps`](#@pepperize/cdk-organizations.AccountProps) | *No description.* |
 
@@ -24,7 +24,7 @@ new Account(scope: Construct, id: string, props: AccountProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.parameter.scope" id="pepperizecdkorganizationsaccountparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -122,7 +122,7 @@ new DelegatedAdministrator(scope: Construct, id: string, props: DelegatedAdminis
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsdelegatedadministratorparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsdelegatedadministratorparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsdelegatedadministratorparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsdelegatedadministratorparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.DelegatedAdministratorProps`](#@pepperize/cdk-organizations.DelegatedAdministratorProps) | *No description.* |
 
@@ -130,7 +130,7 @@ new DelegatedAdministrator(scope: Construct, id: string, props: DelegatedAdminis
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.DelegatedAdministrator.parameter.scope" id="pepperizecdkorganizationsdelegatedadministratorparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -168,7 +168,7 @@ new EnableAwsServiceAccess(scope: Construct, id: string, props: EnableAwsService
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsenableawsserviceaccessparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsenableawsserviceaccessparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsenableawsserviceaccessparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsenableawsserviceaccessparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.EnableAwsServiceAccessProps`](#@pepperize/cdk-organizations.EnableAwsServiceAccessProps) | *No description.* |
 
@@ -176,7 +176,7 @@ new EnableAwsServiceAccess(scope: Construct, id: string, props: EnableAwsService
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnableAwsServiceAccess.parameter.scope" id="pepperizecdkorganizationsenableawsserviceaccessparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -214,7 +214,7 @@ new EnablePolicyType(scope: Construct, id: string, props: EnablePolicyTypeProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsenablepolicytypeparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsenablepolicytypeparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsenablepolicytypeparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsenablepolicytypeparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.EnablePolicyTypeProps`](#@pepperize/cdk-organizations.EnablePolicyTypeProps) | *No description.* |
 
@@ -222,7 +222,7 @@ new EnablePolicyType(scope: Construct, id: string, props: EnablePolicyTypeProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnablePolicyType.parameter.scope" id="pepperizecdkorganizationsenablepolicytypeparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -260,7 +260,7 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsorganizationparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsorganizationparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsorganizationparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsorganizationparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.OrganizationProps`](#@pepperize/cdk-organizations.OrganizationProps) | *No description.* |
 
@@ -268,7 +268,7 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.parameter.scope" id="pepperizecdkorganizationsorganizationparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -392,7 +392,7 @@ new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitPr
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsorganizationalunitparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsorganizationalunitparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsorganizationalunitparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsorganizationalunitparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.OrganizationalUnitProps`](#@pepperize/cdk-organizations.OrganizationalUnitProps) | *No description.* |
 
@@ -400,7 +400,7 @@ new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitPr
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnit.parameter.scope" id="pepperizecdkorganizationsorganizationalunitparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -500,7 +500,7 @@ new Policy(scope: Construct, id: string, props: PolicyProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationspolicyparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationspolicyparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationspolicyparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationspolicyparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.PolicyProps`](#@pepperize/cdk-organizations.PolicyProps) | *No description.* |
 
@@ -508,7 +508,7 @@ new Policy(scope: Construct, id: string, props: PolicyProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Policy.parameter.scope" id="pepperizecdkorganizationspolicyparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -565,7 +565,7 @@ new PolicyAttachment(scope: Construct, id: string, props: PolicyAttachmentProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationspolicyattachmentparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationspolicyattachmentparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationspolicyattachmentparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationspolicyattachmentparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.PolicyAttachmentProps`](#@pepperize/cdk-organizations.PolicyAttachmentProps) | *No description.* |
 
@@ -573,7 +573,7 @@ new PolicyAttachment(scope: Construct, id: string, props: PolicyAttachmentProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyAttachment.parameter.scope" id="pepperizecdkorganizationspolicyattachmentparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -613,7 +613,7 @@ new Root(scope: Construct, id: string, props: RootProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsrootparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationsrootparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationsrootparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationsrootparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.RootProps`](#@pepperize/cdk-organizations.RootProps) | *No description.* |
 
@@ -621,7 +621,7 @@ new Root(scope: Construct, id: string, props: RootProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Root.parameter.scope" id="pepperizecdkorganizationsrootparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -691,7 +691,7 @@ new TagResource(scope: Construct, id: string, props: TagResourceProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationstagresourceparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#pepperizecdkorganizationstagresourceparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
 | [`id`](#pepperizecdkorganizationstagresourceparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`props`](#pepperizecdkorganizationstagresourceparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.TagResourceProps`](#@pepperize/cdk-organizations.TagResourceProps) | *No description.* |
 
@@ -699,7 +699,7 @@ new TagResource(scope: Construct, id: string, props: TagResourceProps)
 
 ##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.TagResource.parameter.scope" id="pepperizecdkorganizationstagresourceparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -1177,7 +1177,7 @@ public readonly resource: ITaggableResource;
 
 ### IParent <a name="@pepperize/cdk-organizations.IParent" id="pepperizecdkorganizationsiparent"></a>
 
-- *Extends:* [`@aws-cdk/core.IDependable`](#@aws-cdk/core.IDependable)
+- *Extends:* [`constructs.IDependable`](#constructs.IDependable)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
 
@@ -1198,7 +1198,7 @@ public identifier()
 
 ### IPolicyAttachmentTarget <a name="@pepperize/cdk-organizations.IPolicyAttachmentTarget" id="pepperizecdkorganizationsipolicyattachmenttarget"></a>
 
-- *Extends:* [`@aws-cdk/core.IDependable`](#@aws-cdk/core.IDependable)
+- *Extends:* [`constructs.IDependable`](#constructs.IDependable)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
 
@@ -1219,7 +1219,7 @@ public identifier()
 
 ### ITaggableResource <a name="@pepperize/cdk-organizations.ITaggableResource" id="pepperizecdkorganizationsitaggableresource"></a>
 
-- *Extends:* [`@aws-cdk/core.ITaggable`](#@aws-cdk/core.ITaggable)
+- *Extends:* [`aws-cdk-lib.ITaggable`](#aws-cdk-lib.ITaggable)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
 
@@ -1241,7 +1241,7 @@ public identifier()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`tags`](#pepperizecdkorganizationsitaggableresourcepropertytags)<span title="Required">*</span> | [`@aws-cdk/core.TagManager`](#@aws-cdk/core.TagManager) | TagManager to set, remove and format tags. |
+| [`tags`](#pepperizecdkorganizationsitaggableresourcepropertytags)<span title="Required">*</span> | [`aws-cdk-lib.TagManager`](#aws-cdk-lib.TagManager) | TagManager to set, remove and format tags. |
 
 ---
 
@@ -1251,7 +1251,7 @@ public identifier()
 public readonly tags: TagManager;
 ```
 
-- *Type:* [`@aws-cdk/core.TagManager`](#@aws-cdk/core.TagManager)
+- *Type:* [`aws-cdk-lib.TagManager`](#aws-cdk-lib.TagManager)
 
 TagManager to set, remove and format tags.
 

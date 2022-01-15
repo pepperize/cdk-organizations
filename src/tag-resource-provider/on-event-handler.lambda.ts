@@ -1,4 +1,4 @@
-import { OnEventRequest, OnEventResponse } from "@aws-cdk/custom-resources/lib/provider-framework/types";
+import { OnEventRequest, OnEventResponse } from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
 import { Organizations } from "aws-sdk";
 
 const organizationsClient = new Organizations({ region: "us-east-1" });

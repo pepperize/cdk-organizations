@@ -1,4 +1,4 @@
-import { IDependable } from "@aws-cdk/core/lib/dependency";
+import { IDependable } from "constructs";
 
 export interface IParent extends IDependable {
   /**

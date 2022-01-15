@@ -3,41 +3,10 @@
 exports[`TagResource Should match snapshot 1`] = `
 Object {
   "Parameters": Object {
-    "AssetParameters71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951aArtifactHash0141BE94": Object {
-      "Description": "Artifact hash for asset \\"71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951a\\"",
-      "Type": "String",
-    },
-    "AssetParameters71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951aS3Bucket9284B0E6": Object {
-      "Description": "S3 bucket for asset \\"71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951a\\"",
-      "Type": "String",
-    },
-    "AssetParameters71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951aS3VersionKey5502ABD0": Object {
-      "Description": "S3 key for asset version \\"71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951a\\"",
-      "Type": "String",
-    },
-    "AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdArtifactHashF658FD15": Object {
-      "Description": "Artifact hash for asset \\"7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd\\"",
-      "Type": "String",
-    },
-    "AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3BucketA00C8555": Object {
-      "Description": "S3 bucket for asset \\"7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd\\"",
-      "Type": "String",
-    },
-    "AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598": Object {
-      "Description": "S3 key for asset version \\"7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd\\"",
-      "Type": "String",
-    },
-    "AssetParameters812912681bd38bd6f38e69fd7038c85fea65b1a288df8309eee599efeaaf0385ArtifactHash2BBB5E18": Object {
-      "Description": "Artifact hash for asset \\"812912681bd38bd6f38e69fd7038c85fea65b1a288df8309eee599efeaaf0385\\"",
-      "Type": "String",
-    },
-    "AssetParameters812912681bd38bd6f38e69fd7038c85fea65b1a288df8309eee599efeaaf0385S3Bucket88BD9597": Object {
-      "Description": "S3 bucket for asset \\"812912681bd38bd6f38e69fd7038c85fea65b1a288df8309eee599efeaaf0385\\"",
-      "Type": "String",
-    },
-    "AssetParameters812912681bd38bd6f38e69fd7038c85fea65b1a288df8309eee599efeaaf0385S3VersionKeyEE8DBCD2": Object {
-      "Description": "S3 key for asset version \\"812912681bd38bd6f38e69fd7038c85fea65b1a288df8309eee599efeaaf0385\\"",
-      "Type": "String",
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
   "Resources": Object {
@@ -64,20 +33,6 @@ Object {
     "TagResourcepepperizecdkorganizationsTagResourceProviderNestedStackpepperizecdkorganizationsTagResourceProviderNestedStackResource467D37EC": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
-        "Parameters": Object {
-          "referencetoStackAssetParameters71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951aS3Bucket2E3DB6D7Ref": Object {
-            "Ref": "AssetParameters71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951aS3Bucket9284B0E6",
-          },
-          "referencetoStackAssetParameters71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951aS3VersionKeyA1BFF702Ref": Object {
-            "Ref": "AssetParameters71bfb4fd30a6096900db094a8b453a9dcfc810c7c953fbeb004b4637ec24951aS3VersionKey5502ABD0",
-          },
-          "referencetoStackAssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3Bucket7A09F772Ref": Object {
-            "Ref": "AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3BucketA00C8555",
-          },
-          "referencetoStackAssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKeyFCF7B7A5Ref": Object {
-            "Ref": "AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598",
-          },
-        },
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -92,41 +47,42 @@ Object {
               },
               "/",
               Object {
-                "Ref": "AssetParameters812912681bd38bd6f38e69fd7038c85fea65b1a288df8309eee599efeaaf0385S3Bucket88BD9597",
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/",
-              Object {
-                "Fn::Select": Array [
-                  0,
-                  Object {
-                    "Fn::Split": Array [
-                      "||",
-                      Object {
-                        "Ref": "AssetParameters812912681bd38bd6f38e69fd7038c85fea65b1a288df8309eee599efeaaf0385S3VersionKeyEE8DBCD2",
-                      },
-                    ],
-                  },
-                ],
-              },
-              Object {
-                "Fn::Select": Array [
-                  1,
-                  Object {
-                    "Fn::Split": Array [
-                      "||",
-                      Object {
-                        "Ref": "AssetParameters812912681bd38bd6f38e69fd7038c85fea65b1a288df8309eee599efeaaf0385S3VersionKeyEE8DBCD2",
-                      },
-                    ],
-                  },
-                ],
-              },
+              "/f6d5da52d2f23c9e0710ab182a9dbcd897a8c8d6799131d0c471bebe14d2f424.json",
             ],
           ],
         },
       },
       "Type": "AWS::CloudFormation::Stack",
       "UpdateReplacePolicy": "Delete",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
     },
   },
 }

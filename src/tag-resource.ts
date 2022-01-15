@@ -1,4 +1,5 @@
-import { Construct, CustomResource, ITaggable } from "@aws-cdk/core";
+import { CustomResource, ITaggable } from "aws-cdk-lib/core";
+import { Construct } from "constructs";
 import { TagResourceProvider } from "./tag-resource-provider";
 
 export interface ITaggableResource extends ITaggable {

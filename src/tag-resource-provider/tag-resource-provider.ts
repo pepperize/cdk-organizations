@@ -1,9 +1,9 @@
-import { PolicyStatement } from "@aws-cdk/aws-iam";
-import { Function } from "@aws-cdk/aws-lambda";
-import { Construct, Duration, NestedStack, NestedStackProps, Stack } from "@aws-cdk/core";
-import { Provider } from "@aws-cdk/custom-resources";
+import { PolicyStatement } from "aws-cdk-lib/aws-iam";
+import { Function } from "aws-cdk-lib/aws-lambda";
+import { Duration, NestedStack, NestedStackProps, Stack } from "aws-cdk-lib/core";
+import { Provider } from "aws-cdk-lib/custom-resources";
+import { Construct } from "constructs";
 import { OnEventHandlerFunction } from "./on-event-handler-function";
-
 export interface TagResourceProviderProps extends NestedStackProps {}
 
 /**

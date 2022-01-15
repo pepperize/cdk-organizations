@@ -1,6 +1,5 @@
-import { Construct } from "@aws-cdk/core";
-import { IDependable } from "@aws-cdk/core/lib/dependency";
-import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "@aws-cdk/custom-resources";
+import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
+import { Construct, IDependable } from "constructs";
 import { Policy } from "./policy";
 
 export interface IPolicyAttachmentTarget extends IDependable {
