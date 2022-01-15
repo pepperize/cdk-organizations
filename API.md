@@ -148,6 +148,52 @@ new DelegatedAdministrator(scope: Construct, id: string, props: DelegatedAdminis
 
 
 
+### EnableAwsServiceAccess <a name="@pepperize/cdk-organizations.EnableAwsServiceAccess" id="pepperizecdkorganizationsenableawsserviceaccess"></a>
+
+Enables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations.
+
+When you enable integration, you allow the specified service to create a service-linked role in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.  <strong>This operation can be called only from the organization's management account and only if the organization has enabled all features.</strong>
+
+> https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_trusted_access_perms
+
+#### Initializers <a name="@pepperize/cdk-organizations.EnableAwsServiceAccess.Initializer" id="pepperizecdkorganizationsenableawsserviceaccessinitializer"></a>
+
+```typescript
+import { EnableAwsServiceAccess } from '@pepperize/cdk-organizations'
+
+new EnableAwsServiceAccess(scope: Construct, id: string, props: EnableAwsServiceAccessProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`scope`](#pepperizecdkorganizationsenableawsserviceaccessparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationsenableawsserviceaccessparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationsenableawsserviceaccessparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.EnableAwsServiceAccessProps`](#@pepperize/cdk-organizations.EnableAwsServiceAccessProps) | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnableAwsServiceAccess.parameter.scope" id="pepperizecdkorganizationsenableawsserviceaccessparameterscope"></a>
+
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnableAwsServiceAccess.parameter.id" id="pepperizecdkorganizationsenableawsserviceaccessparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnableAwsServiceAccess.parameter.props" id="pepperizecdkorganizationsenableawsserviceaccessparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.EnableAwsServiceAccessProps`](#@pepperize/cdk-organizations.EnableAwsServiceAccessProps)
+
+---
+
+
+
+
+
 ### Organization <a name="@pepperize/cdk-organizations.Organization" id="pepperizecdkorganizationsorganization"></a>
 
 Creates an organization to consolidate your AWS accounts so that you can administer them as a single unit.
@@ -712,6 +758,38 @@ public readonly servicePrincipal: string;
 - *Type:* `string`
 
 The service principal of the AWS service for which you want to make the member account a delegated administrator.
+
+---
+
+### EnableAwsServiceAccessProps <a name="@pepperize/cdk-organizations.EnableAwsServiceAccessProps" id="pepperizecdkorganizationsenableawsserviceaccessprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { EnableAwsServiceAccessProps } from '@pepperize/cdk-organizations'
+
+const enableAwsServiceAccessProps: EnableAwsServiceAccessProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`servicePrincipal`](#pepperizecdkorganizationsenableawsserviceaccesspropspropertyserviceprincipal)<span title="Required">*</span> | `string` | The service principal name of the AWS service for which you want to enable integration with your organization. |
+
+---
+
+##### `servicePrincipal`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnableAwsServiceAccessProps.property.servicePrincipal" id="pepperizecdkorganizationsenableawsserviceaccesspropspropertyserviceprincipal"></a>
+
+```typescript
+public readonly servicePrincipal: string;
+```
+
+- *Type:* `string`
+
+The service principal name of the AWS service for which you want to enable integration with your organization.
+
+This is typically in the form of a URL, such as service-abbreviation.amazonaws.com.
 
 ---
 
