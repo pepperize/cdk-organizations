@@ -104,6 +104,50 @@ Exactly 12 digits.
 ---
 
 
+### DelegatedAdministrator <a name="@pepperize/cdk-organizations.DelegatedAdministrator" id="pepperizecdkorganizationsdelegatedadministrator"></a>
+
+Enables the specified member account to administer the Organizations features of the specified AWS service.
+
+It grants read-only access to AWS Organizations service data. The account still requires IAM permissions to access and administer the AWS service.  You can run this action only for AWS services that support this feature. For a current list of services that support it, see the column Supports Delegated Administrator in the table at AWS Services that you can use with AWS Organizations in the AWS Organizations User Guide.
+
+#### Initializers <a name="@pepperize/cdk-organizations.DelegatedAdministrator.Initializer" id="pepperizecdkorganizationsdelegatedadministratorinitializer"></a>
+
+```typescript
+import { DelegatedAdministrator } from '@pepperize/cdk-organizations'
+
+new DelegatedAdministrator(scope: Construct, id: string, props: DelegatedAdministratorProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`scope`](#pepperizecdkorganizationsdelegatedadministratorparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationsdelegatedadministratorparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationsdelegatedadministratorparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.DelegatedAdministratorProps`](#@pepperize/cdk-organizations.DelegatedAdministratorProps) | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.DelegatedAdministrator.parameter.scope" id="pepperizecdkorganizationsdelegatedadministratorparameterscope"></a>
+
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.DelegatedAdministrator.parameter.id" id="pepperizecdkorganizationsdelegatedadministratorparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.DelegatedAdministrator.parameter.props" id="pepperizecdkorganizationsdelegatedadministratorparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.DelegatedAdministratorProps`](#@pepperize/cdk-organizations.DelegatedAdministratorProps)
+
+---
+
+
+
+
+
 ### Organization <a name="@pepperize/cdk-organizations.Organization" id="pepperizecdkorganizationsorganization"></a>
 
 Creates an organization to consolidate your AWS accounts so that you can administer them as a single unit.
@@ -625,6 +669,49 @@ public readonly roleName: string;
 The name of an IAM role that AWS Organizations automatically preconfigures in the new member account.
 
 This role trusts the management account, allowing users in the management account to assume the role, as permitted by the management account administrator. The role has administrator permissions in the new member account.  If you don't specify this parameter, the role name defaults to OrganizationAccountAccessRole.
+
+---
+
+### DelegatedAdministratorProps <a name="@pepperize/cdk-organizations.DelegatedAdministratorProps" id="pepperizecdkorganizationsdelegatedadministratorprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { DelegatedAdministratorProps } from '@pepperize/cdk-organizations'
+
+const delegatedAdministratorProps: DelegatedAdministratorProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`account`](#pepperizecdkorganizationsdelegatedadministratorpropspropertyaccount)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account) | The member account in the organization to register as a delegated administrator. |
+| [`servicePrincipal`](#pepperizecdkorganizationsdelegatedadministratorpropspropertyserviceprincipal)<span title="Required">*</span> | `string` | The service principal of the AWS service for which you want to make the member account a delegated administrator. |
+
+---
+
+##### `account`<sup>Required</sup> <a name="@pepperize/cdk-organizations.DelegatedAdministratorProps.property.account" id="pepperizecdkorganizationsdelegatedadministratorpropspropertyaccount"></a>
+
+```typescript
+public readonly account: Account;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account)
+
+The member account in the organization to register as a delegated administrator.
+
+---
+
+##### `servicePrincipal`<sup>Required</sup> <a name="@pepperize/cdk-organizations.DelegatedAdministratorProps.property.servicePrincipal" id="pepperizecdkorganizationsdelegatedadministratorpropspropertyserviceprincipal"></a>
+
+```typescript
+public readonly servicePrincipal: string;
+```
+
+- *Type:* `string`
+
+The service principal of the AWS service for which you want to make the member account a delegated administrator.
 
 ---
 
