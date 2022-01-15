@@ -25,15 +25,9 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
     return { PhysicalResourceId: response.CreateAccountStatus?.Id };
   }
 
-  if (event.RequestType == "Update") {
-    // No update for accounts available https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html
-    return { PhysicalResourceId: event.PhysicalResourceId, ResourceProperties: event.ResourceProperties };
-  }
-
-  if (event.RequestType == "Delete") {
-    // Deletion is not possible, only removal from organization if criteria are matching for standalone account: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#removeAccountFromOrganization-property
-    throw new Error("Deletion is not a supported operation");
-  }
-
-  throw new Error(`${event.RequestType} is not a supported operation`);
+  // On event.RequestType == "Update" or event.RequestType == "Delete"
+  // No update for accounts available https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html
+  // Deletion is not possible, only removal from organization if criteria are matching for standalone account: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#removeAccountFromOrganization-property
+  // TODO: Try to delete account or move to Organization.Root (RemovalPolicy)
+  return { PhysicalResourceId: event.PhysicalResourceId, ResourceProperties: event.ResourceProperties };
 }
