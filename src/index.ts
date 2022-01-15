@@ -1,5 +1,6 @@
 export * from "./account";
 export * from "./enable-aws-service-access";
+export * from "./enable-policy-type";
 export * from "./delegated-administrator";
 export * from "./organization";
 export * from "./organizational-unit";

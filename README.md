@@ -54,6 +54,7 @@ import {
   Account,
   DelegatedAdministrator,
   EnableAwsServiceAccess,
+  EnablePolicyType,
   FeatureSet,
   IamUserAccessToBilling,
   Organization,
@@ -116,7 +117,12 @@ new Account(stack, "Project2ProdAccount", {
   parent: project2,
 });
 
-// Attach a policy to an attachment target
+// Enable the service control policy (SCP) type within the organization
+new EnablePolicyType(stack, "EnablePolicyType", {
+  root: organization.root,
+  policyType: PolicyType.SERVICE_CONTROL_POLICY,
+});
+// Create and attach and Service Control Policy (SCP)
 const policy = new Policy(stack, "Policy", {
   content: '{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"}}',
   description: "Enables admins of attached accounts to delegate all S3 permissions",

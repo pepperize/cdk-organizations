@@ -56,6 +56,8 @@ export interface PolicyProps {
 /**
  * Policies in AWS Organizations enable you to apply additional types of management to the AWS accounts in your organization. <strong>You can use policies when all features are enabled in your organization.</strong>
  *
+ * <strong>Before you can create and attach a policy to your organization, you must enable that policy type for use.</strong>
+ *
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
  * @see FeatureSet
  */

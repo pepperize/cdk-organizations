@@ -196,6 +196,52 @@ new EnableAwsServiceAccess(scope: Construct, id: string, props: EnableAwsService
 
 
 
+### EnablePolicyType <a name="@pepperize/cdk-organizations.EnablePolicyType" id="pepperizecdkorganizationsenablepolicytype"></a>
+
+Enables and disables Enables a policy type in a root.
+
+After you enable a policy type in a root, you can attach policies of that type to the root, any organizational unit (OU), or account in that root.
+
+> https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_enable-disable.html
+
+#### Initializers <a name="@pepperize/cdk-organizations.EnablePolicyType.Initializer" id="pepperizecdkorganizationsenablepolicytypeinitializer"></a>
+
+```typescript
+import { EnablePolicyType } from '@pepperize/cdk-organizations'
+
+new EnablePolicyType(scope: Construct, id: string, props: EnablePolicyTypeProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`scope`](#pepperizecdkorganizationsenablepolicytypeparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationsenablepolicytypeparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationsenablepolicytypeparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.EnablePolicyTypeProps`](#@pepperize/cdk-organizations.EnablePolicyTypeProps) | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnablePolicyType.parameter.scope" id="pepperizecdkorganizationsenablepolicytypeparameterscope"></a>
+
+- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnablePolicyType.parameter.id" id="pepperizecdkorganizationsenablepolicytypeparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnablePolicyType.parameter.props" id="pepperizecdkorganizationsenablepolicytypeparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.EnablePolicyTypeProps`](#@pepperize/cdk-organizations.EnablePolicyTypeProps)
+
+---
+
+
+
+
+
 ### Organization <a name="@pepperize/cdk-organizations.Organization" id="pepperizecdkorganizationsorganization"></a>
 
 Creates an organization to consolidate your AWS accounts so that you can administer them as a single unit.
@@ -440,7 +486,7 @@ The friendly name of this OU.
 
 Policies in AWS Organizations enable you to apply additional types of management to the AWS accounts in your organization.
 
-<strong>You can use policies when all features are enabled in your organization.</strong>
+<strong>You can use policies when all features are enabled in your organization.</strong>  <strong>Before you can create and attach a policy to your organization, you must enable that policy type for use.</strong>
 
 > FeatureSet
 
@@ -836,6 +882,45 @@ public readonly servicePrincipal: string;
 The service principal name of the AWS service for which you want to enable integration with your organization.
 
 This is typically in the form of a URL, such as service-abbreviation.amazonaws.com.
+
+---
+
+### EnablePolicyTypeProps <a name="@pepperize/cdk-organizations.EnablePolicyTypeProps" id="pepperizecdkorganizationsenablepolicytypeprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { EnablePolicyTypeProps } from '@pepperize/cdk-organizations'
+
+const enablePolicyTypeProps: EnablePolicyTypeProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`policyType`](#pepperizecdkorganizationsenablepolicytypepropspropertypolicytype)<span title="Required">*</span> | [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType) | *No description.* |
+| [`root`](#pepperizecdkorganizationsenablepolicytypepropspropertyroot)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root) | *No description.* |
+
+---
+
+##### `policyType`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnablePolicyTypeProps.property.policyType" id="pepperizecdkorganizationsenablepolicytypepropspropertypolicytype"></a>
+
+```typescript
+public readonly policyType: PolicyType;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType)
+
+---
+
+##### `root`<sup>Required</sup> <a name="@pepperize/cdk-organizations.EnablePolicyTypeProps.property.root" id="pepperizecdkorganizationsenablepolicytypepropspropertyroot"></a>
+
+```typescript
+public readonly root: Root;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root)
 
 ---
 
