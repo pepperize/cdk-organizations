@@ -108,7 +108,9 @@ Exactly 12 digits.
 
 Enables the specified member account to administer the Organizations features of the specified AWS service.
 
-It grants read-only access to AWS Organizations service data. The account still requires IAM permissions to access and administer the AWS service.  You can run this action only for AWS services that support this feature. For a current list of services that support it, see the column Supports Delegated Administrator in the table at AWS Services that you can use with AWS Organizations in the AWS Organizations User Guide.
+It grants read-only access to AWS Organizations service data. The account still requires IAM permissions to access and administer the AWS service.  You can run this action only for AWS services that support this feature. For a current list of services that support it, see the column Supports Delegated Administrator in the table at AWS Services that you can use with AWS Organizations in the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html).
+
+> https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-delegated-admin.html
 
 #### Initializers <a name="@pepperize/cdk-organizations.DelegatedAdministrator.Initializer" id="pepperizecdkorganizationsdelegatedadministratorinitializer"></a>
 

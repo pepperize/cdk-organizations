@@ -1,5 +1,7 @@
 import { App, Stack } from "@aws-cdk/core";
 import { Account, IamUserAccessToBilling } from "../account";
+import { DelegatedAdministrator } from "../delegated-administrator";
+import { EnableAwsServiceAccess } from "../enable-aws-service-access";
 import { FeatureSet, Organization } from "../organization";
 import { OrganizationalUnit } from "../organizational-unit";
 import { Policy, PolicyType } from "../policy";
@@ -8,15 +10,27 @@ import { PolicyAttachment } from "../policy-attachment";
 const app = new App();
 const stack = new Stack(app);
 
+// Create an organization
 const organization = new Organization(stack, "Organization", {
   featureSet: FeatureSet.ALL,
 });
-new Account(stack, "SharedAccount", {
+// Enable AWS Service Access (requires FeatureSet: ALL)
+new EnableAwsServiceAccess(stack, "EnableAwsServiceAccess", {
+  servicePrincipal: "service-abbreviation.amazonaws.com",
+});
+
+// Create an account
+const account = new Account(stack, "SharedAccount", {
   accountName: "SharedAccount",
   email: "info+shared-account@pepperize.com",
   roleName: "OrganizationAccountAccessRole",
   iamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
   parent: organization.root,
+});
+// Enable a delegated admin account
+new DelegatedAdministrator(stack, "DelegatedAdministrator", {
+  account: account,
+  servicePrincipal: "service-abbreviation.amazonaws.com",
 });
 
 const projects = new OrganizationalUnit(stack, "ProjectsOU", {

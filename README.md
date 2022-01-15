@@ -9,11 +9,11 @@
 
 This project provides a CDK construct creating AWS organizations.
 
-> Currently there is no `@aws-cdk/organizations` available. See this [AWS CDK Issue](https://github.com/aws/aws-cdk/issues/2877).
+> Currently, there is no `@aws-cdk/aws-organizations` available. See this [Issue on AWS CDK](https://github.com/aws/aws-cdk/issues/2877).
 
-- [AWS User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
+- [AWS Account Management Reference Guide](https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html)
+- [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
 - [AWS API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html)
-- [AWS Bootstrapkit](https://github.com/awslabs/aws-bootstrap-kit)
 - [AWS CDK Custom Resources](https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#custom-resources-for-aws-apis)
 
 See [API.md](https://github.com/pepperize/cdk-organizations/blob/main/API.md)
@@ -52,6 +52,8 @@ See [example.ts](./src/example/example.ts)
 import { App, Stack } from "@aws-cdk/core";
 import {
   Account,
+  DelegatedAdministrator,
+  EnableAwsServiceAccess,
   FeatureSet,
   IamUserAccessToBilling,
   Organization,
@@ -64,18 +66,27 @@ import {
 const app = new App();
 const stack = new Stack(app);
 
-// Create the organization
+// Create an organization
 const organization = new Organization(stack, "Organization", {
   featureSet: FeatureSet.ALL,
 });
+// Enable AWS Service Access (requires FeatureSet: ALL)
+new EnableAwsServiceAccess(stack, "EnableAwsServiceAccess", {
+  servicePrincipal: "service-abbreviation.amazonaws.com",
+});
 
-// Create an Account in the current organization
-new Account(stack, "SharedAccount", {
+// Create an account
+const account = new Account(stack, "SharedAccount", {
   accountName: "SharedAccount",
   email: "info+shared-account@pepperize.com",
   roleName: "OrganizationAccountAccessRole",
   iamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
   parent: organization.root,
+});
+// Enable a delegated admin account
+new DelegatedAdministrator(stack, "DelegatedAdministrator", {
+  account: account,
+  servicePrincipal: "service-abbreviation.amazonaws.com",
 });
 
 // Create an OU in the current organizations root
@@ -117,3 +128,9 @@ new PolicyAttachment(stack, "PolicyAttachment", {
   policy: policy,
 });
 ```
+
+# Alternatives
+- [AWS Bootstrapkit](https://github.com/awslabs/aws-bootstrap-kit)
+- [Terraform aws provider](https://registry.terraform.io/providers/hashicorp/aws/latest)
+- [AWS Deployment Framework (ADF)](https://github.com/awslabs/aws-deployment-framework)
+- [AWS Organization Formation](https://github.com/org-formation)
