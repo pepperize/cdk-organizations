@@ -62,13 +62,13 @@
     "jest-junit": "^13",
     "jsii": "^1.52.1",
     "jsii-diff": "^1.52.1",
-    "jsii-docgen": "^4.2.40",
+    "jsii-docgen": "^4.2.41",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
     "prettier": "^2.5.1",
     "projen": "0.50.21",
     "standard-version": "^9",
-    "ts-jest": "^27.1.2",
+    "ts-jest": "^27.1.3",
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
@@ -84,7 +84,7 @@
     "@aws-cdk/core": "^1.138.2",
     "@aws-cdk/custom-resources": "^1.138.2",
     "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1057.0"
+    "aws-sdk": "^2.1058.0"
   },
   "bundledDependencies": [
     "aws-lambda",
