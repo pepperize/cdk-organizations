@@ -336,39 +336,6 @@
         }
       ]
     },
-    "upgrade": {
-      "name": "upgrade",
-      "description": "upgrade dependencies",
-      "env": {
-        "CI": "0"
-      },
-      "steps": [
-        {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "yarn install --check-files"
-        },
-        {
-          "exec": "yarn upgrade @aws-cdk/assertions @types/aws-lambda @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser cdk-nag esbuild eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii jsii-diff jsii-docgen json-schema npm-check-updates prettier standard-version ts-jest typescript aws-lambda aws-sdk @aws-cdk/aws-iam @aws-cdk/aws-lambda @aws-cdk/core @aws-cdk/custom-resources constructs @aws-cdk/aws-iam @aws-cdk/aws-lambda @aws-cdk/core @aws-cdk/custom-resources aws-lambda aws-sdk @aws-cdk/assert @aws-cdk/assertions"
-        },
-        {
-          "exec": "npx projen"
-        }
-      ]
-    },
     "upgrade-projen": {
       "name": "upgrade-projen",
       "description": "upgrade projen",
