@@ -22,7 +22,7 @@ new EnableAwsServiceAccess(stack, "EnableAwsServiceAccess", {
 
 // Import an existing account
 const account = Account.fromAccountId(stack, "ImportedAccount", {
-  accountId: "1234567890",
+  accountId: "123456789012",
   parent: organization.root,
 });
 // Enable a delegated admin account
@@ -31,7 +31,8 @@ new DelegatedAdministrator(stack, "DelegatedAdministrator", {
   servicePrincipal: "service-abbreviation.amazonaws.com",
 });
 
-const projects = new OrganizationalUnit(stack, "ProjectsOU", {
+const projects = OrganizationalUnit.fromOrganizationalUnitId(stack, "ProjectsOU", {
+  organizationalUnitId: "ou-1234",
   organizationalUnitName: "Projects",
   parent: organization.root,
 });
