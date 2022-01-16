@@ -3,13 +3,13 @@
 *.snap linguist-generated
 /.eslintrc.json linguist-generated
 /.gitattributes linguist-generated
+/.github/dependabot.yml linguist-generated
 /.github/pull_request_template.md linguist-generated
 /.github/workflows/auto-approve.yml linguist-generated
 /.github/workflows/build.yml linguist-generated
 /.github/workflows/pull-request-lint.yml linguist-generated
 /.github/workflows/release.yml linguist-generated
 /.github/workflows/stale.yml linguist-generated
-/.github/workflows/upgrade-main.yml linguist-generated
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
@@ -23,6 +23,7 @@
 /package.json linguist-generated
 /src/account-provider/is-complete-handler-function.ts linguist-generated
 /src/account-provider/on-event-handler-function.ts linguist-generated
+/src/organization-provider/on-event-handler-function.ts linguist-generated
 /src/tag-resource-provider/on-event-handler-function.ts linguist-generated
 /tsconfig.dev.json linguist-generated
 /yarn.lock linguist-generated

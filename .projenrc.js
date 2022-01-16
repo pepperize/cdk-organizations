@@ -31,6 +31,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     },
   },
 
+  dependabot: true,
+
   releaseToNpm: true,
   npmAccess: javascript.NpmAccess.PUBLIC,
   publishToNuget: {

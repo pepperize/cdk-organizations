@@ -293,7 +293,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/18f0fe4d6209391f49fe92fda9051ae79fbd366c0db46d72b64cfa39c9faeca6.json",
+              "/b16b25771eb911df0167d3927454ca68e6ff2a9a890ad32a44c8091919af7824.json",
             ],
           ],
         },
@@ -301,62 +301,25 @@ Object {
       "Type": "AWS::CloudFormation::Stack",
       "UpdateReplacePolicy": "Delete",
     },
-    "OrganizationOrganizationCustomResource620D04AC": Object {
+    "OrganizationOrganizationProviderFB9AD106": Object {
       "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
-      ],
       "Properties": Object {
-        "Create": "{\\"service\\":\\"Organization\\",\\"action\\":\\"createOrganization\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"FeatureSet\\":\\"ALL\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Organization.Id\\"}}",
-        "Delete": "{\\"service\\":\\"Organization\\",\\"action\\":\\"deleteOrganization\\",\\"region\\":\\"us-east-1\\"}",
-        "InstallLatestAwsSdk": true,
+        "FeatureSet": "ALL",
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
-            "Arn",
+            "OrganizationpepperizecdkorganizationsOrganizationProviderNestedStackpepperizecdkorganizationsOrganizationProviderNestedStackResourceC765D41F",
+            "Outputs.StackOrganizationpepperizecdkorganizationsOrganizationProviderframeworkonEventBBE48AA8Arn",
           ],
         },
-        "Update": "{\\"service\\":\\"Organization\\",\\"action\\":\\"describeOrganization\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Organization.Id\\"}}",
       },
       "Type": "Custom::Organization_Organization",
       "UpdateReplacePolicy": "Delete",
     },
-    "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "organization:CreateOrganization",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": "organization:DescribeOrganization",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": "organization:DeleteOrganization",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
-        "Roles": Array [
-          Object {
-            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
     "OrganizationRootRootCustomResourceBB74F060": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
-        "OrganizationOrganizationCustomResource620D04AC",
+        "OrganizationpepperizecdkorganizationsOrganizationProviderNestedStackpepperizecdkorganizationsOrganizationProviderNestedStackResourceC765D41F",
+        "OrganizationOrganizationProviderFB9AD106",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
       ],
       "Properties": Object {
@@ -376,8 +339,8 @@ Object {
     },
     "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E": Object {
       "DependsOn": Array [
-        "OrganizationOrganizationCustomResourceCustomResourcePolicy72E5C59D",
-        "OrganizationOrganizationCustomResource620D04AC",
+        "OrganizationpepperizecdkorganizationsOrganizationProviderNestedStackpepperizecdkorganizationsOrganizationProviderNestedStackResourceC765D41F",
+        "OrganizationOrganizationProviderFB9AD106",
         "OrganizationRootRootCustomResourceBB74F060",
       ],
       "Properties": Object {
@@ -399,6 +362,33 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Policy",
+    },
+    "OrganizationpepperizecdkorganizationsOrganizationProviderNestedStackpepperizecdkorganizationsOrganizationProviderNestedStackResourceC765D41F": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+              },
+              "/8b7f271c01062d32f9b16fd22a2db3f67c9cf5c2e3d210d662852a733b85cffb.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
     },
   },
   "Rules": Object {

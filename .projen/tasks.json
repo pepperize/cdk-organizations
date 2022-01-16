@@ -51,6 +51,9 @@
           "spawn": "bundle:account-provider/on-event-handler.lambda"
         },
         {
+          "spawn": "bundle:organization-provider/on-event-handler.lambda"
+        },
+        {
           "spawn": "bundle:tag-resource-provider/on-event-handler.lambda"
         }
       ]
@@ -88,6 +91,24 @@
       "steps": [
         {
           "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+        }
+      ]
+    },
+    "bundle:organization-provider/on-event-handler.lambda": {
+      "name": "bundle:organization-provider/on-event-handler.lambda",
+      "description": "Create a JavaScript bundle from src/organization-provider/on-event-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+        }
+      ]
+    },
+    "bundle:organization-provider/on-event-handler.lambda:watch": {
+      "name": "bundle:organization-provider/on-event-handler.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/organization-provider/on-event-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
         }
       ]
     },
@@ -333,39 +354,6 @@
       "steps": [
         {
           "builtin": "release/reset-version"
-        }
-      ]
-    },
-    "upgrade": {
-      "name": "upgrade",
-      "description": "upgrade dependencies",
-      "env": {
-        "CI": "0"
-      },
-      "steps": [
-        {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen'"
-        },
-        {
-          "exec": "yarn install --check-files"
-        },
-        {
-          "exec": "yarn upgrade @types/aws-lambda @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk-lib cdk-nag constructs esbuild eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii jsii-diff jsii-docgen json-schema npm-check-updates prettier standard-version ts-jest typescript aws-lambda aws-sdk aws-cdk-lib constructs aws-lambda aws-sdk"
-        },
-        {
-          "exec": "npx projen"
         }
       ]
     },

@@ -25,19 +25,94 @@ export interface OrganizationalUnitProps {
  *
  * <strong>You must first move all accounts out of the OU and any child OUs, and then you can delete the child OUs.</strong>
  */
-export class OrganizationalUnit extends Construct implements IParent, IPolicyAttachmentTarget {
+export interface IOrganizationalUnit extends IPolicyAttachmentTarget, IParent {
   /**
    * The unique identifier (ID) associated with this OU. The regex pattern for an organizational unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
    */
-  public readonly organizationalUnitId: string;
+  readonly organizationalUnitId: string;
   /**
    * The Amazon Resource Name (ARN) of this OU. For more information about ARNs in Organizations, see [ARN Formats Supported by Organizations](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies) in the AWS Service Authorization Reference.
    */
-  public readonly organizationalUnitArn: string;
+  readonly organizationalUnitArn: string;
   /**
    * The friendly name of this OU.
    */
-  public readonly organizationalUnitName: string;
+  readonly organizationalUnitName: string;
+}
+
+export abstract class OrganizationalUnitBase extends Construct implements IOrganizationalUnit {
+  abstract readonly organizationalUnitId: string;
+  abstract readonly organizationalUnitArn: string;
+  abstract readonly organizationalUnitName: string;
+
+  identifier(): string {
+    return this.organizationalUnitId;
+  }
+}
+
+export interface OrganizationalUnitAttributes {
+  readonly organizationalUnitId: string;
+  readonly organizationalUnitName: string;
+  readonly parent: IParent;
+}
+
+export class OrganizationalUnit extends OrganizationalUnitBase {
+  public static fromOrganizationalUnitId(
+    scope: Construct,
+    id: string,
+    attrs: OrganizationalUnitAttributes
+  ): IOrganizationalUnit {
+    class Import extends OrganizationalUnitBase {
+      readonly organizationalUnitId: string;
+      readonly organizationalUnitArn: string;
+      readonly organizationalUnitName: string;
+      public constructor() {
+        super(scope, id);
+
+        this.node.addDependency(attrs.parent);
+
+        const organizationalUnit = new AwsCustomResource(this, "OrganizationalUnitCustomResource", {
+          resourceType: "Custom::Organization_OrganizationalUnit",
+          onCreate: {
+            service: "Organization",
+            action: "describeOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeOrganizationalUnit-property
+            region: "us-east-1",
+            parameters: {
+              OrganizationalUnitId: attrs.organizationalUnitId,
+            },
+            physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
+          },
+          onUpdate: {
+            service: "Organization",
+            action: "updateOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#updateOrganizationalUnit-property
+            region: "us-east-1",
+            parameters: {
+              Name: attrs.organizationalUnitName,
+              OrganizationalUnitId: new PhysicalResourceIdReference(),
+            },
+            physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
+          },
+          onDelete: {
+            service: "Organization",
+            action: "deleteOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deleteOrganizationalUnit-property
+            region: "us-east-1",
+            parameters: {
+              OrganizationalUnitId: new PhysicalResourceIdReference(),
+            },
+          },
+          policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
+        });
+        this.organizationalUnitId = organizationalUnit.getResponseField("OrganizationalUnit.Id");
+        this.organizationalUnitArn = organizationalUnit.getResponseField("OrganizationalUnit.Arn");
+        this.organizationalUnitName = organizationalUnit.getResponseField("OrganizationalUnit.Name");
+      }
+    }
+
+    return new Import();
+  }
+  readonly organizationalUnitId: string;
+  readonly organizationalUnitArn: string;
+  readonly organizationalUnitName: string;
   public constructor(scope: Construct, id: string, props: OrganizationalUnitProps) {
     super(scope, id);
 

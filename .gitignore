@@ -42,6 +42,7 @@ junit.xml
 /dist/version.txt
 !/.github/workflows/release.yml
 !/.mergify.yml
+!/.github/dependabot.yml
 !/.github/pull_request_template.md
 !/.prettierignore
 !/.prettierrc.json
@@ -57,5 +58,5 @@ tsconfig.json
 /assets/
 !/src/account-provider/is-complete-handler-function.ts
 !/src/account-provider/on-event-handler-function.ts
+!/src/organization-provider/on-event-handler-function.ts
 !/src/tag-resource-provider/on-event-handler-function.ts
-!/.github/workflows/upgrade-main.yml

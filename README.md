@@ -16,6 +16,8 @@ This project provides a CDK construct creating AWS organizations.
 - [AWS API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html)
 - [AWS CDK Custom Resources](https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#custom-resources-for-aws-apis)
 
+## API Reference
+
 See [API.md](https://github.com/pepperize/cdk-organizations/blob/main/API.md)
 
 ## Install
@@ -43,6 +45,83 @@ pip install pepperize.cdk-organizations
 ```
 dotnet add package Pepperize.CDK.Organizations
 ```
+
+## Restrictions
+
+- The stack can only be deployed in the `us-east-1` region.
+- The stack's account must be the management account of an existing organization.
+- The stack's account becomes the management account of the new organization.
+- An account belongs only to one organization with a single root.
+
+## Organization
+
+To create a new organization or import an existing organization, add the following construct to your stack:
+
+```typescript
+const organization = new Organization(stack, "Organization", {
+  featureSet: FeatureSet.ALL,
+});
+```
+
+- The account which deploys the stack automatically becomes the management account of the new organization.
+- If an organization already exists, it will be automatically imported. The account which deploys the stacks must be the management account.
+- If the construct gets removed from the stack the organization still remains and must be manually deleted.
+- For deletion of an organization you must previously remove all the member accounts, OUs, and policies from the organization.
+- Currently, you can have only one root. AWS Organizations automatically creates it for you when you create the new organization.
+- It can only be used from within the management account in the us-east-1 region.
+
+## Organizational Unit (OU)
+
+To create a new organizational unit (OU), add the following construct to your stack:
+
+```typescript
+const organizationUnit = new OrganizationalUnit(stack, "Organization", {
+  organizationalUnitName: "Project2",
+  parent: organisation.root,
+});
+```
+
+To import an existing organizational unit (OU), add the following to your stack:
+
+```typescript
+const organizationUnit = OrganizationalUnit.fromOrganizationalUnitId(stack, "Organization", {
+  organizationalUnitId: "ou-1234",
+  organizationalUnitName: "Project2",
+  parent: organisation.root,
+});
+```
+
+- The parent of an organizational unit (OU) can be either the organization's root or another OU within the organization.
+- An organizational unit (OU) can't be moved. You have to create a new one and move all the accounts.
+- For deletion of an organizational unit (OU) you must first move all accounts out of the OU and any child OUs, and then you can delete the child OUs.
+- It can only be used from within the management account in the us-east-1 region.
+
+# Account
+
+To create a new account, add the following construct to your stack:
+
+```typescript
+new Account(stack, "Account", {
+  accountName: "MyAccount",
+  email: "info@pepperize.com",
+  iamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
+  parent: organization.root,
+});
+```
+
+To import an existing organizational unit (OU), add the following to your stack:
+
+```typescript
+Account.fromAccountId(stack, "ImportedAccount", {
+  accountId: "123456789012",
+  parent: organization.root,
+});
+```
+
+- The email address must not already be associated with another AWS account. You may suffix the email address, i.e. `info+account-123456789012@pepperize.com`.
+- An account will be created and then moved to the parent, if the parent is an organizational unit (OU).
+- It can only be used from within the management account in the us-east-1 region.
+- An account can't be deleted easily, if the construct gets removed from the stack the account still remains. [Closing an AWS account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 
 # Example
 
