@@ -15,7 +15,8 @@ jobs:
     permissions:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') &&
-      (github.event.pull_request.user.login == 'pflorek')
+      (github.event.pull_request.user.login == 'pflorek' ||
+      github.event.pull_request.user.login == 'dependabot')
     steps:
       - uses: hmarr/auto-approve-action@v2.1.0
         with:
