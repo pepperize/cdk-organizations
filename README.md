@@ -121,7 +121,7 @@ Account.fromAccountId(stack, "ImportedAccount", {
 - The email address must not already be associated with another AWS account. You may suffix the email address, i.e. `info+account-123456789012@pepperize.com`.
 - An account will be created and then moved to the parent, if the parent is an organizational unit (OU).
 - It can only be used from within the management account in the us-east-1 region.
-- An account can't be deleted easily, if the construct gets removed from the stack the account still remains. (Closing an AWS account)[https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html]
+- An account can't be deleted easily, if the construct gets removed from the stack the account still remains. [Closing an AWS account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 
 # Example
 
