@@ -26,17 +26,5 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
     );
   }
 
-  if (event.RequestType == "Create") {
-    return { IsComplete: State === "SUCCEEDED", Data: { AccountId: AccountId } };
-  }
-
-  if (event.RequestType == "Update") {
-    return { IsComplete: State === "SUCCEEDED", Data: { AccountId: AccountId } };
-  }
-
-  if (event.RequestType == "Delete") {
-    throw new Error("Deletion is not a supported operation");
-  }
-
-  throw new Error(`${event.RequestType} is not a supported operation`);
+  return { IsComplete: State === "SUCCEEDED", Data: { AccountId: AccountId, AccountName: AccountName } };
 }

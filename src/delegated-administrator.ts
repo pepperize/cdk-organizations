@@ -1,12 +1,12 @@
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
-import { Account } from "./account";
+import { IAccount } from "./account";
 
 export interface DelegatedAdministratorProps {
   /**
    * The member account in the organization to register as a delegated administrator.
    */
-  readonly account: Account;
+  readonly account: IAccount;
   /**
    * The service principal of the AWS service for which you want to make the member account a delegated administrator.
    */
