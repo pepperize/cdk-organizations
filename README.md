@@ -123,6 +123,21 @@ Account.fromAccountId(stack, "ImportedAccount", {
 - It can only be used from within the management account in the us-east-1 region.
 - An account can't be deleted easily, if the construct gets removed from the stack the account still remains. [Closing an AWS account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 
+# Contributing
+
+Contributions of all kinds are welcome :rocket: Check out our [contributor's guide](https://github.com/pepperize/cdk-organizations/blob/main/CONTRIBUTING.md).
+
+For a quick start, check out a development environment:
+
+```shell
+git clone git@github.com:pepperize/cdk-organizations
+cd cdk-organizations
+ # install dependencies
+yarn
+# build with projen
+yarn build
+```
+
 # Example
 
 See [example.ts](./src/example/example.ts)

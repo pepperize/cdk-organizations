@@ -38,7 +38,7 @@
     "upgrade-projen": "npx projen upgrade-projen",
     "watch": "npx projen watch",
     "projen": "npx projen",
-    "format": "prettier --write 'src/**/*.ts' test/**/*.ts '.projenrc.js' 'README.md'"
+    "format": "prettier --write 'src/**/*.ts' test/**/*.ts '.projenrc.js' 'README.md' CONTRIBUTING.md"
   },
   "author": {
     "name": "Patrick Florek",
