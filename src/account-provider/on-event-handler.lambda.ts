@@ -29,5 +29,5 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
   // No update for accounts available https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html
   // Deletion is not possible, only removal from organization if criteria are matching for standalone account: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#removeAccountFromOrganization-property
   // TODO: Try to delete account or move to Organization.Root (RemovalPolicy)
-  return { PhysicalResourceId: event.PhysicalResourceId, ResourceProperties: event.ResourceProperties };
+  return { PhysicalResourceId: event.PhysicalResourceId, Data: event.ResourceProperties };
 }

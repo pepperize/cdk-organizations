@@ -58,6 +58,7 @@
           "**/build-tools/**",
           "src/account-provider/is-complete-handler.lambda.ts",
           "src/account-provider/on-event-handler.lambda.ts",
+          "src/organization-provider/on-event-handler.lambda.ts",
           "src/tag-resource-provider/on-event-handler.lambda.ts"
         ],
         "optionalDependencies": false,

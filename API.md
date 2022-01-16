@@ -395,11 +395,7 @@ new EnablePolicyType(scope: Construct, id: string, props: EnablePolicyTypeProps)
 
 ### Organization <a name="@pepperize/cdk-organizations.Organization" id="pepperizecdkorganizationsorganization"></a>
 
-Creates an organization to consolidate your AWS accounts so that you can administer them as a single unit.
-
-An organization has one management account along with zero or more member accounts. You can organize the accounts in a hierarchical, tree-like structure with a root at the top and organizational units nested under the root. Each account can be directly in the root, or placed in one of the OUs in the hierarchy. An organization has the functionality that is determined by the feature set that you enable.  <strong>The account whose user is calling the CreateOrganization operation automatically becomes the management account of the new organization.</strong>  <strong>For deletion of an organization you must previously remove all the member accounts, OUs, and policies from the organization!</strong>
-
-> https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org
+- *Implements:* [`@pepperize/cdk-organizations.IOrganization`](#@pepperize/cdk-organizations.IOrganization)
 
 #### Initializers <a name="@pepperize/cdk-organizations.Organization.Initializer" id="pepperizecdkorganizationsorganizationinitializer"></a>
 
@@ -441,12 +437,27 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| [`featureSet`](#pepperizecdkorganizationsorganizationpropertyfeatureset)<span title="Required">*</span> | [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet) | Specifies the functionality that currently is available to the organization. |
 | [`masterAccountArn`](#pepperizecdkorganizationsorganizationpropertymasteraccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
 | [`masterAccountEmail`](#pepperizecdkorganizationsorganizationpropertymasteraccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
 | [`masterAccountId`](#pepperizecdkorganizationsorganizationpropertymasteraccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
 | [`organizationArn`](#pepperizecdkorganizationsorganizationpropertyorganizationarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of an organization. |
 | [`organizationId`](#pepperizecdkorganizationsorganizationpropertyorganizationid)<span title="Required">*</span> | `string` | The unique identifier (ID) of an organization. |
 | [`root`](#pepperizecdkorganizationsorganizationpropertyroot)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root) | The root of the current organization, which is automatically created. |
+
+---
+
+##### `featureSet`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.featureSet" id="pepperizecdkorganizationsorganizationpropertyfeatureset"></a>
+
+```typescript
+public readonly featureSet: FeatureSet;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet)
+
+Specifies the functionality that currently is available to the organization.
+
+If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available.
 
 ---
 
@@ -1320,17 +1331,17 @@ const rootProps: RootProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`organization`](#pepperizecdkorganizationsrootpropspropertyorganization)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Organization`](#@pepperize/cdk-organizations.Organization) | *No description.* |
+| [`organization`](#pepperizecdkorganizationsrootpropspropertyorganization)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IOrganization`](#@pepperize/cdk-organizations.IOrganization) | *No description.* |
 
 ---
 
 ##### `organization`<sup>Required</sup> <a name="@pepperize/cdk-organizations.RootProps.property.organization" id="pepperizecdkorganizationsrootpropspropertyorganization"></a>
 
 ```typescript
-public readonly organization: Organization;
+public readonly organization: IOrganization;
 ```
 
-- *Type:* [`@pepperize/cdk-organizations.Organization`](#@pepperize/cdk-organizations.Organization)
+- *Type:* [`@pepperize/cdk-organizations.IOrganization`](#@pepperize/cdk-organizations.IOrganization)
 
 ---
 
@@ -1417,6 +1428,119 @@ public readonly email: string;
 The email address of the owner to assign to the new member account.
 
 This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address.
+
+---
+
+### IOrganization <a name="@pepperize/cdk-organizations.IOrganization" id="pepperizecdkorganizationsiorganization"></a>
+
+- *Implemented By:* [`@pepperize/cdk-organizations.Organization`](#@pepperize/cdk-organizations.Organization), [`@pepperize/cdk-organizations.IOrganization`](#@pepperize/cdk-organizations.IOrganization)
+
+Creates an organization to consolidate your AWS accounts so that you can administer them as a single unit.
+
+An organization has one management account along with zero or more member accounts. You can organize the accounts in a hierarchical, tree-like structure with a root at the top and organizational units nested under the root. Each account can be directly in the root, or placed in one of the OUs in the hierarchy. An organization has the functionality that is determined by the feature set that you enable.  <strong>The account whose user is calling the CreateOrganization operation automatically becomes the management account of the new organization.</strong>  <strong>For deletion of an organization you must previously remove all the member accounts, OUs, and policies from the organization!</strong>
+
+> https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org
+
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`featureSet`](#pepperizecdkorganizationsiorganizationpropertyfeatureset)<span title="Required">*</span> | [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet) | Specifies the functionality that currently is available to the organization. |
+| [`masterAccountArn`](#pepperizecdkorganizationsiorganizationpropertymasteraccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
+| [`masterAccountEmail`](#pepperizecdkorganizationsiorganizationpropertymasteraccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
+| [`masterAccountId`](#pepperizecdkorganizationsiorganizationpropertymasteraccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
+| [`organizationArn`](#pepperizecdkorganizationsiorganizationpropertyorganizationarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of an organization. |
+| [`organizationId`](#pepperizecdkorganizationsiorganizationpropertyorganizationid)<span title="Required">*</span> | `string` | The unique identifier (ID) of an organization. |
+| [`root`](#pepperizecdkorganizationsiorganizationpropertyroot)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root) | The root of the current organization, which is automatically created. |
+
+---
+
+##### `featureSet`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.featureSet" id="pepperizecdkorganizationsiorganizationpropertyfeatureset"></a>
+
+```typescript
+public readonly featureSet: FeatureSet;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet)
+
+Specifies the functionality that currently is available to the organization.
+
+If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available.
+
+---
+
+##### `masterAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.masterAccountArn" id="pepperizecdkorganizationsiorganizationpropertymasteraccountarn"></a>
+
+```typescript
+public readonly masterAccountArn: string;
+```
+
+- *Type:* `string`
+
+The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization.
+
+---
+
+##### `masterAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.masterAccountEmail" id="pepperizecdkorganizationsiorganizationpropertymasteraccountemail"></a>
+
+```typescript
+public readonly masterAccountEmail: string;
+```
+
+- *Type:* `string`
+
+The email address that is associated with the AWS account that is designated as the management account for the organization.
+
+---
+
+##### `masterAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.masterAccountId" id="pepperizecdkorganizationsiorganizationpropertymasteraccountid"></a>
+
+```typescript
+public readonly masterAccountId: string;
+```
+
+- *Type:* `string`
+
+The unique identifier (ID) of the management account of an organization.
+
+---
+
+##### `organizationArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.organizationArn" id="pepperizecdkorganizationsiorganizationpropertyorganizationarn"></a>
+
+```typescript
+public readonly organizationArn: string;
+```
+
+- *Type:* `string`
+
+The Amazon Resource Name (ARN) of an organization.
+
+---
+
+##### `organizationId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.organizationId" id="pepperizecdkorganizationsiorganizationpropertyorganizationid"></a>
+
+```typescript
+public readonly organizationId: string;
+```
+
+- *Type:* `string`
+
+The unique identifier (ID) of an organization.
+
+The regex pattern for an organization ID string requires "o-" followed by from 10 to 32 lowercase letters or digits.
+
+---
+
+##### `root`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.root" id="pepperizecdkorganizationsiorganizationpropertyroot"></a>
+
+```typescript
+public readonly root: Root;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root)
+
+The root of the current organization, which is automatically created.
 
 ---
 

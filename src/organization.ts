@@ -1,5 +1,7 @@
+import { CustomResource } from "aws-cdk-lib/core";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
+import { OrganizationProvider } from "./organization-provider";
 import { IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
 
@@ -39,72 +41,72 @@ export interface OrganizationProps {
  *
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org
  */
-export class Organization extends Construct {
+export interface IOrganization {
   /**
    * The unique identifier (ID) of an organization. The regex pattern for an organization ID string requires "o-" followed by from 10 to 32 lowercase letters or digits.
    */
-  public readonly organizationId: string;
+  readonly organizationId: string;
   /**
    * The Amazon Resource Name (ARN) of an organization.
    */
-  public readonly organizationArn: string;
+  readonly organizationArn: string;
+  /**
+   * Specifies the functionality that currently is available to the organization. If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available.
+   */
+  readonly featureSet: FeatureSet;
   /**
    * The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization.
    */
-  public readonly masterAccountArn: string;
+  readonly masterAccountArn: string;
   /**
    * The unique identifier (ID) of the management account of an organization.
    */
-  public readonly masterAccountId: string;
+  readonly masterAccountId: string;
   /**
    * The email address that is associated with the AWS account that is designated as the management account for the organization.
    */
-  public readonly masterAccountEmail: string;
+  readonly masterAccountEmail: string;
   /**
    * The root of the current organization, which is automatically created.
    */
+  readonly root: Root;
+}
+
+export class Organization extends Construct implements IOrganization {
+  public readonly organizationId: string;
+  public readonly organizationArn: string;
+  public readonly featureSet: FeatureSet;
+  public readonly masterAccountArn: string;
+  public readonly masterAccountId: string;
+  public readonly masterAccountEmail: string;
   public readonly root: Root;
+
   public constructor(scope: Construct, id: string, props: OrganizationProps) {
     super(scope, id);
 
     const featureSet = props.featureSet || FeatureSet.ALL;
 
-    const organization = new AwsCustomResource(this, "OrganizationCustomResource", {
+    const organizationProvider = OrganizationProvider.getOrCreate(this);
+    const organization = new CustomResource(this, "OrganizationProvider", {
+      serviceToken: organizationProvider.provider.serviceToken,
       resourceType: "Custom::Organization_Organization",
-      onCreate: {
-        service: "Organization",
-        action: "createOrganization", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createOrganization-property
-        region: "us-east-1",
-        parameters: {
-          FeatureSet: featureSet,
-        },
-        physicalResourceId: PhysicalResourceId.fromResponse("Organization.Id"),
+      properties: {
+        FeatureSet: featureSet,
       },
-      onUpdate: {
-        service: "Organization",
-        action: "describeOrganization", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeOrganization-property
-        region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.fromResponse("Organization.Id"),
-      },
-      onDelete: {
-        service: "Organization",
-        action: "deleteOrganization", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deleteOrganization-property
-        region: "us-east-1",
-      },
-      policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
-    this.organizationId = organization.getResponseField("Organization.Id");
-    this.organizationArn = organization.getResponseField("Organization.Arn");
-    this.masterAccountArn = organization.getResponseField("Organization.MasterAccountArn");
-    this.masterAccountId = organization.getResponseField("Organization.MasterAccountId");
-    this.masterAccountEmail = organization.getResponseField("Organization.MasterAccountEmail");
+    this.organizationId = organization.getAtt("Organization.Id").toString();
+    this.organizationArn = organization.getAtt("Organization.Arn").toString();
+    this.featureSet = organization.getAtt("Organization.FeatureSet").toString() as FeatureSet;
+    this.masterAccountArn = organization.getAtt("Organization.MasterAccountArn").toString();
+    this.masterAccountId = organization.getAtt("Organization.MasterAccountId").toString();
+    this.masterAccountEmail = organization.getAtt("Organization.MasterAccountEmail").toString();
 
     this.root = new Root(this, "Root", { organization: this });
   }
 }
 
 export interface RootProps {
-  readonly organization: Organization;
+  readonly organization: IOrganization;
 }
 
 /**
