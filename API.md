@@ -128,7 +128,9 @@ This email address must not already be associated with another AWS account. You 
 
 - *Implements:* [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
 
-Creates an AWS account that is automatically a member of the organization whose credentials made the request.AWS  Organizations automatically copies the information from the management account to the new member account.
+Creates an AWS account that is automatically a member of the organization whose credentials made the request.
+
+AWS Organizations automatically copies the information from the management account to the new member account
 
 #### Initializers <a name="@pepperize/cdk-organizations.AccountBase.Initializer" id="pepperizecdkorganizationsaccountbaseinitializer"></a>
 

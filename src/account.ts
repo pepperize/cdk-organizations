@@ -62,7 +62,7 @@ export interface IAccount {
 }
 
 /**
- * Creates an AWS account that is automatically a member of the organization whose credentials made the request.AWS  Organizations automatically copies the information from the management account to the new member account
+ * Creates an AWS account that is automatically a member of the organization whose credentials made the request. AWS Organizations automatically copies the information from the management account to the new member account
  */
 export abstract class AccountBase extends Construct implements IAccount, IPolicyAttachmentTarget {
   public abstract readonly accountId: string;
