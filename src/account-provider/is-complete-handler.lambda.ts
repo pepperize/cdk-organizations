@@ -27,11 +27,11 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
   }
 
   if (event.RequestType == "Create") {
-    return { IsComplete: State === "SUCCEEDED", Data: { AccountId: AccountId } };
+    return { IsComplete: State === "SUCCEEDED", Data: { AccountId: AccountId, AccountName: AccountName } };
   }
 
   if (event.RequestType == "Update") {
-    return { IsComplete: State === "SUCCEEDED", Data: { AccountId: AccountId } };
+    return { IsComplete: State === "SUCCEEDED", Data: { AccountId: AccountId, AccountName: AccountName } };
   }
 
   if (event.RequestType == "Delete") {

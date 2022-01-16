@@ -20,12 +20,9 @@ new EnableAwsServiceAccess(stack, "EnableAwsServiceAccess", {
   servicePrincipal: "service-abbreviation.amazonaws.com",
 });
 
-// Create an account
-const account = new Account(stack, "SharedAccount", {
-  accountName: "SharedAccount",
-  email: "info+shared-account@pepperize.com",
-  roleName: "OrganizationAccountAccessRole",
-  iamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
+// Import an existing account
+const account = Account.fromAccountId(stack, "ImportedAccount", {
+  accountId: "1234567890",
   parent: organization.root,
 });
 // Enable a delegated admin account
@@ -41,6 +38,7 @@ const projects = new OrganizationalUnit(stack, "ProjectsOU", {
 new Account(stack, "Project1Account", {
   accountName: "SharedAccount",
   email: "info+project1@pepperize.com",
+  iamUserAccessToBilling: IamUserAccessToBilling.DENY,
   parent: projects,
 });
 
