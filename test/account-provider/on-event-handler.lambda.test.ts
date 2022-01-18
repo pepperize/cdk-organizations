@@ -41,8 +41,8 @@ describe("account-provider.is-complete-handler.lambda", () => {
         FailureReason: "Some reason",
       },
     };
-    const createAccountStatusFake = sinon.fake.resolves(mock);
-    AWS.mock("Organizations", "createAccount", createAccountStatusFake);
+    const createAccountFake = sinon.fake.resolves(mock);
+    AWS.mock("Organizations", "createAccount", createAccountFake);
 
     const request = {
       ...event,
@@ -61,7 +61,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     // Then
     expect(response).not.toBeUndefined();
     expect(response).toEqual({ PhysicalResourceId: "car-exampleaccountcreationrequestid" });
-    sinon.assert.called(createAccountStatusFake);
+    sinon.assert.called(createAccountFake);
   });
 
   it("Should pass through the create account id", async () => {
