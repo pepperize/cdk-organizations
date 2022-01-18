@@ -14,7 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   bundledDeps: ["aws-lambda", "aws-sdk"],
   deps: ["aws-lambda", "aws-sdk"],
-  devDeps: ["@types/aws-lambda", "cdk-nag@^2.0.0"],
+  devDeps: ["@types/aws-lambda", "cdk-nag@^2.0.0", "aws-sdk-mock", "sinon", "@types/sinon"],
 
   lambdaOptions: {
     runtime: awscdk.LambdaRuntime.NODEJS_14_X,

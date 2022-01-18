@@ -14,6 +14,10 @@
       "type": "build"
     },
     {
+      "name": "@types/sinon",
+      "type": "build"
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "^5",
       "type": "build"
@@ -26,6 +30,10 @@
     {
       "name": "aws-cdk-lib",
       "version": "2.8.0",
+      "type": "build"
+    },
+    {
+      "name": "aws-sdk-mock",
       "type": "build"
     },
     {
@@ -103,6 +111,10 @@
     },
     {
       "name": "projen",
+      "type": "build"
+    },
+    {
+      "name": "sinon",
       "type": "build"
     },
     {
