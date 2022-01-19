@@ -1,5 +1,5 @@
-import { Template } from "aws-cdk-lib/assertions";
 import { App, Aspects, Stack } from "aws-cdk-lib";
+import { Template } from "aws-cdk-lib/assertions";
 import { AwsSolutionsChecks } from "cdk-nag";
 import { EnablePolicyType, FeatureSet, Organization, PolicyType } from "../src";
 
