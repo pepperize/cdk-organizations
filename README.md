@@ -46,14 +46,52 @@ pip install pepperize.cdk-organizations
 dotnet add package Pepperize.CDK.Organizations
 ```
 
-## Restrictions
+## Getting Started
+
+1. Create a new CDK TypeScript App project with [projen](https://github.com/projen/projen)
+
+```shell
+mkdir my-project
+cd my-project
+git init -b main
+npx projen new awscdk-app-ts
+```
+
+2. Add `@pepperize/cdk-organizations` to your dependencies in `.projenrc.js`
+
+```typescript
+const project = new awscdk.AwsCdkConstructLibrary({
+//...
+  deps: ["@pepperize/cdk-organizations"],
+});
+```
+
+3. Create a stack
+
+```typescript
+export class OrganizationStack extends Stack {
+  constructor(scope: Construct, id: string, props: StackProps = {}) {
+    super(scope, id, props);
+
+    // Create or import your organization
+    const organization = new Organization(stack, "Organization", {});
+    // Add organizational units, accounts, policies ...
+  }
+}
+```
+
+## Limitations
+
+AWS Organizations has some limitations:
 
 - The stack can only be deployed in the `us-east-1` region.
 - The stack's account must be the management account of an existing organization.
 - The stack's account becomes the management account of the new organization.
 - An account belongs only to one organization with a single root.
 
-## Organization
+## Usage
+
+### Organization
 
 To create a new organization or import an existing organization, add the following construct to your stack:
 
@@ -70,7 +108,7 @@ const organization = new Organization(stack, "Organization", {
 - Currently, you can have only one root. AWS Organizations automatically creates it for you when you create the new organization.
 - It can only be used from within the management account in the us-east-1 region.
 
-## Organizational Unit (OU)
+### Organizational Unit (OU)
 
 To create a new organizational unit (OU), add the following construct to your stack:
 
@@ -96,7 +134,7 @@ const organizationUnit = OrganizationalUnit.fromOrganizationalUnitId(stack, "Org
 - For deletion of an organizational unit (OU) you must first move all accounts out of the OU and any child OUs, and then you can delete the child OUs.
 - It can only be used from within the management account in the us-east-1 region.
 
-# Account
+### Account
 
 To create a new account, add the following construct to your stack:
 
