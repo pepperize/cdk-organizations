@@ -20,9 +20,9 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
       ResourceId: event.ResourceProperties.ResourceId,
     })
     .promise();
-  const oldTags: Organizations.Tag[] = listTagsForResourceResponse.Tags || [];
+  const oldTags: Organizations.Tag[] = listTagsForResourceResponse.Tags ?? [];
   const oldTagKeys: string[] = oldTags.map((tag) => tag.Key);
-  const newTags: Organizations.Tag[] = event.ResourceProperties.Tags || [];
+  const newTags: Organizations.Tag[] = event.ResourceProperties.Tags ?? [];
   const newTagKeys: string[] = newTags.map((tag) => tag.Key);
 
   // Remove AWS organizations service tags

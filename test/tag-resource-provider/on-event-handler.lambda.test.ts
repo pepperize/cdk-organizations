@@ -34,7 +34,6 @@ describe("organization-provider.on-event-handler.lambda", () => {
   it("Should remove a tag", async () => {
     // Given
     const mock: SDK.Organizations.ListTagsForResourceResponse = {
-      ResourceId: "o-1234567890",
       Tags: [
         {
           Key: "Name1",
@@ -45,10 +44,11 @@ describe("organization-provider.on-event-handler.lambda", () => {
     const listTagsForResourceFake = sinon.fake.resolves(mock);
     AWS.mock("Organizations", "listTagsForResource", listTagsForResourceFake);
 
-    const untagResourceFake = sinon.fake.resolves({
-      ResourceId: "o-1234567890",
-    });
+    const untagResourceFake = sinon.fake.resolves(undefined);
     AWS.mock("Organizations", "untagResource", untagResourceFake);
+
+    const tagResourceFake = sinon.fake.resolves(undefined);
+    AWS.mock("Organizations", "tagResource", tagResourceFake);
 
     const request = {
       ...event,
@@ -56,16 +56,7 @@ describe("organization-provider.on-event-handler.lambda", () => {
       ResourceProperties: {
         ...event.ResourceProperties,
         ResourceId: "o-1234567890",
-        Tags: [
-          {
-            Key: "Name1",
-            Value: "Tag1",
-          },
-          {
-            Key: "Name2",
-            Value: "Tag2",
-          },
-        ],
+        Tags: [],
       },
     };
     // When
@@ -76,5 +67,6 @@ describe("organization-provider.on-event-handler.lambda", () => {
     expect(response?.PhysicalResourceId).toEqual("o-1234567890");
     sinon.assert.called(listTagsForResourceFake);
     sinon.assert.called(untagResourceFake);
+    sinon.assert.notCalled(tagResourceFake);
   });
 });
