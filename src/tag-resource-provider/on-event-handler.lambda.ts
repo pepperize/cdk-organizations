@@ -1,7 +1,7 @@
 import { OnEventRequest, OnEventResponse } from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
 import { Organizations } from "aws-sdk";
 
-const organizationsClient = new Organizations({ region: "us-east-1" });
+let organizationsClient: Organizations;
 
 /**
  * The onEvent handler is invoked whenever a resource lifecycle event for a TagResource occurs
@@ -11,6 +11,9 @@ const organizationsClient = new Organizations({ region: "us-east-1" });
 export async function handler(event: OnEventRequest): Promise<OnEventResponse | undefined> {
   console.log(`Request of type ${event.RequestType} received`);
 
+  if (!organizationsClient) {
+    organizationsClient = new Organizations({ region: "us-east-1" });
+  }
   // Get all AWS organizations service tags
   const listTagsForResourceResponse: Organizations.ListTagsForResourceResponse = await organizationsClient
     .listTagsForResource({
