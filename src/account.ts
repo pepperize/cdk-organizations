@@ -1,4 +1,4 @@
-import { CustomResource } from "aws-cdk-lib/core";
+import { CustomResource } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
 import { AccountProvider } from "./account-provider";

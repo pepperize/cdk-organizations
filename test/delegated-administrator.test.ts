@@ -1,5 +1,5 @@
 import { Template } from "aws-cdk-lib/assertions";
-import { App, Aspects, Stack } from "aws-cdk-lib/core";
+import { App, Aspects, Stack } from "aws-cdk-lib";
 import { AwsSolutionsChecks } from "cdk-nag";
 import { Account, DelegatedAdministrator } from "../src";
 
