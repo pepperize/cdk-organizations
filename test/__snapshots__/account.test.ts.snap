@@ -382,7 +382,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/8b7f271c01062d32f9b16fd22a2db3f67c9cf5c2e3d210d662852a733b85cffb.json",
+              "/bbdfafd74c0365cb28040489e95940aed482f964ae0c7e7155ebaa314d7fee72.json",
             ],
           ],
         },

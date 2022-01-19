@@ -1,7 +1,7 @@
 import { OnEventRequest, OnEventResponse } from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
 import { AWSError, Organizations } from "aws-sdk";
 
-const organizationsClient = new Organizations({ region: "us-east-1" });
+let organizationsClient: Organizations;
 
 /**
  * The onEvent handler is invoked whenever a resource lifecycle event for an organization occurs
@@ -10,6 +10,10 @@ const organizationsClient = new Organizations({ region: "us-east-1" });
  */
 export async function handler(event: OnEventRequest): Promise<OnEventResponse | undefined> {
   console.log(`Request of type ${event.RequestType} received`);
+
+  if (!organizationsClient) {
+    organizationsClient = new Organizations({ region: "us-east-1" });
+  }
 
   if (event.RequestType == "Create") {
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createOrganization-property
