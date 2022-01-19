@@ -677,9 +677,9 @@
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
 "@types/aws-lambda@^8.10.89":
-  version "8.10.89"
-  resolved "https://registry.npmjs.org/@types/aws-lambda/-/aws-lambda-8.10.89.tgz"
-  integrity sha512-jwtSuEZj4rY4R2pAEOXi+RutS8RWbwMzoGlRVukdyOpnfqA/XPkAf8QoGWmg4o/UaNpQ8Mj0Xhkp5SZ1t/Zq4Q==
+  version "8.10.90"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.90.tgz#d9995deb8925afb78b8c6179fc58fa9316925102"
+  integrity sha512-B08uyjXQuOh/Kyj9NZ0BEJjkfqqj4tsAYpbBgUMRydtYAs1Fs5WL5KiYFtu+OoG5mI64pnsvW8ohFgpJYWdWIg==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14":
   version "7.1.18"
