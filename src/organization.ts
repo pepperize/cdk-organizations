@@ -102,6 +102,7 @@ export class Organization extends Construct implements IOrganization {
     this.masterAccountEmail = organization.getAtt("Organization.MasterAccountEmail").toString();
 
     this.root = new Root(this, "Root", { organization: this });
+    this.root.node.addDependency(organization);
   }
 }
 
@@ -122,8 +123,7 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget 
   public constructor(scope: Construct, id: string, props: RootProps) {
     super(scope, id);
 
-    const { organization } = props;
-    this.node.addDependency(organization);
+    props;
 
     const root = new AwsCustomResource(this, "RootCustomResource", {
       resourceType: "Custom::Organization_Root",
