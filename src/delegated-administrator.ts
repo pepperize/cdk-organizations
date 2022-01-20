@@ -25,8 +25,10 @@ export class DelegatedAdministrator extends Construct {
     super(scope, id);
 
     const { account, servicePrincipal } = props;
+    this.node.addDependency(account);
 
     new AwsCustomResource(this, "DelegatedAdministratorCustomResource", {
+      resourceType: "Custom::Organization_DelegatedAdministrator",
       onCreate: {
         service: "Organizations",
         action: "registerDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#registerDelegatedAdministrator-property

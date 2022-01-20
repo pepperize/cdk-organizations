@@ -169,7 +169,28 @@ Must be unique amongst siblings. If the ID includes a path separator (`/`), then
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationsaccountbaseidentifier) | The unique identifier (ID) of the account or organizational unit (OU) that you want to retrieve the parent for. |
+| [`currentParentId`](#pepperizecdkorganizationsaccountbasecurrentparentid) | *No description.* |
+| [`delegateAdministrator`](#pepperizecdkorganizationsaccountbasedelegateadministrator) | *No description.* |
+| [`identifier`](#pepperizecdkorganizationsaccountbaseidentifier) | *No description.* |
+| [`move`](#pepperizecdkorganizationsaccountbasemove) | *No description.* |
+
+---
+
+##### `currentParentId` <a name="@pepperize/cdk-organizations.AccountBase.currentParentId" id="pepperizecdkorganizationsaccountbasecurrentparentid"></a>
+
+```typescript
+public currentParentId()
+```
+
+##### `delegateAdministrator` <a name="@pepperize/cdk-organizations.AccountBase.delegateAdministrator" id="pepperizecdkorganizationsaccountbasedelegateadministrator"></a>
+
+```typescript
+public delegateAdministrator(servicePrincipal: string)
+```
+
+###### `servicePrincipal`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountBase.parameter.servicePrincipal" id="pepperizecdkorganizationsaccountbaseparameterserviceprincipal"></a>
+
+- *Type:* `string`
 
 ---
 
@@ -178,6 +199,24 @@ Must be unique amongst siblings. If the ID includes a path separator (`/`), then
 ```typescript
 public identifier()
 ```
+
+##### `move` <a name="@pepperize/cdk-organizations.AccountBase.move" id="pepperizecdkorganizationsaccountbasemove"></a>
+
+```typescript
+public move(destinationParentId: string, sourceParentId: string)
+```
+
+###### `destinationParentId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountBase.parameter.destinationParentId" id="pepperizecdkorganizationsaccountbaseparameterdestinationparentid"></a>
+
+- *Type:* `string`
+
+---
+
+###### `sourceParentId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountBase.parameter.sourceParentId" id="pepperizecdkorganizationsaccountbaseparametersourceparentid"></a>
+
+- *Type:* `string`
+
+---
 
 
 #### Properties <a name="Properties" id="properties"></a>
@@ -407,25 +446,6 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 ---
 
-#### Methods <a name="Methods" id="methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| [`enablePolicyType`](#pepperizecdkorganizationsorganizationenablepolicytype) | *No description.* |
-
----
-
-##### `enablePolicyType` <a name="@pepperize/cdk-organizations.Organization.enablePolicyType" id="pepperizecdkorganizationsorganizationenablepolicytype"></a>
-
-```typescript
-public enablePolicyType(policyType: PolicyType)
-```
-
-###### `policyType`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.parameter.policyType" id="pepperizecdkorganizationsorganizationparameterpolicytype"></a>
-
-- *Type:* [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType)
-
----
 
 
 #### Properties <a name="Properties" id="properties"></a>
@@ -433,9 +453,9 @@ public enablePolicyType(policyType: PolicyType)
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | [`featureSet`](#pepperizecdkorganizationsorganizationpropertyfeatureset)<span title="Required">*</span> | [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet) | Specifies the functionality that currently is available to the organization. |
-| [`managementAccountArn`](#pepperizecdkorganizationsorganizationpropertymanagementaccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
-| [`managementAccountEmail`](#pepperizecdkorganizationsorganizationpropertymanagementaccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
-| [`managementAccountId`](#pepperizecdkorganizationsorganizationpropertymanagementaccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
+| [`masterAccountArn`](#pepperizecdkorganizationsorganizationpropertymasteraccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
+| [`masterAccountEmail`](#pepperizecdkorganizationsorganizationpropertymasteraccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
+| [`masterAccountId`](#pepperizecdkorganizationsorganizationpropertymasteraccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
 | [`organizationArn`](#pepperizecdkorganizationsorganizationpropertyorganizationarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of an organization. |
 | [`organizationId`](#pepperizecdkorganizationsorganizationpropertyorganizationid)<span title="Required">*</span> | `string` | The unique identifier (ID) of an organization. |
 | [`root`](#pepperizecdkorganizationsorganizationpropertyroot)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root) | The root of the current organization, which is automatically created. |
@@ -456,10 +476,10 @@ If set to "ALL", then all features are enabled and policies can be applied to ac
 
 ---
 
-##### `managementAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.managementAccountArn" id="pepperizecdkorganizationsorganizationpropertymanagementaccountarn"></a>
+##### `masterAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.masterAccountArn" id="pepperizecdkorganizationsorganizationpropertymasteraccountarn"></a>
 
 ```typescript
-public readonly managementAccountArn: string;
+public readonly masterAccountArn: string;
 ```
 
 - *Type:* `string`
@@ -468,10 +488,10 @@ The Amazon Resource Name (ARN) of the account that is designated as the manageme
 
 ---
 
-##### `managementAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.managementAccountEmail" id="pepperizecdkorganizationsorganizationpropertymanagementaccountemail"></a>
+##### `masterAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.masterAccountEmail" id="pepperizecdkorganizationsorganizationpropertymasteraccountemail"></a>
 
 ```typescript
-public readonly managementAccountEmail: string;
+public readonly masterAccountEmail: string;
 ```
 
 - *Type:* `string`
@@ -480,10 +500,10 @@ The email address that is associated with the AWS account that is designated as 
 
 ---
 
-##### `managementAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.managementAccountId" id="pepperizecdkorganizationsorganizationpropertymanagementaccountid"></a>
+##### `masterAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.masterAccountId" id="pepperizecdkorganizationsorganizationpropertymasteraccountid"></a>
 
 ```typescript
-public readonly managementAccountId: string;
+public readonly masterAccountId: string;
 ```
 
 - *Type:* `string`
@@ -769,151 +789,6 @@ The friendly name of this OU.
 ---
 
 
-### Parent <a name="@pepperize/cdk-organizations.Parent" id="pepperizecdkorganizationsparent"></a>
-
-#### Initializers <a name="@pepperize/cdk-organizations.Parent.Initializer" id="pepperizecdkorganizationsparentinitializer"></a>
-
-```typescript
-import { Parent } from '@pepperize/cdk-organizations'
-
-new Parent(scope: Construct, id: string, props: ParentProps)
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsparentparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
-| [`id`](#pepperizecdkorganizationsparentparameterid)<span title="Required">*</span> | `string` | *No description.* |
-| [`props`](#pepperizecdkorganizationsparentparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.ParentProps`](#@pepperize/cdk-organizations.ParentProps) | *No description.* |
-
----
-
-##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.scope" id="pepperizecdkorganizationsparentparameterscope"></a>
-
-- *Type:* [`constructs.Construct`](#constructs.Construct)
-
----
-
-##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.id" id="pepperizecdkorganizationsparentparameterid"></a>
-
-- *Type:* `string`
-
----
-
-##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.props" id="pepperizecdkorganizationsparentparameterprops"></a>
-
-- *Type:* [`@pepperize/cdk-organizations.ParentProps`](#@pepperize/cdk-organizations.ParentProps)
-
----
-
-
-#### Static Functions <a name="Static Functions" id="static-functions"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| [`fromChildId`](#pepperizecdkorganizationsparentfromchildid) | *No description.* |
-
----
-
-##### `fromChildId` <a name="@pepperize/cdk-organizations.Parent.fromChildId" id="pepperizecdkorganizationsparentfromchildid"></a>
-
-```typescript
-import { Parent } from '@pepperize/cdk-organizations'
-
-Parent.fromChildId(scope: Construct, id: string, childId: string)
-```
-
-###### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.scope" id="pepperizecdkorganizationsparentparameterscope"></a>
-
-- *Type:* [`constructs.Construct`](#constructs.Construct)
-
----
-
-###### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.id" id="pepperizecdkorganizationsparentparameterid"></a>
-
-- *Type:* `string`
-
----
-
-###### `childId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.childId" id="pepperizecdkorganizationsparentparameterchildid"></a>
-
-- *Type:* `string`
-
----
-
-
-
-### ParentBase <a name="@pepperize/cdk-organizations.ParentBase" id="pepperizecdkorganizationsparentbase"></a>
-
-- *Implements:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
-
-#### Initializers <a name="@pepperize/cdk-organizations.ParentBase.Initializer" id="pepperizecdkorganizationsparentbaseinitializer"></a>
-
-```typescript
-import { ParentBase } from '@pepperize/cdk-organizations'
-
-new ParentBase(scope: Construct, id: string, props: ParentBaseProps)
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsparentbaseparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
-| [`id`](#pepperizecdkorganizationsparentbaseparameterid)<span title="Required">*</span> | `string` | *No description.* |
-| [`props`](#pepperizecdkorganizationsparentbaseparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.ParentBaseProps`](#@pepperize/cdk-organizations.ParentBaseProps) | *No description.* |
-
----
-
-##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBase.parameter.scope" id="pepperizecdkorganizationsparentbaseparameterscope"></a>
-
-- *Type:* [`constructs.Construct`](#constructs.Construct)
-
----
-
-##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBase.parameter.id" id="pepperizecdkorganizationsparentbaseparameterid"></a>
-
-- *Type:* `string`
-
----
-
-##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBase.parameter.props" id="pepperizecdkorganizationsparentbaseparameterprops"></a>
-
-- *Type:* [`@pepperize/cdk-organizations.ParentBaseProps`](#@pepperize/cdk-organizations.ParentBaseProps)
-
----
-
-#### Methods <a name="Methods" id="methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| [`identifier`](#pepperizecdkorganizationsparentbaseidentifier) | The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in. |
-
----
-
-##### `identifier` <a name="@pepperize/cdk-organizations.ParentBase.identifier" id="pepperizecdkorganizationsparentbaseidentifier"></a>
-
-```typescript
-public identifier()
-```
-
-
-#### Properties <a name="Properties" id="properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| [`parentId`](#pepperizecdkorganizationsparentbasepropertyparentid)<span title="Required">*</span> | `string` | *No description.* |
-
----
-
-##### `parentId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBase.property.parentId" id="pepperizecdkorganizationsparentbasepropertyparentid"></a>
-
-```typescript
-public readonly parentId: string;
-```
-
-- *Type:* `string`
-
----
-
-
 ### Policy <a name="@pepperize/cdk-organizations.Policy" id="pepperizecdkorganizationspolicy"></a>
 
 Policies in AWS Organizations enable you to apply additional types of management to the AWS accounts in your organization.
@@ -1073,7 +948,7 @@ new Root(scope: Construct, id: string, props: RootProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationsrootidentifier) | The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in. |
+| [`identifier`](#pepperizecdkorganizationsrootidentifier) | The unique identifier (ID) of the parent root or OU that you want to create the new OU in. |
 
 ---
 
@@ -1410,6 +1285,7 @@ const organizationalUnitAttributes: OrganizationalUnitAttributes = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | [`organizationalUnitId`](#pepperizecdkorganizationsorganizationalunitattributespropertyorganizationalunitid)<span title="Required">*</span> | `string` | *No description.* |
+| [`organizationalUnitName`](#pepperizecdkorganizationsorganizationalunitattributespropertyorganizationalunitname)<span title="Required">*</span> | `string` | *No description.* |
 | [`parent`](#pepperizecdkorganizationsorganizationalunitattributespropertyparent)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent) | *No description.* |
 
 ---
@@ -1418,6 +1294,16 @@ const organizationalUnitAttributes: OrganizationalUnitAttributes = { ... }
 
 ```typescript
 public readonly organizationalUnitId: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `organizationalUnitName`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnitAttributes.property.organizationalUnitName" id="pepperizecdkorganizationsorganizationalunitattributespropertyorganizationalunitname"></a>
+
+```typescript
+public readonly organizationalUnitName: string;
 ```
 
 - *Type:* `string`
@@ -1507,62 +1393,6 @@ public readonly featureSet: FeatureSet;
 Enabling features in your organization.
 
 > https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html
-
----
-
-### ParentBaseProps <a name="@pepperize/cdk-organizations.ParentBaseProps" id="pepperizecdkorganizationsparentbaseprops"></a>
-
-#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
-
-```typescript
-import { ParentBaseProps } from '@pepperize/cdk-organizations'
-
-const parentBaseProps: ParentBaseProps = { ... }
-```
-
-#### Properties <a name="Properties" id="properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| [`childId`](#pepperizecdkorganizationsparentbasepropspropertychildid)<span title="Required">*</span> | `string` | *No description.* |
-
----
-
-##### `childId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBaseProps.property.childId" id="pepperizecdkorganizationsparentbasepropspropertychildid"></a>
-
-```typescript
-public readonly childId: string;
-```
-
-- *Type:* `string`
-
----
-
-### ParentProps <a name="@pepperize/cdk-organizations.ParentProps" id="pepperizecdkorganizationsparentprops"></a>
-
-#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
-
-```typescript
-import { ParentProps } from '@pepperize/cdk-organizations'
-
-const parentProps: ParentProps = { ... }
-```
-
-#### Properties <a name="Properties" id="properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| [`child`](#pepperizecdkorganizationsparentpropspropertychild)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild) | *No description.* |
-
----
-
-##### `child`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentProps.property.child" id="pepperizecdkorganizationsparentpropspropertychild"></a>
-
-```typescript
-public readonly child: IChild;
-```
-
-- *Type:* [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild)
 
 ---
 
@@ -1743,8 +1573,6 @@ public readonly resource: ITaggableResource;
 
 ### IAccount <a name="@pepperize/cdk-organizations.IAccount" id="pepperizecdkorganizationsiaccount"></a>
 
-- *Extends:* [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`constructs.IConstruct`](#constructs.IConstruct)
-
 - *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.AccountBase`](#@pepperize/cdk-organizations.AccountBase), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount)
 
 
@@ -1752,22 +1580,9 @@ public readonly resource: ITaggableResource;
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`node`](#pepperizecdkorganizationsiaccountpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
 | [`accountId`](#pepperizecdkorganizationsiaccountpropertyaccountid)<span title="Required">*</span> | `string` | If the account was created successfully, the unique identifier (ID) of the new account. |
 | [`accountName`](#pepperizecdkorganizationsiaccountpropertyaccountname)<span title="Required">*</span> | `string` | The friendly name of the account. |
 | [`email`](#pepperizecdkorganizationsiaccountpropertyemail)<span title="Required">*</span> | `string` | The email address of the owner to assign to the new member account. |
-
----
-
-##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IAccount.property.node" id="pepperizecdkorganizationsiaccountpropertynode"></a>
-
-```typescript
-public readonly node: Node;
-```
-
-- *Type:* [`constructs.Node`](#constructs.Node)
-
-The tree node.
 
 ---
 
@@ -1811,49 +1626,7 @@ This email address must not already be associated with another AWS account. You 
 
 ---
 
-### IChild <a name="@pepperize/cdk-organizations.IChild" id="pepperizecdkorganizationsichild"></a>
-
-- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
-
-- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.AccountBase`](#@pepperize/cdk-organizations.AccountBase), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit)
-
-#### Methods <a name="Methods" id="methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| [`identifier`](#pepperizecdkorganizationsichildidentifier) | The unique identifier (ID) of the account or organizational unit (OU) that you want to retrieve the parent for. |
-
----
-
-##### `identifier` <a name="@pepperize/cdk-organizations.IChild.identifier" id="pepperizecdkorganizationsichildidentifier"></a>
-
-```typescript
-public identifier()
-```
-
-#### Properties <a name="Properties" id="properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| [`node`](#pepperizecdkorganizationsichildpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
-
----
-
-##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IChild.property.node" id="pepperizecdkorganizationsichildpropertynode"></a>
-
-```typescript
-public readonly node: Node;
-```
-
-- *Type:* [`constructs.Node`](#constructs.Node)
-
-The tree node.
-
----
-
 ### IOrganization <a name="@pepperize/cdk-organizations.IOrganization" id="pepperizecdkorganizationsiorganization"></a>
-
-- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.Organization`](#@pepperize/cdk-organizations.Organization), [`@pepperize/cdk-organizations.IOrganization`](#@pepperize/cdk-organizations.IOrganization)
 
@@ -1868,26 +1641,13 @@ An organization has one management account along with zero or more member accoun
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`node`](#pepperizecdkorganizationsiorganizationpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
 | [`featureSet`](#pepperizecdkorganizationsiorganizationpropertyfeatureset)<span title="Required">*</span> | [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet) | Specifies the functionality that currently is available to the organization. |
-| [`managementAccountArn`](#pepperizecdkorganizationsiorganizationpropertymanagementaccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
-| [`managementAccountEmail`](#pepperizecdkorganizationsiorganizationpropertymanagementaccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
-| [`managementAccountId`](#pepperizecdkorganizationsiorganizationpropertymanagementaccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
+| [`masterAccountArn`](#pepperizecdkorganizationsiorganizationpropertymasteraccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
+| [`masterAccountEmail`](#pepperizecdkorganizationsiorganizationpropertymasteraccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
+| [`masterAccountId`](#pepperizecdkorganizationsiorganizationpropertymasteraccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
 | [`organizationArn`](#pepperizecdkorganizationsiorganizationpropertyorganizationarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of an organization. |
 | [`organizationId`](#pepperizecdkorganizationsiorganizationpropertyorganizationid)<span title="Required">*</span> | `string` | The unique identifier (ID) of an organization. |
 | [`root`](#pepperizecdkorganizationsiorganizationpropertyroot)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root) | The root of the current organization, which is automatically created. |
-
----
-
-##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.node" id="pepperizecdkorganizationsiorganizationpropertynode"></a>
-
-```typescript
-public readonly node: Node;
-```
-
-- *Type:* [`constructs.Node`](#constructs.Node)
-
-The tree node.
 
 ---
 
@@ -1905,10 +1665,10 @@ If set to "ALL", then all features are enabled and policies can be applied to ac
 
 ---
 
-##### `managementAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.managementAccountArn" id="pepperizecdkorganizationsiorganizationpropertymanagementaccountarn"></a>
+##### `masterAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.masterAccountArn" id="pepperizecdkorganizationsiorganizationpropertymasteraccountarn"></a>
 
 ```typescript
-public readonly managementAccountArn: string;
+public readonly masterAccountArn: string;
 ```
 
 - *Type:* `string`
@@ -1917,10 +1677,10 @@ The Amazon Resource Name (ARN) of the account that is designated as the manageme
 
 ---
 
-##### `managementAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.managementAccountEmail" id="pepperizecdkorganizationsiorganizationpropertymanagementaccountemail"></a>
+##### `masterAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.masterAccountEmail" id="pepperizecdkorganizationsiorganizationpropertymasteraccountemail"></a>
 
 ```typescript
-public readonly managementAccountEmail: string;
+public readonly masterAccountEmail: string;
 ```
 
 - *Type:* `string`
@@ -1929,10 +1689,10 @@ The email address that is associated with the AWS account that is designated as 
 
 ---
 
-##### `managementAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.managementAccountId" id="pepperizecdkorganizationsiorganizationpropertymanagementaccountid"></a>
+##### `masterAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.masterAccountId" id="pepperizecdkorganizationsiorganizationpropertymasteraccountid"></a>
 
 ```typescript
-public readonly managementAccountId: string;
+public readonly masterAccountId: string;
 ```
 
 - *Type:* `string`
@@ -1981,7 +1741,7 @@ The root of the current organization, which is automatically created.
 
 ### IOrganizationalUnit <a name="@pepperize/cdk-organizations.IOrganizationalUnit" id="pepperizecdkorganizationsiorganizationalunit"></a>
 
-- *Extends:* [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`constructs.IConstruct`](#constructs.IConstruct)
+- *Extends:* [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit)
 
@@ -1994,22 +1754,9 @@ An OU also can contain other OUs, enabling you to create a hierarchy that resemb
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`node`](#pepperizecdkorganizationsiorganizationalunitpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
 | [`organizationalUnitArn`](#pepperizecdkorganizationsiorganizationalunitpropertyorganizationalunitarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of this OU. |
 | [`organizationalUnitId`](#pepperizecdkorganizationsiorganizationalunitpropertyorganizationalunitid)<span title="Required">*</span> | `string` | The unique identifier (ID) associated with this OU. |
 | [`organizationalUnitName`](#pepperizecdkorganizationsiorganizationalunitpropertyorganizationalunitname)<span title="Required">*</span> | `string` | The friendly name of this OU. |
-
----
-
-##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganizationalUnit.property.node" id="pepperizecdkorganizationsiorganizationalunitpropertynode"></a>
-
-```typescript
-public readonly node: Node;
-```
-
-- *Type:* [`constructs.Node`](#constructs.Node)
-
-The tree node.
 
 ---
 
@@ -2055,15 +1802,15 @@ The friendly name of this OU.
 
 ### IParent <a name="@pepperize/cdk-organizations.IParent" id="pepperizecdkorganizationsiparent"></a>
 
-- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
+- *Extends:* [`constructs.IDependable`](#constructs.IDependable)
 
-- *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.Parent`](#@pepperize/cdk-organizations.Parent), [`@pepperize/cdk-organizations.ParentBase`](#@pepperize/cdk-organizations.ParentBase), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
+- *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
 
 #### Methods <a name="Methods" id="methods"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationsiparentidentifier) | The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in. |
+| [`identifier`](#pepperizecdkorganizationsiparentidentifier) | The unique identifier (ID) of the parent root or OU that you want to create the new OU in. |
 
 ---
 
@@ -2073,25 +1820,6 @@ The friendly name of this OU.
 public identifier()
 ```
 
-#### Properties <a name="Properties" id="properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| [`node`](#pepperizecdkorganizationsiparentpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
-
----
-
-##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IParent.property.node" id="pepperizecdkorganizationsiparentpropertynode"></a>
-
-```typescript
-public readonly node: Node;
-```
-
-- *Type:* [`constructs.Node`](#constructs.Node)
-
-The tree node.
-
----
 
 ### IPolicyAttachmentTarget <a name="@pepperize/cdk-organizations.IPolicyAttachmentTarget" id="pepperizecdkorganizationsipolicyattachmenttarget"></a>
 

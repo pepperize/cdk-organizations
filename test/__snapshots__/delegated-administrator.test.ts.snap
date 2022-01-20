@@ -111,6 +111,8 @@ Object {
     "DelegatedAdministratorDelegatedAdministratorCustomResource8756F10E": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
+        "AccountpepperizecdkorganizationsAccountProviderNestedStackpepperizecdkorganizationsAccountProviderNestedStackResource05676357",
+        "AccountAccountProviderTestAccountB345AB52",
         "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201",
       ],
       "Properties": Object {
@@ -159,10 +161,14 @@ Object {
           ],
         },
       },
-      "Type": "Custom::AWS",
+      "Type": "Custom::Organization_DelegatedAdministrator",
       "UpdateReplacePolicy": "Delete",
     },
     "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201": Object {
+      "DependsOn": Array [
+        "AccountpepperizecdkorganizationsAccountProviderNestedStackpepperizecdkorganizationsAccountProviderNestedStackResource05676357",
+        "AccountAccountProviderTestAccountB345AB52",
+      ],
       "Properties": Object {
         "PolicyDocument": Object {
           "Statement": Array [
