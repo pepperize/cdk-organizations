@@ -1153,9 +1153,9 @@ aws-lambda@^1.0.7:
     watchpack "^2.0.0-beta.10"
 
 aws-sdk-mock@^5.5.1:
-  version "5.5.1"
-  resolved "https://registry.yarnpkg.com/aws-sdk-mock/-/aws-sdk-mock-5.5.1.tgz#d6bfd71e91e020a8ba07e189f8f1bae5890d1074"
-  integrity sha512-9wGrPozD7YciPt1qzo0ypviKEZKFJ6Jab8qtYmDRNG41WxZGJ//EEIv1FL6t4bEc8j4bPiwnoam5TP5eTv7UDA==
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk-mock/-/aws-sdk-mock-5.6.0.tgz#8cd44e2e8d65f7f38dea8d1ad073fa38f9c719d8"
+  integrity sha512-gUoEs/FaszVTLG5zBveg2NC2w/j/c9j6Ymgq4whrsdysClW6FWKT9w8eOUERZChliKZe/LwHHJFKjBHGrV9MJg==
   dependencies:
     aws-sdk "^2.928.0"
     sinon "^11.1.1"
@@ -1405,9 +1405,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.0.0:
-  version "2.4.33"
-  resolved "https://registry.npmjs.org/cdk-nag/-/cdk-nag-2.4.33.tgz"
-  integrity sha512-To77Qf7t/VD4Llxk7D61rlqTe2NyE0DcV6jhJOR07wngz2GaU4HolVpkDN/Pgbicxr03e9tl6o6BV5lisZO+Rw==
+  version "2.4.35"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.4.35.tgz#0c8c9f58455ba8be4bf44637d46867edfff15902"
+  integrity sha512-UoBGIZ+z0xcx+qokkEYy70PYUIAc5LBWU9mVyJqkOHlout2HiLoHiuYLJ2dVxvna12pBwRf8GfznL44k3kOoPg==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
