@@ -207,6 +207,15 @@
         }
       ]
     },
+    "format": {
+      "name": "format",
+      "description": "Format with prettier",
+      "steps": [
+        {
+          "exec": "prettier --write src/**/*.ts test/**/*.ts .projenrc.js README.md"
+        }
+      ]
+    },
     "package": {
       "name": "package",
       "description": "Creates the distribution package",
@@ -278,6 +287,10 @@
           "spawn": "docgen"
         }
       ]
+    },
+    "post-upgrade": {
+      "name": "post-upgrade",
+      "description": "Runs after upgrading dependencies"
     },
     "pre-compile": {
       "name": "pre-compile",
@@ -387,6 +400,9 @@
         },
         {
           "exec": "npx projen"
+        },
+        {
+          "spawn": "post-upgrade"
         }
       ]
     },

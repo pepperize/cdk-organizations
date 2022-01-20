@@ -32,7 +32,6 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-.idea
 !/.projenrc.js
 /test-reports/
 junit.xml
@@ -60,3 +59,5 @@ tsconfig.json
 !/src/account-provider/on-event-handler-function.ts
 !/src/organization-provider/on-event-handler-function.ts
 !/src/tag-resource-provider/on-event-handler-function.ts
+.idea/
+*.iml
