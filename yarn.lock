@@ -645,6 +645,13 @@
   resolved "https://registry.npmjs.org/@oozcitak/util/-/util-8.3.8.tgz"
   integrity sha512-T8TbSnGsxo6TDBJx/Sgv/BlVJL3tshxZP7Aq5R1mSnM5OcHY2dQaxLMu2+E8u3gN0MLOzdjurqN4ZRVuzQycOQ==
 
+"@pepperize/projen-awscdk-construct@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@pepperize/projen-awscdk-construct/-/projen-awscdk-construct-0.0.8.tgz#b746712f89a2d49e9c77c4763cddec1f4fbe756a"
+  integrity sha512-NR2gogQfx6ll8diWsRLtD5MPEt1GH99oE02junGJ4+7tvqPEhZexbDZGrDbMHRYWVIOP+qDVZH/QWoYn/EsKKg==
+  dependencies:
+    projen "^0.50.33"
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.npmjs.org/@sindresorhus/is/-/is-0.14.0.tgz"
@@ -5012,6 +5019,24 @@ projen@0.50.21:
   version "0.50.21"
   resolved "https://registry.npmjs.org/projen/-/projen-0.50.21.tgz"
   integrity sha512-R2CArSfYo4qYO8NGbxxjM4u0+ATYkMLHI5B5PSrBhN22ubv9iWsCaebMAxT2DXK/AQ00g4aibFxHkdIedzOb3A==
+  dependencies:
+    "@iarna/toml" "^2.2.5"
+    case "^1.6.3"
+    chalk "^4.1.2"
+    conventional-changelog-config-spec "^2.1.0"
+    fs-extra "^9.1.0"
+    glob "^7"
+    ini "^2.0.0"
+    semver "^7.3.5"
+    shx "^0.3.4"
+    xmlbuilder2 "^2.4.1"
+    yaml "^1.10.2"
+    yargs "^16.2.0"
+
+projen@^0.50.33:
+  version "0.50.34"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.50.34.tgz#07ed3e14a71d4302a210902c467c4900ef75d6b4"
+  integrity sha512-o1herymMR4LmYMkdmPh3yBY8TZtMB5HTVR5GptDFKeRKnLr1Kz9KV/ENx7TB0yy1msBQ33EmKC4/EBn+TxFzxg==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"

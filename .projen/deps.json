@@ -1,6 +1,11 @@
 {
   "dependencies": [
     {
+      "name": "@pepperize/projen-awscdk-construct",
+      "version": "^0.0.8",
+      "type": "build"
+    },
+    {
       "name": "@types/aws-lambda",
       "type": "build"
     },
