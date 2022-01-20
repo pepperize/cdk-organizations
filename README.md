@@ -7,7 +7,7 @@
 
 # AWS Organizations
 
-This project provides a CDK construct creating AWS organizations.
+This project provides a CDK construct managing AWS organizations, organizational units and accounts.
 
 > Currently, there is no `@aws-cdk/aws-organizations` available. See this [Issue on AWS CDK](https://github.com/aws/aws-cdk/issues/2877).
 

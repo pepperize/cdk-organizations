@@ -7,8 +7,8 @@ const project = new AwsCdkConstructLibrary({
   copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
   cdkVersion: "2.8.0",
   name: "@pepperize/cdk-organizations",
-  description: "This project provides a CDK construct creating AWS organizations.",
-  keywords: ["AWS", "CDK", "Organizations"],
+  description: "This project provides a CDK construct managing AWS organizations, organizational units and accounts.",
+  keywords: ["aws", "cdk", "organizations", "account", "account-management"],
   repositoryUrl: "https://github.com/pepperize/cdk-organizations.git",
 
   bundledDeps: ["aws-lambda", "aws-sdk"],

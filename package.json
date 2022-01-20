@@ -1,6 +1,6 @@
 {
   "name": "@pepperize/cdk-organizations",
-  "description": "This project provides a CDK construct creating AWS organizations.",
+  "description": "This project provides a CDK construct managing AWS organizations, organizational units and accounts.",
   "repository": {
     "type": "git",
     "url": "https://github.com/pepperize/cdk-organizations.git"
@@ -92,10 +92,11 @@
     "aws-sdk"
   ],
   "keywords": [
-    "AWS",
-    "CDK",
-    "Organizations",
-    "cdk"
+    "account",
+    "account-management",
+    "aws",
+    "cdk",
+    "organizations"
   ],
   "main": "lib/index.js",
   "license": "MIT",
