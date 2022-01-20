@@ -51,6 +51,11 @@ export class OrganizationProvider extends NestedStack {
           actions: ["organizations:CreateOrganization", "organizations:DescribeOrganization"],
           resources: ["*"],
         }),
+        // permit the creation of service-linked role https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org
+        new PolicyStatement({
+          actions: ["iam:CreateServiceLinkedRole"],
+          resources: ["arn:aws:iam::*:role/*"],
+        }),
       ],
     });
 
