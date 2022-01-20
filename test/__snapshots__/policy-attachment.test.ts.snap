@@ -190,7 +190,7 @@ Object {
             ],
           ],
         },
-        "InstallLatestAwsSdk": true,
+        "InstallLatestAwsSdk": false,
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
             "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
@@ -241,7 +241,7 @@ Object {
       "Properties": Object {
         "Create": "{\\"service\\":\\"Organization\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\\\\\\\\\\\"Version\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2012-10-17\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Statement\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\"Effect\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Allow\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Action\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"s3:*\\\\\\\\\\\\\\"}}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
         "Delete": "{\\"service\\":\\"Organization\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"OrganizationalUnitId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
-        "InstallLatestAwsSdk": true,
+        "InstallLatestAwsSdk": false,
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
             "AWS679f53fac002430cb0da5b7982bd22872D164C4C",

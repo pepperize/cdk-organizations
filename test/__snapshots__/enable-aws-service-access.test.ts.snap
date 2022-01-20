@@ -72,7 +72,7 @@ Object {
       "Properties": Object {
         "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"enableAWSServiceAccess\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"service-abbreviation.amazonaws.com\\"},\\"parameters\\":{\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
         "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"disableAWSServiceAccess\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
-        "InstallLatestAwsSdk": true,
+        "InstallLatestAwsSdk": false,
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
             "AWS679f53fac002430cb0da5b7982bd22872D164C4C",

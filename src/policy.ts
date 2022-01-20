@@ -105,6 +105,7 @@ export class Policy extends Construct {
           OrganizationalUnitId: new PhysicalResourceIdReference(),
         },
       },
+      installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
     this.policyId = policy.getResponseField("Policy.PolicySummary.Id");

@@ -151,7 +151,7 @@ Object {
             ],
           ],
         },
-        "InstallLatestAwsSdk": true,
+        "InstallLatestAwsSdk": false,
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
             "AWS679f53fac002430cb0da5b7982bd22872D164C4C",

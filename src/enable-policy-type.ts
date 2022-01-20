@@ -39,6 +39,7 @@ export class EnablePolicyType extends Construct {
           PolicyType: policyType,
         },
       },
+      installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({
         resources: AwsCustomResourcePolicy.ANY_RESOURCE,
       }),

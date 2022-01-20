@@ -46,6 +46,7 @@ export class DelegatedAdministrator extends Construct {
           ServicePrincipal: servicePrincipal,
         },
       },
+      installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({
         resources: AwsCustomResourcePolicy.ANY_RESOURCE,
       }),

@@ -144,6 +144,7 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget 
         action: "listRoots", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listRoots-property
         region: "us-east-1",
       },
+      installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({
         resources: AwsCustomResourcePolicy.ANY_RESOURCE,
       }),

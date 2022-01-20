@@ -48,6 +48,7 @@ export class PolicyAttachment extends Construct {
         },
         physicalResourceId: PhysicalResourceId.of(`${policy.policyId}:${target.identifier()}`),
       },
+      installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({
         resources: AwsCustomResourcePolicy.ANY_RESOURCE,
       }),

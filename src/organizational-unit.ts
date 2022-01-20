@@ -149,6 +149,8 @@ export class OrganizationalUnit extends OrganizationalUnitBase {
           OrganizationalUnitId: new PhysicalResourceIdReference(),
         },
       },
+
+      installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
     this.organizationalUnitId = organizationalUnit.getResponseField("OrganizationalUnit.Id");

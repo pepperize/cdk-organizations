@@ -102,6 +102,7 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
           ChildId: this.accountId,
         },
       },
+      installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({
         resources: AwsCustomResourcePolicy.ANY_RESOURCE,
       }),
@@ -127,6 +128,7 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
           SourceParentId: sourceParentId,
         },
       },
+      installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({
         resources: AwsCustomResourcePolicy.ANY_RESOURCE,
       }),
@@ -162,6 +164,7 @@ export class Account extends AccountBase {
               AccountId: this.accountId,
             },
           },
+          installLatestAwsSdk: false,
           policy: AwsCustomResourcePolicy.fromSdkCalls({
             resources: AwsCustomResourcePolicy.ANY_RESOURCE,
           }),
