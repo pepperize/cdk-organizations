@@ -81,7 +81,6 @@ Object {
     "OrganizationRootRootCustomResourceBB74F060": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "OrganizationpepperizecdkorganizationsOrganizationProviderNestedStackpepperizecdkorganizationsOrganizationProviderNestedStackResourceC765D41F",
         "OrganizationOrganizationProviderFB9AD106",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
       ],
@@ -102,9 +101,7 @@ Object {
     },
     "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E": Object {
       "DependsOn": Array [
-        "OrganizationpepperizecdkorganizationsOrganizationProviderNestedStackpepperizecdkorganizationsOrganizationProviderNestedStackResourceC765D41F",
         "OrganizationOrganizationProviderFB9AD106",
-        "OrganizationRootRootCustomResourceBB74F060",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
