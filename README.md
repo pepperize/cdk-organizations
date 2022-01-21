@@ -67,7 +67,7 @@ dotnet add package Pepperize.CDK.Organizations
 3. Add `@pepperize/cdk-organizations` to your dependencies in `.projenrc.js`
 
    ```typescript
-   const project = new awscdk.AwsCdkConstructLibrary({
+   const project = new awscdk.AwsCdkTypeScriptApp({
      //...
      deps: ["@pepperize/cdk-organizations"],
    });
@@ -186,7 +186,7 @@ yarn build
 
 # Example
 
-See [example.ts](./src/example/example.ts)
+See [example](https://github.com/pepperize/cdk-organizations-example/blob/main/src/example-stack.ts)
 
 ```typescript
 import { App, Stack } from "aws-cdk-lib/core";
