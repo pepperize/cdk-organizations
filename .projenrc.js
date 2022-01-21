@@ -55,8 +55,7 @@ const project = new AwsCdkConstructLibrary({
 
 project.gitpod.addCustomTask({
   name: "setup",
-  init: "yarn install",
-  prebuild: "npx projen build",
+  init: "yarn install && npx projen build",
   command: "npx projen watch",
 });
 

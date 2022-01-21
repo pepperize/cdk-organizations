@@ -3,8 +3,7 @@
 tasks:
   - name: setup
     command: npx projen watch
-    init: yarn install
-    prebuild: npx projen build
+    init: yarn install && npx projen build
 vscode:
   extensions:
     - dbaeumer.vscode-eslint
