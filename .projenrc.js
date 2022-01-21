@@ -1,6 +1,8 @@
 const { AwsCdkConstructLibrary } = require("@pepperize/projen-awscdk-construct");
-const { awscdk, javascript } = require("projen");
+const { awscdk, cdk, javascript } = require("projen");
 const project = new AwsCdkConstructLibrary({
+  stability: cdk.Stability.EXPERIMENTAL,
+
   author: "Patrick Florek",
   authorAddress: "patrick.florek@gmail.com",
   license: "MIT",
