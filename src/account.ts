@@ -2,7 +2,7 @@ import { CustomResource } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
 import { AccountProvider } from "./account-provider";
-import { IParent } from "./parent";
+import { IChild, IParent, Parent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
 /**
  * @see https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate
@@ -46,7 +46,7 @@ export interface AccountProps {
   readonly parent?: IParent;
 }
 
-export interface IAccount extends IConstruct {
+export interface IAccount extends IChild, IConstruct {
   /**
    * If the account was created successfully, the unique identifier (ID) of the new account. Exactly 12 digits.
    */
@@ -73,50 +73,16 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
     return this.accountId;
   }
 
-  currentParentId(): string {
-    const parent = new AwsCustomResource(this, "ListParentsCustomResource", {
-      onCreate: {
-        service: "Organizations",
-        action: "listParents", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listParents-property
-        region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.fromResponse("Parents.0.Id"),
-        parameters: {
-          ChildId: this.accountId,
-        },
-      },
-      onUpdate: {
-        service: "Organizations",
-        action: "listParents", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listParents-property
-        region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.fromResponse("Parents.0.Id"),
-        parameters: {
-          ChildId: this.accountId,
-        },
-      },
-      onDelete: {
-        service: "Organizations",
-        action: "listParents", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listParents-property
-        region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.fromResponse("Parents.0.Id"),
-        parameters: {
-          ChildId: this.accountId,
-        },
-      },
-      installLatestAwsSdk: false,
-      policy: AwsCustomResourcePolicy.fromSdkCalls({
-        resources: AwsCustomResourcePolicy.ANY_RESOURCE,
-      }),
-    });
-
-    return parent.getResponseField("Parents.0.Id");
+  protected currentParent(): IParent {
+    return Parent.fromChildId(this, "Parent", this.accountId);
   }
 
-  move(destinationParentId: string, sourceParentId: string): void {
-    if (destinationParentId == sourceParentId) {
+  protected move(destinationParent: IParent, sourceParent: IParent): void {
+    if (destinationParent.identifier() == sourceParent.identifier()) {
       return;
     }
 
-    new AwsCustomResource(this, "MoveAccountCustomResource", {
+    const move = new AwsCustomResource(this, "MoveAccountCustomResource", {
       onUpdate: {
         service: "Organizations",
         action: "moveAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#moveAccount-property
@@ -124,8 +90,8 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
         physicalResourceId: PhysicalResourceId.of(this.accountId),
         parameters: {
           AccountId: this.accountId,
-          DestinationParentId: destinationParentId,
-          SourceParentId: sourceParentId,
+          DestinationParentId: destinationParent.identifier(),
+          SourceParentId: sourceParent.identifier(),
         },
       },
       installLatestAwsSdk: false,
@@ -133,6 +99,7 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
         resources: AwsCustomResourcePolicy.ANY_RESOURCE,
       }),
     });
+    move.node.addDependency(destinationParent, sourceParent);
   }
 }
 
@@ -174,9 +141,11 @@ export class Account extends AccountBase {
         this.email = account.getResponseField("Account.Email");
 
         if (attrs.parent) {
-          const sourceParentId = this.currentParentId();
-          const targetParentId = attrs.parent.identifier();
-          this.move(targetParentId, sourceParentId);
+          const sourceParent = this.currentParent();
+          sourceParent.node.addDependency(account);
+          const destinationParent = attrs.parent;
+          account.node.addDependency(destinationParent);
+          this.move(destinationParent, sourceParent);
         }
       }
     }
@@ -209,9 +178,10 @@ export class Account extends AccountBase {
     this.email = email;
 
     if (parent) {
-      const sourceParentId = this.currentParentId();
-      const targetParentId = parent.identifier();
-      this.move(targetParentId, sourceParentId);
+      const sourceParent = this.currentParent();
+      sourceParent.node.addDependency(account);
+      account.node.addDependency(parent);
+      this.move(parent, sourceParent);
     }
   }
 }

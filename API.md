@@ -169,41 +169,15 @@ Must be unique amongst siblings. If the ID includes a path separator (`/`), then
 
 | **Name** | **Description** |
 | --- | --- |
-| [`currentParentId`](#pepperizecdkorganizationsaccountbasecurrentparentid) | *No description.* |
-| [`identifier`](#pepperizecdkorganizationsaccountbaseidentifier) | *No description.* |
-| [`move`](#pepperizecdkorganizationsaccountbasemove) | *No description.* |
+| [`identifier`](#pepperizecdkorganizationsaccountbaseidentifier) | The unique identifier (ID) of the account or organizational unit (OU) that you want to retrieve the parent for. |
 
 ---
-
-##### `currentParentId` <a name="@pepperize/cdk-organizations.AccountBase.currentParentId" id="pepperizecdkorganizationsaccountbasecurrentparentid"></a>
-
-```typescript
-public currentParentId()
-```
 
 ##### `identifier` <a name="@pepperize/cdk-organizations.AccountBase.identifier" id="pepperizecdkorganizationsaccountbaseidentifier"></a>
 
 ```typescript
 public identifier()
 ```
-
-##### `move` <a name="@pepperize/cdk-organizations.AccountBase.move" id="pepperizecdkorganizationsaccountbasemove"></a>
-
-```typescript
-public move(destinationParentId: string, sourceParentId: string)
-```
-
-###### `destinationParentId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountBase.parameter.destinationParentId" id="pepperizecdkorganizationsaccountbaseparameterdestinationparentid"></a>
-
-- *Type:* `string`
-
----
-
-###### `sourceParentId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountBase.parameter.sourceParentId" id="pepperizecdkorganizationsaccountbaseparametersourceparentid"></a>
-
-- *Type:* `string`
-
----
 
 
 #### Properties <a name="Properties" id="properties"></a>
@@ -776,6 +750,151 @@ The friendly name of this OU.
 ---
 
 
+### Parent <a name="@pepperize/cdk-organizations.Parent" id="pepperizecdkorganizationsparent"></a>
+
+#### Initializers <a name="@pepperize/cdk-organizations.Parent.Initializer" id="pepperizecdkorganizationsparentinitializer"></a>
+
+```typescript
+import { Parent } from '@pepperize/cdk-organizations'
+
+new Parent(scope: Construct, id: string, props: ParentProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`scope`](#pepperizecdkorganizationsparentparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationsparentparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationsparentparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.ParentProps`](#@pepperize/cdk-organizations.ParentProps) | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.scope" id="pepperizecdkorganizationsparentparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.id" id="pepperizecdkorganizationsparentparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.props" id="pepperizecdkorganizationsparentparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.ParentProps`](#@pepperize/cdk-organizations.ParentProps)
+
+---
+
+
+#### Static Functions <a name="Static Functions" id="static-functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`fromChildId`](#pepperizecdkorganizationsparentfromchildid) | *No description.* |
+
+---
+
+##### `fromChildId` <a name="@pepperize/cdk-organizations.Parent.fromChildId" id="pepperizecdkorganizationsparentfromchildid"></a>
+
+```typescript
+import { Parent } from '@pepperize/cdk-organizations'
+
+Parent.fromChildId(scope: Construct, id: string, childId: string)
+```
+
+###### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.scope" id="pepperizecdkorganizationsparentparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+###### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.id" id="pepperizecdkorganizationsparentparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+###### `childId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Parent.parameter.childId" id="pepperizecdkorganizationsparentparameterchildid"></a>
+
+- *Type:* `string`
+
+---
+
+
+
+### ParentBase <a name="@pepperize/cdk-organizations.ParentBase" id="pepperizecdkorganizationsparentbase"></a>
+
+- *Implements:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
+
+#### Initializers <a name="@pepperize/cdk-organizations.ParentBase.Initializer" id="pepperizecdkorganizationsparentbaseinitializer"></a>
+
+```typescript
+import { ParentBase } from '@pepperize/cdk-organizations'
+
+new ParentBase(scope: Construct, id: string, props: ParentBaseProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`scope`](#pepperizecdkorganizationsparentbaseparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationsparentbaseparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationsparentbaseparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.ParentBaseProps`](#@pepperize/cdk-organizations.ParentBaseProps) | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBase.parameter.scope" id="pepperizecdkorganizationsparentbaseparameterscope"></a>
+
+- *Type:* [`constructs.Construct`](#constructs.Construct)
+
+---
+
+##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBase.parameter.id" id="pepperizecdkorganizationsparentbaseparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBase.parameter.props" id="pepperizecdkorganizationsparentbaseparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.ParentBaseProps`](#@pepperize/cdk-organizations.ParentBaseProps)
+
+---
+
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`identifier`](#pepperizecdkorganizationsparentbaseidentifier) | The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in. |
+
+---
+
+##### `identifier` <a name="@pepperize/cdk-organizations.ParentBase.identifier" id="pepperizecdkorganizationsparentbaseidentifier"></a>
+
+```typescript
+public identifier()
+```
+
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`parentId`](#pepperizecdkorganizationsparentbasepropertyparentid)<span title="Required">*</span> | `string` | *No description.* |
+
+---
+
+##### `parentId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBase.property.parentId" id="pepperizecdkorganizationsparentbasepropertyparentid"></a>
+
+```typescript
+public readonly parentId: string;
+```
+
+- *Type:* `string`
+
+---
+
+
 ### Policy <a name="@pepperize/cdk-organizations.Policy" id="pepperizecdkorganizationspolicy"></a>
 
 Policies in AWS Organizations enable you to apply additional types of management to the AWS accounts in your organization.
@@ -935,7 +1054,7 @@ new Root(scope: Construct, id: string, props: RootProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationsrootidentifier) | The unique identifier (ID) of the parent root or OU that you want to create the new OU in. |
+| [`identifier`](#pepperizecdkorganizationsrootidentifier) | The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in. |
 
 ---
 
@@ -1372,6 +1491,62 @@ Enabling features in your organization.
 
 ---
 
+### ParentBaseProps <a name="@pepperize/cdk-organizations.ParentBaseProps" id="pepperizecdkorganizationsparentbaseprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { ParentBaseProps } from '@pepperize/cdk-organizations'
+
+const parentBaseProps: ParentBaseProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`childId`](#pepperizecdkorganizationsparentbasepropspropertychildid)<span title="Required">*</span> | `string` | *No description.* |
+
+---
+
+##### `childId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentBaseProps.property.childId" id="pepperizecdkorganizationsparentbasepropspropertychildid"></a>
+
+```typescript
+public readonly childId: string;
+```
+
+- *Type:* `string`
+
+---
+
+### ParentProps <a name="@pepperize/cdk-organizations.ParentProps" id="pepperizecdkorganizationsparentprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { ParentProps } from '@pepperize/cdk-organizations'
+
+const parentProps: ParentProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`child`](#pepperizecdkorganizationsparentpropspropertychild)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild) | *No description.* |
+
+---
+
+##### `child`<sup>Required</sup> <a name="@pepperize/cdk-organizations.ParentProps.property.child" id="pepperizecdkorganizationsparentpropspropertychild"></a>
+
+```typescript
+public readonly child: IChild;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild)
+
+---
+
 ### PolicyAttachmentProps <a name="@pepperize/cdk-organizations.PolicyAttachmentProps" id="pepperizecdkorganizationspolicyattachmentprops"></a>
 
 #### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
@@ -1549,7 +1724,7 @@ public readonly resource: ITaggableResource;
 
 ### IAccount <a name="@pepperize/cdk-organizations.IAccount" id="pepperizecdkorganizationsiaccount"></a>
 
-- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
+- *Extends:* [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`constructs.IConstruct`](#constructs.IConstruct)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.AccountBase`](#@pepperize/cdk-organizations.AccountBase), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount)
 
@@ -1614,6 +1789,46 @@ public readonly email: string;
 The email address of the owner to assign to the new member account.
 
 This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address.
+
+---
+
+### IChild <a name="@pepperize/cdk-organizations.IChild" id="pepperizecdkorganizationsichild"></a>
+
+- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
+
+- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.AccountBase`](#@pepperize/cdk-organizations.AccountBase), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit)
+
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`identifier`](#pepperizecdkorganizationsichildidentifier) | The unique identifier (ID) of the account or organizational unit (OU) that you want to retrieve the parent for. |
+
+---
+
+##### `identifier` <a name="@pepperize/cdk-organizations.IChild.identifier" id="pepperizecdkorganizationsichildidentifier"></a>
+
+```typescript
+public identifier()
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`node`](#pepperizecdkorganizationsichildpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IChild.property.node" id="pepperizecdkorganizationsichildpropertynode"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* [`constructs.Node`](#constructs.Node)
+
+The tree node.
 
 ---
 
@@ -1747,7 +1962,7 @@ The root of the current organization, which is automatically created.
 
 ### IOrganizationalUnit <a name="@pepperize/cdk-organizations.IOrganizationalUnit" id="pepperizecdkorganizationsiorganizationalunit"></a>
 
-- *Extends:* [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`constructs.IConstruct`](#constructs.IConstruct)
+- *Extends:* [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`constructs.IConstruct`](#constructs.IConstruct)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit)
 
@@ -1823,13 +2038,13 @@ The friendly name of this OU.
 
 - *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
 
-- *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
+- *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.Parent`](#@pepperize/cdk-organizations.Parent), [`@pepperize/cdk-organizations.ParentBase`](#@pepperize/cdk-organizations.ParentBase), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
 
 #### Methods <a name="Methods" id="methods"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationsiparentidentifier) | The unique identifier (ID) of the parent root or OU that you want to create the new OU in. |
+| [`identifier`](#pepperizecdkorganizationsiparentidentifier) | The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in. |
 
 ---
 
