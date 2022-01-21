@@ -33,7 +33,6 @@ new DelegatedAdministrator(stack, "DelegatedAdministrator", {
 
 const projects = OrganizationalUnit.fromOrganizationalUnitId(stack, "ProjectsOU", {
   organizationalUnitId: "ou-1234",
-  organizationalUnitName: "Projects",
   parent: organization.root,
 });
 new Account(stack, "Project1Account", {

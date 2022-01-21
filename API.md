@@ -1272,7 +1272,6 @@ const organizationalUnitAttributes: OrganizationalUnitAttributes = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | [`organizationalUnitId`](#pepperizecdkorganizationsorganizationalunitattributespropertyorganizationalunitid)<span title="Required">*</span> | `string` | *No description.* |
-| [`organizationalUnitName`](#pepperizecdkorganizationsorganizationalunitattributespropertyorganizationalunitname)<span title="Required">*</span> | `string` | *No description.* |
 | [`parent`](#pepperizecdkorganizationsorganizationalunitattributespropertyparent)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent) | *No description.* |
 
 ---
@@ -1281,16 +1280,6 @@ const organizationalUnitAttributes: OrganizationalUnitAttributes = { ... }
 
 ```typescript
 public readonly organizationalUnitId: string;
-```
-
-- *Type:* `string`
-
----
-
-##### `organizationalUnitName`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnitAttributes.property.organizationalUnitName" id="pepperizecdkorganizationsorganizationalunitattributespropertyorganizationalunitname"></a>
-
-```typescript
-public readonly organizationalUnitName: string;
 ```
 
 - *Type:* `string`
