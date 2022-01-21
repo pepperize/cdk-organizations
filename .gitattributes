@@ -11,6 +11,7 @@
 /.github/workflows/release.yml linguist-generated
 /.github/workflows/stale.yml linguist-generated
 /.gitignore linguist-generated
+/.gitpod.yml linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
 /.prettierignore linguist-generated
