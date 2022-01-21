@@ -2,6 +2,7 @@ import { CustomResource } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
 import { AccountProvider } from "./account-provider";
+import { DelegatedAdministrator } from "./delegated-administrator";
 import { IChild, IParent, Parent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
 /**
@@ -16,6 +17,15 @@ export enum IamUserAccessToBilling {
    * If set to DENY, only the root user of the new account can access account billing information.
    */
   DENY = "DENY",
+}
+
+export interface AccountBaseProps {
+  readonly accountId?: string;
+  readonly parent?: IParent;
+  readonly email?: string;
+  readonly accountName?: string;
+  readonly roleName?: string;
+  readonly iamUserAccessToBilling?: IamUserAccessToBilling;
 }
 
 export interface AccountProps {
@@ -52,6 +62,10 @@ export interface IAccount extends IChild, IConstruct {
    */
   readonly accountId: string;
   /**
+   * The Amazon Resource Name (ARN) of the account.
+   */
+  readonly accountArn: string;
+  /**
    * The friendly name of the account.
    */
   readonly accountName: string;
@@ -62,22 +76,105 @@ export interface IAccount extends IChild, IConstruct {
 }
 
 /**
- * Creates an AWS account that is automatically a member of the organization whose credentials made the request. AWS Organizations automatically copies the information from the management account to the new member account
+ * Creates or imports an AWS account that is automatically a member of the organization whose credentials made the request. AWS Organizations automatically copies the information from the management account to the new member account
  */
 export abstract class AccountBase extends Construct implements IAccount, IPolicyAttachmentTarget {
-  public abstract readonly accountId: string;
-  public abstract readonly accountName: string;
-  public abstract readonly email: string;
+  public readonly accountId: string;
+  public readonly accountArn: string;
+  public readonly accountName: string;
+  public readonly email: string;
+
+  protected readonly resource: AwsCustomResource;
+
+  protected constructor(scope: Construct, id: string, props: AccountBaseProps) {
+    super(scope, id);
+
+    const { email, accountName, roleName, iamUserAccessToBilling, parent } = props;
+
+    let accountId = props.accountId;
+    let createAccount = undefined;
+    if (!accountId) {
+      const createAccountProvider = AccountProvider.getOrCreate(this);
+      createAccount = new CustomResource(this, `CreateAccountProvider`, {
+        serviceToken: createAccountProvider.provider.serviceToken,
+        resourceType: "Custom::Organization_CreateAccount",
+        properties: {
+          Email: email,
+          AccountName: accountName,
+          RoleName: roleName || "OrganizationAccountAccessRole",
+          IamUserAccessToBilling: iamUserAccessToBilling || IamUserAccessToBilling.ALLOW,
+        },
+      });
+      accountId = createAccount.getAtt("AccountId").toString();
+    }
+
+    const account = new AwsCustomResource(this, "AccountCustomResource", {
+      resourceType: "Custom::Organization_Account",
+      onCreate: {
+        service: "Organizations",
+        action: "describeAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeAccount-property
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.of(accountId),
+        parameters: {
+          AccountId: accountId,
+        },
+      },
+      onUpdate: {
+        service: "Organizations",
+        action: "describeAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeAccount-property
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.of(accountId),
+        parameters: {
+          AccountId: accountId,
+        },
+      },
+      onDelete: {
+        service: "Organizations",
+        action: "deleteAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deleteAccount-property
+        region: "us-east-1",
+        physicalResourceId: PhysicalResourceId.of(accountId),
+        parameters: {
+          AccountId: accountId,
+        },
+      },
+      installLatestAwsSdk: false,
+      policy: AwsCustomResourcePolicy.fromSdkCalls({
+        resources: AwsCustomResourcePolicy.ANY_RESOURCE,
+      }),
+    });
+
+    if (createAccount) {
+      account.node.addDependency(createAccount);
+    }
+
+    this.resource = account;
+
+    this.accountId = account.getResponseField("Account.Id");
+    this.accountArn = account.getResponseField("Account.Arn");
+    this.accountName = account.getResponseField("Account.Name");
+    this.email = account.getResponseField("Account.Email");
+
+    if (parent) {
+      account.node.addDependency(parent);
+      this.move(parent);
+    }
+  }
 
   identifier(): string {
     return this.accountId;
   }
 
   protected currentParent(): IParent {
-    return Parent.fromChildId(this, "Parent", this.accountId);
+    const parent = Parent.fromChildId(this, "Parent", this.accountId);
+
+    parent.node.addDependency(this.resource);
+
+    return parent;
   }
 
-  protected move(destinationParent: IParent, sourceParent: IParent): void {
+  protected move(destinationParent: IParent): void {
+    const sourceParent = this.currentParent();
+
     if (destinationParent.identifier() == sourceParent.identifier()) {
       return;
     }
@@ -101,11 +198,19 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
     });
     move.node.addDependency(destinationParent, sourceParent);
   }
+
+  public delegateAdministrator(servicePrincipal: string) {
+    const delegatedAdministrator = new DelegatedAdministrator(this, "DelegatedAdministrator", {
+      account: this,
+      servicePrincipal: servicePrincipal,
+    });
+    delegatedAdministrator.node.addDependency(this.resource);
+  }
 }
 
 export interface AccountAttributes {
   readonly accountId: string;
-  readonly parent: IParent;
+  readonly parent?: IParent;
 }
 
 export class Account extends AccountBase {
@@ -114,74 +219,15 @@ export class Account extends AccountBase {
    */
   public static fromAccountId(scope: Construct, id: string, attrs: AccountAttributes): IAccount {
     class Import extends AccountBase {
-      public readonly accountId = attrs.accountId;
-      public readonly accountName: string;
-      public readonly email: string;
-
       public constructor() {
-        super(scope, id);
-
-        const account = new AwsCustomResource(this, "MoveAccountCustomResource", {
-          onCreate: {
-            service: "Organizations",
-            action: "describeAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeAccount-property
-            region: "us-east-1",
-            physicalResourceId: PhysicalResourceId.of(this.accountId),
-            parameters: {
-              AccountId: this.accountId,
-            },
-          },
-          installLatestAwsSdk: false,
-          policy: AwsCustomResourcePolicy.fromSdkCalls({
-            resources: AwsCustomResourcePolicy.ANY_RESOURCE,
-          }),
-        });
-
-        this.accountName = account.getResponseField("Account.Name");
-        this.email = account.getResponseField("Account.Email");
-
-        if (attrs.parent) {
-          const sourceParent = this.currentParent();
-          sourceParent.node.addDependency(account);
-          const destinationParent = attrs.parent;
-          account.node.addDependency(destinationParent);
-          this.move(destinationParent, sourceParent);
-        }
+        super(scope, id, { accountId: attrs.accountId, parent: attrs.parent });
       }
     }
 
     return new Import();
   }
 
-  public readonly accountId: string;
-  public readonly accountName: string;
-  public readonly email: string;
-
   public constructor(scope: Construct, id: string, props: AccountProps) {
-    super(scope, id);
-
-    const { email, accountName, roleName, iamUserAccessToBilling, parent } = props;
-
-    const accountProvider = AccountProvider.getOrCreate(this);
-    const account = new CustomResource(this, `AccountProvider-${accountName}`, {
-      serviceToken: accountProvider.provider.serviceToken,
-      resourceType: "Custom::Organization_Account",
-      properties: {
-        Email: email,
-        AccountName: accountName,
-        RoleName: roleName || "OrganizationAccountAccessRole",
-        IamUserAccessToBilling: iamUserAccessToBilling || IamUserAccessToBilling.ALLOW,
-      },
-    });
-    this.accountId = account.getAtt("AccountId").toString();
-    this.accountName = account.getAtt("AccountName").toString();
-    this.email = email;
-
-    if (parent) {
-      const sourceParent = this.currentParent();
-      sourceParent.node.addDependency(account);
-      account.node.addDependency(parent);
-      this.move(parent, sourceParent);
-    }
+    super(scope, id, { ...props });
   }
 }

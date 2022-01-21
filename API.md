@@ -73,62 +73,13 @@ Account.fromAccountId(scope: Construct, id: string, attrs: AccountAttributes)
 
 ---
 
-#### Properties <a name="Properties" id="properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| [`accountId`](#pepperizecdkorganizationsaccountpropertyaccountid)<span title="Required">*</span> | `string` | If the account was created successfully, the unique identifier (ID) of the new account. |
-| [`accountName`](#pepperizecdkorganizationsaccountpropertyaccountname)<span title="Required">*</span> | `string` | The friendly name of the account. |
-| [`email`](#pepperizecdkorganizationsaccountpropertyemail)<span title="Required">*</span> | `string` | The email address of the owner to assign to the new member account. |
-
----
-
-##### `accountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.property.accountId" id="pepperizecdkorganizationsaccountpropertyaccountid"></a>
-
-```typescript
-public readonly accountId: string;
-```
-
-- *Type:* `string`
-
-If the account was created successfully, the unique identifier (ID) of the new account.
-
-Exactly 12 digits.
-
----
-
-##### `accountName`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.property.accountName" id="pepperizecdkorganizationsaccountpropertyaccountname"></a>
-
-```typescript
-public readonly accountName: string;
-```
-
-- *Type:* `string`
-
-The friendly name of the account.
-
----
-
-##### `email`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.property.email" id="pepperizecdkorganizationsaccountpropertyemail"></a>
-
-```typescript
-public readonly email: string;
-```
-
-- *Type:* `string`
-
-The email address of the owner to assign to the new member account.
-
-This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address.
-
----
 
 
 ### AccountBase <a name="@pepperize/cdk-organizations.AccountBase" id="pepperizecdkorganizationsaccountbase"></a>
 
 - *Implements:* [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
 
-Creates an AWS account that is automatically a member of the organization whose credentials made the request.
+Creates or imports an AWS account that is automatically a member of the organization whose credentials made the request.
 
 AWS Organizations automatically copies the information from the management account to the new member account
 
@@ -137,13 +88,14 @@ AWS Organizations automatically copies the information from the management accou
 ```typescript
 import { AccountBase } from '@pepperize/cdk-organizations'
 
-new AccountBase(scope: Construct, id: string)
+new AccountBase(scope: Construct, id: string, props: AccountBaseProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#pepperizecdkorganizationsaccountbaseparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | The scope in which to define this construct. |
-| [`id`](#pepperizecdkorganizationsaccountbaseparameterid)<span title="Required">*</span> | `string` | The scoped construct ID. |
+| [`scope`](#pepperizecdkorganizationsaccountbaseparameterscope)<span title="Required">*</span> | [`constructs.Construct`](#constructs.Construct) | *No description.* |
+| [`id`](#pepperizecdkorganizationsaccountbaseparameterid)<span title="Required">*</span> | `string` | *No description.* |
+| [`props`](#pepperizecdkorganizationsaccountbaseparameterprops)<span title="Required">*</span> | [`@pepperize/cdk-organizations.AccountBaseProps`](#@pepperize/cdk-organizations.AccountBaseProps) | *No description.* |
 
 ---
 
@@ -151,17 +103,17 @@ new AccountBase(scope: Construct, id: string)
 
 - *Type:* [`constructs.Construct`](#constructs.Construct)
 
-The scope in which to define this construct.
-
 ---
 
 ##### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountBase.parameter.id" id="pepperizecdkorganizationsaccountbaseparameterid"></a>
 
 - *Type:* `string`
 
-The scoped construct ID.
+---
 
-Must be unique amongst siblings. If the ID includes a path separator (`/`), then it will be replaced by double dash `--`.
+##### `props`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountBase.parameter.props" id="pepperizecdkorganizationsaccountbaseparameterprops"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.AccountBaseProps`](#@pepperize/cdk-organizations.AccountBaseProps)
 
 ---
 
@@ -169,7 +121,20 @@ Must be unique amongst siblings. If the ID includes a path separator (`/`), then
 
 | **Name** | **Description** |
 | --- | --- |
+| [`delegateAdministrator`](#pepperizecdkorganizationsaccountbasedelegateadministrator) | *No description.* |
 | [`identifier`](#pepperizecdkorganizationsaccountbaseidentifier) | The unique identifier (ID) of the account or organizational unit (OU) that you want to retrieve the parent for. |
+
+---
+
+##### `delegateAdministrator` <a name="@pepperize/cdk-organizations.AccountBase.delegateAdministrator" id="pepperizecdkorganizationsaccountbasedelegateadministrator"></a>
+
+```typescript
+public delegateAdministrator(servicePrincipal: string)
+```
+
+###### `servicePrincipal`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountBase.parameter.servicePrincipal" id="pepperizecdkorganizationsaccountbaseparameterserviceprincipal"></a>
+
+- *Type:* `string`
 
 ---
 
@@ -184,9 +149,22 @@ public identifier()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| [`accountArn`](#pepperizecdkorganizationsaccountbasepropertyaccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account. |
 | [`accountId`](#pepperizecdkorganizationsaccountbasepropertyaccountid)<span title="Required">*</span> | `string` | If the account was created successfully, the unique identifier (ID) of the new account. |
 | [`accountName`](#pepperizecdkorganizationsaccountbasepropertyaccountname)<span title="Required">*</span> | `string` | The friendly name of the account. |
 | [`email`](#pepperizecdkorganizationsaccountbasepropertyemail)<span title="Required">*</span> | `string` | The email address of the owner to assign to the new member account. |
+
+---
+
+##### `accountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountBase.property.accountArn" id="pepperizecdkorganizationsaccountbasepropertyaccountarn"></a>
+
+```typescript
+public readonly accountArn: string;
+```
+
+- *Type:* `string`
+
+The Amazon Resource Name (ARN) of the account.
 
 ---
 
@@ -1168,7 +1146,7 @@ const accountAttributes: AccountAttributes = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | [`accountId`](#pepperizecdkorganizationsaccountattributespropertyaccountid)<span title="Required">*</span> | `string` | *No description.* |
-| [`parent`](#pepperizecdkorganizationsaccountattributespropertyparent)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent) | *No description.* |
+| [`parent`](#pepperizecdkorganizationsaccountattributespropertyparent) | [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent) | *No description.* |
 
 ---
 
@@ -1182,13 +1160,96 @@ public readonly accountId: string;
 
 ---
 
-##### `parent`<sup>Required</sup> <a name="@pepperize/cdk-organizations.AccountAttributes.property.parent" id="pepperizecdkorganizationsaccountattributespropertyparent"></a>
+##### `parent`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.AccountAttributes.property.parent" id="pepperizecdkorganizationsaccountattributespropertyparent"></a>
 
 ```typescript
 public readonly parent: IParent;
 ```
 
 - *Type:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
+
+---
+
+### AccountBaseProps <a name="@pepperize/cdk-organizations.AccountBaseProps" id="pepperizecdkorganizationsaccountbaseprops"></a>
+
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
+
+```typescript
+import { AccountBaseProps } from '@pepperize/cdk-organizations'
+
+const accountBaseProps: AccountBaseProps = { ... }
+```
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`accountId`](#pepperizecdkorganizationsaccountbasepropspropertyaccountid) | `string` | *No description.* |
+| [`accountName`](#pepperizecdkorganizationsaccountbasepropspropertyaccountname) | `string` | *No description.* |
+| [`email`](#pepperizecdkorganizationsaccountbasepropspropertyemail) | `string` | *No description.* |
+| [`iamUserAccessToBilling`](#pepperizecdkorganizationsaccountbasepropspropertyiamuseraccesstobilling) | [`@pepperize/cdk-organizations.IamUserAccessToBilling`](#@pepperize/cdk-organizations.IamUserAccessToBilling) | *No description.* |
+| [`parent`](#pepperizecdkorganizationsaccountbasepropspropertyparent) | [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent) | *No description.* |
+| [`roleName`](#pepperizecdkorganizationsaccountbasepropspropertyrolename) | `string` | *No description.* |
+
+---
+
+##### `accountId`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.AccountBaseProps.property.accountId" id="pepperizecdkorganizationsaccountbasepropspropertyaccountid"></a>
+
+```typescript
+public readonly accountId: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `accountName`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.AccountBaseProps.property.accountName" id="pepperizecdkorganizationsaccountbasepropspropertyaccountname"></a>
+
+```typescript
+public readonly accountName: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `email`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.AccountBaseProps.property.email" id="pepperizecdkorganizationsaccountbasepropspropertyemail"></a>
+
+```typescript
+public readonly email: string;
+```
+
+- *Type:* `string`
+
+---
+
+##### `iamUserAccessToBilling`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.AccountBaseProps.property.iamUserAccessToBilling" id="pepperizecdkorganizationsaccountbasepropspropertyiamuseraccesstobilling"></a>
+
+```typescript
+public readonly iamUserAccessToBilling: IamUserAccessToBilling;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.IamUserAccessToBilling`](#@pepperize/cdk-organizations.IamUserAccessToBilling)
+
+---
+
+##### `parent`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.AccountBaseProps.property.parent" id="pepperizecdkorganizationsaccountbasepropspropertyparent"></a>
+
+```typescript
+public readonly parent: IParent;
+```
+
+- *Type:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
+
+---
+
+##### `roleName`<sup>Optional</sup> <a name="@pepperize/cdk-organizations.AccountBaseProps.property.roleName" id="pepperizecdkorganizationsaccountbasepropspropertyrolename"></a>
+
+```typescript
+public readonly roleName: string;
+```
+
+- *Type:* `string`
 
 ---
 
@@ -1753,6 +1814,7 @@ public readonly resource: ITaggableResource;
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | [`node`](#pepperizecdkorganizationsiaccountpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
+| [`accountArn`](#pepperizecdkorganizationsiaccountpropertyaccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account. |
 | [`accountId`](#pepperizecdkorganizationsiaccountpropertyaccountid)<span title="Required">*</span> | `string` | If the account was created successfully, the unique identifier (ID) of the new account. |
 | [`accountName`](#pepperizecdkorganizationsiaccountpropertyaccountname)<span title="Required">*</span> | `string` | The friendly name of the account. |
 | [`email`](#pepperizecdkorganizationsiaccountpropertyemail)<span title="Required">*</span> | `string` | The email address of the owner to assign to the new member account. |
@@ -1768,6 +1830,18 @@ public readonly node: Node;
 - *Type:* [`constructs.Node`](#constructs.Node)
 
 The tree node.
+
+---
+
+##### `accountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IAccount.property.accountArn" id="pepperizecdkorganizationsiaccountpropertyaccountarn"></a>
+
+```typescript
+public readonly accountArn: string;
+```
+
+- *Type:* `string`
+
+The Amazon Resource Name (ARN) of the account.
 
 ---
 

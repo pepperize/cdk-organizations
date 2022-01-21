@@ -68,8 +68,6 @@ Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "EnablePolicyTypeEnablePolicyTypeCustomResourceCustomResourcePolicy556AC066",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
       ],
       "Properties": Object {
         "Create": Object {
@@ -121,10 +119,6 @@ Object {
       "UpdateReplacePolicy": "Delete",
     },
     "EnablePolicyTypeEnablePolicyTypeCustomResourceCustomResourcePolicy556AC066": Object {
-      "DependsOn": Array [
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-      ],
       "Properties": Object {
         "PolicyDocument": Object {
           "Statement": Array [
