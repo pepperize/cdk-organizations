@@ -175,10 +175,6 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
   protected move(destinationParent: IParent): void {
     const sourceParent = this.currentParent();
 
-    if (destinationParent.identifier() == sourceParent.identifier()) {
-      return;
-    }
-
     const move = new AwsCustomResource(this, "MoveAccountCustomResource", {
       onUpdate: {
         service: "Organizations",
@@ -190,6 +186,7 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
           DestinationParentId: destinationParent.identifier(),
           SourceParentId: sourceParent.identifier(),
         },
+        ignoreErrorCodesMatching: "DuplicateAccountException",
       },
       installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({
