@@ -1,6 +1,6 @@
 import { CustomResource } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
-import { Construct } from "constructs";
+import { Construct, IConstruct } from "constructs";
 import { OrganizationProvider } from "./organization-provider";
 import { IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
@@ -41,7 +41,7 @@ export interface OrganizationProps {
  *
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org
  */
-export interface IOrganization {
+export interface IOrganization extends IConstruct {
   /**
    * The unique identifier (ID) of an organization. The regex pattern for an organization ID string requires "o-" followed by from 10 to 32 lowercase letters or digits.
    */

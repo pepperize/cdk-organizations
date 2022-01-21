@@ -1560,6 +1560,8 @@ public readonly resource: ITaggableResource;
 
 ### IAccount <a name="@pepperize/cdk-organizations.IAccount" id="pepperizecdkorganizationsiaccount"></a>
 
+- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
+
 - *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.AccountBase`](#@pepperize/cdk-organizations.AccountBase), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount)
 
 
@@ -1567,9 +1569,22 @@ public readonly resource: ITaggableResource;
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| [`node`](#pepperizecdkorganizationsiaccountpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
 | [`accountId`](#pepperizecdkorganizationsiaccountpropertyaccountid)<span title="Required">*</span> | `string` | If the account was created successfully, the unique identifier (ID) of the new account. |
 | [`accountName`](#pepperizecdkorganizationsiaccountpropertyaccountname)<span title="Required">*</span> | `string` | The friendly name of the account. |
 | [`email`](#pepperizecdkorganizationsiaccountpropertyemail)<span title="Required">*</span> | `string` | The email address of the owner to assign to the new member account. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IAccount.property.node" id="pepperizecdkorganizationsiaccountpropertynode"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* [`constructs.Node`](#constructs.Node)
+
+The tree node.
 
 ---
 
@@ -1615,6 +1630,8 @@ This email address must not already be associated with another AWS account. You 
 
 ### IOrganization <a name="@pepperize/cdk-organizations.IOrganization" id="pepperizecdkorganizationsiorganization"></a>
 
+- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
+
 - *Implemented By:* [`@pepperize/cdk-organizations.Organization`](#@pepperize/cdk-organizations.Organization), [`@pepperize/cdk-organizations.IOrganization`](#@pepperize/cdk-organizations.IOrganization)
 
 Creates an organization to consolidate your AWS accounts so that you can administer them as a single unit.
@@ -1628,6 +1645,7 @@ An organization has one management account along with zero or more member accoun
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| [`node`](#pepperizecdkorganizationsiorganizationpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
 | [`featureSet`](#pepperizecdkorganizationsiorganizationpropertyfeatureset)<span title="Required">*</span> | [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet) | Specifies the functionality that currently is available to the organization. |
 | [`masterAccountArn`](#pepperizecdkorganizationsiorganizationpropertymasteraccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
 | [`masterAccountEmail`](#pepperizecdkorganizationsiorganizationpropertymasteraccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
@@ -1635,6 +1653,18 @@ An organization has one management account along with zero or more member accoun
 | [`organizationArn`](#pepperizecdkorganizationsiorganizationpropertyorganizationarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of an organization. |
 | [`organizationId`](#pepperizecdkorganizationsiorganizationpropertyorganizationid)<span title="Required">*</span> | `string` | The unique identifier (ID) of an organization. |
 | [`root`](#pepperizecdkorganizationsiorganizationpropertyroot)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root) | The root of the current organization, which is automatically created. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.node" id="pepperizecdkorganizationsiorganizationpropertynode"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* [`constructs.Node`](#constructs.Node)
+
+The tree node.
 
 ---
 
@@ -1728,7 +1758,7 @@ The root of the current organization, which is automatically created.
 
 ### IOrganizationalUnit <a name="@pepperize/cdk-organizations.IOrganizationalUnit" id="pepperizecdkorganizationsiorganizationalunit"></a>
 
-- *Extends:* [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
+- *Extends:* [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`constructs.IConstruct`](#constructs.IConstruct)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit)
 
@@ -1741,9 +1771,22 @@ An OU also can contain other OUs, enabling you to create a hierarchy that resemb
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| [`node`](#pepperizecdkorganizationsiorganizationalunitpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
 | [`organizationalUnitArn`](#pepperizecdkorganizationsiorganizationalunitpropertyorganizationalunitarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of this OU. |
 | [`organizationalUnitId`](#pepperizecdkorganizationsiorganizationalunitpropertyorganizationalunitid)<span title="Required">*</span> | `string` | The unique identifier (ID) associated with this OU. |
 | [`organizationalUnitName`](#pepperizecdkorganizationsiorganizationalunitpropertyorganizationalunitname)<span title="Required">*</span> | `string` | The friendly name of this OU. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganizationalUnit.property.node" id="pepperizecdkorganizationsiorganizationalunitpropertynode"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* [`constructs.Node`](#constructs.Node)
+
+The tree node.
 
 ---
 
@@ -1789,7 +1832,7 @@ The friendly name of this OU.
 
 ### IParent <a name="@pepperize/cdk-organizations.IParent" id="pepperizecdkorganizationsiparent"></a>
 
-- *Extends:* [`constructs.IDependable`](#constructs.IDependable)
+- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.OrganizationalUnitBase`](#@pepperize/cdk-organizations.OrganizationalUnitBase), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
 
@@ -1807,6 +1850,25 @@ The friendly name of this OU.
 public identifier()
 ```
 
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`node`](#pepperizecdkorganizationsiparentpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IParent.property.node" id="pepperizecdkorganizationsiparentpropertynode"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* [`constructs.Node`](#constructs.Node)
+
+The tree node.
+
+---
 
 ### IPolicyAttachmentTarget <a name="@pepperize/cdk-organizations.IPolicyAttachmentTarget" id="pepperizecdkorganizationsipolicyattachmenttarget"></a>
 

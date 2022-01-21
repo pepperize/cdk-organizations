@@ -1,6 +1,6 @@
 import { CustomResource } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
-import { Construct } from "constructs";
+import { Construct, IConstruct } from "constructs";
 import { AccountProvider } from "./account-provider";
 import { IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
@@ -46,7 +46,7 @@ export interface AccountProps {
   readonly parent?: IParent;
 }
 
-export interface IAccount {
+export interface IAccount extends IConstruct {
   /**
    * If the account was created successfully, the unique identifier (ID) of the new account. Exactly 12 digits.
    */
