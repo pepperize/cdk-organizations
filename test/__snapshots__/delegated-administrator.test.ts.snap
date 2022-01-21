@@ -64,7 +64,120 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "AccountAccountProviderTestAccountB345AB52": Object {
+    "AccountAccountCustomResource0B716A6F": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AccountAccountCustomResourceCustomResourcePolicy3CD2BD3A",
+        "AccountCreateAccountProvider7EB21BFC",
+      ],
+      "Properties": Object {
+        "Create": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"describeAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountId",
+                ],
+              },
+              "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountId",
+                ],
+              },
+              "\\"}}",
+            ],
+          ],
+        },
+        "Delete": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deleteAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountId",
+                ],
+              },
+              "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountId",
+                ],
+              },
+              "\\"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+        "Update": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"describeAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountId",
+                ],
+              },
+              "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountId",
+                ],
+              },
+              "\\"}}",
+            ],
+          ],
+        },
+      },
+      "Type": "Custom::Organization_Account",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AccountAccountCustomResourceCustomResourcePolicy3CD2BD3A": Object {
+      "DependsOn": Array [
+        "AccountCreateAccountProvider7EB21BFC",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:DescribeAccount",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DeleteAccount",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "AccountAccountCustomResourceCustomResourcePolicy3CD2BD3A",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "AccountCreateAccountProvider7EB21BFC": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "AccountName": "TestAccount",
@@ -78,7 +191,7 @@ Object {
           ],
         },
       },
-      "Type": "Custom::Organization_Account",
+      "Type": "Custom::Organization_CreateAccount",
       "UpdateReplacePolicy": "Delete",
     },
     "AccountpepperizecdkorganizationsAccountProviderNestedStackpepperizecdkorganizationsAccountProviderNestedStackResource05676357": Object {
@@ -121,15 +234,15 @@ Object {
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountAccountProviderTestAccountB345AB52",
-                  "AccountId",
+                  "AccountAccountCustomResource0B716A6F",
+                  "Account.Id",
                 ],
               },
               ":service-abbreviation.amazonaws.com\\"},\\"parameters\\":{\\"AccountId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountAccountProviderTestAccountB345AB52",
-                  "AccountId",
+                  "AccountAccountCustomResource0B716A6F",
+                  "Account.Id",
                 ],
               },
               "\\",\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
@@ -143,8 +256,8 @@ Object {
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountAccountProviderTestAccountB345AB52",
-                  "AccountId",
+                  "AccountAccountCustomResource0B716A6F",
+                  "Account.Id",
                 ],
               },
               "\\",\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
@@ -159,7 +272,7 @@ Object {
           ],
         },
       },
-      "Type": "Custom::AWS",
+      "Type": "Custom::Organization_DelegatedAdministrator",
       "UpdateReplacePolicy": "Delete",
     },
     "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201": Object {

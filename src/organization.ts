@@ -108,10 +108,11 @@ export class Organization extends Construct implements IOrganization {
   }
 
   public enablePolicyType(policyType: PolicyType) {
-    new EnablePolicyType(this, "EnablePolicyType", {
+    const enablePolicyType = new EnablePolicyType(this, "EnablePolicyType", {
       root: this.root,
       policyType: policyType,
     });
+    enablePolicyType.node.addDependency(this.root);
   }
 }
 

@@ -22,6 +22,25 @@ describe("Account", () => {
     expect(template).toMatchSnapshot();
   });
 
+  it("Should have delegated administrator", () => {
+    // Given
+    const app = new App();
+    const stack = new Stack(app, "Stack");
+    const organization = new Organization(stack, "Organization", {});
+    const account = new Account(stack, "Account", {
+      email: "info@pepperize.com",
+      accountName: "test",
+      parent: organization.root,
+    });
+
+    // When
+    account.delegateAdministrator("service-abbreviation.amazonaws.com");
+
+    // Then
+    const template = Template.fromStack(stack);
+    template.resourceCountIs("Custom::Organization_DelegatedAdministrator", 1);
+  });
+
   it("Should comply to best practices", () => {
     // Given
     const app = new App();
