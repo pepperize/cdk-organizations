@@ -58,6 +58,6 @@ project.gitpod.addCustomTask({
   command: "npx projen watch",
 });
 
-project.gitpod.addVscodeExtensions("dbaeumer.vscode-eslint")
+project.gitpod.addVscodeExtensions("dbaeumer.vscode-eslint");
 
 project.synth();
