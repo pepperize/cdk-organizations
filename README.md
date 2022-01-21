@@ -48,46 +48,44 @@ dotnet add package Pepperize.CDK.Organizations
 
 ## Getting Started
 
-1. Create a new CDK TypeScript App project with [projen](https://github.com/projen/projen)
+1. Prepare an IAM User with `AdministratorAccess`
 
-```shell
-mkdir my-project
-cd my-project
-git init -b main
-npx projen new awscdk-app-ts
-```
+   To deploy your new organization, you have to create an Administrator with an Access Key
 
-2. Add `@pepperize/cdk-organizations` to your dependencies in `.projenrc.js`
+   - [Creating your first IAM admin user and user group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)
+   - [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)
 
-```typescript
-const project = new awscdk.AwsCdkConstructLibrary({
-//...
-  deps: ["@pepperize/cdk-organizations"],
-});
-```
+2. Create a new CDK TypeScript App project with [projen](https://github.com/projen/projen)
 
-3. Create a stack
+   ```shell
+   mkdir my-project
+   cd my-project
+   git init -b main
+   npx projen new awscdk-app-ts
+   ```
 
-```typescript
-export class OrganizationStack extends Stack {
-  constructor(scope: Construct, id: string, props: StackProps = {}) {
-    super(scope, id, props);
+3. Add `@pepperize/cdk-organizations` to your dependencies in `.projenrc.js`
 
-    // Create or import your organization
-    const organization = new Organization(stack, "Organization", {});
-    // Add organizational units, accounts, policies ...
-  }
-}
-```
+   ```typescript
+   const project = new awscdk.AwsCdkConstructLibrary({
+     //...
+     deps: ["@pepperize/cdk-organizations"],
+   });
+   ```
 
-## Limitations
+4. Create a stack
 
-AWS Organizations has some limitations:
+   ```typescript
+   export class OrganizationStack extends Stack {
+     constructor(scope: Construct, id: string, props: StackProps = {}) {
+       super(scope, id, props);
 
-- The stack can only be deployed in the `us-east-1` region.
-- The stack's account must be the management account of an existing organization.
-- The stack's account becomes the management account of the new organization.
-- An account belongs only to one organization with a single root.
+       // Create or import your organization
+       const organization = new Organization(stack, "Organization", {});
+       // Add organizational units, accounts, policies ...
+     }
+   }
+   ```
 
 ## Usage
 
@@ -101,6 +99,7 @@ const organization = new Organization(stack, "Organization", {
 });
 ```
 
+- `FeatureSet.ALL` is required for several features like Service Control Policies
 - The account which deploys the stack automatically becomes the management account of the new organization.
 - If an organization already exists, it will be automatically imported. The account which deploys the stacks must be the management account.
 - If the construct gets removed from the stack the organization still remains and must be manually deleted.
@@ -147,7 +146,7 @@ new Account(stack, "Account", {
 });
 ```
 
-To import an existing organizational unit (OU), add the following to your stack:
+To import an existing account, add the following to your stack:
 
 ```typescript
 Account.fromAccountId(stack, "ImportedAccount", {
@@ -160,6 +159,15 @@ Account.fromAccountId(stack, "ImportedAccount", {
 - An account will be created and then moved to the parent, if the parent is an organizational unit (OU).
 - It can only be used from within the management account in the us-east-1 region.
 - An account can't be deleted easily, if the construct gets removed from the stack the account still remains. [Closing an AWS account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
+
+## Limitations
+
+AWS Organizations has some limitations:
+
+- The stack can only be deployed in the `us-east-1` region.
+- The stack's account must be the management account of an existing organization.
+- The stack's account becomes the management account of the new organization.
+- An account belongs only to one organization with a single root.
 
 # Contributing
 
