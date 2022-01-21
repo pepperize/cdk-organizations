@@ -135,7 +135,7 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"service\\":\\"Organization\\",\\"action\\":\\"createOrganizationalUnit\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Name\\":\\"TestOrganization\\",\\"ParentId\\":\\"",
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createOrganizationalUnit\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Name\\":\\"TestOrganization\\",\\"ParentId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
                   "OrganizationRootRootCustomResourceBB74F060",
@@ -146,7 +146,7 @@ Object {
             ],
           ],
         },
-        "Delete": "{\\"service\\":\\"Organization\\",\\"action\\":\\"deleteOrganizationalUnit\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"OrganizationalUnitId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
+        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deleteOrganizationalUnit\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"OrganizationalUnitId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
         "InstallLatestAwsSdk": false,
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
@@ -154,7 +154,7 @@ Object {
             "Arn",
           ],
         },
-        "Update": "{\\"service\\":\\"Organization\\",\\"action\\":\\"updateOrganizationalUnit\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Name\\":\\"TestOrganization\\",\\"OrganizationalUnitId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"OrganizationalUnit.Id\\"}}",
+        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updateOrganizationalUnit\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Name\\":\\"TestOrganization\\",\\"OrganizationalUnitId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"OrganizationalUnit.Id\\"}}",
       },
       "Type": "Custom::Organization_OrganizationalUnit",
       "UpdateReplacePolicy": "Delete",
@@ -168,17 +168,17 @@ Object {
         "PolicyDocument": Object {
           "Statement": Array [
             Object {
-              "Action": "organization:CreateOrganizationalUnit",
+              "Action": "organizations:CreateOrganizationalUnit",
               "Effect": "Allow",
               "Resource": "*",
             },
             Object {
-              "Action": "organization:UpdateOrganizationalUnit",
+              "Action": "organizations:UpdateOrganizationalUnit",
               "Effect": "Allow",
               "Resource": "*",
             },
             Object {
-              "Action": "organization:DeleteOrganizationalUnit",
+              "Action": "organizations:DeleteOrganizationalUnit",
               "Effect": "Allow",
               "Resource": "*",
             },
