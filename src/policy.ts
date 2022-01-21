@@ -74,7 +74,7 @@ export class Policy extends Construct {
     const policy = new AwsCustomResource(this, "PolicyCustomResource", {
       resourceType: "Custom::Organization_Policy",
       onCreate: {
-        service: "Organization",
+        service: "Organizations",
         action: "createPolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createPolicy-property
         region: "us-east-1",
         parameters: {
@@ -86,7 +86,7 @@ export class Policy extends Construct {
         physicalResourceId: PhysicalResourceId.fromResponse("Policy.PolicySummary.Id"),
       },
       onUpdate: {
-        service: "Organization",
+        service: "Organizations",
         action: "updatePolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#updatePolicy-property
         region: "us-east-1",
         parameters: {
@@ -98,7 +98,7 @@ export class Policy extends Construct {
         physicalResourceId: PhysicalResourceId.fromResponse("Policy.PolicySummary.Id"),
       },
       onDelete: {
-        service: "Organization",
+        service: "Organizations",
         action: "deletePolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deletePolicy-property
         region: "us-east-1",
         parameters: {

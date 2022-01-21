@@ -74,7 +74,7 @@ export class OrganizationalUnit extends OrganizationalUnitBase {
         const organizationalUnit = new AwsCustomResource(this, "OrganizationalUnitCustomResource", {
           resourceType: "Custom::Organization_OrganizationalUnit",
           onCreate: {
-            service: "Organization",
+            service: "Organizations",
             action: "describeOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeOrganizationalUnit-property
             region: "us-east-1",
             parameters: {
@@ -83,7 +83,7 @@ export class OrganizationalUnit extends OrganizationalUnitBase {
             physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
           },
           onUpdate: {
-            service: "Organization",
+            service: "Organizations",
             action: "updateOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#updateOrganizationalUnit-property
             region: "us-east-1",
             parameters: {
@@ -93,7 +93,7 @@ export class OrganizationalUnit extends OrganizationalUnitBase {
             physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
           },
           onDelete: {
-            service: "Organization",
+            service: "Organizations",
             action: "deleteOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deleteOrganizationalUnit-property
             region: "us-east-1",
             parameters: {
@@ -122,7 +122,7 @@ export class OrganizationalUnit extends OrganizationalUnitBase {
     const organizationalUnit = new AwsCustomResource(this, "OrganizationalUnitCustomResource", {
       resourceType: "Custom::Organization_OrganizationalUnit",
       onCreate: {
-        service: "Organization",
+        service: "Organizations",
         action: "createOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createOrganizationalUnit-property
         region: "us-east-1",
         parameters: {
@@ -132,7 +132,7 @@ export class OrganizationalUnit extends OrganizationalUnitBase {
         physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
       },
       onUpdate: {
-        service: "Organization",
+        service: "Organizations",
         action: "updateOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#updateOrganizationalUnit-property
         region: "us-east-1",
         parameters: {
@@ -142,7 +142,7 @@ export class OrganizationalUnit extends OrganizationalUnitBase {
         physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
       },
       onDelete: {
-        service: "Organization",
+        service: "Organizations",
         action: "deleteOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deleteOrganizationalUnit-property
         region: "us-east-1",
         parameters: {
