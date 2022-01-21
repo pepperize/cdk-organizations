@@ -47,6 +47,17 @@ const project = new AwsCdkConstructLibrary({
     distName: "pepperize.cdk-organizations",
     module: "pepperize_cdk_organizations",
   },
+
+  gitpod: true,
 });
+
+project.gitpod.addCustomTask({
+  name: "setup",
+  init: "yarn install",
+  prebuild: "npx projen build",
+  command: "npx projen watch",
+});
+
+project.gitpod.addVscodeExtensions("dbaeumer.vscode-eslint");
 
 project.synth();
