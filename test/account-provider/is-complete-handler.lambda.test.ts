@@ -5,6 +5,7 @@ import * as sinon from "sinon";
 
 describe("account-provider.is-complete-handler.lambda", () => {
   jest.setTimeout(60_000);
+  console.log = jest.fn();
 
   let handler: IsCompleteHandler;
   beforeEach(async () => {
