@@ -57,15 +57,15 @@ export interface IOrganization extends IConstruct {
   /**
    * The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization.
    */
-  readonly masterAccountArn: string;
+  readonly managementAccountArn: string;
   /**
    * The unique identifier (ID) of the management account of an organization.
    */
-  readonly masterAccountId: string;
+  readonly managementAccountId: string;
   /**
    * The email address that is associated with the AWS account that is designated as the management account for the organization.
    */
-  readonly masterAccountEmail: string;
+  readonly managementAccountEmail: string;
   /**
    * The root of the current organization, which is automatically created.
    */
@@ -76,9 +76,9 @@ export class Organization extends Construct implements IOrganization {
   public readonly organizationId: string;
   public readonly organizationArn: string;
   public readonly featureSet: FeatureSet;
-  public readonly masterAccountArn: string;
-  public readonly masterAccountId: string;
-  public readonly masterAccountEmail: string;
+  public readonly managementAccountArn: string;
+  public readonly managementAccountId: string;
+  public readonly managementAccountEmail: string;
   public readonly root: Root;
 
   public constructor(scope: Construct, id: string, props: OrganizationProps) {
@@ -97,9 +97,9 @@ export class Organization extends Construct implements IOrganization {
     this.organizationId = organization.getAtt("Organization.Id").toString();
     this.organizationArn = organization.getAtt("Organization.Arn").toString();
     this.featureSet = organization.getAtt("Organization.FeatureSet").toString() as FeatureSet;
-    this.masterAccountArn = organization.getAtt("Organization.MasterAccountArn").toString();
-    this.masterAccountId = organization.getAtt("Organization.MasterAccountId").toString();
-    this.masterAccountEmail = organization.getAtt("Organization.MasterAccountEmail").toString();
+    this.managementAccountArn = organization.getAtt("Organization.MasterAccountArn").toString();
+    this.managementAccountId = organization.getAtt("Organization.MasterAccountId").toString();
+    this.managementAccountEmail = organization.getAtt("Organization.MasterAccountEmail").toString();
 
     this.root = new Root(this, "Root", { organization: this });
     this.root.node.addDependency(organization);
