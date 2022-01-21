@@ -99,7 +99,7 @@ const organization = new Organization(stack, "Organization", {
 });
 ```
 
-- `FeatureSet.ALL` is required for several features like Service Control Policies
+- `FeatureSet.ALL` is required for advanced features like Service Control Policies and is the [preferred way to work with AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
 - The account which deploys the stack automatically becomes the management account of the new organization.
 - If an organization already exists, it will be automatically imported. The account which deploys the stacks must be the management account.
 - If the construct gets removed from the stack the organization still remains and must be manually deleted.
