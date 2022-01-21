@@ -407,6 +407,25 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 ---
 
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`enablePolicyType`](#pepperizecdkorganizationsorganizationenablepolicytype) | *No description.* |
+
+---
+
+##### `enablePolicyType` <a name="@pepperize/cdk-organizations.Organization.enablePolicyType" id="pepperizecdkorganizationsorganizationenablepolicytype"></a>
+
+```typescript
+public enablePolicyType(policyType: PolicyType)
+```
+
+###### `policyType`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.parameter.policyType" id="pepperizecdkorganizationsorganizationparameterpolicytype"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType)
+
+---
 
 
 #### Properties <a name="Properties" id="properties"></a>

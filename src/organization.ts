@@ -1,8 +1,10 @@
 import { CustomResource } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
+import { EnablePolicyType } from "./enable-policy-type";
 import { OrganizationProvider } from "./organization-provider";
 import { IParent } from "./parent";
+import { PolicyType } from "./policy";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
 
 /**
@@ -103,6 +105,13 @@ export class Organization extends Construct implements IOrganization {
 
     this.root = new Root(this, "Root", { organization: this });
     this.root.node.addDependency(organization);
+  }
+
+  public enablePolicyType(policyType: PolicyType) {
+    new EnablePolicyType(this, "EnablePolicyType", {
+      root: this.root,
+      policyType: policyType,
+    });
   }
 }
 
