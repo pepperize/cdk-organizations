@@ -440,9 +440,9 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | [`featureSet`](#pepperizecdkorganizationsorganizationpropertyfeatureset)<span title="Required">*</span> | [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet) | Specifies the functionality that currently is available to the organization. |
-| [`masterAccountArn`](#pepperizecdkorganizationsorganizationpropertymasteraccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
-| [`masterAccountEmail`](#pepperizecdkorganizationsorganizationpropertymasteraccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
-| [`masterAccountId`](#pepperizecdkorganizationsorganizationpropertymasteraccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
+| [`managementAccountArn`](#pepperizecdkorganizationsorganizationpropertymanagementaccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
+| [`managementAccountEmail`](#pepperizecdkorganizationsorganizationpropertymanagementaccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
+| [`managementAccountId`](#pepperizecdkorganizationsorganizationpropertymanagementaccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
 | [`organizationArn`](#pepperizecdkorganizationsorganizationpropertyorganizationarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of an organization. |
 | [`organizationId`](#pepperizecdkorganizationsorganizationpropertyorganizationid)<span title="Required">*</span> | `string` | The unique identifier (ID) of an organization. |
 | [`root`](#pepperizecdkorganizationsorganizationpropertyroot)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root) | The root of the current organization, which is automatically created. |
@@ -463,10 +463,10 @@ If set to "ALL", then all features are enabled and policies can be applied to ac
 
 ---
 
-##### `masterAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.masterAccountArn" id="pepperizecdkorganizationsorganizationpropertymasteraccountarn"></a>
+##### `managementAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.managementAccountArn" id="pepperizecdkorganizationsorganizationpropertymanagementaccountarn"></a>
 
 ```typescript
-public readonly masterAccountArn: string;
+public readonly managementAccountArn: string;
 ```
 
 - *Type:* `string`
@@ -475,10 +475,10 @@ The Amazon Resource Name (ARN) of the account that is designated as the manageme
 
 ---
 
-##### `masterAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.masterAccountEmail" id="pepperizecdkorganizationsorganizationpropertymasteraccountemail"></a>
+##### `managementAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.managementAccountEmail" id="pepperizecdkorganizationsorganizationpropertymanagementaccountemail"></a>
 
 ```typescript
-public readonly masterAccountEmail: string;
+public readonly managementAccountEmail: string;
 ```
 
 - *Type:* `string`
@@ -487,10 +487,10 @@ The email address that is associated with the AWS account that is designated as 
 
 ---
 
-##### `masterAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.masterAccountId" id="pepperizecdkorganizationsorganizationpropertymasteraccountid"></a>
+##### `managementAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.property.managementAccountId" id="pepperizecdkorganizationsorganizationpropertymanagementaccountid"></a>
 
 ```typescript
-public readonly masterAccountId: string;
+public readonly managementAccountId: string;
 ```
 
 - *Type:* `string`
@@ -1636,9 +1636,9 @@ An organization has one management account along with zero or more member accoun
 | --- | --- | --- |
 | [`node`](#pepperizecdkorganizationsiorganizationpropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
 | [`featureSet`](#pepperizecdkorganizationsiorganizationpropertyfeatureset)<span title="Required">*</span> | [`@pepperize/cdk-organizations.FeatureSet`](#@pepperize/cdk-organizations.FeatureSet) | Specifies the functionality that currently is available to the organization. |
-| [`masterAccountArn`](#pepperizecdkorganizationsiorganizationpropertymasteraccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
-| [`masterAccountEmail`](#pepperizecdkorganizationsiorganizationpropertymasteraccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
-| [`masterAccountId`](#pepperizecdkorganizationsiorganizationpropertymasteraccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
+| [`managementAccountArn`](#pepperizecdkorganizationsiorganizationpropertymanagementaccountarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization. |
+| [`managementAccountEmail`](#pepperizecdkorganizationsiorganizationpropertymanagementaccountemail)<span title="Required">*</span> | `string` | The email address that is associated with the AWS account that is designated as the management account for the organization. |
+| [`managementAccountId`](#pepperizecdkorganizationsiorganizationpropertymanagementaccountid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the management account of an organization. |
 | [`organizationArn`](#pepperizecdkorganizationsiorganizationpropertyorganizationarn)<span title="Required">*</span> | `string` | The Amazon Resource Name (ARN) of an organization. |
 | [`organizationId`](#pepperizecdkorganizationsiorganizationpropertyorganizationid)<span title="Required">*</span> | `string` | The unique identifier (ID) of an organization. |
 | [`root`](#pepperizecdkorganizationsiorganizationpropertyroot)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root) | The root of the current organization, which is automatically created. |
@@ -1671,10 +1671,10 @@ If set to "ALL", then all features are enabled and policies can be applied to ac
 
 ---
 
-##### `masterAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.masterAccountArn" id="pepperizecdkorganizationsiorganizationpropertymasteraccountarn"></a>
+##### `managementAccountArn`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.managementAccountArn" id="pepperizecdkorganizationsiorganizationpropertymanagementaccountarn"></a>
 
 ```typescript
-public readonly masterAccountArn: string;
+public readonly managementAccountArn: string;
 ```
 
 - *Type:* `string`
@@ -1683,10 +1683,10 @@ The Amazon Resource Name (ARN) of the account that is designated as the manageme
 
 ---
 
-##### `masterAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.masterAccountEmail" id="pepperizecdkorganizationsiorganizationpropertymasteraccountemail"></a>
+##### `managementAccountEmail`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.managementAccountEmail" id="pepperizecdkorganizationsiorganizationpropertymanagementaccountemail"></a>
 
 ```typescript
-public readonly masterAccountEmail: string;
+public readonly managementAccountEmail: string;
 ```
 
 - *Type:* `string`
@@ -1695,10 +1695,10 @@ The email address that is associated with the AWS account that is designated as 
 
 ---
 
-##### `masterAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.masterAccountId" id="pepperizecdkorganizationsiorganizationpropertymasteraccountid"></a>
+##### `managementAccountId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.property.managementAccountId" id="pepperizecdkorganizationsiorganizationpropertymanagementaccountid"></a>
 
 ```typescript
-public readonly masterAccountId: string;
+public readonly managementAccountId: string;
 ```
 
 - *Type:* `string`
