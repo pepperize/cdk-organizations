@@ -204,15 +204,15 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "AccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource8D3AA08F",
-            "Outputs.StackAccountTagsTagResourceProviderframeworkonEvent63F8E4F6Arn",
+            "AccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE28B2422",
+            "Outputs.StackAccountTagscdkorganizationsTagResourceProviderframeworkonEvent331B52E4Arn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "AccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource8D3AA08F": Object {
+    "AccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE28B2422": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
@@ -235,7 +235,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/ba57d9e83b025104fb6eaa035b5c6afde7285c63872578478c744cdac4ea63ec.json",
+              "/4d557fcfe56a068d11a8bdd64648c144f140ce3083114012c39e3949fcb2e6df.json",
             ],
           ],
         },

@@ -270,8 +270,8 @@ Object {
         "ImportedAccountDescribeAccountCustomResourcePolicy3ABA958E",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
       ],
       "Properties": Object {
         "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"describeAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"123456789012\\"},\\"parameters\\":{\\"AccountId\\":\\"123456789012\\"}}",
@@ -292,8 +292,8 @@ Object {
       "DependsOn": Array [
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -323,8 +323,8 @@ Object {
         "ImportedAccountParentListParentsCustomResource1A5DF629",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
       ],
       "Properties": Object {
         "Create": Object {
@@ -416,8 +416,8 @@ Object {
         "ImportedAccountParentListParentsCustomResource1A5DF629",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -543,15 +543,15 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "ImportedAccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource05EEDB55",
-            "Outputs.ImportedAccountTagsTagResourceProviderframeworkonEvent3B51C7A3Arn",
+            "ImportedAccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource03888921",
+            "Outputs.ImportedAccountTagscdkorganizationsTagResourceProviderframeworkonEvent78D71572Arn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "ImportedAccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource05EEDB55": Object {
+    "ImportedAccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource03888921": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "ImportedAccountDescribeAccountCustomResourcePolicy3ABA958E",
@@ -574,7 +574,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/1d014471ee674f8009b6cfba56ea79c65b587b847f7f10c2504164f3c8b79b18.json",
+              "/7968a446188d8466709be17ce97f1e5cc3cbad29e9e1de252755051063d8439e.json",
             ],
           ],
         },
@@ -657,15 +657,15 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
-            "Outputs.OrganizationRootTagsTagResourceProviderframeworkonEvent19792A98Arn",
+            "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
+            "Outputs.OrganizationRootTagscdkorganizationsTagResourceProviderframeworkonEventF7418996Arn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137": Object {
+    "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "Organization06E16095",
@@ -689,7 +689,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/96b8c54e1859de451bdcf1ead9fef8469a83b9af86b3e8af6b770e8234e18d51.json",
+              "/2b607f2ff0ceed536d903ef10ab842bc78d034eb3813ccfc62e9ac46f0faf8ad.json",
             ],
           ],
         },
@@ -729,12 +729,12 @@ Object {
       "DependsOn": Array [
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
         "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
         "PolicyPolicyCustomResource79938510",
+        "PolicyTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceDF6089CF",
         "PolicyTagsTagResource27BB67A1",
-        "PolicyTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD482F8EB",
         "PolicyAttachmentMoveAccountCustomResourceCustomResourcePolicyA1269436",
       ],
       "Properties": Object {
@@ -825,12 +825,12 @@ Object {
       "DependsOn": Array [
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
         "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
         "PolicyPolicyCustomResource79938510",
+        "PolicyTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceDF6089CF",
         "PolicyTagsTagResource27BB67A1",
-        "PolicyTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD482F8EB",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -923,15 +923,15 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "PolicyTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD482F8EB",
-            "Outputs.PolicyTagsTagResourceProviderframeworkonEvent0C15A9FBArn",
+            "PolicyTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceDF6089CF",
+            "Outputs.PolicyTagscdkorganizationsTagResourceProviderframeworkonEvent00CC85BFArn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "PolicyTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD482F8EB": Object {
+    "PolicyTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceDF6089CF": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
@@ -954,7 +954,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/9fa534f5327cb4ef279a3902a965ca43e35ab28fadd7e733fe49d972a030459d.json",
+              "/00626e3f5eb1664ad99478d3310e5eb26076a754e4c56c6521f2b8f5f8e010f9.json",
             ],
           ],
         },
@@ -986,8 +986,8 @@ Object {
         "Project1AccountDescribeAccountCustomResourcePolicyF5817EDC",
         "ProjectsOUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource576A896C",
         "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56",
         "ProjectsOUTagsTagResource5FC759B6",
-        "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974",
       ],
       "Properties": Object {
         "Create": Object {
@@ -1072,8 +1072,8 @@ Object {
         "Project1AccountCreateAccount8A604AF1",
         "ProjectsOUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource576A896C",
         "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56",
         "ProjectsOUTagsTagResource5FC759B6",
-        "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -1103,8 +1103,8 @@ Object {
         "Project1AccountParentListParentsCustomResourceD5E4279A",
         "ProjectsOUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource576A896C",
         "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56",
         "ProjectsOUTagsTagResource5FC759B6",
-        "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974",
       ],
       "Properties": Object {
         "Create": Object {
@@ -1196,8 +1196,8 @@ Object {
         "Project1AccountParentListParentsCustomResourceD5E4279A",
         "ProjectsOUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource576A896C",
         "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56",
         "ProjectsOUTagsTagResource5FC759B6",
-        "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -1323,15 +1323,15 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "Project1AccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource32E6E27B",
-            "Outputs.Project1AccountTagsTagResourceProviderframeworkonEventF16784C1Arn",
+            "Project1AccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource1FE09678",
+            "Outputs.Project1AccountTagscdkorganizationsTagResourceProviderframeworkonEvent4ED02E6DArn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "Project1AccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource32E6E27B": Object {
+    "Project1AccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource1FE09678": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "Project1AccountDescribeAccountCustomResourcePolicyF5817EDC",
@@ -1354,7 +1354,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/60512c76a1b34d6bf254633e7a748229e148d34f82faf8c7f6aacd7522620829.json",
+              "/a1257e343d2af95ee22b895a0915a5bfe883fc3ac080061e685cd6632f7cdf47.json",
             ],
           ],
         },
@@ -1413,8 +1413,8 @@ Object {
         "Project2DevAccountDescribeAccountCustomResourcePolicy3FFCC681",
         "Project2OUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource7188FD2A",
         "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A",
         "Project2OUTagsTagResource42039814",
-        "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031",
       ],
       "Properties": Object {
         "Create": Object {
@@ -1499,8 +1499,8 @@ Object {
         "Project2DevAccountCreateAccount52C0EFA9",
         "Project2OUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource7188FD2A",
         "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A",
         "Project2OUTagsTagResource42039814",
-        "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -1530,8 +1530,8 @@ Object {
         "Project2DevAccountParentListParentsCustomResource4EC3FE62",
         "Project2OUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource7188FD2A",
         "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A",
         "Project2OUTagsTagResource42039814",
-        "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031",
       ],
       "Properties": Object {
         "Create": Object {
@@ -1623,8 +1623,8 @@ Object {
         "Project2DevAccountParentListParentsCustomResource4EC3FE62",
         "Project2OUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource7188FD2A",
         "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A",
         "Project2OUTagsTagResource42039814",
-        "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -1750,15 +1750,15 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "Project2DevAccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceE1159268",
-            "Outputs.Project2DevAccountTagsTagResourceProviderframeworkonEvent19CB92DEArn",
+            "Project2DevAccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource918142C6",
+            "Outputs.Project2DevAccountTagscdkorganizationsTagResourceProviderframeworkonEventCC82DAA6Arn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "Project2DevAccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceE1159268": Object {
+    "Project2DevAccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource918142C6": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "Project2DevAccountDescribeAccountCustomResourcePolicy3FFCC681",
@@ -1781,7 +1781,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/093884cce52a04cc0dfbb0712ad17e3e0d945e7eb81ec01614e234305bf81bca.json",
+              "/6e74c7853d8ff025dfa77c681e8a0d55b276225686d5b015ceb83995cafec664.json",
             ],
           ],
         },
@@ -1821,8 +1821,8 @@ Object {
       "DependsOn": Array [
         "ProjectsOUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource576A896C",
         "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56",
         "ProjectsOUTagsTagResource5FC759B6",
-        "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974",
       ],
       "Properties": Object {
         "ImportOnDuplicate": "true",
@@ -1850,8 +1850,8 @@ Object {
         "Project2OUOrganizationProviderA322B887",
         "ProjectsOUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource576A896C",
         "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56",
         "ProjectsOUTagsTagResource5FC759B6",
-        "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974",
       ],
       "Properties": Object {
         "ResourceId": Object {
@@ -1862,22 +1862,22 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031",
-            "Outputs.Project2OUTagsTagResourceProviderframeworkonEvent04ADBEACArn",
+            "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A",
+            "Outputs.Project2OUTagscdkorganizationsTagResourceProviderframeworkonEvent5F2FB2D2Arn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031": Object {
+    "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "Project2OUOrganizationProviderA322B887",
         "ProjectsOUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource576A896C",
         "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56",
         "ProjectsOUTagsTagResource5FC759B6",
-        "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974",
       ],
       "Properties": Object {
         "TemplateURL": Object {
@@ -1896,7 +1896,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/901704ab784944cf0687bb6eb6cc1e1261d7f0001c933caa2cb128e3c8fc2273.json",
+              "/103cad8c6f2232f5346207314f81ba97216ebcdb9226b360beea8170094fa09e.json",
             ],
           ],
         },
@@ -1909,8 +1909,8 @@ Object {
       "DependsOn": Array [
         "ProjectsOUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource576A896C",
         "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56",
         "ProjectsOUTagsTagResource5FC759B6",
-        "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974",
       ],
       "Properties": Object {
         "TemplateURL": Object {
@@ -1959,8 +1959,8 @@ Object {
       "DependsOn": Array [
         "Project2OUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource7188FD2A",
         "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A",
         "Project2OUTagsTagResource42039814",
-        "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031",
         "Project2ProdAccountCreateAccount7163F1C3",
         "Project2ProdAccountDescribeAccountCustomResourcePolicy7898D0BB",
       ],
@@ -2046,8 +2046,8 @@ Object {
       "DependsOn": Array [
         "Project2OUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource7188FD2A",
         "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A",
         "Project2OUTagsTagResource42039814",
-        "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031",
         "Project2ProdAccountCreateAccount7163F1C3",
       ],
       "Properties": Object {
@@ -2074,8 +2074,8 @@ Object {
       "DependsOn": Array [
         "Project2OUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource7188FD2A",
         "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A",
         "Project2OUTagsTagResource42039814",
-        "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031",
         "Project2ProdAccountParentListParentsCustomResourceCustomResourcePolicy0EF93364",
         "Project2ProdAccountParentListParentsCustomResourceD9105B36",
       ],
@@ -2104,8 +2104,8 @@ Object {
       "DependsOn": Array [
         "Project2OUcdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource7188FD2A",
         "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceBA5CF58A",
         "Project2OUTagsTagResource42039814",
-        "Project2OUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceEBF0E031",
         "Project2ProdAccountMoveAccountCustomResourcePolicyE769DE00",
         "Project2ProdAccountParentListParentsCustomResourceCustomResourcePolicy0EF93364",
         "Project2ProdAccountParentListParentsCustomResourceD9105B36",
@@ -2298,15 +2298,15 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "Project2ProdAccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource4A0AEB45",
-            "Outputs.Project2ProdAccountTagsTagResourceProviderframeworkonEventF9F9BC00Arn",
+            "Project2ProdAccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource4C9DB102",
+            "Outputs.Project2ProdAccountTagscdkorganizationsTagResourceProviderframeworkonEvent9163693AArn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "Project2ProdAccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource4A0AEB45": Object {
+    "Project2ProdAccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource4C9DB102": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "Project2ProdAccountDescribeAccountCustomResourcePolicy7898D0BB",
@@ -2329,7 +2329,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/06d76931286f802903143291a4520665ff1478fdf023ed4286d6d49fe59e06d6.json",
+              "/a9f164be44bd30f470467ba697359d73647c69d7da8aa85cb8f08eb9384574d2.json",
             ],
           ],
         },
@@ -2369,8 +2369,8 @@ Object {
       "DependsOn": Array [
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
       ],
       "Properties": Object {
         "ImportOnDuplicate": "true",
@@ -2397,8 +2397,8 @@ Object {
       "DependsOn": Array [
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
         "ProjectsOUOrganizationProvider5CA5D400",
       ],
       "Properties": Object {
@@ -2410,21 +2410,21 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974",
-            "Outputs.ProjectsOUTagsTagResourceProviderframeworkonEventB53FBAA2Arn",
+            "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56",
+            "Outputs.ProjectsOUTagscdkorganizationsTagResourceProviderframeworkonEventF94E2EAFArn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "ProjectsOUTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource884B5974": Object {
+    "ProjectsOUTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE792EE56": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
         "ProjectsOUOrganizationProvider5CA5D400",
       ],
       "Properties": Object {
@@ -2444,7 +2444,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/5c498c7a242159135a1cc5dbc57693a1d908f61befe21ed8ba9f0452772bbe27.json",
+              "/41f62cdd6b28336c749b501d0dada1c7e47eb932b2212da870600de4b61209f7.json",
             ],
           ],
         },
@@ -2457,8 +2457,8 @@ Object {
       "DependsOn": Array [
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
+        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
         "OrganizationRootTagsTagResourceCBEA7B2F",
-        "OrganizationRootTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD6DBE137",
       ],
       "Properties": Object {
         "TemplateURL": Object {
