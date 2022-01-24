@@ -62,7 +62,7 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
 
     if (!Validators.of().organizationalUnitName(organizationalUnitName)) {
       Annotations.of(this).addError(
-        "The organizational units name must be of string and between 1 and 128 characters long."
+        "The organizational unit's name must be of type string and between 1 and 128 characters long."
       );
     }
 
