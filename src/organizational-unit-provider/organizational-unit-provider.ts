@@ -30,10 +30,10 @@ export class OrganizationalUnitProvider extends NestedStack {
     return (existing as OrganizationalUnitProvider) || new OrganizationalUnitProvider(scope, id, {});
   }
   /**
-   * Creates an Organizational Unit and returns the result.
+   * Creates an Organizational Unit (OU) and returns the result.
    *
-   * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createOrganization-property
-   * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeOrganization-property
+   * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createOrganizationalUnit-property
+   * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listOrganizationalUnitsForParent-property
    */
   public readonly onEventHandler: Function;
   /**

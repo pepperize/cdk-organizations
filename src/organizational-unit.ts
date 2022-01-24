@@ -1,6 +1,6 @@
 import { Annotations, CustomResource, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
-import { OrganizationalUnitProvider } from "./organizational-unit-provider/organization-unit-provider";
+import { OrganizationalUnitProvider } from "./organizational-unit-provider/organizational-unit-provider";
 import { IChild, IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
 import { ITaggableResource, TagResource } from "./tag-resource";
