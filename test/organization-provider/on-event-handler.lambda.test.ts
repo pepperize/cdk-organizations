@@ -57,7 +57,7 @@ describe("organization-provider.on-event-handler.lambda", () => {
     // Then
     expect(response).not.toBeUndefined();
     expect(response?.PhysicalResourceId).toEqual("o-1234567890");
-    expect(response?.Data?.Organization?.FeatureSet).toEqual(FeatureSet.ALL);
+    expect(response?.Data?.FeatureSet).toEqual(FeatureSet.ALL);
     sinon.assert.called(createOrganizationFake);
   });
 
@@ -99,9 +99,7 @@ describe("organization-provider.on-event-handler.lambda", () => {
     expect(response).not.toBeUndefined();
     expect(response).toEqual({
       PhysicalResourceId: "o-1234567890",
-      Data: {
-        Organization: { Id: "o-1234567890", FeatureSet: FeatureSet.ALL },
-      },
+      Data: { Id: "o-1234567890", FeatureSet: FeatureSet.ALL },
     });
     sinon.assert.called(describeOrganizationFake);
   });

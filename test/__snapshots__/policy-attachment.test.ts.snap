@@ -64,11 +64,28 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "AccountAccountCustomResource0B716A6F": Object {
+    "AccountCreateAccount833709C2": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "AccountName": "Test Account",
+        "Email": "info@pepperize.com",
+        "IamUserAccessToBilling": "ALLOW",
+        "RoleName": "OrganizationAccountAccessRole",
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceB38D49F2",
+            "Outputs.StackAccountcdkorganizationsAccountProviderframeworkonEvent5E28D041Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_CreateAccount",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AccountDescribeAccount70B846F7": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "AccountAccountCustomResourceCustomResourcePolicy3CD2BD3A",
-        "AccountCreateAccountProvider7EB21BFC",
+        "AccountCreateAccount833709C2",
+        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
       ],
       "Properties": Object {
         "Create": Object {
@@ -78,14 +95,14 @@ Object {
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"describeAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountCreateAccount833709C2",
                   "AccountId",
                 ],
               },
               "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountCreateAccount833709C2",
                   "AccountId",
                 ],
               },
@@ -97,17 +114,17 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deleteAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"describeAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountCreateAccount833709C2",
                   "AccountId",
                 ],
               },
               "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountCreateAccount833709C2",
                   "AccountId",
                 ],
               },
@@ -129,14 +146,14 @@ Object {
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"describeAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountCreateAccount833709C2",
                   "AccountId",
                 ],
               },
               "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountCreateAccountProvider7EB21BFC",
+                  "AccountCreateAccount833709C2",
                   "AccountId",
                 ],
               },
@@ -145,12 +162,12 @@ Object {
           ],
         },
       },
-      "Type": "Custom::Organization_Account",
+      "Type": "Custom::Organizations_Account",
       "UpdateReplacePolicy": "Delete",
     },
-    "AccountAccountCustomResourceCustomResourcePolicy3CD2BD3A": Object {
+    "AccountDescribeAccountCustomResourcePolicy9AAAEE6A": Object {
       "DependsOn": Array [
-        "AccountCreateAccountProvider7EB21BFC",
+        "AccountCreateAccount833709C2",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -160,15 +177,10 @@ Object {
               "Effect": "Allow",
               "Resource": "*",
             },
-            Object {
-              "Action": "organizations:DeleteAccount",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "AccountAccountCustomResourceCustomResourcePolicy3CD2BD3A",
+        "PolicyName": "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
         "Roles": Array [
           Object {
             "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
@@ -177,24 +189,61 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
-    "AccountCreateAccountProvider7EB21BFC": Object {
+    "AccountTagsTagResourceB6D57C22": Object {
       "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
+        "AccountDescribeAccount70B846F7",
+      ],
       "Properties": Object {
-        "AccountName": "Test Account",
-        "Email": "info@pepperize.com",
-        "IamUserAccessToBilling": "ALLOW",
-        "RoleName": "OrganizationAccountAccessRole",
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "AccountDescribeAccount70B846F7",
+            "Account.Id",
+          ],
+        },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "AccountpepperizecdkorganizationsAccountProviderNestedStackpepperizecdkorganizationsAccountProviderNestedStackResource05676357",
-            "Outputs.StackAccountpepperizecdkorganizationsAccountProviderframeworkonEventFDA17817Arn",
+            "AccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource8D3AA08F",
+            "Outputs.StackAccountTagsTagResourceProviderframeworkonEvent63F8E4F6Arn",
           ],
         },
       },
-      "Type": "Custom::Organization_CreateAccount",
+      "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "AccountpepperizecdkorganizationsAccountProviderNestedStackpepperizecdkorganizationsAccountProviderNestedStackResource05676357": Object {
+    "AccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource8D3AA08F": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
+        "AccountDescribeAccount70B846F7",
+      ],
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+              },
+              "/ba57d9e83b025104fb6eaa035b5c6afde7285c63872578478c744cdac4ea63ec.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceB38D49F2": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "TemplateURL": Object {
@@ -213,7 +262,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/b974e1c3a2b2e45847bdf6a265a08a72dd09d5e40c700c66b9744902a3c7e5b9.json",
+              "/b18830e8d029ae7e52c54fca379f9093ce647da3eacc16f8b3c8b8b0cfedd793.json",
             ],
           ],
         },
@@ -224,12 +273,16 @@ Object {
     "PolicyAttachmentMoveAccountCustomResource45168EBC": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "AccountpepperizecdkorganizationsAccountProviderNestedStackpepperizecdkorganizationsAccountProviderNestedStackResource05676357",
-        "AccountAccountCustomResourceCustomResourcePolicy3CD2BD3A",
-        "AccountAccountCustomResource0B716A6F",
-        "AccountCreateAccountProvider7EB21BFC",
+        "AccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceB38D49F2",
+        "AccountCreateAccount833709C2",
+        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
+        "AccountDescribeAccount70B846F7",
+        "AccountTagsTagResourceB6D57C22",
+        "AccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource8D3AA08F",
         "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
         "PolicyPolicyCustomResource79938510",
+        "PolicyTagsTagResource27BB67A1",
+        "PolicyTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD482F8EB",
         "PolicyAttachmentMoveAccountCustomResourceCustomResourcePolicyA1269436",
       ],
       "Properties": Object {
@@ -247,7 +300,7 @@ Object {
               "\\",\\"TargetId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountAccountCustomResource0B716A6F",
+                  "AccountDescribeAccount70B846F7",
                   "Account.Id",
                 ],
               },
@@ -261,7 +314,7 @@ Object {
               ":",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountAccountCustomResource0B716A6F",
+                  "AccountDescribeAccount70B846F7",
                   "Account.Id",
                 ],
               },
@@ -283,7 +336,7 @@ Object {
               "\\",\\"TargetId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountAccountCustomResource0B716A6F",
+                  "AccountDescribeAccount70B846F7",
                   "Account.Id",
                 ],
               },
@@ -297,7 +350,7 @@ Object {
               ":",
               Object {
                 "Fn::GetAtt": Array [
-                  "AccountAccountCustomResource0B716A6F",
+                  "AccountDescribeAccount70B846F7",
                   "Account.Id",
                 ],
               },
@@ -318,12 +371,16 @@ Object {
     },
     "PolicyAttachmentMoveAccountCustomResourceCustomResourcePolicyA1269436": Object {
       "DependsOn": Array [
-        "AccountpepperizecdkorganizationsAccountProviderNestedStackpepperizecdkorganizationsAccountProviderNestedStackResource05676357",
-        "AccountAccountCustomResourceCustomResourcePolicy3CD2BD3A",
-        "AccountAccountCustomResource0B716A6F",
-        "AccountCreateAccountProvider7EB21BFC",
+        "AccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceB38D49F2",
+        "AccountCreateAccount833709C2",
+        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
+        "AccountDescribeAccount70B846F7",
+        "AccountTagsTagResourceB6D57C22",
+        "AccountTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResource8D3AA08F",
         "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
         "PolicyPolicyCustomResource79938510",
+        "PolicyTagsTagResource27BB67A1",
+        "PolicyTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD482F8EB",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -367,7 +424,7 @@ Object {
         },
         "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\\\\\\\\\\\"Version\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2012-10-17\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Statement\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\"Effect\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Allow\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Action\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"s3:*\\\\\\\\\\\\\\"}}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
       },
-      "Type": "Custom::Organization_Policy",
+      "Type": "Custom::Organizations_Policy",
       "UpdateReplacePolicy": "Delete",
     },
     "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4": Object {
@@ -400,6 +457,60 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Policy",
+    },
+    "PolicyTagsTagResource27BB67A1": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
+        "PolicyPolicyCustomResource79938510",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "PolicyPolicyCustomResource79938510",
+            "Policy.PolicySummary.Id",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "PolicyTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD482F8EB",
+            "Outputs.StackPolicyTagsTagResourceProviderframeworkonEvent29F6B1E2Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "PolicyTagsTagResourceProviderNestedStackTagResourceProviderNestedStackResourceD482F8EB": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
+        "PolicyPolicyCustomResource79938510",
+      ],
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+              },
+              "/124401b922dff075b3c8b137724c1809468635f145f01d5e8a9fba81ec59fd20.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
     },
   },
   "Rules": Object {

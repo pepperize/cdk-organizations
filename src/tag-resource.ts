@@ -26,9 +26,9 @@ export class TagResource extends Construct {
     const { resource } = props;
 
     const tagResourceProvider = TagResourceProvider.getOrCreate(this);
-    new CustomResource(this, `TagResourceProvider`, {
+    new CustomResource(this, "TagResource", {
       serviceToken: tagResourceProvider.provider.serviceToken,
-      resourceType: "Custom::Organization_TagResource",
+      resourceType: "Custom::Organizations_TagResource",
       properties: {
         ResourceId: resource.identifier(),
         Tags: resource.tags.renderedTags,

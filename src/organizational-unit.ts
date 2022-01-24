@@ -1,23 +1,32 @@
-import {
-  AwsCustomResource,
-  AwsCustomResourcePolicy,
-  PhysicalResourceId,
-  PhysicalResourceIdReference,
-} from "aws-cdk-lib/custom-resources";
+import { Annotations, CustomResource, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
+import { OrganizationalUnitProvider } from "./organizational-unit-provider/organization-unit-provider";
 import { IChild, IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
+import { ITaggableResource, TagResource } from "./tag-resource";
+import { Validators } from "./validators";
 
 export interface OrganizationalUnitProps {
   /**
    * The friendly name to assign to the new OU.
    */
   readonly organizationalUnitName: string;
-
   /**
    * The parent root or OU that you want to create the new OrganizationalUnit in.
    */
   readonly parent: IParent;
+  /**
+   * Whether to import, if a duplicate organizational unit with same name exists in the parent exists.
+   *
+   * @default true
+   */
+  readonly importOnDuplicate?: boolean;
+  /**
+   * If set to RemovalPolicy.DESTROY, the organizational unit will be deleted
+   *
+   * @default RemovalPolicy.Retain
+   */
+  readonly removalPolicy?: RemovalPolicy;
 }
 
 /**
@@ -40,122 +49,43 @@ export interface IOrganizationalUnit extends IPolicyAttachmentTarget, IParent, I
   readonly organizationalUnitName: string;
 }
 
-export abstract class OrganizationalUnitBase extends Construct implements IOrganizationalUnit {
-  abstract readonly organizationalUnitId: string;
-  abstract readonly organizationalUnitArn: string;
-  abstract readonly organizationalUnitName: string;
-
-  identifier(): string {
-    return this.organizationalUnitId;
-  }
-}
-
-export interface OrganizationalUnitAttributes {
-  readonly organizationalUnitId: string;
-  readonly parent: IParent;
-}
-
-export class OrganizationalUnit extends OrganizationalUnitBase {
-  public static fromOrganizationalUnitId(
-    scope: Construct,
-    id: string,
-    attrs: OrganizationalUnitAttributes
-  ): IOrganizationalUnit {
-    class Import extends OrganizationalUnitBase {
-      readonly organizationalUnitId: string;
-      readonly organizationalUnitArn: string;
-      readonly organizationalUnitName: string;
-      public constructor() {
-        super(scope, id);
-
-        this.node.addDependency(attrs.parent);
-
-        const organizationalUnit = new AwsCustomResource(this, "OrganizationalUnitCustomResource", {
-          resourceType: "Custom::Organization_OrganizationalUnit",
-          onCreate: {
-            service: "Organizations",
-            action: "describeOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeOrganizationalUnit-property
-            region: "us-east-1",
-            parameters: {
-              OrganizationalUnitId: attrs.organizationalUnitId,
-            },
-            physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
-          },
-          onUpdate: {
-            service: "Organizations",
-            action: "describeOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#updateOrganizationalUnit-property
-            region: "us-east-1",
-            parameters: {
-              OrganizationalUnitId: new PhysicalResourceIdReference(),
-            },
-            physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
-          },
-          onDelete: {
-            service: "Organizations",
-            action: "deleteOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deleteOrganizationalUnit-property
-            region: "us-east-1",
-            parameters: {
-              OrganizationalUnitId: new PhysicalResourceIdReference(),
-            },
-          },
-          installLatestAwsSdk: false,
-          policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
-        });
-        this.organizationalUnitId = organizationalUnit.getResponseField("OrganizationalUnit.Id");
-        this.organizationalUnitArn = organizationalUnit.getResponseField("OrganizationalUnit.Arn");
-        this.organizationalUnitName = organizationalUnit.getResponseField("OrganizationalUnit.Name");
-      }
-    }
-
-    return new Import();
-  }
+export class OrganizationalUnit extends Construct implements IOrganizationalUnit, ITaggableResource {
   readonly organizationalUnitId: string;
   readonly organizationalUnitArn: string;
   readonly organizationalUnitName: string;
+  readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_OrganizationalUnitProvider");
+
   public constructor(scope: Construct, id: string, props: OrganizationalUnitProps) {
     super(scope, id);
 
-    const { organizationalUnitName, parent } = props;
+    const { organizationalUnitName, parent, importOnDuplicate, removalPolicy } = props;
+
+    if (!Validators.of().organizationalUnitName(organizationalUnitName)) {
+      Annotations.of(this).addError(
+        "The organizational units name must be of string and between 1 and 128 characters long."
+      );
+    }
+
     this.node.addDependency(parent);
 
-    const organizationalUnit = new AwsCustomResource(this, "OrganizationalUnitCustomResource", {
-      resourceType: "Custom::Organization_OrganizationalUnit",
-      onCreate: {
-        service: "Organizations",
-        action: "createOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createOrganizationalUnit-property
-        region: "us-east-1",
-        parameters: {
-          Name: organizationalUnitName,
-          ParentId: parent.identifier(),
-        },
-        physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
+    const organizationalUnitProvider = OrganizationalUnitProvider.getOrCreate(this);
+    const organizationalUnit = new CustomResource(this, "OrganizationProvider", {
+      serviceToken: organizationalUnitProvider.provider.serviceToken,
+      resourceType: "Custom::Organizations_OrganizationalUnitProvider",
+      properties: {
+        Name: organizationalUnitName,
+        ParentId: parent.identifier(),
+        ImportOnDuplicate: String(importOnDuplicate ?? true),
+        RemovalPolicy: removalPolicy ?? RemovalPolicy.RETAIN,
       },
-      onUpdate: {
-        service: "Organizations",
-        action: "updateOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#updateOrganizationalUnit-property
-        region: "us-east-1",
-        parameters: {
-          Name: organizationalUnitName,
-          OrganizationalUnitId: new PhysicalResourceIdReference(),
-        },
-        physicalResourceId: PhysicalResourceId.fromResponse("OrganizationalUnit.Id"),
-      },
-      onDelete: {
-        service: "Organizations",
-        action: "deleteOrganizationalUnit", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deleteOrganizationalUnit-property
-        region: "us-east-1",
-        parameters: {
-          OrganizationalUnitId: new PhysicalResourceIdReference(),
-        },
-      },
-      installLatestAwsSdk: false,
-      policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
-    this.organizationalUnitId = organizationalUnit.getResponseField("OrganizationalUnit.Id");
-    this.organizationalUnitArn = organizationalUnit.getResponseField("OrganizationalUnit.Arn");
-    this.organizationalUnitName = organizationalUnit.getResponseField("OrganizationalUnit.Name");
 
-    // TODO: https://docs.aws.amazon.com/cdk/api/v1/docs/@aws-cdk_core.Tags.html
+    this.organizationalUnitId = organizationalUnit.getAtt("Id").toString();
+    this.organizationalUnitArn = organizationalUnit.getAtt("Arn").toString();
+    this.organizationalUnitName = organizationalUnit.getAtt("Name").toString();
+
+    const tagResource = new TagResource(this, "Tags", { resource: this });
+    tagResource.node.addDependency(organizationalUnit);
   }
 
   identifier(): string {

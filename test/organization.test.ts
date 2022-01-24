@@ -1,6 +1,5 @@
-import { App, Aspects, Stack } from "aws-cdk-lib";
+import { App, Stack } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
-import { AwsSolutionsChecks } from "cdk-nag";
 import { FeatureSet, Organization, PolicyType } from "../src";
 
 describe("Organization", () => {
@@ -19,7 +18,7 @@ describe("Organization", () => {
     expect(template).toMatchSnapshot();
   });
 
-  it("Should have policy type eabled", () => {
+  it("Should have policy type enabled", () => {
     // Given
     const stack = new Stack();
     const organization = new Organization(stack, "Organization", {});
@@ -29,18 +28,6 @@ describe("Organization", () => {
 
     // Then
     const template = Template.fromStack(stack);
-    template.resourceCountIs("Custom::Organization_EnablePolicyType", 1);
-  });
-
-  it("Should comply to best practices", () => {
-    // Given
-    const app = new App();
-    const stack = new Stack(app, "Stack");
-
-    // When
-    new Organization(stack, "Organization", {});
-
-    // Then
-    Aspects.of(app).add(new AwsSolutionsChecks({ verbose: true }));
+    template.resourceCountIs("Custom::Organizations_EnablePolicyType", 1);
   });
 });

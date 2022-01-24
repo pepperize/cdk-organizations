@@ -15,6 +15,8 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
     organizationsClient = new Organizations({ region: "us-east-1" });
   }
 
+  console.log("Payload: %j", event);
+
   if (event.RequestType == "Create") {
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createAccount-property
     const response: Organizations.CreateAccountResponse = await organizationsClient

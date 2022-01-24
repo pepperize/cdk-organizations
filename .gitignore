@@ -59,6 +59,7 @@ tsconfig.json
 !/src/account-provider/is-complete-handler-function.ts
 !/src/account-provider/on-event-handler-function.ts
 !/src/organization-provider/on-event-handler-function.ts
+!/src/organizational-unit-provider/on-event-handler-function.ts
 !/src/tag-resource-provider/on-event-handler-function.ts
 .idea/
 *.iml

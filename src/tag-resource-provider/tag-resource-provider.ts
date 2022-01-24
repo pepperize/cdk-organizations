@@ -19,7 +19,7 @@ export class TagResourceProvider extends NestedStack {
    */
   public static getOrCreate(scope: Construct): TagResourceProvider {
     const stack = Stack.of(scope);
-    const id = "@pepperize/cdk-organizations.TagResourceProvider";
+    const id = "cdk-organizations.TagResourceProvider";
     const existing = stack.node.tryFindChild(id);
     return (existing as TagResourceProvider) || new TagResourceProvider(scope, id, {});
   }

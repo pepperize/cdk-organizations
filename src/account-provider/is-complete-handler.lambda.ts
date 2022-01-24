@@ -14,6 +14,8 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
     organizationsClient = new AWS.Organizations({ region: "us-east-1" });
   }
 
+  console.log("Payload: %j", event);
+
   if (!event.PhysicalResourceId) {
     throw new Error("Missing PhysicalResourceId parameter.");
   }

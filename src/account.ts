@@ -1,10 +1,12 @@
-import { CustomResource } from "aws-cdk-lib";
+import { CustomResource, ITaggable, TagManager, TagType } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
 import { AccountProvider } from "./account-provider";
 import { DelegatedAdministrator } from "./delegated-administrator";
 import { IChild, IParent, Parent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
+import { TagResource } from "./tag-resource";
+
 /**
  * @see https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate
  */
@@ -78,13 +80,15 @@ export interface IAccount extends IChild, IConstruct {
 /**
  * Creates or imports an AWS account that is automatically a member of the organization whose credentials made the request. AWS Organizations automatically copies the information from the management account to the new member account
  */
-export abstract class AccountBase extends Construct implements IAccount, IPolicyAttachmentTarget {
+export abstract class AccountBase extends Construct implements IAccount, IPolicyAttachmentTarget, ITaggable {
   public readonly accountId: string;
   public readonly accountArn: string;
   public readonly accountName: string;
   public readonly email: string;
 
   protected readonly resource: AwsCustomResource;
+
+  readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_CreateAccount");
 
   protected constructor(scope: Construct, id: string, props: AccountBaseProps) {
     super(scope, id);
@@ -95,9 +99,9 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
     let createAccount = undefined;
     if (!accountId) {
       const createAccountProvider = AccountProvider.getOrCreate(this);
-      createAccount = new CustomResource(this, `CreateAccountProvider`, {
+      createAccount = new CustomResource(this, `CreateAccount`, {
         serviceToken: createAccountProvider.provider.serviceToken,
-        resourceType: "Custom::Organization_CreateAccount",
+        resourceType: "Custom::Organizations_CreateAccount",
         properties: {
           Email: email,
           AccountName: accountName,
@@ -108,8 +112,8 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
       accountId = createAccount.getAtt("AccountId").toString();
     }
 
-    const account = new AwsCustomResource(this, "AccountCustomResource", {
-      resourceType: "Custom::Organization_Account",
+    const account = new AwsCustomResource(this, "DescribeAccount", {
+      resourceType: "Custom::Organizations_Account",
       onCreate: {
         service: "Organizations",
         action: "describeAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeAccount-property
@@ -130,7 +134,7 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
       },
       onDelete: {
         service: "Organizations",
-        action: "deleteAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deleteAccount-property
+        action: "describeAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeAccount-property
         region: "us-east-1",
         physicalResourceId: PhysicalResourceId.of(accountId),
         parameters: {
@@ -158,6 +162,9 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
       account.node.addDependency(parent);
       this.move(parent);
     }
+
+    const tagResource = new TagResource(this, "Tags", { resource: this });
+    tagResource.node.addDependency(account);
   }
 
   identifier(): string {
@@ -175,7 +182,7 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
   protected move(destinationParent: IParent): void {
     const sourceParent = this.currentParent();
 
-    const move = new AwsCustomResource(this, "MoveAccountCustomResource", {
+    const move = new AwsCustomResource(this, "MoveAccount", {
       onUpdate: {
         service: "Organizations",
         action: "moveAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#moveAccount-property

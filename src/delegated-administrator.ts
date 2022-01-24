@@ -27,7 +27,7 @@ export class DelegatedAdministrator extends Construct {
     const { account, servicePrincipal } = props;
 
     new AwsCustomResource(this, "DelegatedAdministratorCustomResource", {
-      resourceType: "Custom::Organization_DelegatedAdministrator",
+      resourceType: "Custom::Organizations_DelegatedAdministrator",
       onCreate: {
         service: "Organizations",
         action: "registerDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#registerDelegatedAdministrator-property

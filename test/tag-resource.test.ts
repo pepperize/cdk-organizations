@@ -1,6 +1,5 @@
-import { App, Aspects, Stack, TagManager, Tags, TagType } from "aws-cdk-lib";
+import { App, Stack, TagManager, Tags, TagType } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
-import { AwsSolutionsChecks } from "cdk-nag";
 import { Construct } from "constructs";
 import { ITaggableResource, TagResource } from "../src";
 
@@ -10,7 +9,7 @@ describe("TagResource", () => {
     const app = new App();
     const stack = new Stack(app, "Stack");
     const resource = new (class extends Construct implements ITaggableResource {
-      readonly tags: TagManager = new TagManager(TagType.KEY_VALUE, "Custom::Organization_TagResource");
+      readonly tags: TagManager = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_TagResource");
 
       identifier(): string {
         return "t-1234";
@@ -19,34 +18,12 @@ describe("TagResource", () => {
 
     // When
     Tags.of(resource).add("foo", "bar");
-    new TagResource(stack, "TagResource", {
+    new TagResource(stack, "Tag", {
       resource: resource,
     });
 
     // Then
     const template = Template.fromStack(stack);
     expect(template).toMatchSnapshot();
-  });
-
-  it("Should comply to best practices", () => {
-    // Given
-    const app = new App();
-    const stack = new Stack(app, "Stack");
-    const resource = new (class extends Construct implements ITaggableResource {
-      readonly tags: TagManager = new TagManager(TagType.KEY_VALUE, "Custom::Organization_TagResource");
-
-      identifier(): string {
-        return "t-1234";
-      }
-    })(stack, "Resource");
-
-    // When
-    Tags.of(resource).add("foo", "bar");
-    new TagResource(stack, "TagResource", {
-      resource: resource,
-    });
-
-    // Then
-    Aspects.of(app).add(new AwsSolutionsChecks({ verbose: true }));
   });
 });

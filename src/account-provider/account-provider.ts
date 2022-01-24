@@ -20,7 +20,7 @@ export class AccountProvider extends NestedStack {
    */
   public static getOrCreate(scope: Construct): AccountProvider {
     const stack = Stack.of(scope);
-    const id = "@pepperize/cdk-organizations.AccountProvider";
+    const id = "cdk-organizations.AccountProvider";
     const existing = stack.node.tryFindChild(id);
     return (existing as AccountProvider) || new AccountProvider(scope, id, {});
   }

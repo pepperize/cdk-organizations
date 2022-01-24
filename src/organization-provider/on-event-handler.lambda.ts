@@ -15,6 +15,8 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
     organizationsClient = new Organizations({ region: "us-east-1" });
   }
 
+  console.log("Payload: %j", event);
+
   if (event.RequestType == "Create") {
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createOrganization-property
     try {
@@ -24,7 +26,12 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
         })
         .promise();
       console.log("Creating organization: %j", response);
-      return { PhysicalResourceId: response.Organization?.Id, Data: { Organization: response.Organization } };
+      return {
+        PhysicalResourceId: response.Organization?.Id,
+        Data: {
+          ...response.Organization,
+        },
+      };
     } catch (e) {
       const error = e as AWSError;
       if (error.code == "AlreadyInOrganizationException") {
@@ -42,5 +49,10 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
     .promise();
 
   // TODO: Try to delete organization (RemovalPolicy)
-  return { PhysicalResourceId: response.Organization?.Id, Data: { Organization: response.Organization } };
+  return {
+    PhysicalResourceId: response.Organization?.Id,
+    Data: {
+      ...response.Organization,
+    },
+  };
 }

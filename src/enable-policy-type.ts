@@ -20,7 +20,7 @@ export class EnablePolicyType extends Construct {
     const { root, policyType } = props;
 
     new AwsCustomResource(this, "EnablePolicyTypeCustomResource", {
-      resourceType: "Custom::Organization_EnablePolicyType",
+      resourceType: "Custom::Organizations_EnablePolicyType",
       onCreate: {
         service: "Organizations",
         action: "enablePolicyType", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#enablePolicyType-property
