@@ -35,7 +35,6 @@ export const handler: OnEventHandler = async (event: OnEventRequest): Promise<On
     } catch (e) {
       const error = e as AWSError;
       console.log(error);
-      console.log(ImportOnDuplicate);
       // https://docs.aws.amazon.com/organizations/latest/APIReference/API_CreateOrganizationalUnit.html#API_CreateOrganizationalUnit_Errors
       if (error.code == "DuplicateOrganizationalUnitException" && ImportOnDuplicate == "true") {
         console.log(`Organizational unit already created, trying to find existing one in parent.`);
