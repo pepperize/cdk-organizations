@@ -99,7 +99,7 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
     let createAccount = undefined;
     if (!accountId) {
       const createAccountProvider = AccountProvider.getOrCreate(this);
-      createAccount = new CustomResource(this, `CreateAccount`, {
+      createAccount = new CustomResource(this, "CreateAccount", {
         serviceToken: createAccountProvider.provider.serviceToken,
         resourceType: "Custom::Organizations_CreateAccount",
         properties: {
