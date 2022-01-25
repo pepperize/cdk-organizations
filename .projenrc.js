@@ -18,6 +18,7 @@ const project = new AwsCdkConstructLibrary({
   devDeps: [
     "@pepperize/projen-awscdk-construct@^0.0.8",
     "@types/aws-lambda",
+    "@types/jest",
     "cdk-nag@^2.0.0",
     "aws-sdk-mock",
     "sinon",

@@ -81,7 +81,7 @@ Object {
         },
         "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\\\\\\\\\\\"Version\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2012-10-17\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Statement\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\"Effect\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Allow\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Action\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"s3:*\\\\\\\\\\\\\\"}}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
       },
-      "Type": "Custom::Organization_Policy",
+      "Type": "Custom::Organizations_Policy",
       "UpdateReplacePolicy": "Delete",
     },
     "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4": Object {
@@ -114,6 +114,60 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Policy",
+    },
+    "PolicyTagsTagResource27BB67A1": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
+        "PolicyPolicyCustomResource79938510",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "PolicyPolicyCustomResource79938510",
+            "Policy.PolicySummary.Id",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "PolicyTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceDF6089CF",
+            "Outputs.StackPolicyTagscdkorganizationsTagResourceProviderframeworkonEventFF2A13A1Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "PolicyTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceDF6089CF": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
+        "PolicyPolicyCustomResource79938510",
+      ],
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+              },
+              "/cc4ef28f647cdb0ae1fcbce17e50ad74a916a91a7aab9ebf506daf360e666bb6.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
     },
   },
   "Rules": Object {

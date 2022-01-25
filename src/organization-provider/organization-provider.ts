@@ -23,7 +23,7 @@ export class OrganizationProvider extends NestedStack {
    */
   public static getOrCreate(scope: Construct): OrganizationProvider {
     const stack = Stack.of(scope);
-    const id = "@pepperize/cdk-organizations.OrganizationProvider";
+    const id = "cdk-organizations.OrganizationProvider";
     const existing = stack.node.tryFindChild(id);
     return (existing as OrganizationProvider) || new OrganizationProvider(scope, id, {});
   }

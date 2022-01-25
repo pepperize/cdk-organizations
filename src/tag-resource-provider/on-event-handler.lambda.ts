@@ -14,6 +14,9 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
   if (!organizationsClient) {
     organizationsClient = new Organizations({ region: "us-east-1" });
   }
+
+  console.log("Payload: %j", event);
+
   // Get all AWS organizations service tags
   const listTagsForResourceResponse: Organizations.ListTagsForResourceResponse = await organizationsClient
     .listTagsForResource({

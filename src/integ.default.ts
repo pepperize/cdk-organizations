@@ -1,12 +1,12 @@
 import { App, Stack } from "aws-cdk-lib";
-import { Account, IamUserAccessToBilling } from "../account";
-import { DelegatedAdministrator } from "../delegated-administrator";
-import { EnableAwsServiceAccess } from "../enable-aws-service-access";
-import { EnablePolicyType } from "../enable-policy-type";
-import { FeatureSet, Organization } from "../organization";
-import { OrganizationalUnit } from "../organizational-unit";
-import { Policy, PolicyType } from "../policy";
-import { PolicyAttachment } from "../policy-attachment";
+import { Account, IamUserAccessToBilling } from "./account";
+import { DelegatedAdministrator } from "./delegated-administrator";
+import { EnableAwsServiceAccess } from "./enable-aws-service-access";
+import { EnablePolicyType } from "./enable-policy-type";
+import { FeatureSet, Organization } from "./organization";
+import { OrganizationalUnit } from "./organizational-unit";
+import { Policy, PolicyType } from "./policy";
+import { PolicyAttachment } from "./policy-attachment";
 
 const app = new App();
 const stack = new Stack(app);
@@ -31,8 +31,8 @@ new DelegatedAdministrator(stack, "DelegatedAdministrator", {
   servicePrincipal: "service-abbreviation.amazonaws.com",
 });
 
-const projects = OrganizationalUnit.fromOrganizationalUnitId(stack, "ProjectsOU", {
-  organizationalUnitId: "ou-1234",
+const projects = new OrganizationalUnit(stack, "ProjectsOU", {
+  organizationalUnitName: "Projects",
   parent: organization.root,
 });
 new Account(stack, "Project1Account", {
@@ -73,3 +73,5 @@ new PolicyAttachment(stack, "PolicyAttachment", {
   target: organization.root,
   policy: policy,
 });
+
+export { app, stack };

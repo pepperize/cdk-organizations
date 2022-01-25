@@ -15,6 +15,8 @@
     "bundle:account-provider/on-event-handler.lambda:watch": "npx projen bundle:account-provider/on-event-handler.lambda:watch",
     "bundle:organization-provider/on-event-handler.lambda": "npx projen bundle:organization-provider/on-event-handler.lambda",
     "bundle:organization-provider/on-event-handler.lambda:watch": "npx projen bundle:organization-provider/on-event-handler.lambda:watch",
+    "bundle:organizational-unit-provider/on-event-handler.lambda": "npx projen bundle:organizational-unit-provider/on-event-handler.lambda",
+    "bundle:organizational-unit-provider/on-event-handler.lambda:watch": "npx projen bundle:organizational-unit-provider/on-event-handler.lambda:watch",
     "bundle:tag-resource-provider/on-event-handler.lambda": "npx projen bundle:tag-resource-provider/on-event-handler.lambda",
     "bundle:tag-resource-provider/on-event-handler.lambda:watch": "npx projen bundle:tag-resource-provider/on-event-handler.lambda:watch",
     "clobber": "npx projen clobber",
@@ -85,7 +87,7 @@
   },
   "dependencies": {
     "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1058.0"
+    "aws-sdk": "^2.1062.0"
   },
   "bundledDependencies": [
     "aws-lambda",

@@ -115,7 +115,7 @@ Object {
           ],
         },
       },
-      "Type": "Custom::Organization_EnablePolicyType",
+      "Type": "Custom::Organizations_EnablePolicyType",
       "UpdateReplacePolicy": "Delete",
     },
     "EnablePolicyTypeEnablePolicyTypeCustomResourceCustomResourcePolicy556AC066": Object {
@@ -144,24 +144,24 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
-    "OrganizationOrganizationProviderFB9AD106": Object {
+    "Organization06E16095": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "FeatureSet": "ALL",
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "OrganizationpepperizecdkorganizationsOrganizationProviderNestedStackpepperizecdkorganizationsOrganizationProviderNestedStackResourceC765D41F",
-            "Outputs.StackOrganizationpepperizecdkorganizationsOrganizationProviderframeworkonEventBBE48AA8Arn",
+            "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1",
+            "Outputs.StackOrganizationcdkorganizationsOrganizationProviderframeworkonEvent493ED7E8Arn",
           ],
         },
       },
-      "Type": "Custom::Organization_Organization",
+      "Type": "Custom::Organizations_Organization",
       "UpdateReplacePolicy": "Delete",
     },
     "OrganizationRootRootCustomResourceBB74F060": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "OrganizationOrganizationProviderFB9AD106",
+        "Organization06E16095",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
       ],
       "Properties": Object {
@@ -176,12 +176,12 @@ Object {
         },
         "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
       },
-      "Type": "Custom::Organization_Root",
+      "Type": "Custom::Organizations_Root",
       "UpdateReplacePolicy": "Delete",
     },
     "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E": Object {
       "DependsOn": Array [
-        "OrganizationOrganizationProviderFB9AD106",
+        "Organization06E16095",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -203,7 +203,63 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
-    "OrganizationpepperizecdkorganizationsOrganizationProviderNestedStackpepperizecdkorganizationsOrganizationProviderNestedStackResourceC765D41F": Object {
+    "OrganizationRootTagsTagResourceCBEA7B2F": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Organization06E16095",
+        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+        "OrganizationRootRootCustomResourceBB74F060",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "OrganizationRootRootCustomResourceBB74F060",
+            "Roots.0.Id",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
+            "Outputs.StackOrganizationRootTagscdkorganizationsTagResourceProviderframeworkonEvent49F750AAArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Organization06E16095",
+        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+        "OrganizationRootRootCustomResourceBB74F060",
+      ],
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+              },
+              "/256bda927ae7d17a98ee655ab1a1e5cfafabec383d8776c163e012d44ee1ef8a.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "TemplateURL": Object {
@@ -222,7 +278,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/d8d6aec95e765a3acef36e5358559cc697c3984f7d09053d65a38df50793bad0.json",
+              "/791f1d746330f5c779247eae84a5192a03620194fc88f83b0df01bc5d40e98df.json",
             ],
           ],
         },

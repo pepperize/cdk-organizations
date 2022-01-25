@@ -54,6 +54,9 @@
           "spawn": "bundle:organization-provider/on-event-handler.lambda"
         },
         {
+          "spawn": "bundle:organizational-unit-provider/on-event-handler.lambda"
+        },
+        {
           "spawn": "bundle:tag-resource-provider/on-event-handler.lambda"
         }
       ]
@@ -109,6 +112,24 @@
       "steps": [
         {
           "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+        }
+      ]
+    },
+    "bundle:organizational-unit-provider/on-event-handler.lambda": {
+      "name": "bundle:organizational-unit-provider/on-event-handler.lambda",
+      "description": "Create a JavaScript bundle from src/organizational-unit-provider/on-event-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+        }
+      ]
+    },
+    "bundle:organizational-unit-provider/on-event-handler.lambda:watch": {
+      "name": "bundle:organizational-unit-provider/on-event-handler.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/organizational-unit-provider/on-event-handler.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
         }
       ]
     },

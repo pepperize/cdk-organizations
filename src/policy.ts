@@ -1,3 +1,4 @@
+import { ITaggable, TagManager, TagType } from "aws-cdk-lib";
 import {
   AwsCustomResource,
   AwsCustomResourcePolicy,
@@ -5,6 +6,7 @@ import {
   PhysicalResourceIdReference,
 } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
+import { TagResource } from "./tag-resource";
 
 /**
  * Organizations offers policy types in the following two broad categories:
@@ -61,18 +63,21 @@ export interface PolicyProps {
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
  * @see FeatureSet
  */
-export class Policy extends Construct {
+export class Policy extends Construct implements ITaggable {
   /**
    * The unique identifier (ID) of the policy. The regex pattern for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
    */
   public readonly policyId: string;
+
+  readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Policy");
+
   public constructor(scope: Construct, id: string, props: PolicyProps) {
     super(scope, id);
 
     const { content, description, policyName, policyType } = props;
 
     const policy = new AwsCustomResource(this, "PolicyCustomResource", {
-      resourceType: "Custom::Organization_Policy",
+      resourceType: "Custom::Organizations_Policy",
       onCreate: {
         service: "Organizations",
         action: "createPolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createPolicy-property
@@ -109,5 +114,12 @@ export class Policy extends Construct {
       policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
     });
     this.policyId = policy.getResponseField("Policy.PolicySummary.Id");
+
+    const tagResource = new TagResource(this, "Tags", { resource: this });
+    tagResource.node.addDependency(policy);
+  }
+
+  identifier(): string {
+    return this.policyId;
   }
 }

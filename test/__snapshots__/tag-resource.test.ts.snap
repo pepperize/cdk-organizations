@@ -10,14 +10,14 @@ Object {
     },
   },
   "Resources": Object {
-    "TagResourceTagResourceProvider02913E05": Object {
+    "TagTagResource41F8FD4C": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "ResourceId": "t-1234",
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "TagResourcepepperizecdkorganizationsTagResourceProviderNestedStackpepperizecdkorganizationsTagResourceProviderNestedStackResource467D37EC",
-            "Outputs.StackTagResourcepepperizecdkorganizationsTagResourceProviderframeworkonEvent49F77DC6Arn",
+            "TagcdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource02745B53",
+            "Outputs.StackTagcdkorganizationsTagResourceProviderframeworkonEvent88D3F110Arn",
           ],
         },
         "Tags": Array [
@@ -27,10 +27,10 @@ Object {
           },
         ],
       },
-      "Type": "Custom::Organization_TagResource",
+      "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "TagResourcepepperizecdkorganizationsTagResourceProviderNestedStackpepperizecdkorganizationsTagResourceProviderNestedStackResource467D37EC": Object {
+    "TagcdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource02745B53": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "TemplateURL": Object {
@@ -49,7 +49,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/dba8c2ecb62d7da8fc41889e48d14d28f9ec1b6b21aa42700d9488d7aa01b079.json",
+              "/17bb98891c09f050688200a510a11be0008c9f490a1205174063adb7e42e6e62.json",
             ],
           ],
         },

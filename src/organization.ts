@@ -1,4 +1,4 @@
-import { CustomResource } from "aws-cdk-lib";
+import { CustomResource, ITaggable, TagManager, TagType } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
 import { EnablePolicyType } from "./enable-policy-type";
@@ -6,6 +6,7 @@ import { OrganizationProvider } from "./organization-provider";
 import { IParent } from "./parent";
 import { PolicyType } from "./policy";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
+import { TagResource } from "./tag-resource";
 
 /**
  * Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
@@ -89,21 +90,22 @@ export class Organization extends Construct implements IOrganization {
     const featureSet = props.featureSet || FeatureSet.ALL;
 
     const organizationProvider = OrganizationProvider.getOrCreate(this);
-    const organization = new CustomResource(this, "OrganizationProvider", {
+    const organization = new CustomResource(this, "Organization", {
       serviceToken: organizationProvider.provider.serviceToken,
-      resourceType: "Custom::Organization_Organization",
+      resourceType: "Custom::Organizations_Organization",
       properties: {
         FeatureSet: featureSet,
       },
     });
-    this.organizationId = organization.getAtt("Organization.Id").toString();
-    this.organizationArn = organization.getAtt("Organization.Arn").toString();
-    this.featureSet = organization.getAtt("Organization.FeatureSet").toString() as FeatureSet;
-    this.managementAccountArn = organization.getAtt("Organization.MasterAccountArn").toString();
-    this.managementAccountId = organization.getAtt("Organization.MasterAccountId").toString();
-    this.managementAccountEmail = organization.getAtt("Organization.MasterAccountEmail").toString();
 
-    this.root = new Root(this, "Root", { organization: this });
+    this.organizationId = organization.getAtt("Id").toString();
+    this.organizationArn = organization.getAtt("Arn").toString();
+    this.featureSet = organization.getAtt("FeatureSet").toString() as FeatureSet;
+    this.managementAccountArn = organization.getAtt("MasterAccountArn").toString();
+    this.managementAccountId = organization.getAtt("MasterAccountId").toString();
+    this.managementAccountEmail = organization.getAtt("MasterAccountEmail").toString();
+
+    this.root = new Root(this, "Root");
     this.root.node.addDependency(organization);
   }
 
@@ -116,27 +118,24 @@ export class Organization extends Construct implements IOrganization {
   }
 }
 
-export interface RootProps {
-  readonly organization: IOrganization;
-}
-
 /**
  * The parent container for all the accounts for your organization. If you apply a policy to the root, it applies to all organizational units (OUs) and accounts in the organization.
  * <strong>Currently, you can have only one root. AWS Organizations automatically creates it for you when you create an organization.</strong>
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html
  */
-export class Root extends Construct implements IParent, IPolicyAttachmentTarget {
+export class Root extends Construct implements IParent, IPolicyAttachmentTarget, ITaggable {
   /**
    * The unique identifier (ID) for the root. The regex pattern for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits.
    */
   public readonly rootId: string;
-  public constructor(scope: Construct, id: string, props: RootProps) {
+
+  readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Root");
+
+  public constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    props;
-
     const root = new AwsCustomResource(this, "RootCustomResource", {
-      resourceType: "Custom::Organization_Root",
+      resourceType: "Custom::Organizations_Root",
       onCreate: {
         service: "Organizations",
         action: "listRoots", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listRoots-property
@@ -161,6 +160,9 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget 
     });
 
     this.rootId = root.getResponseField("Roots.0.Id"); // Returns first root id. It seems AWS Organizations doesn't contain multiple roots.
+
+    const tagResource = new TagResource(this, "Tags", { resource: this });
+    tagResource.node.addDependency(root);
   }
 
   identifier(): string {
