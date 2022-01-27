@@ -104,8 +104,8 @@ export class Account extends Construct implements IAccount, IPolicyAttachmentTar
       properties: {
         Email: email,
         AccountName: accountName,
-        RoleName: roleName || "OrganizationAccountAccessRole",
-        IamUserAccessToBilling: iamUserAccessToBilling || IamUserAccessToBilling.ALLOW,
+        RoleName: roleName ?? "OrganizationAccountAccessRole",
+        IamUserAccessToBilling: iamUserAccessToBilling ?? IamUserAccessToBilling.ALLOW,
         ParentId: parent?.identifier(),
         ImportOnDuplicate: String(importOnDuplicate ?? true),
         RemovalPolicy: removalPolicy ?? RemovalPolicy.RETAIN,

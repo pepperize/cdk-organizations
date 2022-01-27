@@ -17,28 +17,28 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
 
   console.log("Payload: %j", event);
 
-  let accountId;
+  let accountId: string;
   if (event.Data?.CreateAccountStatusId) {
     const response: AWS.Organizations.DescribeCreateAccountStatusResponse = await organizationsClient
       // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeCreateAccountStatus-property
       .describeCreateAccountStatus({ CreateAccountRequestId: event.Data.CreateAccountStatusId })
       .promise();
 
-    const { State, AccountId, AccountName, FailureReason } = response.CreateAccountStatus ?? {};
-
-    if (State == "PENDING") {
+    if (response.CreateAccountStatus?.State == "IN_PROGRESS") {
       return { IsComplete: false, Data: {} };
     }
 
-    if (State == "FAILED") {
-      throw new Error(`Failed ${event.RequestType} Account ${AccountName}, reason: ${FailureReason}`);
+    if (response.CreateAccountStatus?.State == "FAILED") {
+      throw new Error(
+        `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response?.CreateAccountStatus?.FailureReason}`
+      );
     }
 
-    accountId = AccountId!;
+    // State == SUCCEEDED
+    accountId = response.CreateAccountStatus?.AccountId!;
   } else {
-    accountId = event.Data?.AccountId!;
+    accountId = event.Data?.AccountId;
   }
-  const { ParentId, RemovalPolicy } = event.ResourceProperties;
 
   const response = await organizationsClient
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeAccount-property
@@ -46,22 +46,15 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
     .promise();
 
   // On update or create move account to destination parent
-  if (["Update", "Create"].includes(event.RequestType)) {
-    const currentParent = await findCurrentParent(organizationsClient, accountId);
-
-    if (ParentId != currentParent.Id) {
-      await move(organizationsClient, accountId, currentParent.Id!, ParentId);
-    }
+  if (event.RequestType == "Create" || event.RequestType == "Update") {
+    await move(organizationsClient, accountId, event.ResourceProperties?.ParentId);
   }
 
   // On delete move account to root
-  if (event.RequestType == "Delete" && RemovalPolicy == "destroy") {
-    const currentParent = await findCurrentParent(organizationsClient, accountId);
+  if (event.RequestType == "Delete" && event.ResourceProperties?.RemovalPolicy == "destroy") {
     const root = await findRoot(organizationsClient);
 
-    if (root.Id != currentParent.Id) {
-      await move(organizationsClient, accountId, currentParent.Id!, root.Id!);
-    }
+    await move(organizationsClient, accountId, root.Id);
   }
 
   return {
@@ -107,14 +100,23 @@ const findRoot = async (client: Organizations): Promise<Organizations.Root> => {
 const move = async (
   client: Organizations,
   accountId: string,
-  sourceParentId: string,
-  destinationParentId: string
+  destinationParentId: string | undefined
 ): Promise<void> => {
+  if (!destinationParentId) {
+    return;
+  }
+
+  const currentParent = await findCurrentParent(organizationsClient, accountId);
+
+  if (destinationParentId == currentParent.Id) {
+    return;
+  }
+
   await client
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#moveAccount-property
     .moveAccount({
       AccountId: accountId,
-      SourceParentId: sourceParentId,
+      SourceParentId: currentParent.Id!,
       DestinationParentId: destinationParentId,
     })
     .promise();
