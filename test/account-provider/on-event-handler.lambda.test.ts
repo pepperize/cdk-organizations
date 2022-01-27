@@ -4,7 +4,7 @@ import * as AWS from "aws-sdk-mock";
 import * as sinon from "sinon";
 import { IamUserAccessToBilling } from "../../src";
 
-describe("account-provider.is-complete-handler.lambda", () => {
+describe("account-provider.on-event-handler.lambda", () => {
   jest.setTimeout(60_000);
   console.log = jest.fn();
 
@@ -32,12 +32,12 @@ describe("account-provider.is-complete-handler.lambda", () => {
     },
   };
 
-  it("Should create account status and pass the id", async () => {
+  it("Should create account status", async () => {
     // Given
     const mock: SDK.Organizations.CreateAccountResponse = {
       CreateAccountStatus: {
         Id: "car-exampleaccountcreationrequestid",
-        State: "FAILED",
+        State: "IN_PROGRESS",
         FailureReason: "Some reason",
       },
     };
@@ -60,31 +60,45 @@ describe("account-provider.is-complete-handler.lambda", () => {
 
     // Then
     expect(response).not.toBeUndefined();
-    expect(response).toEqual({ PhysicalResourceId: "car-exampleaccountcreationrequestid" });
-    sinon.assert.called(createAccountFake);
+    expect(response?.PhysicalResourceId).toEqual("car-exampleaccountcreationrequestid");
+    expect(response?.Data?.CreateAccountStatusId).toEqual("car-exampleaccountcreationrequestid");
+    sinon.assert.calledOnce(createAccountFake);
   });
 
-  it("Should pass through the create account id", async () => {
+  xit("Should find existing account by name and email on create request type", async () => {
     // Given
-    const mock: SDK.Organizations.CreateAccountResponse = {
+    const createAccountMock: SDK.Organizations.CreateAccountResponse = {
       CreateAccountStatus: {
         Id: "car-exampleaccountcreationrequestid",
         State: "FAILED",
-        FailureReason: "Some reason",
+        FailureReason: "EMAIL_ALREADY_EXISTS",
       },
     };
-    const createAccountStatusFake = sinon.fake.resolves(mock);
+    const createAccountStatusFake = sinon.fake.resolves(createAccountMock);
     AWS.mock("Organizations", "createAccount", createAccountStatusFake);
+
+    const listAccountsMock: SDK.Organizations.ListAccountsResponse = {
+      Accounts: [
+        {
+          Id: "123456789012",
+          Name: "test",
+          Email: "info@pepperize.com",
+        },
+      ],
+    };
+    const listAccountsFake = sinon.fake.resolves(listAccountsMock);
+    AWS.mock("Organizations", "listAccounts", listAccountsFake);
 
     const request = {
       ...event,
-      RequestType: "Update",
+      RequestType: "Create",
       ResourceProperties: {
         ...event.ResourceProperties,
         Email: "info@pepperize.com",
         AccountName: "test",
         RoleName: "SomeRoleName",
         IamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
+        ImportOnDuplicate: String(true),
       },
       PhysicalResourceId: "car-exampleaccountcreationrequestid",
     };
@@ -94,10 +108,8 @@ describe("account-provider.is-complete-handler.lambda", () => {
 
     // Then
     expect(response).not.toBeUndefined();
-    expect(response).toEqual({
-      PhysicalResourceId: "car-exampleaccountcreationrequestid",
-      Data: request.ResourceProperties,
-    });
-    sinon.assert.notCalled(createAccountStatusFake);
+    expect(response?.PhysicalResourceId).toEqual("123456789012");
+    sinon.assert.calledOnce(createAccountStatusFake);
+    sinon.assert.calledOnce(listAccountsFake);
   });
 });

@@ -50,7 +50,7 @@ export class AccountProvider extends NestedStack {
       timeout: Duration.minutes(10),
       initialPolicy: [
         new PolicyStatement({
-          actions: ["organizations:CreateAccount"],
+          actions: ["organizations:CreateAccount", "organizations:ListAccounts"],
           resources: ["*"],
         }),
       ],
@@ -60,7 +60,14 @@ export class AccountProvider extends NestedStack {
       timeout: Duration.minutes(1),
       initialPolicy: [
         new PolicyStatement({
-          actions: ["organizations:DescribeCreateAccountStatus"],
+          actions: [
+            "organizations:DescribeCreateAccountStatus",
+            "organizations:ListAccounts",
+            "organizations:DescribeAccount",
+            "organizations:ListParents",
+            "organizations:ListRoots",
+            "organizations:MoveAccount",
+          ],
           resources: ["*"],
         }),
       ],

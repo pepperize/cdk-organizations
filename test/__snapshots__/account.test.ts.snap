@@ -70,6 +70,14 @@ Object {
         "AccountName": "test",
         "Email": "info@pepperize.com",
         "IamUserAccessToBilling": "ALLOW",
+        "ImportOnDuplicate": "true",
+        "ParentId": Object {
+          "Fn::GetAtt": Array [
+            "OrganizationRootRootCustomResourceBB74F060",
+            "Roots.0.Id",
+          ],
+        },
+        "RemovalPolicy": "retain",
         "RoleName": "OrganizationAccountAccessRole",
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
@@ -78,349 +86,19 @@ Object {
           ],
         },
       },
-      "Type": "Custom::Organizations_CreateAccount",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "AccountDescribeAccount70B846F7": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "AccountCreateAccount833709C2",
-        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
-      ],
-      "Properties": Object {
-        "Create": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"describeAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountCreateAccount833709C2",
-                  "AccountId",
-                ],
-              },
-              "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountCreateAccount833709C2",
-                  "AccountId",
-                ],
-              },
-              "\\"}}",
-            ],
-          ],
-        },
-        "Delete": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"describeAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountCreateAccount833709C2",
-                  "AccountId",
-                ],
-              },
-              "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountCreateAccount833709C2",
-                  "AccountId",
-                ],
-              },
-              "\\"}}",
-            ],
-          ],
-        },
-        "InstallLatestAwsSdk": false,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
-            "Arn",
-          ],
-        },
-        "Update": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"describeAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountCreateAccount833709C2",
-                  "AccountId",
-                ],
-              },
-              "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountCreateAccount833709C2",
-                  "AccountId",
-                ],
-              },
-              "\\"}}",
-            ],
-          ],
-        },
-      },
       "Type": "Custom::Organizations_Account",
       "UpdateReplacePolicy": "Delete",
-    },
-    "AccountDescribeAccountCustomResourcePolicy9AAAEE6A": Object {
-      "DependsOn": Array [
-        "AccountCreateAccount833709C2",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
-      ],
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "organizations:DescribeAccount",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
-        "Roles": Array [
-          Object {
-            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "AccountMoveAccount0B19AD89": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "AccountMoveAccountCustomResourcePolicyB078B857",
-        "AccountParentListParentsCustomResourceCustomResourcePolicy9E12361D",
-        "AccountParentListParentsCustomResource1F3AAFC6",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
-      ],
-      "Properties": Object {
-        "Create": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"moveAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountDescribeAccount70B846F7",
-                  "Account.Id",
-                ],
-              },
-              "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountDescribeAccount70B846F7",
-                  "Account.Id",
-                ],
-              },
-              "\\",\\"DestinationParentId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "OrganizationRootRootCustomResourceBB74F060",
-                  "Roots.0.Id",
-                ],
-              },
-              "\\",\\"SourceParentId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountParentListParentsCustomResource1F3AAFC6",
-                  "Parents.0.Id",
-                ],
-              },
-              "\\"},\\"ignoreErrorCodesMatching\\":\\"DuplicateAccountException\\"}",
-            ],
-          ],
-        },
-        "InstallLatestAwsSdk": false,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
-            "Arn",
-          ],
-        },
-        "Update": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"moveAccount\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountDescribeAccount70B846F7",
-                  "Account.Id",
-                ],
-              },
-              "\\"},\\"parameters\\":{\\"AccountId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountDescribeAccount70B846F7",
-                  "Account.Id",
-                ],
-              },
-              "\\",\\"DestinationParentId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "OrganizationRootRootCustomResourceBB74F060",
-                  "Roots.0.Id",
-                ],
-              },
-              "\\",\\"SourceParentId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountParentListParentsCustomResource1F3AAFC6",
-                  "Parents.0.Id",
-                ],
-              },
-              "\\"},\\"ignoreErrorCodesMatching\\":\\"DuplicateAccountException\\"}",
-            ],
-          ],
-        },
-      },
-      "Type": "Custom::AWS",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "AccountMoveAccountCustomResourcePolicyB078B857": Object {
-      "DependsOn": Array [
-        "AccountParentListParentsCustomResourceCustomResourcePolicy9E12361D",
-        "AccountParentListParentsCustomResource1F3AAFC6",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
-      ],
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "organizations:MoveAccount",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "AccountMoveAccountCustomResourcePolicyB078B857",
-        "Roles": Array [
-          Object {
-            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "AccountParentListParentsCustomResource1F3AAFC6": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
-        "AccountDescribeAccount70B846F7",
-        "AccountParentListParentsCustomResourceCustomResourcePolicy9E12361D",
-      ],
-      "Properties": Object {
-        "Create": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listParents\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Parents.0.Id\\"},\\"parameters\\":{\\"ChildId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountDescribeAccount70B846F7",
-                  "Account.Id",
-                ],
-              },
-              "\\"}}",
-            ],
-          ],
-        },
-        "Delete": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listParents\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"ChildId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountDescribeAccount70B846F7",
-                  "Account.Id",
-                ],
-              },
-              "\\"}}",
-            ],
-          ],
-        },
-        "InstallLatestAwsSdk": false,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
-            "Arn",
-          ],
-        },
-        "Update": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listParents\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Parents.0.Id\\"},\\"parameters\\":{\\"ChildId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AccountDescribeAccount70B846F7",
-                  "Account.Id",
-                ],
-              },
-              "\\"}}",
-            ],
-          ],
-        },
-      },
-      "Type": "Custom::AWS",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "AccountParentListParentsCustomResourceCustomResourcePolicy9E12361D": Object {
-      "DependsOn": Array [
-        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
-        "AccountDescribeAccount70B846F7",
-      ],
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "organizations:ListParents",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "AccountParentListParentsCustomResourceCustomResourcePolicy9E12361D",
-        "Roles": Array [
-          Object {
-            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
     },
     "AccountTagsTagResourceB6D57C22": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
-        "AccountDescribeAccount70B846F7",
+        "AccountCreateAccount833709C2",
       ],
       "Properties": Object {
         "ResourceId": Object {
           "Fn::GetAtt": Array [
-            "AccountDescribeAccount70B846F7",
-            "Account.Id",
+            "AccountCreateAccount833709C2",
+            "AccountId",
           ],
         },
         "ServiceToken": Object {
@@ -436,8 +114,7 @@ Object {
     "AccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE28B2422": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "AccountDescribeAccountCustomResourcePolicy9AAAEE6A",
-        "AccountDescribeAccount70B846F7",
+        "AccountCreateAccount833709C2",
       ],
       "Properties": Object {
         "TemplateURL": Object {
@@ -483,7 +160,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/b18830e8d029ae7e52c54fca379f9093ce647da3eacc16f8b3c8b8b0cfedd793.json",
+              "/43fb663319637c8ad9bcd79544f8e900be3d811fe716261bec4dbc2b3e6568d6.json",
             ],
           ],
         },

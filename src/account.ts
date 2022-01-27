@@ -1,9 +1,8 @@
-import { CustomResource, ITaggable, TagManager, TagType } from "aws-cdk-lib";
-import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
+import { CustomResource, ITaggable, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
 import { AccountProvider } from "./account-provider";
 import { DelegatedAdministrator } from "./delegated-administrator";
-import { IChild, IParent, Parent } from "./parent";
+import { IChild, IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
 import { TagResource } from "./tag-resource";
 
@@ -19,15 +18,6 @@ export enum IamUserAccessToBilling {
    * If set to DENY, only the root user of the new account can access account billing information.
    */
   DENY = "DENY",
-}
-
-export interface AccountBaseProps {
-  readonly accountId?: string;
-  readonly parent?: IParent;
-  readonly email?: string;
-  readonly accountName?: string;
-  readonly roleName?: string;
-  readonly iamUserAccessToBilling?: IamUserAccessToBilling;
 }
 
 export interface AccountProps {
@@ -56,6 +46,18 @@ export interface AccountProps {
    * The parent root or OU that you want to create the new Account in.
    */
   readonly parent?: IParent;
+  /**
+   * Whether to import, if a duplicate account with same name and email already exists.
+   *
+   * @default true
+   */
+  readonly importOnDuplicate?: boolean;
+  /**
+   * If set to RemovalPolicy.DESTROY, the account will be moved to the root.
+   *
+   * @default RemovalPolicy.Retain
+   */
+  readonly removalPolicy?: RemovalPolicy;
 }
 
 export interface IAccount extends IChild, IConstruct {
@@ -80,88 +82,42 @@ export interface IAccount extends IChild, IConstruct {
 /**
  * Creates or imports an AWS account that is automatically a member of the organization whose credentials made the request. AWS Organizations automatically copies the information from the management account to the new member account
  */
-export abstract class AccountBase extends Construct implements IAccount, IPolicyAttachmentTarget, ITaggable {
+export class Account extends Construct implements IAccount, IPolicyAttachmentTarget, ITaggable {
   public readonly accountId: string;
   public readonly accountArn: string;
   public readonly accountName: string;
   public readonly email: string;
 
-  protected readonly resource: AwsCustomResource;
+  protected readonly resource: CustomResource;
 
-  readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_CreateAccount");
+  readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Account");
 
-  protected constructor(scope: Construct, id: string, props: AccountBaseProps) {
+  public constructor(scope: Construct, id: string, props: AccountProps) {
     super(scope, id);
 
-    const { email, accountName, roleName, iamUserAccessToBilling, parent } = props;
+    const { email, accountName, roleName, iamUserAccessToBilling, parent, importOnDuplicate, removalPolicy } = props;
 
-    let accountId = props.accountId;
-    let createAccount = undefined;
-    if (!accountId) {
-      const createAccountProvider = AccountProvider.getOrCreate(this);
-      createAccount = new CustomResource(this, "CreateAccount", {
-        serviceToken: createAccountProvider.provider.serviceToken,
-        resourceType: "Custom::Organizations_CreateAccount",
-        properties: {
-          Email: email,
-          AccountName: accountName,
-          RoleName: roleName || "OrganizationAccountAccessRole",
-          IamUserAccessToBilling: iamUserAccessToBilling || IamUserAccessToBilling.ALLOW,
-        },
-      });
-      accountId = createAccount.getAtt("AccountId").toString();
-    }
-
-    const account = new AwsCustomResource(this, "DescribeAccount", {
+    const createAccountProvider = AccountProvider.getOrCreate(this);
+    const account = new CustomResource(this, "CreateAccount", {
+      serviceToken: createAccountProvider.provider.serviceToken,
       resourceType: "Custom::Organizations_Account",
-      onCreate: {
-        service: "Organizations",
-        action: "describeAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeAccount-property
-        region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.of(accountId),
-        parameters: {
-          AccountId: accountId,
-        },
+      properties: {
+        Email: email,
+        AccountName: accountName,
+        RoleName: roleName || "OrganizationAccountAccessRole",
+        IamUserAccessToBilling: iamUserAccessToBilling || IamUserAccessToBilling.ALLOW,
+        ParentId: parent?.identifier(),
+        ImportOnDuplicate: String(importOnDuplicate ?? true),
+        RemovalPolicy: removalPolicy ?? RemovalPolicy.RETAIN,
       },
-      onUpdate: {
-        service: "Organizations",
-        action: "describeAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeAccount-property
-        region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.of(accountId),
-        parameters: {
-          AccountId: accountId,
-        },
-      },
-      onDelete: {
-        service: "Organizations",
-        action: "describeAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeAccount-property
-        region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.of(accountId),
-        parameters: {
-          AccountId: accountId,
-        },
-      },
-      installLatestAwsSdk: false,
-      policy: AwsCustomResourcePolicy.fromSdkCalls({
-        resources: AwsCustomResourcePolicy.ANY_RESOURCE,
-      }),
     });
 
-    if (createAccount) {
-      account.node.addDependency(createAccount);
-    }
+    this.accountId = account.getAtt("AccountId").toString();
+    this.accountArn = account.getAtt("AccountArn").toString();
+    this.accountName = account.getAtt("AccountName").toString();
+    this.email = account.getAtt("Email").toString();
 
     this.resource = account;
-
-    this.accountId = account.getResponseField("Account.Id");
-    this.accountArn = account.getResponseField("Account.Arn");
-    this.accountName = account.getResponseField("Account.Name");
-    this.email = account.getResponseField("Account.Email");
-
-    if (parent) {
-      account.node.addDependency(parent);
-      this.move(parent);
-    }
 
     const tagResource = new TagResource(this, "Tags", { resource: this });
     tagResource.node.addDependency(account);
@@ -171,67 +127,11 @@ export abstract class AccountBase extends Construct implements IAccount, IPolicy
     return this.accountId;
   }
 
-  protected currentParent(): IParent {
-    const parent = Parent.fromChildId(this, "Parent", this.accountId);
-
-    parent.node.addDependency(this.resource);
-
-    return parent;
-  }
-
-  protected move(destinationParent: IParent): void {
-    const sourceParent = this.currentParent();
-
-    const move = new AwsCustomResource(this, "MoveAccount", {
-      onUpdate: {
-        service: "Organizations",
-        action: "moveAccount", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#moveAccount-property
-        region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.of(this.accountId),
-        parameters: {
-          AccountId: this.accountId,
-          DestinationParentId: destinationParent.identifier(),
-          SourceParentId: sourceParent.identifier(),
-        },
-        ignoreErrorCodesMatching: "DuplicateAccountException",
-      },
-      installLatestAwsSdk: false,
-      policy: AwsCustomResourcePolicy.fromSdkCalls({
-        resources: AwsCustomResourcePolicy.ANY_RESOURCE,
-      }),
-    });
-    move.node.addDependency(destinationParent, sourceParent);
-  }
-
   public delegateAdministrator(servicePrincipal: string) {
     const delegatedAdministrator = new DelegatedAdministrator(this, "DelegatedAdministrator", {
       account: this,
       servicePrincipal: servicePrincipal,
     });
     delegatedAdministrator.node.addDependency(this.resource);
-  }
-}
-
-export interface AccountAttributes {
-  readonly accountId: string;
-  readonly parent?: IParent;
-}
-
-export class Account extends AccountBase {
-  /**
-   * Import an existing account from account id.
-   */
-  public static fromAccountId(scope: Construct, id: string, attrs: AccountAttributes): IAccount {
-    class Import extends AccountBase {
-      public constructor() {
-        super(scope, id, { accountId: attrs.accountId, parent: attrs.parent });
-      }
-    }
-
-    return new Import();
-  }
-
-  public constructor(scope: Construct, id: string, props: AccountProps) {
-    super(scope, id, { ...props });
   }
 }

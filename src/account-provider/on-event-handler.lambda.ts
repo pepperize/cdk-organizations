@@ -17,23 +17,76 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
 
   console.log("Payload: %j", event);
 
-  if (event.RequestType == "Create") {
-    // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createAccount-property
-    const response: Organizations.CreateAccountResponse = await organizationsClient
-      .createAccount({
-        Email: event.ResourceProperties.Email,
-        AccountName: event.ResourceProperties.AccountName,
-        RoleName: event.ResourceProperties.RoleName,
-        IamUserAccessToBilling: event.ResourceProperties.IamUserAccessToBilling,
-      })
-      .promise();
-    console.log("Creating account: %j", response);
-    return { PhysicalResourceId: response.CreateAccountStatus?.Id };
+  const { Email, AccountName, RoleName, IamUserAccessToBilling, ImportOnDuplicate } = event.ResourceProperties;
+
+  if (event.RequestType == "Create" && ImportOnDuplicate == "true") {
+    const account = await findAccountByEmail(organizationsClient, Email);
+
+    if (account) {
+      return {
+        PhysicalResourceId: account.Id,
+        Data: { ...event.ResourceProperties, AccountId: account.Id },
+      };
+    }
   }
 
-  // On event.RequestType == "Update" or event.RequestType == "Delete"
-  // No update for accounts available https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html
-  // Deletion is not possible, only removal from organization if criteria are matching for standalone account: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#removeAccountFromOrganization-property
-  // TODO: Try to delete account or move to Organization.Root (RemovalPolicy)
-  return { PhysicalResourceId: event.PhysicalResourceId, Data: event.ResourceProperties };
+  if (event.RequestType == "Create") {
+    const response: Organizations.CreateAccountResponse = await organizationsClient
+      // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createAccount-property
+      .createAccount({
+        Email: Email,
+        AccountName: AccountName,
+        RoleName: RoleName,
+        IamUserAccessToBilling: IamUserAccessToBilling,
+      })
+      .promise();
+
+    console.log("Creating account: %j", response);
+
+    return {
+      PhysicalResourceId: response.CreateAccountStatus?.Id,
+      Data: { ...event.ResourceProperties, CreateAccountStatusId: response.CreateAccountStatus?.Id },
+    };
+  }
+
+  let data;
+  if (/\d{12}/.test(event.PhysicalResourceId!)) {
+    data = { AccountId: event.PhysicalResourceId };
+  } else {
+    data = { CreateAccountStatusId: event.PhysicalResourceId };
+  }
+
+  return {
+    ...event,
+    Data: {
+      ...event.ResourceProperties,
+      ...data,
+    },
+  };
 }
+
+const findAccountByEmail = async (client: Organizations, email: string): Promise<Organizations.Account | undefined> => {
+  let response: Organizations.ListAccountsResponse = await client
+    // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listAccounts-property
+    .listAccounts()
+    .promise();
+  for (const account of response.Accounts ?? []) {
+    if (account.Email == email) {
+      return account;
+    }
+  }
+
+  while (response.NextToken) {
+    response = await client
+      // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listAccounts-property
+      .listAccounts()
+      .promise();
+    for (const account of response.Accounts ?? []) {
+      if (account.Email == email) {
+        return account;
+      }
+    }
+  }
+
+  return undefined;
+};
