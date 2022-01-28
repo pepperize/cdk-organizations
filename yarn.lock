@@ -1160,9 +1160,9 @@ aws-lambda@^1.0.7:
     watchpack "^2.0.0-beta.10"
 
 aws-sdk-mock@^5.5.1:
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/aws-sdk-mock/-/aws-sdk-mock-5.6.1.tgz#a62c9b89424b0777487249a26947d9b897c9f8e0"
-  integrity sha512-dSpIoSHHNsApCBgi8Yg9puoa1dYGadz4PqzjTal2620CgVdNZLoyCxfpmfyJZxQ+9scI5qSyi6mxyOv8DxyZ3A==
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/aws-sdk-mock/-/aws-sdk-mock-5.6.2.tgz#664771462953ca8d3806d5a50a63b4a6dbd5290f"
+  integrity sha512-GRJg8kjRJFLm2aLiPkYSqe/RreHqlqncAeFtWdAbtSxzBdct9EaV6rqSqjyWXKNJG45Rzn2Ojo3F6qVIgkQnSg==
   dependencies:
     aws-sdk "^2.928.0"
     sinon "^11.1.1"
