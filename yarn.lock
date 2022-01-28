@@ -1617,10 +1617,10 @@ console-control-strings@^1.0.0, console-control-strings@^1.1.0:
   resolved "https://registry.npmjs.org/console-control-strings/-/console-control-strings-1.1.0.tgz"
   integrity sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=
 
-constructs@^10.0.5:
-  version "10.0.45"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.0.45.tgz#77b30eed476825f2330a3c48cac3e66435709e30"
-  integrity sha512-QZkRmlLh7lx/pn5yj1nc7EwWrfZ99bl+fiNY8J1UtKwGb4iq/oZx9dmnsmjSlUW1iU2mZ5/5VmFHjF0z9YvvNQ==
+constructs@10.0.5:
+  version "10.0.5"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.0.5.tgz#48c0402f1b98bbf5664efff74a8015e6e8a9f41e"
+  integrity sha512-IwOwekzrASFC3qt4ozCtV09rteAIAesuCGsW0p+uBfqHd2XcvA5CXqJjgf4eUqm6g8e/noXlVCMDWwC8GaLtrg==
 
 conventional-changelog-angular@^5.0.12:
   version "5.0.13"
