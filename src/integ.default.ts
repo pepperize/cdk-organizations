@@ -21,8 +21,9 @@ new EnableAwsServiceAccess(stack, "EnableAwsServiceAccess", {
 });
 
 // Import an existing account
-const account = Account.fromAccountId(stack, "ImportedAccount", {
-  accountId: "123456789012",
+const account = new Account(stack, "ImportedAccount", {
+  accountName: "test",
+  email: "info+integ-test@pepperize.com",
   parent: organization.root,
 });
 // Enable a delegated admin account
