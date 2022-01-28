@@ -7,4 +7,5 @@ export * from "./organizational-unit";
 export * from "./parent";
 export * from "./policy";
 export * from "./policy-attachment";
+export * from "./resource";
 export * from "./tag-resource";

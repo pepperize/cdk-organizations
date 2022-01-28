@@ -1,12 +1,12 @@
-import { ITaggable, TagManager, TagType } from "aws-cdk-lib";
+import { TagManager, TagType } from "aws-cdk-lib";
 import {
   AwsCustomResource,
   AwsCustomResourcePolicy,
   PhysicalResourceId,
   PhysicalResourceIdReference,
 } from "aws-cdk-lib/custom-resources";
-import { Construct } from "constructs";
-import { TagResource } from "./tag-resource";
+import { Construct, IConstruct } from "constructs";
+import { ITaggableResource, TagResource } from "./tag-resource";
 
 /**
  * Organizations offers policy types in the following two broad categories:
@@ -63,10 +63,14 @@ export interface PolicyProps {
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
  * @see FeatureSet
  */
-export class Policy extends Construct implements ITaggable {
+export interface IPolicy extends IConstruct, ITaggableResource {
   /**
    * The unique identifier (ID) of the policy. The regex pattern for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
    */
+  readonly policyId: string;
+}
+
+export class Policy extends Construct implements IPolicy {
   public readonly policyId: string;
 
   readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Policy");

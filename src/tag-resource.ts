@@ -1,13 +1,9 @@
 import { CustomResource, ITaggable } from "aws-cdk-lib";
 import { Construct } from "constructs";
+import { IResource } from "./resource";
 import { TagResourceProvider } from "./tag-resource-provider";
 
-export interface ITaggableResource extends ITaggable {
-  /**
-   * The unique identifier (ID) of the account, Organizational unit (OU), parent root or Policy (any type) that you want to tag.
-   */
-  identifier(): string;
-}
+export interface ITaggableResource extends ITaggable, IResource {}
 
 export interface TagResourceProps {
   readonly resource: ITaggableResource;

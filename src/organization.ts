@@ -1,4 +1,4 @@
-import { CustomResource, ITaggable, TagManager, TagType } from "aws-cdk-lib";
+import { CustomResource, TagManager, TagType } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
 import { EnablePolicyType } from "./enable-policy-type";
@@ -6,7 +6,7 @@ import { OrganizationProvider } from "./organization-provider";
 import { IParent } from "./parent";
 import { PolicyType } from "./policy";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
-import { TagResource } from "./tag-resource";
+import { ITaggableResource, TagResource } from "./tag-resource";
 
 /**
  * Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
@@ -123,7 +123,7 @@ export class Organization extends Construct implements IOrganization {
  * <strong>Currently, you can have only one root. AWS Organizations automatically creates it for you when you create an organization.</strong>
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html
  */
-export class Root extends Construct implements IParent, IPolicyAttachmentTarget, ITaggable {
+export class Root extends Construct implements IParent, IPolicyAttachmentTarget, ITaggableResource {
   /**
    * The unique identifier (ID) for the root. The regex pattern for a root ID string requires "r-" followed by from 4 to 32 lowercase letters or digits.
    */

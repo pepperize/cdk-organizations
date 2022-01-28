@@ -1,19 +1,10 @@
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
+import { IResource } from "./resource";
 
-export interface IParent extends IConstruct {
-  /**
-   * The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in.
-   */
-  identifier(): string;
-}
+export interface IParent extends IConstruct, IResource {}
 
-export interface IChild extends IConstruct {
-  /**
-   * The unique identifier (ID) of the account or organizational unit (OU) that you want to retrieve the parent for.
-   */
-  identifier(): string;
-}
+export interface IChild extends IConstruct, IResource {}
 
 export interface ParentProps {
   readonly child: IChild;

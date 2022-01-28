@@ -1,10 +1,9 @@
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IDependable } from "constructs";
-import { Policy } from "./policy";
+import { IPolicy } from "./policy";
+import { IResource } from "./resource";
 
-export interface IPolicyAttachmentTarget extends IDependable {
-  identifier(): string;
-}
+export interface IPolicyAttachmentTarget extends IDependable, IResource {}
 
 export interface PolicyAttachmentProps {
   /**
@@ -14,7 +13,7 @@ export interface PolicyAttachmentProps {
   /**
    * The policy that you want to attach to the target.
    */
-  readonly policy: Policy;
+  readonly policy: IPolicy;
 }
 
 /**

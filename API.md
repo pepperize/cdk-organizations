@@ -4,7 +4,7 @@
 
 ### Account <a name="@pepperize/cdk-organizations.Account" id="pepperizecdkorganizationsaccount"></a>
 
-- *Implements:* [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`aws-cdk-lib.ITaggable`](#aws-cdk-lib.ITaggable)
+- *Implements:* [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
 
 Creates or imports an AWS account that is automatically a member of the organization whose credentials made the request.
 
@@ -49,7 +49,7 @@ new Account(scope: Construct, id: string, props: AccountProps)
 | **Name** | **Description** |
 | --- | --- |
 | [`delegateAdministrator`](#pepperizecdkorganizationsaccountdelegateadministrator) | *No description.* |
-| [`identifier`](#pepperizecdkorganizationsaccountidentifier) | The unique identifier (ID) of the account or organizational unit (OU) that you want to retrieve the parent for. |
+| [`identifier`](#pepperizecdkorganizationsaccountidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
 ---
 
@@ -491,7 +491,7 @@ new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitPr
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationsorganizationalunitidentifier) | The unique identifier (ID) of the account, Organizational unit (OU), parent root or Policy (any type) that you want to tag. |
+| [`identifier`](#pepperizecdkorganizationsorganizationalunitidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
 ---
 
@@ -681,7 +681,7 @@ new ParentBase(scope: Construct, id: string, props: ParentBaseProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationsparentbaseidentifier) | The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in. |
+| [`identifier`](#pepperizecdkorganizationsparentbaseidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
 ---
 
@@ -713,13 +713,7 @@ public readonly parentId: string;
 
 ### Policy <a name="@pepperize/cdk-organizations.Policy" id="pepperizecdkorganizationspolicy"></a>
 
-- *Implements:* [`aws-cdk-lib.ITaggable`](#aws-cdk-lib.ITaggable)
-
-Policies in AWS Organizations enable you to apply additional types of management to the AWS accounts in your organization.
-
-<strong>You can use policies when all features are enabled in your organization.</strong>  <strong>Before you can create and attach a policy to your organization, you must enable that policy type for use.</strong>
-
-> FeatureSet
+- *Implements:* [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy)
 
 #### Initializers <a name="@pepperize/cdk-organizations.Policy.Initializer" id="pepperizecdkorganizationspolicyinitializer"></a>
 
@@ -759,7 +753,7 @@ new Policy(scope: Construct, id: string, props: PolicyProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationspolicyidentifier) | *No description.* |
+| [`identifier`](#pepperizecdkorganizationspolicyidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
 ---
 
@@ -852,7 +846,7 @@ new PolicyAttachment(scope: Construct, id: string, props: PolicyAttachmentProps)
 
 ### Root <a name="@pepperize/cdk-organizations.Root" id="pepperizecdkorganizationsroot"></a>
 
-- *Implements:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`aws-cdk-lib.ITaggable`](#aws-cdk-lib.ITaggable)
+- *Implements:* [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
 
 The parent container for all the accounts for your organization.
 
@@ -891,7 +885,7 @@ new Root(scope: Construct, id: string)
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationsrootidentifier) | The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in. |
+| [`identifier`](#pepperizecdkorganizationsrootidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
 ---
 
@@ -1389,7 +1383,7 @@ const policyAttachmentProps: PolicyAttachmentProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`policy`](#pepperizecdkorganizationspolicyattachmentpropspropertypolicy)<span title="Required">*</span> | [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy) | The policy that you want to attach to the target. |
+| [`policy`](#pepperizecdkorganizationspolicyattachmentpropspropertypolicy)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy) | The policy that you want to attach to the target. |
 | [`target`](#pepperizecdkorganizationspolicyattachmentpropspropertytarget)<span title="Required">*</span> | [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget) | The root, OU, or account that you want to attach the policy to. |
 
 ---
@@ -1397,10 +1391,10 @@ const policyAttachmentProps: PolicyAttachmentProps = { ... }
 ##### `policy`<sup>Required</sup> <a name="@pepperize/cdk-organizations.PolicyAttachmentProps.property.policy" id="pepperizecdkorganizationspolicyattachmentpropspropertypolicy"></a>
 
 ```typescript
-public readonly policy: Policy;
+public readonly policy: IPolicy;
 ```
 
-- *Type:* [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy)
+- *Type:* [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy)
 
 The policy that you want to attach to the target.
 
@@ -1524,7 +1518,7 @@ public readonly resource: ITaggableResource;
 
 ### IAccount <a name="@pepperize/cdk-organizations.IAccount" id="pepperizecdkorganizationsiaccount"></a>
 
-- *Extends:* [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`constructs.IConstruct`](#constructs.IConstruct)
+- *Extends:* [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`constructs.IConstruct`](#constructs.IConstruct), [`@pepperize/cdk-organizations.IResource`](#@pepperize/cdk-organizations.IResource)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount)
 
@@ -1607,23 +1601,10 @@ This email address must not already be associated with another AWS account. You 
 
 ### IChild <a name="@pepperize/cdk-organizations.IChild" id="pepperizecdkorganizationsichild"></a>
 
-- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
+- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct), [`@pepperize/cdk-organizations.IResource`](#@pepperize/cdk-organizations.IResource)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit)
 
-#### Methods <a name="Methods" id="methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| [`identifier`](#pepperizecdkorganizationsichildidentifier) | The unique identifier (ID) of the account or organizational unit (OU) that you want to retrieve the parent for. |
-
----
-
-##### `identifier` <a name="@pepperize/cdk-organizations.IChild.identifier" id="pepperizecdkorganizationsichildidentifier"></a>
-
-```typescript
-public identifier()
-```
 
 #### Properties <a name="Properties" id="properties"></a>
 
@@ -1849,23 +1830,10 @@ The friendly name of this OU.
 
 ### IParent <a name="@pepperize/cdk-organizations.IParent" id="pepperizecdkorganizationsiparent"></a>
 
-- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
+- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct), [`@pepperize/cdk-organizations.IResource`](#@pepperize/cdk-organizations.IResource)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Parent`](#@pepperize/cdk-organizations.Parent), [`@pepperize/cdk-organizations.ParentBase`](#@pepperize/cdk-organizations.ParentBase), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent)
 
-#### Methods <a name="Methods" id="methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| [`identifier`](#pepperizecdkorganizationsiparentidentifier) | The unique identifier (ID) of the parent root or organizational unit (OU) that you want to create the new OU in. |
-
----
-
-##### `identifier` <a name="@pepperize/cdk-organizations.IParent.identifier" id="pepperizecdkorganizationsiparentidentifier"></a>
-
-```typescript
-public identifier()
-```
 
 #### Properties <a name="Properties" id="properties"></a>
 
@@ -1887,21 +1855,90 @@ The tree node.
 
 ---
 
+### IPolicy <a name="@pepperize/cdk-organizations.IPolicy" id="pepperizecdkorganizationsipolicy"></a>
+
+- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
+
+- *Implemented By:* [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy), [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy)
+
+Policies in AWS Organizations enable you to apply additional types of management to the AWS accounts in your organization.
+
+<strong>You can use policies when all features are enabled in your organization.</strong>  <strong>Before you can create and attach a policy to your organization, you must enable that policy type for use.</strong>
+
+> FeatureSet
+
+
+#### Properties <a name="Properties" id="properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| [`node`](#pepperizecdkorganizationsipolicypropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
+| [`tags`](#pepperizecdkorganizationsipolicypropertytags)<span title="Required">*</span> | [`aws-cdk-lib.TagManager`](#aws-cdk-lib.TagManager) | TagManager to set, remove and format tags. |
+| [`policyId`](#pepperizecdkorganizationsipolicypropertypolicyid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the policy. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IPolicy.property.node" id="pepperizecdkorganizationsipolicypropertynode"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* [`constructs.Node`](#constructs.Node)
+
+The tree node.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IPolicy.property.tags" id="pepperizecdkorganizationsipolicypropertytags"></a>
+
+```typescript
+public readonly tags: TagManager;
+```
+
+- *Type:* [`aws-cdk-lib.TagManager`](#aws-cdk-lib.TagManager)
+
+TagManager to set, remove and format tags.
+
+---
+
+##### `policyId`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IPolicy.property.policyId" id="pepperizecdkorganizationsipolicypropertypolicyid"></a>
+
+```typescript
+public readonly policyId: string;
+```
+
+- *Type:* `string`
+
+The unique identifier (ID) of the policy.
+
+The regex pattern for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
+
+---
+
 ### IPolicyAttachmentTarget <a name="@pepperize/cdk-organizations.IPolicyAttachmentTarget" id="pepperizecdkorganizationsipolicyattachmenttarget"></a>
 
-- *Extends:* [`constructs.IDependable`](#constructs.IDependable)
+- *Extends:* [`constructs.IDependable`](#constructs.IDependable), [`@pepperize/cdk-organizations.IResource`](#@pepperize/cdk-organizations.IResource)
 
-- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
+- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget)
+
+
+
+### IResource <a name="@pepperize/cdk-organizations.IResource" id="pepperizecdkorganizationsiresource"></a>
+
+- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Parent`](#@pepperize/cdk-organizations.Parent), [`@pepperize/cdk-organizations.ParentBase`](#@pepperize/cdk-organizations.ParentBase), [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IResource`](#@pepperize/cdk-organizations.IResource), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
+
+Interface for an AWS Organizations resource.
 
 #### Methods <a name="Methods" id="methods"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| [`identifier`](#pepperizecdkorganizationsipolicyattachmenttargetidentifier) | *No description.* |
+| [`identifier`](#pepperizecdkorganizationsiresourceidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
 ---
 
-##### `identifier` <a name="@pepperize/cdk-organizations.IPolicyAttachmentTarget.identifier" id="pepperizecdkorganizationsipolicyattachmenttargetidentifier"></a>
+##### `identifier` <a name="@pepperize/cdk-organizations.IResource.identifier" id="pepperizecdkorganizationsiresourceidentifier"></a>
 
 ```typescript
 public identifier()
@@ -1910,23 +1947,10 @@ public identifier()
 
 ### ITaggableResource <a name="@pepperize/cdk-organizations.ITaggableResource" id="pepperizecdkorganizationsitaggableresource"></a>
 
-- *Extends:* [`aws-cdk-lib.ITaggable`](#aws-cdk-lib.ITaggable)
+- *Extends:* [`aws-cdk-lib.ITaggable`](#aws-cdk-lib.ITaggable), [`@pepperize/cdk-organizations.IResource`](#@pepperize/cdk-organizations.IResource)
 
-- *Implemented By:* [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
+- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
 
-#### Methods <a name="Methods" id="methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| [`identifier`](#pepperizecdkorganizationsitaggableresourceidentifier) | The unique identifier (ID) of the account, Organizational unit (OU), parent root or Policy (any type) that you want to tag. |
-
----
-
-##### `identifier` <a name="@pepperize/cdk-organizations.ITaggableResource.identifier" id="pepperizecdkorganizationsitaggableresourceidentifier"></a>
-
-```typescript
-public identifier()
-```
 
 #### Properties <a name="Properties" id="properties"></a>
 

@@ -1,10 +1,11 @@
-import { CustomResource, ITaggable, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
+import { CustomResource, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
 import { AccountProvider } from "./account-provider";
 import { DelegatedAdministrator } from "./delegated-administrator";
 import { IChild, IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
-import { TagResource } from "./tag-resource";
+import { IResource } from "./resource";
+import { ITaggableResource, TagResource } from "./tag-resource";
 
 /**
  * @see https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate
@@ -60,7 +61,7 @@ export interface AccountProps {
   readonly removalPolicy?: RemovalPolicy;
 }
 
-export interface IAccount extends IChild, IConstruct {
+export interface IAccount extends IPolicyAttachmentTarget, IChild, IConstruct, IResource {
   /**
    * If the account was created successfully, the unique identifier (ID) of the new account. Exactly 12 digits.
    */
@@ -82,7 +83,7 @@ export interface IAccount extends IChild, IConstruct {
 /**
  * Creates or imports an AWS account that is automatically a member of the organization whose credentials made the request. AWS Organizations automatically copies the information from the management account to the new member account
  */
-export class Account extends Construct implements IAccount, IPolicyAttachmentTarget, ITaggable {
+export class Account extends Construct implements IAccount, ITaggableResource {
   public readonly accountId: string;
   public readonly accountArn: string;
   public readonly accountName: string;
