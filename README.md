@@ -88,7 +88,7 @@ dotnet add package Pepperize.CDK.Organizations
 
    export class OrganizationStack extends Stack {
      constructor(scope: Construct, id: string, props: StackProps = {}) {
-       super(scope, id, { ...props, env: { ...props.env, region: "us-east-1" } }); // AWS Organizations API is only in region us-east-1 available
+       super(scope, id, { ...props, env: { ...props.env, region: "us-east-1" } }); // AWS Organizations API is only available in region us-east-1
 
        // Create your organization
        const organization = new Organization(stack, "Organization", {});
@@ -137,15 +137,15 @@ To create a new organization or import an existing organization, add the followi
 
 ```typescript
 const organization = new Organization(stack, "Organization", {
-  featureSet: FeatureSet.ALL, // (default) required later on to enable SCPs, enable AWS services or deletage an adminsitrator account
+  featureSet: FeatureSet.ALL, // (default) required later on to enable SCPs, enable AWS services or delegate an adminsitrator account
 });
 organization.root; // The organization's root is automatically created
 ```
 
 - `FeatureSet.ALL` is required for advanced features like Service Control Policies (SCP) and is the [preferred way to work with AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
-- The account which deploys the stack, will become automatically the management account of the new organization.
-- If an organization already exists, it will be automatically imported. You may disable this behaviour by passing `importOnDuplicate: false` in the props.
-- If the construct gets removed from the stack the organization still remains and must be manually deleted. For deletion of an organization you must previously remove all the member accounts, OUs, and policies from the organization. [Deleting the organization by removing the management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_delete.html)
+- The account which deploys the stack, will automatically become the management account of the new organization.
+- If an organization already exists, it will be imported automatically. You can disable this behaviour by passing `importOnDuplicate: false` in the props.
+- If the construct is removed from the stack, the organization will remain and must be deleted manually. For deletion of an organization you must previously remove all the member accounts, OUs, and policies from the organization. [Deleting the organization by removing the management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_delete.html)
 - An organization root is automatically created for you when you create the new organization.
 
 See [IOrganization](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IOrganization)
@@ -162,7 +162,7 @@ const organizationUnit = new OrganizationalUnit(stack, "Organization", {
 ```
 
 - The parent of an organizational unit (OU) can be either the organization's root or another OU within the organization.
-- An organizational unit (OU) can't be moved. You have first to create a new OU, move all the accounts and then delete the old OU.
+- An organizational unit (OU) can't be moved. You have to create a new OU first, move all the accounts and then delete the old OU.
 - For deletion of an organizational unit (OU) you must first move all accounts out of the OU and any child OUs, and then you can delete the child OUs. [Deleting an organizational unit](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html#delete-ou)
 
 See [IOrganizationalUnit](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IOrganizationalUnit)
@@ -181,7 +181,7 @@ new Account(stack, "Account", {
 
 - The email address must not already be associated with another AWS account. You may suffix the email address, i.e. `info+account-123456789012@pepperize.com`.
 - An account will be created and then moved to the parent, if the parent is an organizational unit (OU).
-- It can only be used from within the management account in the us-east-1 region.
+- An account can only be created from within the management account in the `us-east-1` region.
 - An account can't be deleted easily, if the construct gets removed from the stack the account still remains. [Closing an AWS account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 
 See [IAccount](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IAccount)
@@ -190,8 +190,8 @@ See [IAccount](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@
 
 - `importOnDuplicate` If an account with the same email address exists in the organization, it will be imported.
 - `removalPolicy` Will move the account to the root on Cloudformation delete event.
-- `iamUserAccessToBilling` Default `IamUserAccessToBilling.ALLOW` If you enable it, IAM users and roles that have appropriate permissions can view billing information for the account.
-- `roleName` Default `OrganizationAccountAccessRole` Gets preconfigured in the newly created account and grants users in the management account administrator permissions in the new member account.
+- `iamUserAccessToBilling` Default `IamUserAccessToBilling.ALLOW` If you set `iamUserAccessToBilling` to `ALLOW`, IAM users and roles that have appropriate permissions can view billing information for the account.
+- `roleName` Default `OrganizationAccountAccessRole` is preconfigures in the newly created account and grants users in the management account administrator permissions in the new member account.
 
 See [AccountProps](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.AccountProps)
 
@@ -250,7 +250,7 @@ const organization = new Organization();
 Tags.of(organization.root).add("key", "value");
 ```
 
-#### Tagging an organizational unit
+#### Tagging an organizational unit (OU)
 
 ```typescript
 import { Tags } from "aws-cdk-lib";
@@ -284,7 +284,7 @@ AWS Organizations has some limitations:
 - The stack can only be deployed in the `us-east-1` region.
 - The stack's account must be the management account of an existing organization.
 - The stack's account becomes the management account of the new organization.
-- An account belongs only to one organization within a single root.
+- An account belongs to only one organization within a single root.
 - [Quotas for AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
 
 # Contributing
