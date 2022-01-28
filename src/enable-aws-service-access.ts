@@ -22,6 +22,7 @@ export class EnableAwsServiceAccess extends Construct {
     const { servicePrincipal } = props;
 
     new AwsCustomResource(this, "EnableAwsServiceAccessCustomResource", {
+      resourceType: "Custom::Organizations_EnableAwsServiceAccess",
       onCreate: {
         service: "Organizations",
         action: "enableAWSServiceAccess", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#enableAWSServiceAccess-property

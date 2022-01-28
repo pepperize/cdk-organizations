@@ -13,8 +13,8 @@ const project = new AwsCdkConstructLibrary({
   keywords: ["aws", "cdk", "organizations", "account", "account-management"],
   repositoryUrl: "https://github.com/pepperize/cdk-organizations.git",
 
-  bundledDeps: ["aws-lambda", "aws-sdk"],
-  deps: ["aws-lambda", "aws-sdk"],
+  bundledDeps: ["aws-lambda", "aws-sdk", "pascal-case"],
+  deps: ["aws-lambda", "aws-sdk", "pascal-case"],
   devDeps: [
     "@pepperize/projen-awscdk-construct@^0.0.8",
     "@types/aws-lambda",

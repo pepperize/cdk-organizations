@@ -1,7 +1,6 @@
 import { App, Stack } from "aws-cdk-lib";
 import { Account, IamUserAccessToBilling } from "./account";
 import { DelegatedAdministrator } from "./delegated-administrator";
-import { EnableAwsServiceAccess } from "./enable-aws-service-access";
 import { EnablePolicyType } from "./enable-policy-type";
 import { FeatureSet, Organization } from "./organization";
 import { OrganizationalUnit } from "./organizational-unit";
@@ -16,9 +15,9 @@ const organization = new Organization(stack, "Organization", {
   featureSet: FeatureSet.ALL,
 });
 // Enable AWS Service Access (requires FeatureSet: ALL)
-new EnableAwsServiceAccess(stack, "EnableAwsServiceAccess", {
-  servicePrincipal: "service-abbreviation.amazonaws.com",
-});
+organization.enableAwsServiceAccess("service-abbreviation.amazonaws.com");
+organization.enableAwsServiceAccess("ssm.amazonaws.com");
+organization.enableAwsServiceAccess("config-multiaccountsetup.amazonaws.com");
 
 // Import an existing account
 const account = new Account(stack, "ImportedAccount", {

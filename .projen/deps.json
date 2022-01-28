@@ -144,6 +144,10 @@
       "type": "bundled"
     },
     {
+      "name": "pascal-case",
+      "type": "bundled"
+    },
+    {
       "name": "aws-cdk-lib",
       "version": "^2.8.0",
       "type": "peer"
@@ -159,6 +163,10 @@
     },
     {
       "name": "aws-sdk",
+      "type": "runtime"
+    },
+    {
+      "name": "pascal-case",
       "type": "runtime"
     }
   ],

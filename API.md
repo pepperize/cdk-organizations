@@ -329,7 +329,22 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 | **Name** | **Description** |
 | --- | --- |
+| [`enableAwsServiceAccess`](#pepperizecdkorganizationsorganizationenableawsserviceaccess) | Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf. |
 | [`enablePolicyType`](#pepperizecdkorganizationsorganizationenablepolicytype) | *No description.* |
+
+---
+
+##### `enableAwsServiceAccess` <a name="@pepperize/cdk-organizations.Organization.enableAwsServiceAccess" id="pepperizecdkorganizationsorganizationenableawsserviceaccess"></a>
+
+```typescript
+public enableAwsServiceAccess(servicePrincipal: string)
+```
+
+###### `servicePrincipal`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.parameter.servicePrincipal" id="pepperizecdkorganizationsorganizationparameterserviceprincipal"></a>
+
+- *Type:* `string`
+
+The supported AWS service that you specify.
 
 ---
 

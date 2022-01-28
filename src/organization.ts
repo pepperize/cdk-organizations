@@ -1,6 +1,8 @@
 import { CustomResource, TagManager, TagType } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
+import { pascalCase } from "pascal-case";
+import { EnableAwsServiceAccess } from "./enable-aws-service-access";
 import { EnablePolicyType } from "./enable-policy-type";
 import { OrganizationProvider } from "./organization-provider";
 import { IParent } from "./parent";
@@ -109,8 +111,21 @@ export class Organization extends Construct implements IOrganization {
     this.root.node.addDependency(organization);
   }
 
+  /**
+   * Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf.
+   * @param servicePrincipal The supported AWS service that you specify
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html
+   */
+  public enableAwsServiceAccess(servicePrincipal: string) {
+    const enableAwsServiceAccess = new EnableAwsServiceAccess(this, `Enable${pascalCase(servicePrincipal)}`, {
+      servicePrincipal: servicePrincipal,
+    });
+    enableAwsServiceAccess.node.addDependency(this);
+  }
+
   public enablePolicyType(policyType: PolicyType) {
-    const enablePolicyType = new EnablePolicyType(this, "EnablePolicyType", {
+    const enablePolicyType = new EnablePolicyType(this, `Enable${pascalCase(policyType)}`, {
       root: this.root,
       policyType: policyType,
     });
