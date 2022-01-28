@@ -65,6 +65,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
       AccountId: accountId,
       AccountArn: response.Account?.Arn,
       AccountName: response.Account?.Name,
+      Email: response.Account?.Email,
     },
   };
 }

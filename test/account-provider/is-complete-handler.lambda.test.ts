@@ -1,7 +1,4 @@
-import {
-  IsCompleteHandler,
-  IsCompleteRequest
-} from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
+import { IsCompleteHandler, IsCompleteRequest } from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
 import * as SDK from "aws-sdk";
 import * as AWS from "aws-sdk-mock";
 import * as sinon from "sinon";

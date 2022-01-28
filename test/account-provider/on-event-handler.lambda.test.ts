@@ -65,7 +65,7 @@ describe("account-provider.on-event-handler.lambda", () => {
     sinon.assert.calledOnce(createAccountFake);
   });
 
-  xit("Should find existing account by name and email on create request type", async () => {
+  it("Should find existing account by name and email on create request type", async () => {
     // Given
     const createAccountMock: SDK.Organizations.CreateAccountResponse = {
       CreateAccountStatus: {
@@ -109,7 +109,38 @@ describe("account-provider.on-event-handler.lambda", () => {
     // Then
     expect(response).not.toBeUndefined();
     expect(response?.PhysicalResourceId).toEqual("123456789012");
-    sinon.assert.calledOnce(createAccountStatusFake);
+    sinon.assert.notCalled(createAccountStatusFake);
     sinon.assert.calledOnce(listAccountsFake);
+  });
+
+  it("Should return physical resource id", async () => {
+    // Given
+    const createAccountStatusFake = sinon.fake.resolves(undefined);
+    AWS.mock("Organizations", "createAccount", createAccountStatusFake);
+    const listAccountsFake = sinon.fake.resolves(undefined);
+    AWS.mock("Organizations", "listAccounts", listAccountsFake);
+
+    const request = {
+      ...event,
+      RequestType: "Update",
+      ResourceProperties: {
+        ...event.ResourceProperties,
+        Email: "info@pepperize.com",
+        AccountName: "test",
+        RoleName: "SomeRoleName",
+        IamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
+        ImportOnDuplicate: String(true),
+      },
+      PhysicalResourceId: "car-exampleaccountcreationrequestid",
+    };
+
+    // When
+    const response = await handler(request as OnEventRequest);
+
+    // Then
+    expect(response).not.toBeUndefined();
+    expect(response?.PhysicalResourceId).toEqual("car-exampleaccountcreationrequestid");
+    sinon.assert.notCalled(createAccountStatusFake);
+    sinon.assert.notCalled(listAccountsFake);
   });
 });
