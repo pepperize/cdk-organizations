@@ -399,3 +399,4 @@ new PolicyAttachment(stack, "PolicyAttachment", {
 - [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest)
 - [AWS Deployment Framework (ADF)](https://github.com/awslabs/aws-deployment-framework)
 - [AWS Organization Formation](https://github.com/org-formation)
+- [AWS Control Tower Account Factory for Terraform (ATF)](https://github.com/aws-ia/terraform-aws-control_tower_account_factory)
