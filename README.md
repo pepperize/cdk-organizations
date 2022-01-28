@@ -74,18 +74,59 @@ dotnet add package Pepperize.CDK.Organizations
    });
    ```
 
-4. Create a stack
+4. Install the dependency
+
+   ```shell
+   npx projen
+   ```
+
+5. Create a stack
 
    ```typescript
+   import { Account, Organization } from "@pepperize/cdk-organizations";
+   import { Stack } from "aws-cdk-lib";
+
    export class OrganizationStack extends Stack {
      constructor(scope: Construct, id: string, props: StackProps = {}) {
-       super(scope, id, props);
+       super(scope, id, { ...props, env: { ...props.env, region: "us-east-1" } }); // AWS Organizations API is only in region us-east-1 available
 
-       // Create or import your organization
+       // Create your organization
        const organization = new Organization(stack, "Organization", {});
-       // Add organizational units, accounts, policies ...
+
+       // Create an organizational unit (OU)
+       const organizationUnit = new OrganizationalUnit(stack, "OrganizationalUnit", {
+         organizationalUnitName: "MyFirstOU",
+         parent: organisation.root,
+       });
+
+       // Create an account
+       const account = new Account(stack, "Account", {
+         accountName: "MyFirstAccount",
+         email: "info+my-first-account@pepperize.com",
+         parent: organizationUnit,
+       });
      }
    }
+   ```
+
+6. Configure your AWS CLI to deploy
+
+   - [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+   - [AWSume](https://awsu.me/)
+
+   The easiest is to export your access key
+
+   ```shell
+   export AWS_ACCESS_KEY_ID=<your created access key id>
+   export AWS_SECRET_ACCESS_KEY=<your created secret access key>
+   export CDK_DEFAULT_REGION=us-east-1
+   export CDK_DEFAULT_ACCOUNT=<your AWS account>
+   ```
+
+7. Deploy your first AWS organization
+
+   ```shell
+   yarn deploy
    ```
 
 ## Usage
@@ -96,17 +137,18 @@ To create a new organization or import an existing organization, add the followi
 
 ```typescript
 const organization = new Organization(stack, "Organization", {
-  featureSet: FeatureSet.ALL,
+  featureSet: FeatureSet.ALL, // (default) required later on to enable SCPs, enable AWS services or deletage an adminsitrator account
 });
+organization.root; // The organization's root is automatically created
 ```
 
-- `FeatureSet.ALL` is required for advanced features like Service Control Policies and is the [preferred way to work with AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
-- The account which deploys the stack automatically becomes the management account of the new organization.
-- If an organization already exists, it will be automatically imported. The account which deploys the stacks must be the management account.
-- If the construct gets removed from the stack the organization still remains and must be manually deleted.
-- For deletion of an organization you must previously remove all the member accounts, OUs, and policies from the organization.
-- Currently, you can have only one root. AWS Organizations automatically creates it for you when you create the new organization.
-- It can only be used from within the management account in the us-east-1 region.
+- `FeatureSet.ALL` is required for advanced features like Service Control Policies (SCP) and is the [preferred way to work with AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+- The account which deploys the stack, will become automatically the management account of the new organization.
+- If an organization already exists, it will be automatically imported. You may disable this behaviour by passing `importOnDuplicate: false` in the props.
+- If the construct gets removed from the stack the organization still remains and must be manually deleted. For deletion of an organization you must previously remove all the member accounts, OUs, and policies from the organization. [Deleting the organization by removing the management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_delete.html)
+- An organization root is automatically created for you when you create the new organization.
+
+See [IOrganization](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IOrganization)
 
 ### Organizational Unit (OU)
 
@@ -119,20 +161,11 @@ const organizationUnit = new OrganizationalUnit(stack, "Organization", {
 });
 ```
 
-To import an existing organizational unit (OU), add the following to your stack:
-
-```typescript
-const organizationUnit = OrganizationalUnit.fromOrganizationalUnitId(stack, "Organization", {
-  organizationalUnitId: "ou-1234",
-  organizationalUnitName: "Project2",
-  parent: organisation.root,
-});
-```
-
 - The parent of an organizational unit (OU) can be either the organization's root or another OU within the organization.
-- An organizational unit (OU) can't be moved. You have to create a new one and move all the accounts.
-- For deletion of an organizational unit (OU) you must first move all accounts out of the OU and any child OUs, and then you can delete the child OUs.
-- It can only be used from within the management account in the us-east-1 region.
+- An organizational unit (OU) can't be moved. You have first to create a new OU, move all the accounts and then delete the old OU.
+- For deletion of an organizational unit (OU) you must first move all accounts out of the OU and any child OUs, and then you can delete the child OUs. [Deleting an organizational unit](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html#delete-ou)
+
+See [IOrganizationalUnit](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IOrganizationalUnit)
 
 ### Account
 
@@ -142,16 +175,6 @@ To create a new account, add the following construct to your stack:
 new Account(stack, "Account", {
   accountName: "MyAccount",
   email: "info@pepperize.com",
-  iamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
-  parent: organization.root,
-});
-```
-
-To import an existing account, add the following to your stack:
-
-```typescript
-Account.fromAccountId(stack, "ImportedAccount", {
-  accountId: "123456789012",
   parent: organization.root,
 });
 ```
@@ -161,6 +184,99 @@ Account.fromAccountId(stack, "ImportedAccount", {
 - It can only be used from within the management account in the us-east-1 region.
 - An account can't be deleted easily, if the construct gets removed from the stack the account still remains. [Closing an AWS account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 
+See [IAccount](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IAccount)
+
+#### Account Properties
+
+- `importOnDuplicate` If an account with the same email address exists in the organization, it will be imported.
+- `removalPolicy` Will move the account to the root on Cloudformation delete event.
+- `iamUserAccessToBilling` Default `IamUserAccessToBilling.ALLOW` If you enable it, IAM users and roles that have appropriate permissions can view billing information for the account.
+- `roleName` Default `OrganizationAccountAccessRole` Gets preconfigured in the newly created account and grants users in the management account administrator permissions in the new member account.
+
+See [AccountProps](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.AccountProps)
+
+### Enable a Policy Type
+
+To enable a policy type call `enablePolicyType` on your organization.
+
+```typescript
+const organization = new Organization(stack, "Organization", {
+  featureSet: FeatureSet.ALL, // (default) the organization must be created with all features enabled
+});
+organization.enablePolicyType(PolicyType.SERVICE_CONTROL_POLICY);
+```
+
+- To create or attach policies later on, you have to [enable all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) and the [policy type](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types) .
+
+See [EnablePolicyType](https://github.com/pepperize/cdk-organizations/blob/main/API.md#enablepolicytype-), [PolicyType](https://github.com/pepperize/cdk-organizations/blob/main/API.md#policytype-).
+
+### Policy
+
+To create a new policy add the following construct to your stack:
+
+```typescript
+new Policy(stack, "Policy", {
+  content: '{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"}}',
+  description: "Enables admins of attached accounts to delegate all S3 permissions",
+  policyName: "AllowAllS3Actions",
+  policyType: PolicyType.SERVICE_CONTROL_POLICY,
+});
+```
+
+- To create or attach policies, you must have [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) and the [policy type](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types) enabled.
+- The [SCP Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html) is quite similar to IAM policies, but way more limited.
+
+See [Policy](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.Policy)
+
+### Tagging resources
+
+To tag a resource you may follow the [AWS CDK Developer Guide - Tagging](https://docs.aws.amazon.com/cdk/v2/guide/tagging.html):
+
+You can add one or more tags to the following resources in AWS Organizations.
+
+- Account
+- Organization root
+- Organizational unit (OU)
+- Policy
+
+See [Tagging AWS Organizations resources](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html), [ITaggableResource](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.ITaggableResource)
+
+#### Tagging an organization's root
+
+```typescript
+import { Tags } from "aws-cdk-lib";
+
+const organization = new Organization();
+Tags.of(organization.root).add("key", "value");
+```
+
+#### Tagging an organizational unit
+
+```typescript
+import { Tags } from "aws-cdk-lib";
+
+const organizationalUnit = new OrganizationalUnit();
+Tags.of(organization.root).add("key", "value");
+```
+
+#### Tagging an account
+
+```typescript
+import { Tags } from "aws-cdk-lib";
+
+const account = new Account();
+Tags.of(organization.root).add("key", "value");
+```
+
+#### Tagging an policy
+
+```typescript
+import { Tags } from "aws-cdk-lib";
+
+const policy = new Policy();
+Tags.of(policy).add("key", "value");
+```
+
 ## Limitations
 
 AWS Organizations has some limitations:
@@ -168,7 +284,8 @@ AWS Organizations has some limitations:
 - The stack can only be deployed in the `us-east-1` region.
 - The stack's account must be the management account of an existing organization.
 - The stack's account becomes the management account of the new organization.
-- An account belongs only to one organization with a single root.
+- An account belongs only to one organization within a single root.
+- [Quotas for AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
 
 # Contributing
 
