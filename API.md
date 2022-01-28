@@ -48,7 +48,7 @@ new Account(scope: Construct, id: string, props: AccountProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| [`delegateAdministrator`](#pepperizecdkorganizationsaccountdelegateadministrator) | *No description.* |
+| [`delegateAdministrator`](#pepperizecdkorganizationsaccountdelegateadministrator) | Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf. |
 | [`identifier`](#pepperizecdkorganizationsaccountidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
 ---
@@ -62,6 +62,8 @@ public delegateAdministrator(servicePrincipal: string)
 ###### `servicePrincipal`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.parameter.servicePrincipal" id="pepperizecdkorganizationsaccountparameterserviceprincipal"></a>
 
 - *Type:* `string`
+
+The supported AWS service that you specify.
 
 ---
 

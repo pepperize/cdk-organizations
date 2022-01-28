@@ -64,81 +64,6 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "DelegatedAdministratorDelegatedAdministratorCustomResource8756F10E": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201",
-      ],
-      "Properties": Object {
-        "Create": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "ImportedAccountCreateAccount0DDC7950",
-                  "AccountId",
-                ],
-              },
-              ":service-abbreviation.amazonaws.com\\"},\\"parameters\\":{\\"AccountId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "ImportedAccountCreateAccount0DDC7950",
-                  "AccountId",
-                ],
-              },
-              "\\",\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
-            ],
-          ],
-        },
-        "Delete": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "ImportedAccountCreateAccount0DDC7950",
-                  "AccountId",
-                ],
-              },
-              "\\",\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
-            ],
-          ],
-        },
-        "InstallLatestAwsSdk": false,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "Custom::Organizations_DelegatedAdministrator",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "organizations:RegisterDelegatedAdministrator",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201",
-        "Roles": Array [
-          Object {
-            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
     "EnablePolicyTypeEnablePolicyTypeCustomResource00A3BBE7": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
@@ -243,6 +168,243 @@ Object {
       },
       "Type": "Custom::Organizations_Account",
       "UpdateReplacePolicy": "Delete",
+    },
+    "ImportedAccountDelegateConfigAmazonawsComDelegatedAdministratorCustomResourceCustomResourcePolicyA6F85B48": Object {
+      "DependsOn": Array [
+        "ImportedAccountCreateAccount0DDC7950",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:RegisterDelegatedAdministrator",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ImportedAccountDelegateConfigAmazonawsComDelegatedAdministratorCustomResourceCustomResourcePolicyA6F85B48",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "ImportedAccountDelegateConfigAmazonawsComDelegatedAdministratorCustomResourceEA9B3A5B": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "ImportedAccountCreateAccount0DDC7950",
+        "ImportedAccountDelegateConfigAmazonawsComDelegatedAdministratorCustomResourceCustomResourcePolicyA6F85B48",
+      ],
+      "Properties": Object {
+        "Create": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ImportedAccountCreateAccount0DDC7950",
+                  "AccountId",
+                ],
+              },
+              ":config.amazonaws.com\\"},\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ImportedAccountCreateAccount0DDC7950",
+                  "AccountId",
+                ],
+              },
+              "\\",\\"ServicePrincipal\\":\\"config.amazonaws.com\\"}}",
+            ],
+          ],
+        },
+        "Delete": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ImportedAccountCreateAccount0DDC7950",
+                  "AccountId",
+                ],
+              },
+              "\\",\\"ServicePrincipal\\":\\"config.amazonaws.com\\"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_DelegatedAdministrator",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ImportedAccountDelegateServiceAbbreviationAmazonawsComDelegatedAdministratorCustomResource513A981D": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "ImportedAccountCreateAccount0DDC7950",
+        "ImportedAccountDelegateServiceAbbreviationAmazonawsComDelegatedAdministratorCustomResourceCustomResourcePolicy46D1A807",
+      ],
+      "Properties": Object {
+        "Create": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ImportedAccountCreateAccount0DDC7950",
+                  "AccountId",
+                ],
+              },
+              ":service-abbreviation.amazonaws.com\\"},\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ImportedAccountCreateAccount0DDC7950",
+                  "AccountId",
+                ],
+              },
+              "\\",\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
+            ],
+          ],
+        },
+        "Delete": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ImportedAccountCreateAccount0DDC7950",
+                  "AccountId",
+                ],
+              },
+              "\\",\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_DelegatedAdministrator",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ImportedAccountDelegateServiceAbbreviationAmazonawsComDelegatedAdministratorCustomResourceCustomResourcePolicy46D1A807": Object {
+      "DependsOn": Array [
+        "ImportedAccountCreateAccount0DDC7950",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:RegisterDelegatedAdministrator",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ImportedAccountDelegateServiceAbbreviationAmazonawsComDelegatedAdministratorCustomResourceCustomResourcePolicy46D1A807",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "ImportedAccountDelegateStacksetsCloudformationAmazonawsComDelegatedAdministratorCustomResource8EC61813": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "ImportedAccountCreateAccount0DDC7950",
+        "ImportedAccountDelegateStacksetsCloudformationAmazonawsComDelegatedAdministratorCustomResourceCustomResourcePolicy3C86DE9E",
+      ],
+      "Properties": Object {
+        "Create": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ImportedAccountCreateAccount0DDC7950",
+                  "AccountId",
+                ],
+              },
+              ":stacksets.cloudformation.amazonaws.com\\"},\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ImportedAccountCreateAccount0DDC7950",
+                  "AccountId",
+                ],
+              },
+              "\\",\\"ServicePrincipal\\":\\"stacksets.cloudformation.amazonaws.com\\"}}",
+            ],
+          ],
+        },
+        "Delete": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "ImportedAccountCreateAccount0DDC7950",
+                  "AccountId",
+                ],
+              },
+              "\\",\\"ServicePrincipal\\":\\"stacksets.cloudformation.amazonaws.com\\"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_DelegatedAdministrator",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "ImportedAccountDelegateStacksetsCloudformationAmazonawsComDelegatedAdministratorCustomResourceCustomResourcePolicy3C86DE9E": Object {
+      "DependsOn": Array [
+        "ImportedAccountCreateAccount0DDC7950",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:RegisterDelegatedAdministrator",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ImportedAccountDelegateStacksetsCloudformationAmazonawsComDelegatedAdministratorCustomResourceCustomResourcePolicy3C86DE9E",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
     },
     "ImportedAccountTagsTagResourceEAA2977A": Object {
       "DeletionPolicy": "Delete",

@@ -1,6 +1,5 @@
 import { App, Stack } from "aws-cdk-lib";
 import { Account, IamUserAccessToBilling } from "./account";
-import { DelegatedAdministrator } from "./delegated-administrator";
 import { EnablePolicyType } from "./enable-policy-type";
 import { FeatureSet, Organization } from "./organization";
 import { OrganizationalUnit } from "./organizational-unit";
@@ -26,10 +25,9 @@ const account = new Account(stack, "ImportedAccount", {
   parent: organization.root,
 });
 // Enable a delegated admin account
-new DelegatedAdministrator(stack, "DelegatedAdministrator", {
-  account: account,
-  servicePrincipal: "service-abbreviation.amazonaws.com",
-});
+account.delegateAdministrator("service-abbreviation.amazonaws.com");
+account.delegateAdministrator("stacksets.cloudformation.amazonaws.com");
+account.delegateAdministrator("config.amazonaws.com");
 
 const projects = new OrganizationalUnit(stack, "ProjectsOU", {
   organizationalUnitName: "Projects",

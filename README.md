@@ -195,6 +195,23 @@ See [IAccount](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@
 
 See [AccountProps](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.AccountProps)
 
+### Delegated Administrator
+
+To enable trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf, call `delegateAdministrator` on your organization:
+
+```typescript
+const account = new Account(stack, "Account", {
+  accountName: "StackSetsDelegatedAdministrator",
+  email: "info@pepperize.com",
+});
+account.delegateAdministrator("stacksets.amazonaws.com");
+```
+
+- To enable trusted access, you must have [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) enabled.
+- [AWS services that you can use with AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html)
+
+See [DelegatedAdministrator](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.DelegatedAdministrator)
+
 ### Enable an AWS Service (trusted service)
 
 To enable trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf, call `enableAwsService` on your organization:
@@ -206,8 +223,11 @@ const organization = new Organization(stack, "Organization", {
 organization.enableAwsServiceAccess("ssm.amazonaws.com");
 ```
 
+- To enable trusted access, you must have [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) enabled.
 - It's recommended to use only the trusted service's console [How to enable or disable trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_how-to-enable-disable-trusted-access)
 - [AWS services that you can use with AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html)
+
+See [EnableAwsServiceAccess](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.EnableAwsServiceAccess)
 
 ### Enable a Policy Type
 
@@ -282,7 +302,7 @@ const account = new Account();
 Tags.of(organization.root).add("key", "value");
 ```
 
-#### Tagging an policy
+#### Tagging a policy
 
 ```typescript
 import { Tags } from "aws-cdk-lib";

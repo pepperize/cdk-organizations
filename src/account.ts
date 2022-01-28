@@ -1,5 +1,6 @@
 import { CustomResource, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
+import { pascalCase } from "pascal-case";
 import { AccountProvider } from "./account-provider";
 import { DelegatedAdministrator } from "./delegated-administrator";
 import { IChild, IParent } from "./parent";
@@ -128,8 +129,12 @@ export class Account extends Construct implements IAccount, ITaggableResource {
     return this.accountId;
   }
 
+  /**
+   * Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
+   * @param servicePrincipal The supported AWS service that you specify
+   */
   public delegateAdministrator(servicePrincipal: string) {
-    const delegatedAdministrator = new DelegatedAdministrator(this, "DelegatedAdministrator", {
+    const delegatedAdministrator = new DelegatedAdministrator(this, `Delegate${pascalCase(servicePrincipal)}`, {
       account: this,
       servicePrincipal: servicePrincipal,
     });
