@@ -17,4 +17,7 @@ export class Validators {
   public servicePrincipal(servicePrincipal: string): boolean {
     return /[\w+=,.@-]{1,128}/.test(servicePrincipal);
   }
+  public policyContent(content: string): boolean {
+    return /[\s\S]{1,1000000}/.test(content);
+  }
 }
