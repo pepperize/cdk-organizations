@@ -76,7 +76,6 @@
     "jsii-docgen": "^4.2.42",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
-    "pascal-case": "^3.1.2",
     "prettier": "^2.5.1",
     "projen": "^0.52.1",
     "sinon": "*",
@@ -88,6 +87,12 @@
     "aws-cdk-lib": "^2.8.0",
     "constructs": "^10.0.5"
   },
+  "dependencies": {
+    "pascal-case": "^3.1.2"
+  },
+  "bundledDependencies": [
+    "pascal-case"
+  ],
   "keywords": [
     "account",
     "account-management",
