@@ -730,7 +730,7 @@ public readonly parentId: string;
 
 ### Policy <a name="@pepperize/cdk-organizations.Policy" id="pepperizecdkorganizationspolicy"></a>
 
-- *Implements:* [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy)
+- *Implements:* [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
 
 #### Initializers <a name="@pepperize/cdk-organizations.Policy.Initializer" id="pepperizecdkorganizationspolicyinitializer"></a>
 
@@ -1874,7 +1874,7 @@ The tree node.
 
 ### IPolicy <a name="@pepperize/cdk-organizations.IPolicy" id="pepperizecdkorganizationsipolicy"></a>
 
-- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
+- *Extends:* [`constructs.IConstruct`](#constructs.IConstruct)
 
 - *Implemented By:* [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy), [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy)
 
@@ -1890,7 +1890,6 @@ Policies in AWS Organizations enable you to apply additional types of management
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | [`node`](#pepperizecdkorganizationsipolicypropertynode)<span title="Required">*</span> | [`constructs.Node`](#constructs.Node) | The tree node. |
-| [`tags`](#pepperizecdkorganizationsipolicypropertytags)<span title="Required">*</span> | [`aws-cdk-lib.TagManager`](#aws-cdk-lib.TagManager) | TagManager to set, remove and format tags. |
 | [`policyId`](#pepperizecdkorganizationsipolicypropertypolicyid)<span title="Required">*</span> | `string` | The unique identifier (ID) of the policy. |
 
 ---
@@ -1904,18 +1903,6 @@ public readonly node: Node;
 - *Type:* [`constructs.Node`](#constructs.Node)
 
 The tree node.
-
----
-
-##### `tags`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IPolicy.property.tags" id="pepperizecdkorganizationsipolicypropertytags"></a>
-
-```typescript
-public readonly tags: TagManager;
-```
-
-- *Type:* [`aws-cdk-lib.TagManager`](#aws-cdk-lib.TagManager)
-
-TagManager to set, remove and format tags.
 
 ---
 
@@ -1943,7 +1930,7 @@ The regex pattern for a policy ID string requires "p-" followed by from 8 to 128
 
 ### IResource <a name="@pepperize/cdk-organizations.IResource" id="pepperizecdkorganizationsiresource"></a>
 
-- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Parent`](#@pepperize/cdk-organizations.Parent), [`@pepperize/cdk-organizations.ParentBase`](#@pepperize/cdk-organizations.ParentBase), [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IResource`](#@pepperize/cdk-organizations.IResource), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
+- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Parent`](#@pepperize/cdk-organizations.Parent), [`@pepperize/cdk-organizations.ParentBase`](#@pepperize/cdk-organizations.ParentBase), [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount), [`@pepperize/cdk-organizations.IChild`](#@pepperize/cdk-organizations.IChild), [`@pepperize/cdk-organizations.IOrganizationalUnit`](#@pepperize/cdk-organizations.IOrganizationalUnit), [`@pepperize/cdk-organizations.IParent`](#@pepperize/cdk-organizations.IParent), [`@pepperize/cdk-organizations.IPolicyAttachmentTarget`](#@pepperize/cdk-organizations.IPolicyAttachmentTarget), [`@pepperize/cdk-organizations.IResource`](#@pepperize/cdk-organizations.IResource), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
 
 Interface for an AWS Organizations resource.
 
@@ -1966,7 +1953,7 @@ public identifier()
 
 - *Extends:* [`aws-cdk-lib.ITaggable`](#aws-cdk-lib.ITaggable), [`@pepperize/cdk-organizations.IResource`](#@pepperize/cdk-organizations.IResource)
 
-- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
+- *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.OrganizationalUnit`](#@pepperize/cdk-organizations.OrganizationalUnit), [`@pepperize/cdk-organizations.Policy`](#@pepperize/cdk-organizations.Policy), [`@pepperize/cdk-organizations.Root`](#@pepperize/cdk-organizations.Root), [`@pepperize/cdk-organizations.ITaggableResource`](#@pepperize/cdk-organizations.ITaggableResource)
 
 
 #### Properties <a name="Properties" id="properties"></a>

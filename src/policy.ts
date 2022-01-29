@@ -63,14 +63,14 @@ export interface PolicyProps {
  * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
  * @see FeatureSet
  */
-export interface IPolicy extends IConstruct, ITaggableResource {
+export interface IPolicy extends IConstruct {
   /**
    * The unique identifier (ID) of the policy. The regex pattern for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
    */
   readonly policyId: string;
 }
 
-export class Policy extends Construct implements IPolicy {
+export class Policy extends Construct implements IPolicy, ITaggableResource {
   public readonly policyId: string;
 
   readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Policy");
