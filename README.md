@@ -50,14 +50,18 @@ dotnet add package Pepperize.CDK.Organizations
 
 ## Getting Started
 
-1. Prepare an IAM User with `AdministratorAccess`
+1. Create a new account
+
+   [Signup for AWS](https://portal.aws.amazon.com/billing/signup#/start)
+
+2. Prepare an IAM User with `AdministratorAccess`
 
    To deploy your new organization, you have to create an Administrator with an Access Key
 
    - [Creating your first IAM admin user and user group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)
    - [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)
 
-2. Create a new CDK TypeScript App project with [projen](https://github.com/projen/projen)
+3. Create a new CDK TypeScript App project with [projen](https://github.com/projen/projen)
 
    ```shell
    mkdir my-project
@@ -66,7 +70,7 @@ dotnet add package Pepperize.CDK.Organizations
    npx projen new awscdk-app-ts
    ```
 
-3. Add `@pepperize/cdk-organizations` to your dependencies in `.projenrc.js`
+4. Add `@pepperize/cdk-organizations` to your dependencies in `.projenrc.js`
 
    ```typescript
    const project = new awscdk.AwsCdkTypeScriptApp({
@@ -75,16 +79,16 @@ dotnet add package Pepperize.CDK.Organizations
    });
    ```
 
-4. Install the dependency
+5. Install the dependency
 
    ```shell
    npx projen
    ```
 
-5. Create a stack
+6. Create a stack
 
    ```typescript
-   import { Account, Organization } from "@pepperize/cdk-organizations";
+   import { Account, Organization, OrganizationalUnit } from "@pepperize/cdk-organizations";
    import { Stack } from "aws-cdk-lib";
 
    export class OrganizationStack extends Stack {
@@ -103,14 +107,14 @@ dotnet add package Pepperize.CDK.Organizations
        // Create an account
        const account = new Account(stack, "Account", {
          accountName: "MyFirstAccount",
-         email: "info+my-first-account@pepperize.com",
+         email: "<your email for the member account>",
          parent: organizationUnit,
        });
      }
    }
    ```
 
-6. Configure your AWS CLI to deploy
+7. Configure your AWS CLI to deploy
 
    - [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
    - [AWSume](https://awsu.me/)
@@ -120,11 +124,14 @@ dotnet add package Pepperize.CDK.Organizations
    ```shell
    export AWS_ACCESS_KEY_ID=<your created access key id>
    export AWS_SECRET_ACCESS_KEY=<your created secret access key>
-   export CDK_DEFAULT_REGION=us-east-1
-   export CDK_DEFAULT_ACCOUNT=<your AWS account>
    ```
 
-7. Deploy your first AWS organization
+8. Deploy your first AWS organization
+
+   ```shell
+   export CDK_DEFAULT_REGION=us-east-1
+   export CDK_DEFAULT_ACCOUNT=<your AWS account id>
+   ```
 
    ```shell
    yarn deploy
