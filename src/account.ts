@@ -1,4 +1,4 @@
-import { CustomResource, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
+import { Annotations, CustomResource, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
 import { pascalCase } from "pascal-case";
 import { AccountProvider } from "./account-provider";
@@ -7,6 +7,7 @@ import { IChild, IParent } from "./parent";
 import { IPolicyAttachmentTarget } from "./policy-attachment";
 import { IResource } from "./resource";
 import { ITaggableResource, TagResource } from "./tag-resource";
+import { Validators } from "./validators";
 
 /**
  * @see https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate
@@ -98,6 +99,14 @@ export class Account extends Construct implements IAccount, ITaggableResource {
     super(scope, id);
 
     const { email, accountName, roleName, iamUserAccessToBilling, parent, importOnDuplicate, removalPolicy } = props;
+
+    if (!Validators.of().email(email)) {
+      Annotations.of(this).addError("The account's email must be of type string and between 6 and 64 characters long.");
+    }
+
+    if (!Validators.of().accountName(accountName)) {
+      Annotations.of(this).addError("The account's name must be of type string and between 1 and 50 characters long.");
+    }
 
     const createAccountProvider = AccountProvider.getOrCreate(this);
     const account = new CustomResource(this, "CreateAccount", {

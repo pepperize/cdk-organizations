@@ -1,4 +1,4 @@
-import { TagManager, TagType } from "aws-cdk-lib";
+import { Annotations, TagManager, TagType } from "aws-cdk-lib";
 import {
   AwsCustomResource,
   AwsCustomResourcePolicy,
@@ -7,6 +7,7 @@ import {
 } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
 import { ITaggableResource, TagResource } from "./tag-resource";
+import { Validators } from "./validators";
 
 /**
  * Organizations offers policy types in the following two broad categories:
@@ -79,6 +80,12 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
     super(scope, id);
 
     const { content, description, policyName, policyType } = props;
+
+    if (!Validators.of().policyContent(content)) {
+      Annotations.of(this).addError(
+        "The text content of the policy must be valid and between 1 and 1,000,000 characters long."
+      );
+    }
 
     const policy = new AwsCustomResource(this, "PolicyCustomResource", {
       resourceType: "Custom::Organizations_Policy",
