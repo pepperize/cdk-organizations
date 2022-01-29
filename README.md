@@ -168,6 +168,13 @@ const organizationUnit = new OrganizationalUnit(stack, "Organization", {
 
 See [IOrganizationalUnit](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IOrganizationalUnit)
 
+#### Organizational Unit (OU) Properties
+
+- `importOnDuplicate` If an organizational unit (OU) with the name exists in the parent, it will be imported.
+- `removalPolicy` Default `RemovalPolicy.Retain` If you set `removalPolicy` to `RemovalPolicy.destroy`, the organizational unit (OU) will be deleted on Cloudformation delete event.
+
+See [OrganizationalUnitProps](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.OrganizationalUnitProps)
+
 ### Account
 
 To create a new account, add the following construct to your stack:
@@ -181,7 +188,7 @@ new Account(stack, "Account", {
 ```
 
 - The email address must not already be associated with another AWS account. You may suffix the email address, i.e. `info+account-123456789012@pepperize.com`.
-- An account will be created and then moved to the parent, if the parent is an organizational unit (OU).
+- An account will be created and moved to the parent, if the parent is an organizational unit (OU).
 - An account can only be created from within the management account in the `us-east-1` region.
 - An account can't be deleted easily, if the construct gets removed from the stack the account still remains. [Closing an AWS account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 
@@ -190,7 +197,7 @@ See [IAccount](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@
 #### Account Properties
 
 - `importOnDuplicate` If an account with the same email address exists in the organization, it will be imported.
-- `removalPolicy` Will move the account to the root on Cloudformation delete event.
+- `removalPolicy` Default `RemovalPolicy.Retain` If you set `removalPolicy` to `RemovalPolicy.destroy`, the account will be moved to the root on Cloudformation delete event.
 - `iamUserAccessToBilling` Default `IamUserAccessToBilling.ALLOW` If you set `iamUserAccessToBilling` to `ALLOW`, IAM users and roles that have appropriate permissions can view billing information for the account.
 - `roleName` Default `OrganizationAccountAccessRole` is preconfigures in the newly created account and grants users in the management account administrator permissions in the new member account.
 
