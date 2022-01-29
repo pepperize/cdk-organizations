@@ -1,6 +1,6 @@
 {
   "name": "@pepperize/cdk-organizations",
-  "description": "This project provides a CDK construct managing AWS organizations, organizational units and accounts.",
+  "description": "Manage AWS organizations, organizational units (OU), accounts and service control policies (SCP).",
   "repository": {
     "type": "git",
     "url": "https://github.com/pepperize/cdk-organizations.git"
@@ -98,7 +98,14 @@
     "account-management",
     "aws",
     "cdk",
-    "organizations"
+    "delegated-administrator",
+    "organizational-unit",
+    "organizations",
+    "policies",
+    "service-control-policy",
+    "tag-resources",
+    "trusted-access",
+    "trusted-service"
   ],
   "main": "lib/index.js",
   "license": "MIT",
