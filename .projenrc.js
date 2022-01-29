@@ -13,16 +13,17 @@ const project = new AwsCdkConstructLibrary({
   keywords: ["aws", "cdk", "organizations", "account", "account-management"],
   repositoryUrl: "https://github.com/pepperize/cdk-organizations.git",
 
-  bundledDeps: ["aws-lambda", "aws-sdk", "pascal-case"],
-  deps: ["aws-lambda", "aws-sdk", "pascal-case"],
   devDeps: [
     "@pepperize/projen-awscdk-construct@^0.0.8",
     "@types/aws-lambda",
     "@types/jest",
-    "cdk-nag@^2.0.0",
-    "aws-sdk-mock",
-    "sinon",
     "@types/sinon",
+    "aws-lambda",
+    "aws-sdk",
+    "aws-sdk-mock",
+    "cdk-nag@^2.0.0",
+    "pascal-case",
+    "sinon",
   ],
 
   lambdaOptions: {

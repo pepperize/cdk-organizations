@@ -1156,7 +1156,7 @@ aws-cdk-lib@2.8.0:
 
 aws-lambda@^1.0.7:
   version "1.0.7"
-  resolved "https://registry.npmjs.org/aws-lambda/-/aws-lambda-1.0.7.tgz"
+  resolved "https://registry.yarnpkg.com/aws-lambda/-/aws-lambda-1.0.7.tgz#c6b674df47458b5ecd43ab734899ad2e2d457013"
   integrity sha512-9GNFMRrEMG5y3Jvv+V4azWvc+qNWdWLTjDdhf/zgMlz8haaaLWv0xeAIWxz9PuWUBawsVxy0zZotjCdR3Xq+2w==
   dependencies:
     aws-sdk "^2.814.0"
@@ -1173,7 +1173,22 @@ aws-sdk-mock@^5.5.1:
     sinon "^11.1.1"
     traverse "^0.6.6"
 
-aws-sdk@^2.1062.0, aws-sdk@^2.814.0, aws-sdk@^2.928.0:
+aws-sdk@^2.1066.0:
+  version "2.1066.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1066.0.tgz#2a9b00d983f3c740a7adda18d4e9a5c34d4d3887"
+  integrity sha512-9BZPdJgIvau8Jf2l3PxInNqQd733uKLqGGDywMV71duxNTLgdBZe2zvCkbgl22+ldC8R2LVMdS64DzchfQIxHg==
+  dependencies:
+    buffer "4.9.2"
+    events "1.1.1"
+    ieee754 "1.1.13"
+    jmespath "0.16.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    uuid "3.3.2"
+    xml2js "0.4.19"
+
+aws-sdk@^2.814.0, aws-sdk@^2.928.0:
   version "2.1065.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1065.0.tgz#82b6e4e2a6fbccb1767339e309edd4f0daa958e6"
   integrity sha512-OFvpXoL104dTFKpU14ILcLDPAlDbkJNIKXnnG2pK+2x++CvzIRJeNyERtUuEo7QMUOwq5U4nIQJKSPt5fBC/HA==
