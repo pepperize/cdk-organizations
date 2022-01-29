@@ -6,20 +6,21 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/pepperize/cdk-organizations?sort=semver&style=flat-square)](https://github.com/pepperize/cdk-organizations/releases)
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod&style=flat-square)](https://gitpod.io/#https://github.com/pepperize/cdk-organizations)
 
-# AWS Organizations
+# CDK Organizations
 
-This project provides a CDK construct managing AWS organizations, organizational units and accounts.
+Manage AWS organizations, organizational units (OU), accounts and service control policies (SCP).
 
-> Currently, there is no `@aws-cdk/aws-organizations` available. See this [Issue on AWS CDK](https://github.com/aws/aws-cdk/issues/2877).
+Motivation:
 
+> Currently, there is no `aws-cdk-lib/organizations` available. See this [Issue on AWS CDK](https://github.com/aws/aws-cdk/issues/2877).
+
+## References
+
+- [CDK Organizations API Reference](https://github.com/pepperize/cdk-organizations/blob/main/API.md)
 - [AWS Account Management Reference Guide](https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html)
 - [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
 - [AWS API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html)
 - [AWS CDK Custom Resources](https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#custom-resources-for-aws-apis)
-
-## API Reference
-
-See [API.md](https://github.com/pepperize/cdk-organizations/blob/main/API.md)
 
 ## Install
 
