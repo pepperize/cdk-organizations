@@ -1530,6 +1530,125 @@ public readonly resource: ITaggableResource;
 
 ---
 
+## Classes <a name="Classes" id="classes"></a>
+
+### Validators <a name="@pepperize/cdk-organizations.Validators" id="pepperizecdkorganizationsvalidators"></a>
+
+#### Initializers <a name="@pepperize/cdk-organizations.Validators.Initializer" id="pepperizecdkorganizationsvalidatorsinitializer"></a>
+
+```typescript
+import { Validators } from '@pepperize/cdk-organizations'
+
+new Validators()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`accountId`](#pepperizecdkorganizationsvalidatorsaccountid) | *No description.* |
+| [`accountName`](#pepperizecdkorganizationsvalidatorsaccountname) | *No description.* |
+| [`email`](#pepperizecdkorganizationsvalidatorsemail) | *No description.* |
+| [`organizationalUnitName`](#pepperizecdkorganizationsvalidatorsorganizationalunitname) | *No description.* |
+| [`policyContent`](#pepperizecdkorganizationsvalidatorspolicycontent) | *No description.* |
+| [`servicePrincipal`](#pepperizecdkorganizationsvalidatorsserviceprincipal) | *No description.* |
+
+---
+
+##### `accountId` <a name="@pepperize/cdk-organizations.Validators.accountId" id="pepperizecdkorganizationsvalidatorsaccountid"></a>
+
+```typescript
+public accountId(id: string)
+```
+
+###### `id`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Validators.parameter.id" id="pepperizecdkorganizationsvalidatorsparameterid"></a>
+
+- *Type:* `string`
+
+---
+
+##### `accountName` <a name="@pepperize/cdk-organizations.Validators.accountName" id="pepperizecdkorganizationsvalidatorsaccountname"></a>
+
+```typescript
+public accountName(name: string)
+```
+
+###### `name`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Validators.parameter.name" id="pepperizecdkorganizationsvalidatorsparametername"></a>
+
+- *Type:* `string`
+
+---
+
+##### `email` <a name="@pepperize/cdk-organizations.Validators.email" id="pepperizecdkorganizationsvalidatorsemail"></a>
+
+```typescript
+public email(email: string)
+```
+
+###### `email`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Validators.parameter.email" id="pepperizecdkorganizationsvalidatorsparameteremail"></a>
+
+- *Type:* `string`
+
+---
+
+##### `organizationalUnitName` <a name="@pepperize/cdk-organizations.Validators.organizationalUnitName" id="pepperizecdkorganizationsvalidatorsorganizationalunitname"></a>
+
+```typescript
+public organizationalUnitName(name: string)
+```
+
+###### `name`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Validators.parameter.name" id="pepperizecdkorganizationsvalidatorsparametername"></a>
+
+- *Type:* `string`
+
+---
+
+##### `policyContent` <a name="@pepperize/cdk-organizations.Validators.policyContent" id="pepperizecdkorganizationsvalidatorspolicycontent"></a>
+
+```typescript
+public policyContent(content: string)
+```
+
+###### `content`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Validators.parameter.content" id="pepperizecdkorganizationsvalidatorsparametercontent"></a>
+
+- *Type:* `string`
+
+---
+
+##### `servicePrincipal` <a name="@pepperize/cdk-organizations.Validators.servicePrincipal" id="pepperizecdkorganizationsvalidatorsserviceprincipal"></a>
+
+```typescript
+public servicePrincipal(servicePrincipal: string)
+```
+
+###### `servicePrincipal`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Validators.parameter.servicePrincipal" id="pepperizecdkorganizationsvalidatorsparameterserviceprincipal"></a>
+
+- *Type:* `string`
+
+---
+
+#### Static Functions <a name="Static Functions" id="static-functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`of`](#pepperizecdkorganizationsvalidatorsof) | *No description.* |
+
+---
+
+##### `of` <a name="@pepperize/cdk-organizations.Validators.of" id="pepperizecdkorganizationsvalidatorsof"></a>
+
+```typescript
+import { Validators } from '@pepperize/cdk-organizations'
+
+Validators.of()
+```
+
+
 
 ## Protocols <a name="Protocols" id="protocols"></a>
 

@@ -9,3 +9,4 @@ export * from "./policy";
 export * from "./policy-attachment";
 export * from "./resource";
 export * from "./tag-resource";
+export * from "./validators";
