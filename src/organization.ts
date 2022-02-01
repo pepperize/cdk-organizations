@@ -86,13 +86,15 @@ export class Organization extends Construct implements IOrganization {
   public readonly managementAccountEmail: string;
   public readonly root: Root;
 
+  private readonly resource: CustomResource;
+
   public constructor(scope: Construct, id: string, props: OrganizationProps) {
     super(scope, id);
 
     const featureSet = props.featureSet || FeatureSet.ALL;
 
     const organizationProvider = OrganizationProvider.getOrCreate(this);
-    const organization = new CustomResource(this, "Organization", {
+    this.resource = new CustomResource(this, "Organization", {
       serviceToken: organizationProvider.provider.serviceToken,
       resourceType: "Custom::Organizations_Organization",
       properties: {
@@ -100,15 +102,15 @@ export class Organization extends Construct implements IOrganization {
       },
     });
 
-    this.organizationId = organization.getAtt("Id").toString();
-    this.organizationArn = organization.getAtt("Arn").toString();
-    this.featureSet = organization.getAtt("FeatureSet").toString() as FeatureSet;
-    this.managementAccountArn = organization.getAtt("MasterAccountArn").toString();
-    this.managementAccountId = organization.getAtt("MasterAccountId").toString();
-    this.managementAccountEmail = organization.getAtt("MasterAccountEmail").toString();
+    this.organizationId = this.resource.getAtt("Id").toString();
+    this.organizationArn = this.resource.getAtt("Arn").toString();
+    this.featureSet = this.resource.getAtt("FeatureSet").toString() as FeatureSet;
+    this.managementAccountArn = this.resource.getAtt("MasterAccountArn").toString();
+    this.managementAccountId = this.resource.getAtt("MasterAccountId").toString();
+    this.managementAccountEmail = this.resource.getAtt("MasterAccountEmail").toString();
 
     this.root = new Root(this, "Root");
-    this.root.node.addDependency(organization);
+    this.root.node.addDependency(this.resource);
   }
 
   /**
@@ -121,7 +123,7 @@ export class Organization extends Construct implements IOrganization {
     const enableAwsServiceAccess = new EnableAwsServiceAccess(this, `Enable${pascalCase(servicePrincipal)}`, {
       servicePrincipal: servicePrincipal,
     });
-    enableAwsServiceAccess.node.addDependency(this);
+    enableAwsServiceAccess.node.addDependency(this.resource);
   }
 
   public enablePolicyType(policyType: PolicyType) {

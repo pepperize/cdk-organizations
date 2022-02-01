@@ -502,17 +502,8 @@ Object {
     "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResource3A59621B": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1",
         "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE",
-        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy47A0A099",
-        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResource8698F17F",
-        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27",
-        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResource4E491170",
         "Organization06E16095",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
       ],
       "Properties": Object {
         "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"enableAWSServiceAccess\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"config-multiaccountsetup.amazonaws.com\\"},\\"parameters\\":{\\"ServicePrincipal\\":\\"config-multiaccountsetup.amazonaws.com\\"}}",
@@ -530,17 +521,7 @@ Object {
     },
     "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE": Object {
       "DependsOn": Array [
-        "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1",
-        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResource3A59621B",
-        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy47A0A099",
-        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResource8698F17F",
-        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27",
-        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResource4E491170",
         "Organization06E16095",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -570,17 +551,8 @@ Object {
     "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResource8698F17F": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1",
-        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE",
-        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResource3A59621B",
         "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy47A0A099",
-        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27",
-        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResource4E491170",
         "Organization06E16095",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
       ],
       "Properties": Object {
         "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"enableAWSServiceAccess\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"service-abbreviation.amazonaws.com\\"},\\"parameters\\":{\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
@@ -598,17 +570,7 @@ Object {
     },
     "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy47A0A099": Object {
       "DependsOn": Array [
-        "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1",
-        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE",
-        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResource3A59621B",
-        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResource8698F17F",
-        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27",
-        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResource4E491170",
         "Organization06E16095",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -638,17 +600,8 @@ Object {
     "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResource4E491170": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
-        "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1",
-        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE",
-        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResource3A59621B",
-        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy47A0A099",
-        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResource8698F17F",
         "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27",
         "Organization06E16095",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
       ],
       "Properties": Object {
         "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"enableAWSServiceAccess\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"ssm.amazonaws.com\\"},\\"parameters\\":{\\"ServicePrincipal\\":\\"ssm.amazonaws.com\\"}}",
@@ -666,17 +619,7 @@ Object {
     },
     "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27": Object {
       "DependsOn": Array [
-        "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1",
-        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE",
-        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResource3A59621B",
-        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy47A0A099",
-        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResource8698F17F",
-        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResource4E491170",
         "Organization06E16095",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-        "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-        "OrganizationRootTagsTagResourceCBEA7B2F",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
