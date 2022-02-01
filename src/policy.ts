@@ -126,7 +126,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
     });
     this.policyId = policy.getResponseField("Policy.PolicySummary.Id");
 
-    const tagResource = new TagResource(this, "Tags", { resource: this });
+    const tagResource = new TagResource(this, "Tags", { resourceId: this.policyId, tags: this.tags.renderedTags });
     tagResource.node.addDependency(policy);
   }
 

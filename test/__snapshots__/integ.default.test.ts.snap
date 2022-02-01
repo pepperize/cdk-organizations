@@ -29,6 +29,12 @@ Object {
           ],
         },
         "Runtime": "nodejs12.x",
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "Timeout": 120,
       },
       "Type": "AWS::Lambda::Function",
@@ -59,6 +65,12 @@ Object {
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
               ],
             ],
+          },
+        ],
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
           },
         ],
       },
@@ -424,6 +436,12 @@ Object {
             "Outputs.ImportedAccountTagscdkorganizationsTagResourceProviderframeworkonEvent78D71572Arn",
           ],
         },
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -434,6 +452,12 @@ Object {
         "ImportedAccountCreateAccount0DDC7950",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -450,7 +474,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/7968a446188d8466709be17ce97f1e5cc3cbad29e9e1de252755051063d8439e.json",
+              "/f35ff98cde6a3494770b8ac1ec1e700be2f8052a14b40d5e9bf3b70d0a38285b.json",
             ],
           ],
         },
@@ -461,6 +485,12 @@ Object {
     "ImportedAccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceEF61F130": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -477,7 +507,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/987c0fe10fb049dc344ff8b23e971ae23a60831c0697d08c530e7af4b2196e45.json",
+              "/70a360cf5475e93d8bd965081ff9c05f24158abdff024647854749ebd3a17f59.json",
             ],
           ],
         },
@@ -711,6 +741,12 @@ Object {
             "Outputs.OrganizationRootTagscdkorganizationsTagResourceProviderframeworkonEventF7418996Arn",
           ],
         },
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -723,6 +759,12 @@ Object {
         "OrganizationRootRootCustomResourceBB74F060",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -739,7 +781,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/2b607f2ff0ceed536d903ef10ab842bc78d034eb3813ccfc62e9ac46f0faf8ad.json",
+              "/f890807d1172ab7191c393b71cefbd67ac6abb2e75a7373ffcda3ef9bb420d76.json",
             ],
           ],
         },
@@ -750,6 +792,12 @@ Object {
     "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -766,7 +814,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/f1a405f28787883ec2d34de09c46635545eb323e8052666f41412e2e15afec71.json",
+              "/d15a9c2082bb543975bfae70a8b8b0475601f0f240c5dfcdf1d07523322af5ac.json",
             ],
           ],
         },
@@ -977,6 +1025,12 @@ Object {
             "Outputs.PolicyTagscdkorganizationsTagResourceProviderframeworkonEvent00CC85BFArn",
           ],
         },
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -988,6 +1042,12 @@ Object {
         "PolicyPolicyCustomResource79938510",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1004,7 +1064,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/00626e3f5eb1664ad99478d3310e5eb26076a754e4c56c6521f2b8f5f8e010f9.json",
+              "/fa0f5901c321edacb7102bf9dc8d57cde0b2c57c831f7f53f628f1dbd4dfa111.json",
             ],
           ],
         },
@@ -1055,6 +1115,12 @@ Object {
             "Outputs.Project1AccountTagscdkorganizationsTagResourceProviderframeworkonEvent4ED02E6DArn",
           ],
         },
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1065,6 +1131,12 @@ Object {
         "Project1AccountCreateAccount8A604AF1",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1081,7 +1153,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/a1257e343d2af95ee22b895a0915a5bfe883fc3ac080061e685cd6632f7cdf47.json",
+              "/724f4bb7629b3c2417d5bb9694af8ecb123d4ec84a43b8afab9e2048ff2ce042.json",
             ],
           ],
         },
@@ -1092,6 +1164,12 @@ Object {
     "Project1AccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResource9103135E": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1108,7 +1186,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/d6c9087642f9abd85364d196a346e0b27f69e8e1652322495189a5eba92bdd98.json",
+              "/2ab6f2be50bad2837fa4856d8db579bed178a36a1a5521ab74a9e3c764e6c854.json",
             ],
           ],
         },
@@ -1159,6 +1237,12 @@ Object {
             "Outputs.Project2DevAccountTagscdkorganizationsTagResourceProviderframeworkonEventCC82DAA6Arn",
           ],
         },
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1169,6 +1253,12 @@ Object {
         "Project2DevAccountCreateAccount52C0EFA9",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1185,7 +1275,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/6e74c7853d8ff025dfa77c681e8a0d55b276225686d5b015ceb83995cafec664.json",
+              "/b35cf86af03a1deaf697340c6108192f8fe4f242365dbb91202a076063877872.json",
             ],
           ],
         },
@@ -1196,6 +1286,12 @@ Object {
     "Project2DevAccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResource32511CFF": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1212,7 +1308,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/2e8b9cec73d537a95e9d05baf215bf5715a336fe3a1416bc013b876f8707383f.json",
+              "/2333127f6651f4dadfc9d6dedfff0e0365431f3cae8a7d1f4e007114585d4b09.json",
             ],
           ],
         },
@@ -1270,6 +1366,12 @@ Object {
             "Outputs.Project2OUTagscdkorganizationsTagResourceProviderframeworkonEvent5F2FB2D2Arn",
           ],
         },
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1284,6 +1386,12 @@ Object {
         "ProjectsOUTagsTagResource5FC759B6",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1300,7 +1408,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/103cad8c6f2232f5346207314f81ba97216ebcdb9226b360beea8170094fa09e.json",
+              "/997a55dca01cc579c1cbec1ea61d5ab0c7ccc6708c5f46231b37cba3f5d215f1.json",
             ],
           ],
         },
@@ -1317,6 +1425,12 @@ Object {
         "ProjectsOUTagsTagResource5FC759B6",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1333,7 +1447,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/d3d71579552c60ab730cb5d31f5386552c2567cd28a44af13d7746ca56f35eec.json",
+              "/7e3a59a4ff9cc6592a17eff17d1ce96b064b2d336454c7ff16393dd6d9f51f91.json",
             ],
           ],
         },
@@ -1384,6 +1498,12 @@ Object {
             "Outputs.Project2ProdAccountTagscdkorganizationsTagResourceProviderframeworkonEvent9163693AArn",
           ],
         },
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1394,6 +1514,12 @@ Object {
         "Project2ProdAccountCreateAccount7163F1C3",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1410,7 +1536,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/a9f164be44bd30f470467ba697359d73647c69d7da8aa85cb8f08eb9384574d2.json",
+              "/00459d0139ff2258ce14b4df1c173b6b4a658243eafd2ffefb94ddfb43b1aef4.json",
             ],
           ],
         },
@@ -1421,6 +1547,12 @@ Object {
     "Project2ProdAccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResource0CBF843F": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1437,7 +1569,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/bedf4289891ebd219f0d5ef819f59f3ed7787028bd93d68e878081e5eb156803.json",
+              "/d753309fb38fff63746df1a0ccb55adb52ed78c024a6604d01319cb59190085f.json",
             ],
           ],
         },
@@ -1495,6 +1627,12 @@ Object {
             "Outputs.ProjectsOUTagscdkorganizationsTagResourceProviderframeworkonEventF94E2EAFArn",
           ],
         },
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1509,6 +1647,12 @@ Object {
         "ProjectsOUOrganizationProvider5CA5D400",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1525,7 +1669,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/41f62cdd6b28336c749b501d0dada1c7e47eb932b2212da870600de4b61209f7.json",
+              "/9648a25fc7993448f1d0ec4625bfa4cc609d87e01aee09a075f4c0132604b73c.json",
             ],
           ],
         },
@@ -1542,6 +1686,12 @@ Object {
         "OrganizationRootTagsTagResourceCBEA7B2F",
       ],
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "tagKey",
+            "Value": "tagValue",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1558,7 +1708,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/0d5dfe17d71a94c59f9d5b54f4c6af28e8257ab3afd5ad0295d0eb0f6ba4d4b0.json",
+              "/d02e462d2ce78d239ee78433f797b3d3b3ae2a1d47866bac0ac56129bfa2a63c.json",
             ],
           ],
         },

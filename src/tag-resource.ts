@@ -1,12 +1,13 @@
 import { CustomResource, ITaggable } from "aws-cdk-lib";
+import { IResolvable } from "aws-cdk-lib/core/lib/resolvable";
 import { Construct } from "constructs";
-import { IResource } from "./resource";
 import { TagResourceProvider } from "./tag-resource-provider";
 
-export interface ITaggableResource extends ITaggable, IResource {}
+export interface ITaggableResource extends ITaggable {}
 
 export interface TagResourceProps {
-  readonly resource: ITaggableResource;
+  readonly resourceId: string;
+  readonly tags: IResolvable;
 }
 
 /**
@@ -19,15 +20,15 @@ export class TagResource extends Construct {
   public constructor(scope: Construct, id: string, props: TagResourceProps) {
     super(scope, id);
 
-    const { resource } = props;
+    const { resourceId, tags } = props;
 
     const tagResourceProvider = TagResourceProvider.getOrCreate(this);
     new CustomResource(this, "TagResource", {
       serviceToken: tagResourceProvider.provider.serviceToken,
       resourceType: "Custom::Organizations_TagResource",
       properties: {
-        ResourceId: resource.identifier(),
-        Tags: resource.tags.renderedTags,
+        ResourceId: resourceId,
+        Tags: tags,
       },
     });
   }

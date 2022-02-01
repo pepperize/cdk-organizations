@@ -130,7 +130,7 @@ export class Account extends Construct implements IAccount, ITaggableResource {
 
     this.resource = account;
 
-    const tagResource = new TagResource(this, "Tags", { resource: this });
+    const tagResource = new TagResource(this, "Tags", { resourceId: this.accountId, tags: this.tags.renderedTags });
     tagResource.node.addDependency(account);
   }
 

@@ -84,7 +84,10 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
     this.organizationalUnitArn = organizationalUnit.getAtt("Arn").toString();
     this.organizationalUnitName = organizationalUnit.getAtt("Name").toString();
 
-    const tagResource = new TagResource(this, "Tags", { resource: this });
+    const tagResource = new TagResource(this, "Tags", {
+      resourceId: this.organizationalUnitId,
+      tags: this.tags.renderedTags,
+    });
     tagResource.node.addDependency(organizationalUnit);
   }
 

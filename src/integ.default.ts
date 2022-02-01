@@ -1,4 +1,4 @@
-import { App, Stack } from "aws-cdk-lib";
+import { App, Stack, Tags } from "aws-cdk-lib";
 import { Account, IamUserAccessToBilling } from "./account";
 import { EnablePolicyType } from "./enable-policy-type";
 import { FeatureSet, Organization } from "./organization";
@@ -71,5 +71,7 @@ new PolicyAttachment(stack, "PolicyAttachment", {
   target: organization.root,
   policy: policy,
 });
+
+Tags.of(stack).add("tagKey", "tagValue");
 
 export { app, stack };

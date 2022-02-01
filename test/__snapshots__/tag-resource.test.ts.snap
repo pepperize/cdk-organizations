@@ -20,12 +20,6 @@ Object {
             "Outputs.StackTagcdkorganizationsTagResourceProviderframeworkonEvent88D3F110Arn",
           ],
         },
-        "Tags": Array [
-          Object {
-            "Key": "foo",
-            "Value": "bar",
-          },
-        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -33,6 +27,12 @@ Object {
     "TagcdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource02745B53": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "foo",
+            "Value": "bar",
+          },
+        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -49,7 +49,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/17bb98891c09f050688200a510a11be0008c9f490a1205174063adb7e42e6e62.json",
+              "/4cca930bfb0261aa68ba4e559d8154c07ccee7a699727f881a41099f6cf76229.json",
             ],
           ],
         },

@@ -1,25 +1,19 @@
 import { App, Stack, TagManager, Tags, TagType } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
-import { Construct } from "constructs";
-import { ITaggableResource, TagResource } from "../src";
+import { TagResource } from "../src";
 
 describe("TagResource", () => {
   it("Should match snapshot", () => {
     // Given
     const app = new App();
     const stack = new Stack(app, "Stack");
-    const resource = new (class extends Construct implements ITaggableResource {
-      readonly tags: TagManager = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_TagResource");
-
-      identifier(): string {
-        return "t-1234";
-      }
-    })(stack, "Resource");
+    const tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_TagResource");
 
     // When
-    Tags.of(resource).add("foo", "bar");
+    Tags.of(stack).add("foo", "bar");
     new TagResource(stack, "Tag", {
-      resource: resource,
+      resourceId: "t-1234",
+      tags: tags.renderedTags,
     });
 
     // Then

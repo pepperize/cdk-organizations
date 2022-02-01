@@ -178,7 +178,7 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
 
     this.rootId = root.getResponseField("Roots.0.Id"); // Returns first root id. It seems AWS Organizations doesn't contain multiple roots.
 
-    const tagResource = new TagResource(this, "Tags", { resource: this });
+    const tagResource = new TagResource(this, "Tags", { resourceId: this.rootId, tags: this.tags.renderedTags });
     tagResource.node.addDependency(root);
   }
 
