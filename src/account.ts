@@ -82,11 +82,6 @@ export interface IAccount extends IPolicyAttachmentTarget, IChild, IConstruct, I
   readonly email: string;
 
   /**
-   * Returns an ID of the account
-   */
-  identifier(): string;
-
-  /**
    * Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
    * @param servicePrincipal The supported AWS service that you specify
    */
