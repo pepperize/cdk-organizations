@@ -212,7 +212,7 @@ See [AccountProps](https://github.com/pepperize/cdk-organizations/blob/main/API.
 
 ### Delegated Administrator
 
-A compatible AWS service can register an AWS member account in the organization as an administrator for the organization's accounts in that service, using `delegateAdministrator` on your account:
+A compatible AWS service (trusted service) can register an AWS member account in the organization as an administrator in the organization on your behalf. To enable an AWS account as administrator of that trusted  in your organization call `delegateAdministrator` on your account:
 
 ```typescript
 const account = new Account(stack, "Account", {
