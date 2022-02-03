@@ -432,18 +432,7 @@ new EnablePolicyType(stack, "EnablePolicyType", {
 });
 // Create and attach and Service Control Policy (SCP)
 const policy = new Policy(stack, "Policy", {
-  content: `
-            {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Effect": "Allow",
-                  "Action": "s3:*",
-                  "Resource": "arn:aws:s3:::*",
-                }
-              ]
-            }
-            `,
+  content: '{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"}}',
   description: "Enables admins of attached accounts to delegate all S3 permissions",
   policyName: "AllowAllS3Actions",
   policyType: PolicyType.SERVICE_CONTROL_POLICY,
