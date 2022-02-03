@@ -305,7 +305,7 @@ Tags.of(organization.root).add("key", "value");
 import { Tags } from "aws-cdk-lib";
 
 const organizationalUnit = new OrganizationalUnit();
-Tags.of(organization.root).add("key", "value");
+Tags.of(organizationalUnit).add("key", "value");
 ```
 
 #### Tagging an account
@@ -314,7 +314,7 @@ Tags.of(organization.root).add("key", "value");
 import { Tags } from "aws-cdk-lib";
 
 const account = new Account();
-Tags.of(organization.root).add("key", "value");
+Tags.of(account).add("key", "value");
 ```
 
 #### Tagging a policy
