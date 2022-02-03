@@ -332,7 +332,7 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 | **Name** | **Description** |
 | --- | --- |
 | [`enableAwsServiceAccess`](#pepperizecdkorganizationsorganizationenableawsserviceaccess) | Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf. |
-| [`enablePolicyType`](#pepperizecdkorganizationsorganizationenablepolicytype) | *No description.* |
+| [`enablePolicyType`](#pepperizecdkorganizationsorganizationenablepolicytype) | Enables policy types in the following two broad categories: Authorization policies and Management policies. |
 
 ---
 
@@ -359,6 +359,8 @@ public enablePolicyType(policyType: PolicyType)
 ###### `policyType`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.parameter.policyType" id="pepperizecdkorganizationsorganizationparameterpolicytype"></a>
 
 - *Type:* [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType)
+
+: the type of the policy that you specify.
 
 ---
 
@@ -1811,7 +1813,7 @@ An organization has one management account along with zero or more member accoun
 | **Name** | **Description** |
 | --- | --- |
 | [`enableAwsServiceAccess`](#pepperizecdkorganizationsiorganizationenableawsserviceaccess) | Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf. |
-| [`enablePolicyType`](#pepperizecdkorganizationsiorganizationenablepolicytype) | *No description.* |
+| [`enablePolicyType`](#pepperizecdkorganizationsiorganizationenablepolicytype) | Enables policy types in the following two broad categories: Authorization policies and Management policies. |
 
 ---
 
@@ -1838,6 +1840,8 @@ public enablePolicyType(policyType: PolicyType)
 ###### `policyType`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.parameter.policyType" id="pepperizecdkorganizationsiorganizationparameterpolicytype"></a>
 
 - *Type:* [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType)
+
+: the type of the policy that you specify.
 
 ---
 
