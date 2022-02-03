@@ -101,7 +101,7 @@ dotnet add package Pepperize.CDK.Organizations
        // Create an organizational unit (OU)
        const organizationUnit = new OrganizationalUnit(stack, "OrganizationalUnit", {
          organizationalUnitName: "MyFirstOU",
-         parent: organisation.root,
+         parent: organization.root,
        });
 
        // Create an account
@@ -165,7 +165,7 @@ To create a new organizational unit (OU), add the following construct to your st
 ```typescript
 const organizationUnit = new OrganizationalUnit(stack, "Organization", {
   organizationalUnitName: "Project2",
-  parent: organisation.root,
+  parent: organization.root,
 });
 ```
 
