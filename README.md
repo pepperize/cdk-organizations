@@ -101,7 +101,7 @@ dotnet add package Pepperize.CDK.Organizations
        // Create an organizational unit (OU)
        const organizationUnit = new OrganizationalUnit(stack, "OrganizationalUnit", {
          organizationalUnitName: "MyFirstOU",
-         parent: organisation.root,
+         parent: organization.root,
        });
 
        // Create an account
@@ -165,7 +165,7 @@ To create a new organizational unit (OU), add the following construct to your st
 ```typescript
 const organizationUnit = new OrganizationalUnit(stack, "Organization", {
   organizationalUnitName: "Project2",
-  parent: organisation.root,
+  parent: organization.root,
 });
 ```
 
@@ -212,7 +212,7 @@ See [AccountProps](https://github.com/pepperize/cdk-organizations/blob/main/API.
 
 ### Delegated Administrator
 
-To enable trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf, call `delegateAdministrator` on your organization:
+A compatible AWS service (trusted service) can register an AWS member account in the organization as an administrator in the organization on your behalf. To enable an AWS account as administrator of that trusted  in your organization call `delegateAdministrator` on your account:
 
 ```typescript
 const account = new Account(stack, "Account", {
@@ -222,8 +222,8 @@ const account = new Account(stack, "Account", {
 account.delegateAdministrator("stacksets.amazonaws.com");
 ```
 
-- To enable trusted access, you must have [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) enabled.
-- [AWS services that you can use with AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html)
+- [AWS services that support Delegated Administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html)
+- To be able to use Delegated Administrator, your organization must have all [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) enabled.
 
 See [DelegatedAdministrator](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.DelegatedAdministrator)
 
@@ -305,7 +305,7 @@ Tags.of(organization.root).add("key", "value");
 import { Tags } from "aws-cdk-lib";
 
 const organizationalUnit = new OrganizationalUnit();
-Tags.of(organization.root).add("key", "value");
+Tags.of(organizationalUnit).add("key", "value");
 ```
 
 #### Tagging an account
@@ -314,7 +314,7 @@ Tags.of(organization.root).add("key", "value");
 import { Tags } from "aws-cdk-lib";
 
 const account = new Account();
-Tags.of(organization.root).add("key", "value");
+Tags.of(account).add("key", "value");
 ```
 
 #### Tagging a policy
