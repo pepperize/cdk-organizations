@@ -212,7 +212,7 @@ See [AccountProps](https://github.com/pepperize/cdk-organizations/blob/main/API.
 
 ### Delegated Administrator
 
-To enable trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf, call `delegateAdministrator` on your organization:
+A compatible AWS service can register an AWS member account in the organization as an administrator for the organization's accounts in that service, using `delegateAdministrator` on your account:
 
 ```typescript
 const account = new Account(stack, "Account", {
@@ -222,8 +222,9 @@ const account = new Account(stack, "Account", {
 account.delegateAdministrator("stacksets.amazonaws.com");
 ```
 
-- To enable trusted access, you must have [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) enabled.
-- [AWS services that you can use with AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html)
+- [AWS services that support Delegated Administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html)
+- To be able to use Delegated Administrator, your organization must have all [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) enabled.
+- You must have enabled trusted access for Management Account in your organization.
 
 See [DelegatedAdministrator](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.DelegatedAdministrator)
 
