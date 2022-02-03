@@ -80,6 +80,12 @@ export interface IAccount extends IPolicyAttachmentTarget, IChild, IConstruct, I
    * The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address.
    */
   readonly email: string;
+
+  /**
+   * Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
+   * @param servicePrincipal The supported AWS service that you specify
+   */
+  delegateAdministrator(servicePrincipal: string): void;
 }
 
 /**

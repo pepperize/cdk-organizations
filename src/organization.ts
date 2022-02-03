@@ -75,6 +75,22 @@ export interface IOrganization extends IConstruct {
    * The root of the current organization, which is automatically created.
    */
   readonly root: Root;
+
+  /**
+   * Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf.
+   * @param servicePrincipal The supported AWS service that you specify
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html
+   */
+  enableAwsServiceAccess(servicePrincipal: string): void;
+
+  /**
+   * Enables policy types in the following two broad categories: Authorization policies and Management policies.
+   * @param policyType: the type of the policy that you specify
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types
+   */
+  enablePolicyType(policyType: PolicyType): void;
 }
 
 export class Organization extends Construct implements IOrganization {
@@ -126,6 +142,12 @@ export class Organization extends Construct implements IOrganization {
     enableAwsServiceAccess.node.addDependency(this.resource);
   }
 
+  /**
+   * Enables policy types in the following two broad categories: Authorization policies and Management policies.
+   * @param policyType: the type of the policy that you specify
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types
+   */
   public enablePolicyType(policyType: PolicyType) {
     const enablePolicyType = new EnablePolicyType(this, `Enable${pascalCase(policyType)}`, {
       root: this.root,
@@ -182,7 +204,7 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
     tagResource.node.addDependency(root);
   }
 
-  identifier(): string {
+  public identifier(): string {
     return this.rootId;
   }
 }

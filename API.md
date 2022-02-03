@@ -332,7 +332,7 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 | **Name** | **Description** |
 | --- | --- |
 | [`enableAwsServiceAccess`](#pepperizecdkorganizationsorganizationenableawsserviceaccess) | Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf. |
-| [`enablePolicyType`](#pepperizecdkorganizationsorganizationenablepolicytype) | *No description.* |
+| [`enablePolicyType`](#pepperizecdkorganizationsorganizationenablepolicytype) | Enables policy types in the following two broad categories: Authorization policies and Management policies. |
 
 ---
 
@@ -359,6 +359,8 @@ public enablePolicyType(policyType: PolicyType)
 ###### `policyType`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.parameter.policyType" id="pepperizecdkorganizationsorganizationparameterpolicytype"></a>
 
 - *Type:* [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType)
+
+: the type of the policy that you specify.
 
 ---
 
@@ -1669,6 +1671,27 @@ Validators.of()
 
 - *Implemented By:* [`@pepperize/cdk-organizations.Account`](#@pepperize/cdk-organizations.Account), [`@pepperize/cdk-organizations.IAccount`](#@pepperize/cdk-organizations.IAccount)
 
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`delegateAdministrator`](#pepperizecdkorganizationsiaccountdelegateadministrator) | Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf. |
+
+---
+
+##### `delegateAdministrator` <a name="@pepperize/cdk-organizations.IAccount.delegateAdministrator" id="pepperizecdkorganizationsiaccountdelegateadministrator"></a>
+
+```typescript
+public delegateAdministrator(servicePrincipal: string)
+```
+
+###### `servicePrincipal`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IAccount.parameter.servicePrincipal" id="pepperizecdkorganizationsiaccountparameterserviceprincipal"></a>
+
+- *Type:* `string`
+
+The supported AWS service that you specify.
+
+---
 
 #### Properties <a name="Properties" id="properties"></a>
 
@@ -1785,6 +1808,42 @@ An organization has one management account along with zero or more member accoun
 
 > https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org
 
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`enableAwsServiceAccess`](#pepperizecdkorganizationsiorganizationenableawsserviceaccess) | Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf. |
+| [`enablePolicyType`](#pepperizecdkorganizationsiorganizationenablepolicytype) | Enables policy types in the following two broad categories: Authorization policies and Management policies. |
+
+---
+
+##### `enableAwsServiceAccess` <a name="@pepperize/cdk-organizations.IOrganization.enableAwsServiceAccess" id="pepperizecdkorganizationsiorganizationenableawsserviceaccess"></a>
+
+```typescript
+public enableAwsServiceAccess(servicePrincipal: string)
+```
+
+###### `servicePrincipal`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.parameter.servicePrincipal" id="pepperizecdkorganizationsiorganizationparameterserviceprincipal"></a>
+
+- *Type:* `string`
+
+The supported AWS service that you specify.
+
+---
+
+##### `enablePolicyType` <a name="@pepperize/cdk-organizations.IOrganization.enablePolicyType" id="pepperizecdkorganizationsiorganizationenablepolicytype"></a>
+
+```typescript
+public enablePolicyType(policyType: PolicyType)
+```
+
+###### `policyType`<sup>Required</sup> <a name="@pepperize/cdk-organizations.IOrganization.parameter.policyType" id="pepperizecdkorganizationsiorganizationparameterpolicytype"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType)
+
+: the type of the policy that you specify.
+
+---
 
 #### Properties <a name="Properties" id="properties"></a>
 
