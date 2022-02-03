@@ -118,7 +118,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
         action: "deletePolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deletePolicy-property
         region: "us-east-1",
         parameters: {
-          OrganizationalUnitId: new PhysicalResourceIdReference(),
+          PolicyId: this.policyId,
         },
       },
       installLatestAwsSdk: false,
