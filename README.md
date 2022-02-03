@@ -306,7 +306,7 @@ Tags.of(organization.root).add("key", "value");
 import { Tags } from "aws-cdk-lib";
 
 const organizationalUnit = new OrganizationalUnit();
-Tags.of(organization.root).add("key", "value");
+Tags.of(organizationalUnit).add("key", "value");
 ```
 
 #### Tagging an account
@@ -315,7 +315,7 @@ Tags.of(organization.root).add("key", "value");
 import { Tags } from "aws-cdk-lib";
 
 const account = new Account();
-Tags.of(organization.root).add("key", "value");
+Tags.of(account).add("key", "value");
 ```
 
 #### Tagging a policy
@@ -432,7 +432,18 @@ new EnablePolicyType(stack, "EnablePolicyType", {
 });
 // Create and attach and Service Control Policy (SCP)
 const policy = new Policy(stack, "Policy", {
-  content: '{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"}}',
+  content: `
+            {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": "s3:*",
+                  "Resource": "arn:aws:s3:::*",
+                }
+              ]
+            }
+            `,
   description: "Enables admins of attached accounts to delegate all S3 permissions",
   policyName: "AllowAllS3Actions",
   policyType: PolicyType.SERVICE_CONTROL_POLICY,
