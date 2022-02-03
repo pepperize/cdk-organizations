@@ -224,7 +224,6 @@ account.delegateAdministrator("stacksets.amazonaws.com");
 
 - [AWS services that support Delegated Administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html)
 - To be able to use Delegated Administrator, your organization must have all [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) enabled.
-- You must have enabled trusted access for Management Account in your organization.
 
 See [DelegatedAdministrator](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.DelegatedAdministrator)
 
