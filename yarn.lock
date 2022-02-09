@@ -4607,9 +4607,9 @@ npm-bundled@^1.1.1:
     npm-normalize-package-bin "^1.0.1"
 
 npm-check-updates@^12:
-  version "12.2.1"
-  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-12.2.1.tgz#1f25fec9863c149e4bae84833599050701dcd530"
-  integrity sha512-fqfH2USwTLgho8HaC79i5Bl+RH3zV15AbdtJQTCaOAp9L3D2W8k+jsfuwee2vSTUrt6IUTXPbzwUIYo4/TQdYA==
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-12.3.0.tgz#d06faf0b07da72112d57828a6c2beff5970fa706"
+  integrity sha512-NcVpbVYZymmr7lVCwqz1wpkAgWNQ/XyyPy/yyR2IjCHU4Dr1lpIJgIgtC0PCDobcYuYXpYSIgIWZA7RFvq8+Rw==
   dependencies:
     chalk "^4.1.2"
     cint "^8.2.1"
@@ -4639,6 +4639,7 @@ npm-check-updates@^12:
     source-map-support "^0.5.21"
     spawn-please "^1.0.0"
     update-notifier "^5.1.0"
+    yaml "^1.10.2"
 
 npm-install-checks@^4.0.0:
   version "4.0.0"
