@@ -682,7 +682,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sinonjs/fake-timers@^7.1.0", "@sinonjs/fake-timers@^7.1.2":
+"@sinonjs/fake-timers@^7.1.2":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@sinonjs/fake-timers/-/fake-timers-7.1.2.tgz#2524eae70c4910edccf99b2f4e6efc5894aff7b5"
   integrity sha512-iQADsW4LBMISqZ6Ci1dupJL9pprqwcVFTcOsEmQOEhW+KLCVn/Y4Jrvg2k19fIHCp+iFprriYPTdRcQR8NbUPg==
@@ -843,11 +843,16 @@
   integrity sha512-QzSuZMBuG5u8HqYz01qtMdg/Jfctlnvj1z/lYnIDXs/golxw0fxtRAHd9KrzjR7Yxz1qVeI00o0kiO3PmVdJ9w==
 
 "@types/sinon@^10.0.6":
-  version "10.0.10"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-10.0.10.tgz#f8acd72fbc2e87c4679f3e2c1ab3530dff1ab6e2"
-  integrity sha512-US5E539UfeL2DiWALzCyk0c4zKh6sCv86V/0lpda/afMJJ0oEm2SrKgedH5optvFWstnJ8e1MNYhLmPhAy4rvQ==
+  version "10.0.11"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-10.0.11.tgz#8245827b05d3fc57a6601bd35aee1f7ad330fc42"
+  integrity sha512-dmZsHlBsKUtBpHriNjlK0ndlvEh8dcb9uV9Afsbt89QIyydpC7NcR+nWlAhASfy3GHnxTl4FX/aKE7XZUt/B4g==
   dependencies:
-    "@sinonjs/fake-timers" "^7.1.0"
+    "@types/sinonjs__fake-timers" "*"
+
+"@types/sinonjs__fake-timers@*":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@types/sinonjs__fake-timers/-/sinonjs__fake-timers-8.1.1.tgz#b49c2c70150141a15e0fa7e79cf1f92a72934ce3"
+  integrity sha512-0kSuKjAS0TrGLJ0M/+8MaFkGsQhZpB6pxOmvS3K8FYI72K//YmdfoW9X2qPsAKh1mkwxGD5zib9s1FIFed6E8g==
 
 "@types/stack-utils@^2.0.0":
   version "2.0.1"
@@ -1192,9 +1197,9 @@ aws-sdk-mock@^5.5.1:
     traverse "^0.6.6"
 
 aws-sdk@^2.1066.0, aws-sdk@^2.814.0, aws-sdk@^2.928.0:
-  version "2.1070.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1070.0.tgz#e7a27c34ed3a92776aa9128ed3469cb94bba9655"
-  integrity sha512-tkmuycoJ9k0qF1iq03iqyhevxP3l0OlrnUxjd0x8nZ9Ko1TGjyj0yJS4Vbd4r5RBpKUwRqedB7TAyZ/71mcZKw==
+  version "2.1071.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1071.0.tgz#f92e5521f86a3d8f1bfd3ea6afaea03aa56757dc"
+  integrity sha512-Fjp5GOzctLHly5ySBGzASZVWEQi3zHc2TlYkiT5VNwvDiV9Uwv2frm2zgQf0wL6BOkPRS2b1TfOJT7x6Q5aOIw==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -4604,9 +4609,9 @@ npm-bundled@^1.1.1:
     npm-normalize-package-bin "^1.0.1"
 
 npm-check-updates@^12:
-  version "12.2.1"
-  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-12.2.1.tgz#1f25fec9863c149e4bae84833599050701dcd530"
-  integrity sha512-fqfH2USwTLgho8HaC79i5Bl+RH3zV15AbdtJQTCaOAp9L3D2W8k+jsfuwee2vSTUrt6IUTXPbzwUIYo4/TQdYA==
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-12.3.0.tgz#d06faf0b07da72112d57828a6c2beff5970fa706"
+  integrity sha512-NcVpbVYZymmr7lVCwqz1wpkAgWNQ/XyyPy/yyR2IjCHU4Dr1lpIJgIgtC0PCDobcYuYXpYSIgIWZA7RFvq8+Rw==
   dependencies:
     chalk "^4.1.2"
     cint "^8.2.1"
@@ -4636,6 +4641,7 @@ npm-check-updates@^12:
     source-map-support "^0.5.21"
     spawn-please "^1.0.0"
     update-notifier "^5.1.0"
+    yaml "^1.10.2"
 
 npm-install-checks@^4.0.0:
   version "4.0.0"
