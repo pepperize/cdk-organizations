@@ -7,7 +7,7 @@ import { OnEventHandlerFunction } from "./on-event-handler-function";
 export interface TagResourceProviderProps extends NestedStackProps {}
 
 /**
- * Creates a custom resource provider to asynchronously create Accounts in AWS organization. <strong>Account deletion is currently not supported!</strong>
+ * Creates a custom resource provider to asynchronously attach tags to resources in AWS Organizations.
  *
  * @see https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#provider-framework
  */
@@ -24,16 +24,17 @@ export class TagResourceProvider extends NestedStack {
     return (existing as TagResourceProvider) || new TagResourceProvider(scope, id, {});
   }
   /**
-   * Creates an Account and returns the CreateAccountStatus ID on Create. Passes the PhysicalResourceId through.
+   * Adds one or more tags to the specified resource.
    *
+   * @see https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.custom_resources-readme.html#handling-lifecycle-events-onevent
    * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#tagResource-property
    * @see https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#untagResource-property
    */
   public readonly onEventHandler: Function;
   /**
-   * The provider to create or update an Account.
+   * The provider to tag or untag the resource
    *
-   * @see https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#handling-lifecycle-events-onevent
+   * @see https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.custom_resources-readme.html#provider-framework
    */
   public readonly provider: Provider;
 
