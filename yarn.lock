@@ -4041,7 +4041,7 @@ jsii-rosetta@^1.52.1:
     workerpool "^6.1.5"
     yargs "^16.2.0"
 
-jsii@1.52.1, jsii@^1.52.1:
+jsii@1.52.1:
   version "1.52.1"
   resolved "https://registry.npmjs.org/jsii/-/jsii-1.52.1.tgz"
   integrity sha512-kILHStPX3xeADtB/2Wda56Mzz/6KUw8xNr/k+dp84qn9YlZA81cW85tKK5biYCy/XAh5IPsWIZVFRqR8CSPMMw==
@@ -4053,6 +4053,25 @@ jsii@1.52.1, jsii@^1.52.1:
     deep-equal "^2.0.5"
     fs-extra "^9.1.0"
     log4js "^6.3.0"
+    semver "^7.3.5"
+    semver-intersect "^1.4.0"
+    sort-json "^2.0.0"
+    spdx-license-list "^6.4.0"
+    typescript "~3.9.10"
+    yargs "^16.2.0"
+
+jsii@^1.52.1:
+  version "1.53.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.53.0.tgz#946b557ef50523a57e9b5a570293b951186c83d2"
+  integrity sha512-hPwapfZD3zIzHD49gewtM/w/iSi6QMPKf+HjovFA4u4j/cwUJBpb5DqG55m3LtUKHLj23Ll6KDuh7xr+H5PiDA==
+  dependencies:
+    "@jsii/check-node" "1.53.0"
+    "@jsii/spec" "^1.53.0"
+    case "^1.6.3"
+    chalk "^4"
+    deep-equal "^2.0.5"
+    fs-extra "^9.1.0"
+    log4js "^6.4.1"
     semver "^7.3.5"
     semver-intersect "^1.4.0"
     sort-json "^2.0.0"
