@@ -547,6 +547,14 @@
     chalk "^4.1.2"
     semver "^7.3.5"
 
+"@jsii/check-node@1.54.0":
+  version "1.54.0"
+  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.54.0.tgz#6cee236d2267c1d4df4cd58aacffdf7fbf87ebe7"
+  integrity sha512-pogNR1vgiXgBK2DQF+RsCnJQ9QPe+y7lyoRlsTtUplIFB6ryWnSsmCyzkInSVoKAKCo5CHkuDy190MbYL4Ns4Q==
+  dependencies:
+    chalk "^4.1.2"
+    semver "^7.3.5"
+
 "@jsii/spec@1.52.1":
   version "1.52.1"
   resolved "https://registry.npmjs.org/@jsii/spec/-/spec-1.52.1.tgz"
@@ -554,10 +562,10 @@
   dependencies:
     jsonschema "^1.4.0"
 
-"@jsii/spec@^1.52.1", "@jsii/spec@^1.53.0":
-  version "1.53.0"
-  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.53.0.tgz#81423db107461c13b0f10894bb1739041f71ca63"
-  integrity sha512-wWpO4S6rHjL9r+7oI/1HfThSdTh8YNGYxwCNvvAZcBsnNw2j/yBxo+LaqbPduq4biC14kB+TAov43wf7KUm7qw==
+"@jsii/spec@^1.52.1", "@jsii/spec@^1.53.0", "@jsii/spec@^1.54.0":
+  version "1.54.0"
+  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.54.0.tgz#4d03e8386a81b5db0e292a5ff3df6b265ba5ad07"
+  integrity sha512-IOspxWPC26+Re6DNJvaxCEkG1BYByiGSPlRxQpIpts+Hx2EZgAvuG+8rQoryNt7JqaAKpcJ6W3OdRmSw3x5Yrg==
   dependencies:
     jsonschema "^1.4.0"
 
@@ -4041,7 +4049,7 @@ jsii-rosetta@^1.52.1:
     workerpool "^6.1.5"
     yargs "^16.2.0"
 
-jsii@1.52.1, jsii@^1.52.1:
+jsii@1.52.1:
   version "1.52.1"
   resolved "https://registry.npmjs.org/jsii/-/jsii-1.52.1.tgz"
   integrity sha512-kILHStPX3xeADtB/2Wda56Mzz/6KUw8xNr/k+dp84qn9YlZA81cW85tKK5biYCy/XAh5IPsWIZVFRqR8CSPMMw==
@@ -4053,6 +4061,25 @@ jsii@1.52.1, jsii@^1.52.1:
     deep-equal "^2.0.5"
     fs-extra "^9.1.0"
     log4js "^6.3.0"
+    semver "^7.3.5"
+    semver-intersect "^1.4.0"
+    sort-json "^2.0.0"
+    spdx-license-list "^6.4.0"
+    typescript "~3.9.10"
+    yargs "^16.2.0"
+
+jsii@^1.52.1:
+  version "1.54.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.54.0.tgz#300fabed7204ec7afab2f3cf6e45faffc00067a7"
+  integrity sha512-XuqGpmGIxFcX2GvX3zjcHBzBeZ7+tJ7hr5tu/7qV6wQ/thXuZFdAoj2znSgBkpGOt6mjtRuqv01HIRl25Nys5g==
+  dependencies:
+    "@jsii/check-node" "1.54.0"
+    "@jsii/spec" "^1.54.0"
+    case "^1.6.3"
+    chalk "^4"
+    deep-equal "^2.0.5"
+    fs-extra "^9.1.0"
+    log4js "^6.4.1"
     semver "^7.3.5"
     semver-intersect "^1.4.0"
     sort-json "^2.0.0"
