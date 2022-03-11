@@ -539,14 +539,6 @@
     chalk "^4.1.2"
     semver "^7.3.5"
 
-"@jsii/check-node@1.54.0":
-  version "1.54.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.54.0.tgz#6cee236d2267c1d4df4cd58aacffdf7fbf87ebe7"
-  integrity sha512-pogNR1vgiXgBK2DQF+RsCnJQ9QPe+y7lyoRlsTtUplIFB6ryWnSsmCyzkInSVoKAKCo5CHkuDy190MbYL4Ns4Q==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.3.5"
-
 "@jsii/check-node@1.55.0":
   version "1.55.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.55.0.tgz#f4a38d557843ec67d2de0d7115a66532cca646fc"
@@ -562,7 +554,7 @@
   dependencies:
     jsonschema "^1.4.0"
 
-"@jsii/spec@^1.52.1", "@jsii/spec@^1.54.0", "@jsii/spec@^1.55.0":
+"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.0":
   version "1.55.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.55.0.tgz#c0838b3f401eca0849c359bf2b62ef7b2b39202b"
   integrity sha512-MsmAmi9+2s8p5jSypYFDTufkO2iAUWK7Ngq+btGDM6bMyQgqInMKNQcPcZAgWuwUCOU0ne/oYMVIbCR2njjAGA==
@@ -4086,12 +4078,12 @@ jsii@1.52.1:
     yargs "^16.2.0"
 
 jsii@^1.52.1:
-  version "1.54.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.54.0.tgz#300fabed7204ec7afab2f3cf6e45faffc00067a7"
-  integrity sha512-XuqGpmGIxFcX2GvX3zjcHBzBeZ7+tJ7hr5tu/7qV6wQ/thXuZFdAoj2znSgBkpGOt6mjtRuqv01HIRl25Nys5g==
+  version "1.55.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.55.0.tgz#b8f98d68e70ed1d7344d8e14034879074fef3937"
+  integrity sha512-OpY67STJMTqF/pQRYMXx8xaA1lCnKoQCnraB043tkx6F3reyUNzlIzSIkQIgTEFoBa/OEYANHdtHJCfw6Y3nzA==
   dependencies:
-    "@jsii/check-node" "1.54.0"
-    "@jsii/spec" "^1.54.0"
+    "@jsii/check-node" "1.55.0"
+    "@jsii/spec" "^1.55.0"
     case "^1.6.3"
     chalk "^4"
     deep-equal "^2.0.5"
@@ -4099,7 +4091,7 @@ jsii@^1.52.1:
     log4js "^6.4.1"
     semver "^7.3.5"
     semver-intersect "^1.4.0"
-    sort-json "^2.0.0"
+    sort-json "^2.0.1"
     spdx-license-list "^6.4.0"
     typescript "~3.9.10"
     yargs "^16.2.0"
@@ -5705,10 +5697,10 @@ socks@^2.6.1:
     ip "^1.1.5"
     smart-buffer "^4.1.0"
 
-sort-json@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/sort-json/-/sort-json-2.0.0.tgz"
-  integrity sha512-OgXPErPJM/rBK5OhzIJ+etib/BmLQ1JY55Nb/ElhoWUec62pXNF/X6DrecHq3NW5OAGX0KxYD7m0HtgB9dvGeA==
+sort-json@^2.0.0, sort-json@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/sort-json/-/sort-json-2.0.1.tgz#7338783bef807185dc37d5b02e3afd905d537cfb"
+  integrity sha512-s8cs2bcsQCzo/P2T/uoU6Js4dS/jnX8+4xunziNoq9qmSpZNCrRIAIvp4avsz0ST18HycV4z/7myJ7jsHWB2XQ==
   dependencies:
     detect-indent "^5.0.0"
     detect-newline "^2.1.0"
