@@ -539,14 +539,6 @@
     chalk "^4.1.2"
     semver "^7.3.5"
 
-"@jsii/check-node@1.55.0":
-  version "1.55.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.55.0.tgz#f4a38d557843ec67d2de0d7115a66532cca646fc"
-  integrity sha512-vfBW/3ptY3emiBVrwk7ySwGyzOvwLxb66FMNTzyslYegH9RvIwE+UY8kC87zscuZSDOCwINwgD0KdqrrfnR5yg==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.3.5"
-
 "@jsii/check-node@1.55.1":
   version "1.55.1"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.55.1.tgz#f034cf63cfc31bdaee477008a96443faaf9f5895"
@@ -562,7 +554,7 @@
   dependencies:
     jsonschema "^1.4.0"
 
-"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.0", "@jsii/spec@^1.55.1":
+"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1":
   version "1.55.1"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.55.1.tgz#fb8b820a6aa6c809773207e1f6be65f92ff38296"
   integrity sha512-KSKKN04eO0rTaqzw6j9RTx8HAzhePdmWRC3iJQ90QeZLv/L8Pj4l+nZ4wn77BGxmeULpXkGXUKbhkceArdr4GA==
@@ -4313,7 +4305,7 @@ lodash@^4.17.15, lodash@^4.17.21, lodash@^4.7.0:
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-log4js@^6.3.0, log4js@^6.4.1, log4js@^6.4.2:
+log4js@^6.3.0, log4js@^6.4.2:
   version "6.4.3"
   resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.4.3.tgz#8bddd981846873895bcc55c0961560c7214a8ad7"
   integrity sha512-H/oQKcCVIhQ8zCtUh5aftdp9eRpGyVB1M5sKzAJ0i10q5jS+YXk133vtLgzT1RIoWMbIn7QD1LUto8a1hqh6gA==
