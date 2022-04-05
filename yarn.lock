@@ -1220,9 +1220,9 @@ aws-sdk-mock@^5.5.1:
     traverse "^0.6.6"
 
 aws-sdk@^2.1066.0, aws-sdk@^2.814.0, aws-sdk@^2.928.0:
-  version "2.1106.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1106.0.tgz#5c536f57b484af56ca2e0b15fcf2e7d5846ffbd8"
-  integrity sha512-3dr0TTR2LI70ST8fa4IgXHpWdH4yv7FLnt9YEndwFQ8ar2EMCMpMU67wwCGBA72GUi0aOg4+lsLjGmCvIq3jug==
+  version "2.1107.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1107.0.tgz#90155fd8c78de59ba79a50e392a442286dbcf5a0"
+  integrity sha512-gZaCm+zSSwjUYSa/cVg63uXhq5w9coT9yA8aTDOYzFkyl19b9H2CCixPeyf7KHtZdGwe3QAG2Oe6Rw0xtoCs+Q==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -1501,9 +1501,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.0.0:
-  version "2.12.13"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.12.13.tgz#b54fbde5d5370b45b02954b9616b0215cb176048"
-  integrity sha512-EGwN6E3ri1ebnsMVh4YE01UUGNBlDfntpbDlWZ+OGLB6rB7wAABbaOmbN9v3qg1sodHpyLCEfmZl230EnoB4Cw==
+  version "2.12.15"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.12.15.tgz#60a58e2c866ce2d80496f7dd40ce372d15fe2b56"
+  integrity sha512-Sg87Dliz97K0OeYeJzdJE2i82K01oPo1z6OG+JDHZpkW8vN9ldcz30Ba0oFZD92a9eF0JoQxEmk03HvnQGf47g==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
@@ -2405,9 +2405,9 @@ eslint-import-resolver-node@^0.3.6:
     resolve "^1.20.0"
 
 eslint-import-resolver-typescript@^2.5.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-2.7.0.tgz#1f9d391b636dccdbaa4a3b1a87eb9a8237e23963"
-  integrity sha512-MNHS3u5pebvROX4MjGP9coda589ZGfL1SqdxUV4kSrcclfDRWvNE2D+eljbnWVMvWDVRgT89nhscMHPKYGcObQ==
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-2.7.1.tgz#a90a4a1c80da8d632df25994c4c5fdcdd02b8751"
+  integrity sha512-00UbgGwV8bSgUv34igBDbTOtKhqoRMy9bFjNehT40bXg6585PNIct8HhXZ0SybqB9rWtXj9crcku8ndDn/gIqQ==
   dependencies:
     debug "^4.3.4"
     glob "^7.2.0"
