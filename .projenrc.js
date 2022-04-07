@@ -69,6 +69,8 @@ const project = new AwsCdkConstructLibrary({
   gitpod: true,
 });
 
+project.tasks.tryFind("package:python").prependExec("pip3 install packaging");
+
 project.gitpod.addCustomTask({
   name: "setup",
   init: "yarn install && npx projen build",
