@@ -7,7 +7,7 @@ const project = new AwsCdkConstructLibrary({
   authorAddress: "patrick.florek@gmail.com",
   license: "MIT",
   copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
-  cdkVersion: "2.8.0",
+  cdkVersion: "2.15.0",
   name: "@pepperize/cdk-organizations",
   description: "Manage AWS organizations, organizational units (OU), accounts and service control policies (SCP).",
   keywords: [
@@ -68,6 +68,8 @@ const project = new AwsCdkConstructLibrary({
 
   gitpod: true,
 });
+
+project.tasks.tryFind("package:python").prependExec("pip3 install packaging");
 
 project.gitpod.addCustomTask({
   name: "setup",
