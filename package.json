@@ -77,7 +77,7 @@
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
     "prettier": "^2.5.1",
-    "projen": "^0.52.1",
+    "projen": "^0.54.11",
     "sinon": "^13.0.0",
     "standard-version": "^9",
     "ts-jest": "^27.1.3",
