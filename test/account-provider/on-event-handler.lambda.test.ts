@@ -60,7 +60,7 @@ describe("account-provider.on-event-handler.lambda", () => {
 
     // Then
     expect(response).not.toBeUndefined();
-    expect(response?.PhysicalResourceId).toEqual("car-exampleaccountcreationrequestid");
+    expect(response?.PhysicalResourceId).toBeUndefined();
     expect(response?.Data?.CreateAccountStatusId).toEqual("car-exampleaccountcreationrequestid");
     sinon.assert.calledOnce(createAccountFake);
   });

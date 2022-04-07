@@ -107,6 +107,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     sinon.assert.called(describeAccountFake);
     sinon.assert.notCalled(moveAccountFake);
     expect(response.IsComplete).toBeTruthy();
+    expect(response.PhysicalResourceId).toEqual("123456789012");
     expect(response.Data?.AccountId).toEqual("123456789012");
     expect(response.Data?.AccountName).toEqual("test");
   });
@@ -142,7 +143,14 @@ describe("account-provider.is-complete-handler.lambda", () => {
 
   it("Should be moved to parent", async () => {
     // Given
-    const describeCreateAccountStatusFake = sinon.fake.resolves(undefined);
+    const mock: SDK.Organizations.DescribeCreateAccountStatusResponse = {
+      CreateAccountStatus: {
+        Id: "car-exampleaccountcreationrequestid",
+        AccountId: "123456789012",
+        State: "SUCCEEDED",
+      },
+    };
+    const describeCreateAccountStatusFake = sinon.fake.resolves(mock);
     AWS.mock("Organizations", "describeCreateAccountStatus", describeCreateAccountStatusFake);
     const describeAccountResponseMock: SDK.Organizations.DescribeAccountResponse = {
       Account: {
@@ -179,7 +187,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     const response = await handler(request as IsCompleteRequest);
 
     // Then
-    sinon.assert.notCalled(describeCreateAccountStatusFake);
+    sinon.assert.called(describeCreateAccountStatusFake);
     sinon.assert.called(describeAccountFake);
     sinon.assert.called(listParentsFake);
     sinon.assert.called(moveAccountFake);
@@ -218,7 +226,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     const request: Partial<IsCompleteRequest> = {
       ...event,
       RequestType: "Delete",
-      PhysicalResourceId: "car-exampleaccountcreationrequestid",
+      PhysicalResourceId: "123456789012",
       Data: {
         AccountId: "123456789012",
       },
@@ -239,6 +247,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     sinon.assert.called(listParentsFake);
     sinon.assert.called(moveAccountFake);
     expect(response.IsComplete).toBeTruthy();
+    expect(response.PhysicalResourceId).toEqual("123456789012");
     expect(response.Data?.AccountId).toEqual("123456789012");
     expect(response.Data?.AccountName).toEqual("test");
   });

@@ -44,23 +44,14 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse | 
     console.log("Creating account: %j", response);
 
     return {
-      PhysicalResourceId: response.CreateAccountStatus?.Id,
       Data: { ...event.ResourceProperties, CreateAccountStatusId: response.CreateAccountStatus?.Id },
     };
-  }
-
-  let data;
-  if (/\d{12}/.test(event.PhysicalResourceId!)) {
-    data = { AccountId: event.PhysicalResourceId };
-  } else {
-    data = { CreateAccountStatusId: event.PhysicalResourceId };
   }
 
   return {
     ...event,
     Data: {
       ...event.ResourceProperties,
-      ...data,
     },
   };
 }

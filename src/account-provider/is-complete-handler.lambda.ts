@@ -18,10 +18,14 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
   console.log("Payload: %j", event);
 
   let accountId: string;
-  if (event.Data?.CreateAccountStatusId) {
+  if (event.RequestType == "Create" || isLegacyPhysicalResourceId(event)) {
     const response: AWS.Organizations.DescribeCreateAccountStatusResponse = await organizationsClient
       // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeCreateAccountStatus-property
-      .describeCreateAccountStatus({ CreateAccountRequestId: event.Data.CreateAccountStatusId })
+      .describeCreateAccountStatus({
+        CreateAccountRequestId: isLegacyPhysicalResourceId(event)
+          ? event.PhysicalResourceId
+          : event.Data?.CreateAccountStatusId,
+      })
       .promise();
 
     if (response.CreateAccountStatus?.State == "IN_PROGRESS") {
@@ -37,7 +41,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
     // State == SUCCEEDED
     accountId = response.CreateAccountStatus?.AccountId!;
   } else {
-    accountId = event.Data?.AccountId;
+    accountId = event.PhysicalResourceId!;
   }
 
   const response = await organizationsClient
@@ -59,6 +63,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
 
   return {
     IsComplete: true,
+    PhysicalResourceId: accountId,
     Data: {
       ...event.ResourceProperties,
       ...event.Data,
@@ -121,4 +126,11 @@ const move = async (
       DestinationParentId: destinationParentId,
     })
     .promise();
+};
+
+/**
+ * Before aws-cdk-lib 2.15.0 the physical resource was determined in the onEventHandler and therefor the physical resource id was the account's CreateAccountStatusId.
+ */
+const isLegacyPhysicalResourceId = (event: IsCompleteRequest): boolean => {
+  return !/\d{12}/.test(event.PhysicalResourceId!);
 };
