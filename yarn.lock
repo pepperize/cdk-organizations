@@ -545,14 +545,6 @@
     chalk "^4.1.2"
     semver "^7.3.5"
 
-"@jsii/check-node@1.56.0":
-  version "1.56.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.56.0.tgz#8667962c21b55e498a387df36a7334585d0561ab"
-  integrity sha512-OJZGt2lO7ITY5fnqa0RCBnlaEORCIQq/AWMsJ2OcwOSOGj1Ua+9nsiBvsJ7Dm77k3jLx3IN0odD6/bwP6hQWCA==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.3.5"
-
 "@jsii/check-node@1.57.0":
   version "1.57.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.57.0.tgz#c41e28f47e6210e0ec127349a73aa871d6227943"
@@ -568,7 +560,7 @@
   dependencies:
     jsonschema "^1.4.0"
 
-"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.56.0", "@jsii/spec@^1.57.0":
+"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.57.0":
   version "1.57.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.57.0.tgz#f22cf639fed22e1fb2cc39ae818e2c0eecf999bd"
   integrity sha512-Pt1wWIVeBN7UHJ9Flj676hNA3sNN06YSbErUd3loLgCUjRDOUzp2QysaRQK2Zsf2DBIjwLq048btoWkjPsTFJQ==
