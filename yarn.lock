@@ -1476,9 +1476,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.0.0:
-  version "2.12.30"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.12.30.tgz#f1b61922076d0ae71713f0dc784e4f84ee422057"
-  integrity sha512-KfFcIF4oSsZ5ojpZAfAzAnromOwHPITl8Qr9RPhTh9v66fExSnsaLn/5geQ1gX2q28X6xyQI7TVky/yoCsY1eA==
+  version "2.12.31"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.12.31.tgz#c243048cf7fd4b2627c6b04168a52bcf1e098778"
+  integrity sha512-M+coqqXso3RiB1AMIkYSN6aH5Lcjx5PahmB6NkXfWt+qBtaVySVsMFppXUsMCQLKdz5SeZSKi46uzPBV3mi2+w==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
@@ -3694,9 +3694,9 @@ jest-jasmine2@^27.5.1:
     throat "^6.0.1"
 
 jest-junit@^13:
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/jest-junit/-/jest-junit-13.1.0.tgz#c364b90b88ad2492dae4002f00c9fed75e0590c4"
-  integrity sha512-ECbhzEG3Oe2IH3Mnwcv2vAXM4qTbcObN/gTUzwKPlpaNsf2G/zlj/teEUqRGV17YQiQ4AqzTf3pCO7W59DKVIw==
+  version "13.2.0"
+  resolved "https://registry.yarnpkg.com/jest-junit/-/jest-junit-13.2.0.tgz#66eeb86429aafac8c1745a70f44ace185aacb943"
+  integrity sha512-B0XNlotl1rdsvFZkFfoa19mc634+rrd8E4Sskb92Bb8MmSXeWV9XJGUyctunZS1W410uAxcyYuPUGVnbcOH8cg==
   dependencies:
     mkdirp "^1.0.4"
     strip-ansi "^6.0.1"
