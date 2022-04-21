@@ -24,9 +24,8 @@ export class PolicyAttachment extends Construct {
     super(scope, id);
 
     const { target, policy } = props;
-    this.node.addDependency(target, policy);
 
-    new AwsCustomResource(this, "MoveAccountCustomResource", {
+    new AwsCustomResource(this, "CustomResource", {
       onCreate: {
         service: "Organizations",
         action: "attachPolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#attachPolicy-property

@@ -48,8 +48,21 @@ new Account(scope: Construct, id: string, props: AccountProps)
 
 | **Name** | **Description** |
 | --- | --- |
+| [`attachPolicy`](#pepperizecdkorganizationsaccountattachpolicy) | Attach a policy. |
 | [`delegateAdministrator`](#pepperizecdkorganizationsaccountdelegateadministrator) | Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf. |
 | [`identifier`](#pepperizecdkorganizationsaccountidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
+
+---
+
+##### `attachPolicy` <a name="@pepperize/cdk-organizations.Account.attachPolicy" id="pepperizecdkorganizationsaccountattachpolicy"></a>
+
+```typescript
+public attachPolicy(policy: IPolicy)
+```
+
+###### `policy`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Account.parameter.policy" id="pepperizecdkorganizationsaccountparameterpolicy"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy)
 
 ---
 
@@ -331,8 +344,21 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 | **Name** | **Description** |
 | --- | --- |
+| [`attachPolicy`](#pepperizecdkorganizationsorganizationattachpolicy) | Attach a policy. |
 | [`enableAwsServiceAccess`](#pepperizecdkorganizationsorganizationenableawsserviceaccess) | Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf. |
 | [`enablePolicyType`](#pepperizecdkorganizationsorganizationenablepolicytype) | Enables policy types in the following two broad categories: Authorization policies and Management policies. |
+
+---
+
+##### `attachPolicy` <a name="@pepperize/cdk-organizations.Organization.attachPolicy" id="pepperizecdkorganizationsorganizationattachpolicy"></a>
+
+```typescript
+public attachPolicy(policy: IPolicy)
+```
+
+###### `policy`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Organization.parameter.policy" id="pepperizecdkorganizationsorganizationparameterpolicy"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy)
 
 ---
 
@@ -510,7 +536,20 @@ new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitPr
 
 | **Name** | **Description** |
 | --- | --- |
+| [`attachPolicy`](#pepperizecdkorganizationsorganizationalunitattachpolicy) | Attach a policy. |
 | [`identifier`](#pepperizecdkorganizationsorganizationalunitidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
+
+---
+
+##### `attachPolicy` <a name="@pepperize/cdk-organizations.OrganizationalUnit.attachPolicy" id="pepperizecdkorganizationsorganizationalunitattachpolicy"></a>
+
+```typescript
+public attachPolicy(policy: IPolicy)
+```
+
+###### `policy`<sup>Required</sup> <a name="@pepperize/cdk-organizations.OrganizationalUnit.parameter.policy" id="pepperizecdkorganizationsorganizationalunitparameterpolicy"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy)
 
 ---
 
@@ -904,7 +943,33 @@ new Root(scope: Construct, id: string)
 
 | **Name** | **Description** |
 | --- | --- |
+| [`attachPolicy`](#pepperizecdkorganizationsrootattachpolicy) | Attach a policy. |
+| [`enablePolicyType`](#pepperizecdkorganizationsrootenablepolicytype) | Enables and disables Enables a policy type. |
 | [`identifier`](#pepperizecdkorganizationsrootidentifier) | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
+
+---
+
+##### `attachPolicy` <a name="@pepperize/cdk-organizations.Root.attachPolicy" id="pepperizecdkorganizationsrootattachpolicy"></a>
+
+```typescript
+public attachPolicy(policy: IPolicy)
+```
+
+###### `policy`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Root.parameter.policy" id="pepperizecdkorganizationsrootparameterpolicy"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.IPolicy`](#@pepperize/cdk-organizations.IPolicy)
+
+---
+
+##### `enablePolicyType` <a name="@pepperize/cdk-organizations.Root.enablePolicyType" id="pepperizecdkorganizationsrootenablepolicytype"></a>
+
+```typescript
+public enablePolicyType(policyType: PolicyType)
+```
+
+###### `policyType`<sup>Required</sup> <a name="@pepperize/cdk-organizations.Root.parameter.policyType" id="pepperizecdkorganizationsrootparameterpolicytype"></a>
+
+- *Type:* [`@pepperize/cdk-organizations.PolicyType`](#@pepperize/cdk-organizations.PolicyType)
 
 ---
 

@@ -1,8 +1,9 @@
-import { Annotations, CustomResource, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
+import { Annotations, CustomResource, Names, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
 import { OrganizationalUnitProvider } from "./organizational-unit-provider/organizational-unit-provider";
 import { IChild, IParent } from "./parent";
-import { IPolicyAttachmentTarget } from "./policy-attachment";
+import { IPolicy } from "./policy";
+import { IPolicyAttachmentTarget, PolicyAttachment } from "./policy-attachment";
 import { ITaggableResource, TagResource } from "./tag-resource";
 import { Validators } from "./validators";
 
@@ -53,6 +54,9 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
   readonly organizationalUnitId: string;
   readonly organizationalUnitArn: string;
   readonly organizationalUnitName: string;
+
+  protected readonly resource: CustomResource;
+
   readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_OrganizationalUnitProvider");
 
   public constructor(scope: Construct, id: string, props: OrganizationalUnitProps) {
@@ -69,7 +73,7 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
     this.node.addDependency(parent);
 
     const organizationalUnitProvider = OrganizationalUnitProvider.getOrCreate(this);
-    const organizationalUnit = new CustomResource(this, "OrganizationProvider", {
+    this.resource = new CustomResource(this, "OrganizationProvider", {
       serviceToken: organizationalUnitProvider.provider.serviceToken,
       resourceType: "Custom::Organizations_OrganizationalUnitProvider",
       properties: {
@@ -80,18 +84,31 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
       },
     });
 
-    this.organizationalUnitId = organizationalUnit.getAtt("Id").toString();
-    this.organizationalUnitArn = organizationalUnit.getAtt("Arn").toString();
-    this.organizationalUnitName = organizationalUnit.getAtt("Name").toString();
+    this.organizationalUnitId = this.resource.getAtt("Id").toString();
+    this.organizationalUnitArn = this.resource.getAtt("Arn").toString();
+    this.organizationalUnitName = this.resource.getAtt("Name").toString();
 
     const tagResource = new TagResource(this, "Tags", {
       resourceId: this.organizationalUnitId,
       tags: this.tags.renderedTags,
     });
-    tagResource.node.addDependency(organizationalUnit);
+    tagResource.node.addDependency(this.resource);
   }
 
   identifier(): string {
     return this.organizationalUnitId;
+  }
+
+  /**
+   * Attach a policy. Before you can attach the policy, you must enable that policy type for use. You can use policies when you have all features enabled.
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
+   */
+  public attachPolicy(policy: IPolicy) {
+    const policyAttachment = new PolicyAttachment(this, `PolicyAttachment-${Names.nodeUniqueId(policy.node)}`, {
+      target: this,
+      policy: policy,
+    });
+    policyAttachment.node.addDependency(this.resource, policy);
   }
 }

@@ -56,7 +56,7 @@ dotnet add package Pepperize.CDK.Organizations
 
 2. Prepare an IAM User with `AdministratorAccess`
 
-   To deploy your new organization, you have to create an Administrator with an Access Key
+   To deploy your new organization, you have to create an Administrator with an AccessKey
 
    - [Creating your first IAM admin user and user group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)
    - [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)
@@ -212,7 +212,7 @@ See [AccountProps](https://github.com/pepperize/cdk-organizations/blob/main/API.
 
 ### Delegated Administrator
 
-A compatible AWS service (trusted service) can register an AWS member account in the organization as an administrator in the organization on your behalf. To enable an AWS account as administrator of that trusted  in your organization call `delegateAdministrator` on your account:
+A compatible AWS service (trusted service) can register an AWS member account in the organization as an administrator in the organization on your behalf. To enable an AWS account as administrator of that trusted in your organization call `delegateAdministrator` on your account:
 
 ```typescript
 const account = new Account(stack, "Account", {
@@ -223,7 +223,7 @@ account.delegateAdministrator("stacksets.amazonaws.com");
 ```
 
 - [AWS services that support Delegated Administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html)
-- To be able to use Delegated Administrator, your organization must have all [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) enabled.
+- To be able to use Delegated Administrator, your organization must have [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) enabled.
 
 See [DelegatedAdministrator](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.DelegatedAdministrator)
 
@@ -253,6 +253,9 @@ const organization = new Organization(stack, "Organization", {
   featureSet: FeatureSet.ALL, // (default) the organization must be created with all features enabled
 });
 organization.enablePolicyType(PolicyType.SERVICE_CONTROL_POLICY);
+organization.enablePolicyType(PolicyType.TAG_POLICY);
+organization.enablePolicyType(PolicyType.BACKUP_POLICY);
+organization.enablePolicyType(PolicyType.AISERVICES_OPT_OUT_POLICY);
 ```
 
 - To create or attach policies later on, you have to [enable all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) and the [policy type](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types) .
@@ -265,7 +268,7 @@ To create a new policy add the following construct to your stack:
 
 ```typescript
 new Policy(stack, "Policy", {
-  content: '{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"}}',
+  content: '{\n"Version":"2012-10-17","Statement":{\n"Effect":"Allow","Action":"s3:*"\n}\n}',
   description: "Enables admins of attached accounts to delegate all S3 permissions",
   policyName: "AllowAllS3Actions",
   policyType: PolicyType.SERVICE_CONTROL_POLICY,
@@ -276,6 +279,27 @@ new Policy(stack, "Policy", {
 - The [SCP Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html) is quite similar to IAM policies, but way more limited.
 
 See [Policy](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.Policy)
+
+### Attach a policy
+
+To attach a policy to a root, an organizational unit (OU), or an individual account call `attachPolicy` with the policy to attach:
+
+```typescript
+organization.enablePolicyType(PolicyType.TAG_POLICY);
+
+const policy = new Policy(stack, "Policy", {
+  content: '{\n"tags":{\n"CostCenter":{\n"tag_key":{\n"@@assign":"CostCenter"\n}\n}\n}\n}',
+  description: "Defines the CostCenter tag key",
+  policyName: "CostCenterTag",
+  policyType: PolicyType.TAG_POLICY,
+});
+
+organization.attachPolicy(policy);
+organizationalUnit.attachPolicy(policy);
+account.attachPolicy(policy);
+```
+
+- To create or attach policies, you must have [all features](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.FeatureSet) and the [policy type](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types) enabled.
 
 ### Tagging resources
 
@@ -330,7 +354,7 @@ Tags.of(policy).add("key", "value");
 
 AWS Organizations has some limitations:
 
-- The stack can only be deployed in the `us-east-1` region.
+- The stack should be deployed in the `us-east-1` region.
 - The stack's account must be the management account of an existing organization.
 - The stack's account becomes the management account of the new organization.
 - An account belongs to only one organization within a single root.
@@ -345,7 +369,7 @@ For a quick start, check out a development environment:
 ```shell
 git clone git@github.com:pepperize/cdk-organizations
 cd cdk-organizations
- # install dependencies
+# install dependencies
 yarn
 # build with projen
 yarn build
@@ -379,9 +403,7 @@ const organization = new Organization(stack, "Organization", {
   featureSet: FeatureSet.ALL,
 });
 // Enable AWS Service Access (requires FeatureSet: ALL)
-new EnableAwsServiceAccess(stack, "EnableAwsServiceAccess", {
-  servicePrincipal: "service-abbreviation.amazonaws.com",
-});
+organization.enableAwsServiceAccess("service-abbreviation.amazonaws.com");
 
 // Create an account
 const account = new Account(stack, "SharedAccount", {
@@ -392,10 +414,7 @@ const account = new Account(stack, "SharedAccount", {
   parent: organization.root,
 });
 // Enable a delegated admin account
-new DelegatedAdministrator(stack, "DelegatedAdministrator", {
-  account: account,
-  servicePrincipal: "service-abbreviation.amazonaws.com",
-});
+account.delegateAdministrator("service-abbreviation.amazonaws.com");
 
 // Create an OU in the current organizations root
 const projects = new OrganizationalUnit(stack, "ProjectsOU", {
@@ -425,21 +444,18 @@ new Account(stack, "Project2ProdAccount", {
 });
 
 // Enable the service control policy (SCP) type within the organization
-new EnablePolicyType(stack, "EnablePolicyType", {
-  root: organization.root,
-  policyType: PolicyType.SERVICE_CONTROL_POLICY,
-});
+organization.enablePolicyType(PolicyType.SERVICE_CONTROL_POLICY);
 // Create and attach and Service Control Policy (SCP)
 const policy = new Policy(stack, "Policy", {
-  content: '{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"}}',
+  content: '{\n"Version":"2012-10-17","Statement":{\n"Effect":"Allow","Action":"s3:*"\n}\n}',
   description: "Enables admins of attached accounts to delegate all S3 permissions",
   policyName: "AllowAllS3Actions",
   policyType: PolicyType.SERVICE_CONTROL_POLICY,
 });
-new PolicyAttachment(stack, "PolicyAttachment", {
-  target: organization.root,
-  policy: policy,
-});
+organization.attachPolicy(policy);
+
+// Tagging AWS organization resources of this stack
+Tags.of(stack).add("tagKey", "tagValue");
 ```
 
 # Alternatives

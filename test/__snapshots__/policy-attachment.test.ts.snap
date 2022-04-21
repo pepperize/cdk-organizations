@@ -162,7 +162,7 @@ Object {
       "Type": "AWS::CloudFormation::Stack",
       "UpdateReplacePolicy": "Delete",
     },
-    "PolicyAttachmentMoveAccountCustomResource45168EBC": Object {
+    "PolicyAttachmentCustomResourceC586066B": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "AccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceB38D49F2",
@@ -173,7 +173,7 @@ Object {
         "PolicyPolicyCustomResource79938510",
         "PolicyTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceDF6089CF",
         "PolicyTagsTagResource27BB67A1",
-        "PolicyAttachmentMoveAccountCustomResourceCustomResourcePolicyA1269436",
+        "PolicyAttachmentCustomResourceCustomResourcePolicy9D7F91EB",
       ],
       "Properties": Object {
         "Create": Object {
@@ -259,7 +259,7 @@ Object {
       "Type": "Custom::AWS",
       "UpdateReplacePolicy": "Delete",
     },
-    "PolicyAttachmentMoveAccountCustomResourceCustomResourcePolicyA1269436": Object {
+    "PolicyAttachmentCustomResourceCustomResourcePolicy9D7F91EB": Object {
       "DependsOn": Array [
         "AccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceB38D49F2",
         "AccountCreateAccount833709C2",
@@ -286,7 +286,7 @@ Object {
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "PolicyAttachmentMoveAccountCustomResourceCustomResourcePolicyA1269436",
+        "PolicyName": "PolicyAttachmentCustomResourceCustomResourcePolicy9D7F91EB",
         "Roles": Array [
           Object {
             "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
@@ -301,7 +301,7 @@ Object {
         "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
       ],
       "Properties": Object {
-        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\\\\\\\\\\\"Version\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2012-10-17\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Statement\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\"Effect\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Allow\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Action\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"s3:*\\\\\\\\\\\\\\"}}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
         "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
         "InstallLatestAwsSdk": false,
         "ServiceToken": Object {
@@ -310,7 +310,7 @@ Object {
             "Arn",
           ],
         },
-        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\\\\\\\\\\\"Version\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2012-10-17\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Statement\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\"Effect\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Allow\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Action\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"s3:*\\\\\\\\\\\\\\"}}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
       },
       "Type": "Custom::Organizations_Policy",
       "UpdateReplacePolicy": "Delete",
