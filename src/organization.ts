@@ -1,4 +1,4 @@
-import { CustomResource, TagManager, TagType } from "aws-cdk-lib";
+import { CustomResource, Names, TagManager, TagType } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
 import { pascalCase } from "pascal-case";
@@ -6,8 +6,8 @@ import { EnableAwsServiceAccess } from "./enable-aws-service-access";
 import { EnablePolicyType } from "./enable-policy-type";
 import { OrganizationProvider } from "./organization-provider";
 import { IParent } from "./parent";
-import { PolicyType } from "./policy";
-import { IPolicyAttachmentTarget } from "./policy-attachment";
+import { IPolicy, PolicyType } from "./policy";
+import { IPolicyAttachmentTarget, PolicyAttachment } from "./policy-attachment";
 import { ITaggableResource, TagResource } from "./tag-resource";
 
 /**
@@ -149,11 +149,16 @@ export class Organization extends Construct implements IOrganization {
    * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types
    */
   public enablePolicyType(policyType: PolicyType) {
-    const enablePolicyType = new EnablePolicyType(this, `Enable${pascalCase(policyType)}`, {
-      root: this.root,
-      policyType: policyType,
-    });
-    enablePolicyType.node.addDependency(this.root);
+    this.root.enablePolicyType(policyType);
+  }
+
+  /**
+   * Attach a policy. Before you can attach the policy, you must enable that policy type for use. You can use policies when you have all features enabled.
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
+   */
+  public attachPolicy(policy: IPolicy) {
+    this.root.attachPolicy(policy);
   }
 }
 
@@ -168,12 +173,14 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
    */
   public readonly rootId: string;
 
+  protected readonly resource: AwsCustomResource;
+
   readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Root");
 
   public constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    const root = new AwsCustomResource(this, "RootCustomResource", {
+    this.resource = new AwsCustomResource(this, "RootCustomResource", {
       resourceType: "Custom::Organizations_Root",
       onCreate: {
         service: "Organizations",
@@ -198,13 +205,39 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
       }),
     });
 
-    this.rootId = root.getResponseField("Roots.0.Id"); // Returns first root id. It seems AWS Organizations doesn't contain multiple roots.
+    this.rootId = this.resource.getResponseField("Roots.0.Id"); // Returns first root id. It seems AWS Organizations doesn't contain multiple roots.
 
     const tagResource = new TagResource(this, "Tags", { resourceId: this.rootId, tags: this.tags.renderedTags });
-    tagResource.node.addDependency(root);
+    tagResource.node.addDependency(this.resource);
   }
 
   public identifier(): string {
     return this.rootId;
+  }
+
+  /**
+   * Attach a policy. Before you can attach the policy, you must enable that policy type for use. You can use policies when you have all features enabled.
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
+   */
+  public attachPolicy(policy: IPolicy) {
+    const policyAttachment = new PolicyAttachment(this, `PolicyAttachment-${Names.nodeUniqueId(policy.node)}`, {
+      target: this,
+      policy: policy,
+    });
+    policyAttachment.node.addDependency(this.resource, policy);
+  }
+
+  /**
+   * Enables and disables Enables a policy type. After you enable a policy type in a root, you can attach policies of that type to the root, any organizational unit (OU), or account in that root.
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_enable-disable.html
+   */
+  public enablePolicyType(policyType: PolicyType) {
+    const enablePolicyType = new EnablePolicyType(this, `Enable${pascalCase(policyType)}`, {
+      root: this,
+      policyType: policyType,
+    });
+    enablePolicyType.node.addDependency(this.resource);
   }
 }

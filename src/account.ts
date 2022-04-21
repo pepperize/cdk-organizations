@@ -1,10 +1,11 @@
-import { Annotations, CustomResource, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
+import { Annotations, CustomResource, Names, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
 import { pascalCase } from "pascal-case";
 import { AccountProvider } from "./account-provider";
 import { DelegatedAdministrator } from "./delegated-administrator";
 import { IChild, IParent } from "./parent";
-import { IPolicyAttachmentTarget } from "./policy-attachment";
+import { IPolicy } from "./policy";
+import { IPolicyAttachmentTarget, PolicyAttachment } from "./policy-attachment";
 import { IResource } from "./resource";
 import { ITaggableResource, TagResource } from "./tag-resource";
 import { Validators } from "./validators";
@@ -154,5 +155,18 @@ export class Account extends Construct implements IAccount, ITaggableResource {
       servicePrincipal: servicePrincipal,
     });
     delegatedAdministrator.node.addDependency(this.resource);
+  }
+
+  /**
+   * Attach a policy. Before you can attach the policy, you must enable that policy type for use. You can use policies when you have all features enabled.
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
+   */
+  public attachPolicy(policy: IPolicy) {
+    const policyAttachment = new PolicyAttachment(this, `PolicyAttachment-${Names.nodeUniqueId(policy.node)}`, {
+      target: this,
+      policy: policy,
+    });
+    policyAttachment.node.addDependency(this.resource, policy);
   }
 }
