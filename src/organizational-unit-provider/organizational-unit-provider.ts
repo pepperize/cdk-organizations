@@ -27,7 +27,7 @@ export class OrganizationalUnitProvider extends NestedStack {
     const stack = Stack.of(scope);
     const id = "cdk-organizations.OrganizationalUnitProvider";
     const existing = stack.node.tryFindChild(id);
-    return (existing as OrganizationalUnitProvider) || new OrganizationalUnitProvider(scope, id, {});
+    return (existing as OrganizationalUnitProvider) || new OrganizationalUnitProvider(stack, id, {});
   }
   /**
    * Creates an Organizational Unit (OU) and returns the result.

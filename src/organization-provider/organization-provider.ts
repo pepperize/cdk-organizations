@@ -25,7 +25,7 @@ export class OrganizationProvider extends NestedStack {
     const stack = Stack.of(scope);
     const id = "cdk-organizations.OrganizationProvider";
     const existing = stack.node.tryFindChild(id);
-    return (existing as OrganizationProvider) || new OrganizationProvider(scope, id, {});
+    return (existing as OrganizationProvider) || new OrganizationProvider(stack, id, {});
   }
   /**
    * Creates an Organization and returns the result from describeOrganization.

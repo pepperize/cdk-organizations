@@ -22,7 +22,7 @@ export class AccountProvider extends NestedStack {
     const stack = Stack.of(scope);
     const id = "cdk-organizations.AccountProvider";
     const existing = stack.node.tryFindChild(id);
-    return (existing as AccountProvider) || new AccountProvider(scope, id, {});
+    return (existing as AccountProvider) || new AccountProvider(stack, id, {});
   }
   /**
    * Creates an Account and returns the CreateAccountStatus ID on Create. Passes the PhysicalResourceId on Update through. Fails on Delete.

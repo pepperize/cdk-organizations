@@ -81,8 +81,8 @@ Object {
         "RoleName": "OrganizationAccountAccessRole",
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "AccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceB38D49F2",
-            "Outputs.StackAccountcdkorganizationsAccountProviderframeworkonEvent5E28D041Arn",
+            "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5",
+            "Outputs.StackcdkorganizationsAccountProviderframeworkonEvent190D0C1DArn",
           ],
         },
       },
@@ -103,69 +103,12 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "AccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE28B2422",
-            "Outputs.StackAccountTagscdkorganizationsTagResourceProviderframeworkonEvent331B52E4Arn",
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.StackcdkorganizationsTagResourceProviderframeworkonEvent916F9532Arn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "AccountTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceE28B2422": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "AccountCreateAccount833709C2",
-      ],
-      "Properties": Object {
-        "TemplateURL": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "https://s3.",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ".",
-              Object {
-                "Ref": "AWS::URLSuffix",
-              },
-              "/",
-              Object {
-                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-              },
-              "/d3a08af06ce2ca5869765c1375a015d5a8b54e375dc71f0490362d819bb996d8.json",
-            ],
-          ],
-        },
-      },
-      "Type": "AWS::CloudFormation::Stack",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "AccountcdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceB38D49F2": Object {
-      "DeletionPolicy": "Delete",
-      "Properties": Object {
-        "TemplateURL": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "https://s3.",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ".",
-              Object {
-                "Ref": "AWS::URLSuffix",
-              },
-              "/",
-              Object {
-                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-              },
-              "/42197c77f2b9e37f09d2d6c5f754d8159abd73862a586198f7d7f7f9e40d4ca6.json",
-            ],
-          ],
-        },
-      },
-      "Type": "AWS::CloudFormation::Stack",
       "UpdateReplacePolicy": "Delete",
     },
     "Organization06E16095": Object {
@@ -174,8 +117,8 @@ Object {
         "FeatureSet": "ALL",
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1",
-            "Outputs.StackOrganizationcdkorganizationsOrganizationProviderframeworkonEvent493ED7E8Arn",
+            "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832",
+            "Outputs.StackcdkorganizationsOrganizationProviderframeworkonEvent6EDE7D69Arn",
           ],
         },
       },
@@ -243,21 +186,16 @@ Object {
         },
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
-            "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520",
-            "Outputs.StackOrganizationRootTagscdkorganizationsTagResourceProviderframeworkonEvent49F750AAArn",
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.StackcdkorganizationsTagResourceProviderframeworkonEvent916F9532Arn",
           ],
         },
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "OrganizationRootTagscdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResource88CA0520": Object {
+    "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5": Object {
       "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "Organization06E16095",
-        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
-        "OrganizationRootRootCustomResourceBB74F060",
-      ],
       "Properties": Object {
         "TemplateURL": Object {
           "Fn::Join": Array [
@@ -275,7 +213,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/83930d155e487e39c4907ad0fcd0c562db6deab273797a3e186a315fca70348e.json",
+              "/0bef3a7013b6913a3fa2c568ae5872be688500a9342af593eff0adfa74e6bc81.json",
             ],
           ],
         },
@@ -283,7 +221,7 @@ Object {
       "Type": "AWS::CloudFormation::Stack",
       "UpdateReplacePolicy": "Delete",
     },
-    "OrganizationcdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResource87A8ECA1": Object {
+    "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "TemplateURL": Object {
@@ -302,7 +240,34 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/54ed88da1d5a02c70fae398c55c719e3d363e2d7b0c9ed6c06f9cbeb929652fe.json",
+              "/dd67f8d66a258ab664bbd5947e97b03276ea5a591986e3fd08e76ada4333b3fb.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+              },
+              "/e835b13f5692dc513ca7433dcabb09cc3cd1d2463b714ddfccc49f6b590042c0.json",
             ],
           ],
         },

@@ -21,7 +21,7 @@ export class TagResourceProvider extends NestedStack {
     const stack = Stack.of(scope);
     const id = "cdk-organizations.TagResourceProvider";
     const existing = stack.node.tryFindChild(id);
-    return (existing as TagResourceProvider) || new TagResourceProvider(scope, id, {});
+    return (existing as TagResourceProvider) || new TagResourceProvider(stack, id, {});
   }
   /**
    * Adds one or more tags to the specified resource.
