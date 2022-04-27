@@ -2,6 +2,7 @@ import { IsCompleteHandler, IsCompleteRequest } from "aws-cdk-lib/custom-resourc
 import * as SDK from "aws-sdk";
 import * as AWS from "aws-sdk-mock";
 import * as sinon from "sinon";
+import { IamUserAccessToBilling } from "../../src";
 
 describe("account-provider.is-complete-handler.lambda", () => {
   jest.setTimeout(60_000);
@@ -112,6 +113,76 @@ describe("account-provider.is-complete-handler.lambda", () => {
     expect(response.Data?.AccountName).toEqual("test");
   });
 
+  it("Should be imported if email already exists", async () => {
+    // Given
+    const describeCreateAccountStatusMock: SDK.Organizations.DescribeCreateAccountStatusResponse = {
+      CreateAccountStatus: {
+        Id: "car-exampleaccountcreationrequestid",
+        AccountName: "test",
+        State: "FAILED",
+        FailureReason: "EMAIL_ALREADY_EXISTS",
+      },
+    };
+    const describeCreateAccountStatusFake = sinon.fake.resolves(describeCreateAccountStatusMock);
+    AWS.mock("Organizations", "describeCreateAccountStatus", describeCreateAccountStatusFake);
+
+    const listAccountsMock: SDK.Organizations.ListAccountsResponse = {
+      Accounts: [
+        {
+          Id: "123456789012",
+          Name: "test",
+          Email: "info@pepperize.com",
+        },
+      ],
+    };
+    const listAccountsFake = sinon.fake.resolves(listAccountsMock);
+    AWS.mock("Organizations", "listAccounts", listAccountsFake);
+
+    const describeAccountResponseMock: SDK.Organizations.DescribeAccountResponse = {
+      Account: {
+        Id: "123456789012",
+        Arn: "arn:aws:organizations::123456789012:account/o-i0example/123456789012",
+        Name: "test",
+        Email: "info@pepperize.com",
+      },
+    };
+    const describeAccountFake = sinon.fake.resolves(describeAccountResponseMock);
+    AWS.mock("Organizations", "describeAccount", describeAccountFake);
+
+    const moveAccountFake = sinon.fake.resolves(undefined);
+    AWS.mock("Organizations", "moveAccount", moveAccountFake);
+
+    const request: Partial<IsCompleteRequest> = {
+      ...event,
+      RequestType: "Create",
+      PhysicalResourceId: "car-exampleaccountcreationrequestid",
+      Data: {
+        CreateAccountStatusId: "car-exampleaccountcreationrequestid",
+      },
+      ResourceProperties: {
+        ServiceToken: "serviceToken",
+        Email: "info@pepperize.com",
+        AccountName: "test",
+        RoleName: "SomeRoleName",
+        IamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
+        ImportOnDuplicate: String(true),
+      },
+    };
+
+    // When
+    const response = await handler(request as IsCompleteRequest);
+
+    // Then
+    sinon.assert.called(describeCreateAccountStatusFake);
+    sinon.assert.called(listAccountsFake);
+    sinon.assert.called(describeAccountFake);
+    sinon.assert.notCalled(moveAccountFake);
+    expect(response.IsComplete).toBeTruthy();
+    expect(response.PhysicalResourceId).toEqual("123456789012");
+    expect(response.Data?.AccountId).toEqual("123456789012");
+    expect(response.Data?.AccountName).toEqual("test");
+  });
+
   it("Should be not completed when in progress", async () => {
     // Given
     const mock: SDK.Organizations.DescribeCreateAccountStatusResponse = {
@@ -152,6 +223,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     };
     const describeCreateAccountStatusFake = sinon.fake.resolves(mock);
     AWS.mock("Organizations", "describeCreateAccountStatus", describeCreateAccountStatusFake);
+
     const describeAccountResponseMock: SDK.Organizations.DescribeAccountResponse = {
       Account: {
         Id: "123456789012",
@@ -162,11 +234,13 @@ describe("account-provider.is-complete-handler.lambda", () => {
     };
     const describeAccountFake = sinon.fake.resolves(describeAccountResponseMock);
     AWS.mock("Organizations", "describeAccount", describeAccountFake);
+
     const listParentsMock: SDK.Organizations.ListParentsResponse = {
       Parents: [{ Id: "r-i0example" }],
     };
     const listParentsFake = sinon.fake.resolves(listParentsMock);
     AWS.mock("Organizations", "listParents", listParentsFake);
+
     const moveAccountFake = sinon.fake.resolves(undefined);
     AWS.mock("Organizations", "moveAccount", moveAccountFake);
 
@@ -210,16 +284,19 @@ describe("account-provider.is-complete-handler.lambda", () => {
     };
     const describeAccountFake = sinon.fake.resolves(describeAccountResponseMock);
     AWS.mock("Organizations", "describeAccount", describeAccountFake);
+
     const listRootsMock: SDK.Organizations.ListRootsResponse = {
       Roots: [{ Id: "r-i0example" }],
     };
     const listRootsFake = sinon.fake.resolves(listRootsMock);
     AWS.mock("Organizations", "listRoots", listRootsFake);
+
     const listParentsMock: SDK.Organizations.ListParentsResponse = {
       Parents: [{ Id: "ou-i0example" }],
     };
     const listParentsFake = sinon.fake.resolves(listParentsMock);
     AWS.mock("Organizations", "listParents", listParentsFake);
+
     const moveAccountFake = sinon.fake.resolves(undefined);
     AWS.mock("Organizations", "moveAccount", moveAccountFake);
 
