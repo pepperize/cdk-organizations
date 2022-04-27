@@ -151,7 +151,7 @@ const move = async (
  * Before aws-cdk-lib 2.15.0 the physical resource was determined in the onEventHandler and therefor the physical resource id was the account's CreateAccountStatusId.
  */
 const isLegacyPhysicalResourceId = (event: IsCompleteRequest): boolean => {
-  return !/\d{12}/.test(event.PhysicalResourceId!);
+  return /car-[a-z0-9]{8,32}/.test(event.PhysicalResourceId!);
 };
 
 const findAccountByEmail = async (client: Organizations, email: string): Promise<Organizations.Account | undefined> => {
