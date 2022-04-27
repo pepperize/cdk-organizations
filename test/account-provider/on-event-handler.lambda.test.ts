@@ -65,54 +65,6 @@ describe("account-provider.on-event-handler.lambda", () => {
     sinon.assert.calledOnce(createAccountFake);
   });
 
-  it("Should find existing account by name and email on create request type", async () => {
-    // Given
-    const createAccountMock: SDK.Organizations.CreateAccountResponse = {
-      CreateAccountStatus: {
-        Id: "car-exampleaccountcreationrequestid",
-        State: "FAILED",
-        FailureReason: "EMAIL_ALREADY_EXISTS",
-      },
-    };
-    const createAccountStatusFake = sinon.fake.resolves(createAccountMock);
-    AWS.mock("Organizations", "createAccount", createAccountStatusFake);
-
-    const listAccountsMock: SDK.Organizations.ListAccountsResponse = {
-      Accounts: [
-        {
-          Id: "123456789012",
-          Name: "test",
-          Email: "info@pepperize.com",
-        },
-      ],
-    };
-    const listAccountsFake = sinon.fake.resolves(listAccountsMock);
-    AWS.mock("Organizations", "listAccounts", listAccountsFake);
-
-    const request = {
-      ...event,
-      RequestType: "Create",
-      ResourceProperties: {
-        ...event.ResourceProperties,
-        Email: "info@pepperize.com",
-        AccountName: "test",
-        RoleName: "SomeRoleName",
-        IamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
-        ImportOnDuplicate: String(true),
-      },
-      PhysicalResourceId: "car-exampleaccountcreationrequestid",
-    };
-
-    // When
-    const response = await handler(request as OnEventRequest);
-
-    // Then
-    expect(response).not.toBeUndefined();
-    expect(response?.PhysicalResourceId).toEqual("123456789012");
-    sinon.assert.notCalled(createAccountStatusFake);
-    sinon.assert.calledOnce(listAccountsFake);
-  });
-
   it("Should return physical resource id", async () => {
     // Given
     const createAccountStatusFake = sinon.fake.resolves(undefined);

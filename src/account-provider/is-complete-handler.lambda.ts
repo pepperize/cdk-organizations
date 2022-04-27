@@ -23,7 +23,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
       // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeCreateAccountStatus-property
       .describeCreateAccountStatus({
         CreateAccountRequestId: isLegacyPhysicalResourceId(event)
-          ? event.PhysicalResourceId
+          ? event.PhysicalResourceId!
           : event.Data?.CreateAccountStatusId,
       })
       .promise();
@@ -32,14 +32,33 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
       return { IsComplete: false, Data: {} };
     }
 
-    if (response.CreateAccountStatus?.State == "FAILED") {
+    if (
+      response.CreateAccountStatus?.State == "FAILED" &&
+      response.CreateAccountStatus?.FailureReason != "EMAIL_ALREADY_EXISTS"
+    ) {
       throw new Error(
-        `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response?.CreateAccountStatus?.FailureReason}`
+        `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}`
       );
     }
 
-    // State == SUCCEEDED
-    accountId = response.CreateAccountStatus?.AccountId!;
+    if (
+      response.CreateAccountStatus?.FailureReason == "EMAIL_ALREADY_EXISTS" &&
+      event.ResourceProperties.ImportOnDuplicate
+    ) {
+      const account = await findAccountByEmail(organizationsClient, event.ResourceProperties.Email);
+
+      accountId = account?.Id!;
+    } else if (
+      response.CreateAccountStatus?.FailureReason == "EMAIL_ALREADY_EXISTS" &&
+      !event.ResourceProperties.ImportOnDuplicate
+    ) {
+      throw new Error(
+        `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}.`
+      );
+    } else {
+      // State == SUCCEEDED
+      accountId = response.CreateAccountStatus?.AccountId!;
+    }
   } else {
     accountId = event.PhysicalResourceId!;
   }
@@ -132,5 +151,31 @@ const move = async (
  * Before aws-cdk-lib 2.15.0 the physical resource was determined in the onEventHandler and therefor the physical resource id was the account's CreateAccountStatusId.
  */
 const isLegacyPhysicalResourceId = (event: IsCompleteRequest): boolean => {
-  return !/\d{12}/.test(event.PhysicalResourceId!);
+  return /car-[a-z0-9]{8,32}/.test(event.PhysicalResourceId!);
+};
+
+const findAccountByEmail = async (client: Organizations, email: string): Promise<Organizations.Account | undefined> => {
+  let response: Organizations.ListAccountsResponse = await client
+    // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listAccounts-property
+    .listAccounts()
+    .promise();
+  for (const account of response.Accounts ?? []) {
+    if (account.Email == email) {
+      return account;
+    }
+  }
+
+  while (response.NextToken) {
+    response = await client
+      // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listAccounts-property
+      .listAccounts()
+      .promise();
+    for (const account of response.Accounts ?? []) {
+      if (account.Email == email) {
+        return account;
+      }
+    }
+  }
+
+  return undefined;
 };
