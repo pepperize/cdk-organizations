@@ -68,16 +68,12 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
     .describeAccount({ AccountId: accountId })
     .promise();
 
-  // On update or create move account to destination parent
-  if (event.RequestType == "Create" || event.RequestType == "Update") {
-    await move(organizationsClient, accountId, event.ResourceProperties?.ParentId);
-  }
+  // On delete, update or create move account to destination parent
+  await move(organizationsClient, accountId, event.ResourceProperties?.ParentId);
 
   // On delete move account to root
   if (event.RequestType == "Delete" && event.ResourceProperties?.RemovalPolicy == "destroy") {
-    const root = await findRoot(organizationsClient);
-
-    await move(organizationsClient, accountId, root.Id);
+    await close(organizationsClient, accountId);
   }
 
   return {
@@ -107,19 +103,6 @@ const findCurrentParent = async (client: Organizations, id: string): Promise<Org
   }
 
   throw new Error(`Could not find parent for id '${id}'`);
-};
-
-const findRoot = async (client: Organizations): Promise<Organizations.Root> => {
-  const response: Organizations.ListRootsResponse = await client
-    // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listRoots-property
-    .listRoots()
-    .promise();
-
-  if (response.Roots?.length) {
-    return response.Roots[0];
-  }
-
-  throw new Error(`Could not find root`);
 };
 
 const move = async (
@@ -178,4 +161,12 @@ const findAccountByEmail = async (client: Organizations, email: string): Promise
   }
 
   return undefined;
+};
+
+const close = async (client: Organizations, accountId: string): Promise<void> => {
+  await client
+    // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#closeAccount-property
+    .closeAccount({
+      AccountId: accountId,
+    });
 };
