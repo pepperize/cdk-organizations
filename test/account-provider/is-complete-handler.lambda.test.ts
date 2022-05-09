@@ -270,7 +270,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     expect(response.Data?.AccountName).toEqual("test");
   });
 
-  it("Should be moved to root", async () => {
+  it("Should be closed", async () => {
     // Given
     const describeCreateAccountStatusFake = sinon.fake.resolves(undefined);
     AWS.mock("Organizations", "describeCreateAccountStatus", describeCreateAccountStatusFake);
@@ -285,20 +285,17 @@ describe("account-provider.is-complete-handler.lambda", () => {
     const describeAccountFake = sinon.fake.resolves(describeAccountResponseMock);
     AWS.mock("Organizations", "describeAccount", describeAccountFake);
 
-    const listRootsMock: SDK.Organizations.ListRootsResponse = {
-      Roots: [{ Id: "r-i0example" }],
-    };
-    const listRootsFake = sinon.fake.resolves(listRootsMock);
-    AWS.mock("Organizations", "listRoots", listRootsFake);
-
     const listParentsMock: SDK.Organizations.ListParentsResponse = {
-      Parents: [{ Id: "ou-i0example" }],
+      Parents: [{ Id: "r-i1example" }],
     };
     const listParentsFake = sinon.fake.resolves(listParentsMock);
     AWS.mock("Organizations", "listParents", listParentsFake);
 
     const moveAccountFake = sinon.fake.resolves(undefined);
     AWS.mock("Organizations", "moveAccount", moveAccountFake);
+
+    const closeAccountFake = sinon.fake.resolves(undefined);
+    AWS.mock("Organizations", "closeAccount", closeAccountFake);
 
     const request: Partial<IsCompleteRequest> = {
       ...event,
@@ -320,7 +317,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     // Then
     sinon.assert.notCalled(describeCreateAccountStatusFake);
     sinon.assert.called(describeAccountFake);
-    sinon.assert.called(listRootsFake);
+    sinon.assert.called(closeAccountFake);
     sinon.assert.called(listParentsFake);
     sinon.assert.called(moveAccountFake);
     expect(response.IsComplete).toBeTruthy();
