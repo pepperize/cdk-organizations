@@ -545,14 +545,6 @@
     chalk "^4.1.2"
     semver "^7.3.5"
 
-"@jsii/check-node@1.57.0":
-  version "1.57.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.57.0.tgz#c41e28f47e6210e0ec127349a73aa871d6227943"
-  integrity sha512-7c4D07I8xefmafKtiXQkarpRsSRufpach4lcM/mepWhBqVGxFjzGF7S4vRT7MAQiEKEpGhnIfpWFhmBgUtP6bw==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.3.5"
-
 "@jsii/check-node@1.58.0":
   version "1.58.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.58.0.tgz#e6c60c2cd4bb13a3d74aec9f3ed33a6f827269bc"
@@ -568,7 +560,7 @@
   dependencies:
     jsonschema "^1.4.0"
 
-"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.57.0", "@jsii/spec@^1.58.0":
+"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.58.0":
   version "1.58.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.58.0.tgz#ae64a7142784bfdd3ce021fdc3363717cefbe9bb"
   integrity sha512-jAFpUW0xGu08CeJLJxc+9z+ZHDQK62OFjV8i2S7850DRm2FJdUMU98wzG4A1FDXRCYlQNlYk2E51LdQfSo7+Vw==
@@ -4311,7 +4303,7 @@ lodash@^4.17.15, lodash@^4.17.21, lodash@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-log4js@^6.4.2, log4js@^6.4.4, log4js@^6.4.5:
+log4js@^6.4.2, log4js@^6.4.5:
   version "6.4.6"
   resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.4.6.tgz#1878aa3f09973298ecb441345fe9dd714e355c15"
   integrity sha512-1XMtRBZszmVZqPAOOWczH+Q94AI42mtNWjvjA5RduKTSWjEc56uOBbyM1CJnfN4Ym0wSd8cQ43zOojlSHgRDAw==
@@ -5571,13 +5563,6 @@ semver@^6.0.0, semver@^6.2.0, semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
-
-semver@^7.3.7:
-  version "7.3.7"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.7.tgz#12c5b649afdbf9049707796e22a4028814ce523f"
-  integrity sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==
-  dependencies:
-    lru-cache "^6.0.0"
 
 set-blocking@^2.0.0:
   version "2.0.0"
