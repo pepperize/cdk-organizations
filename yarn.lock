@@ -545,14 +545,6 @@
     chalk "^4.1.2"
     semver "^7.3.5"
 
-"@jsii/check-node@1.58.0":
-  version "1.58.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.58.0.tgz#e6c60c2cd4bb13a3d74aec9f3ed33a6f827269bc"
-  integrity sha512-JKLvi1Zx0R3qX7MeYo7G9qRekNog+gjK3ppssG98HOYsQgoT2VbZ7Hzp1RAVAgL+Qt5HrLbLoVZMboZmH/VRIw==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.3.7"
-
 "@jsii/check-node@1.59.0":
   version "1.59.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.59.0.tgz#60112ad890432b9dec18d2d0528539e8ca23060f"
@@ -568,7 +560,7 @@
   dependencies:
     jsonschema "^1.4.0"
 
-"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.58.0", "@jsii/spec@^1.59.0":
+"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.59.0":
   version "1.59.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.59.0.tgz#ec926963514ab041eac4befb68f89e61d72b4413"
   integrity sha512-ak72X8rQTheSk9QxjAuffFC5X0TtoR2pjh3bYWAPrWmniP/W3zqWSkVCPCgpS4yX2We8aF3zxg/iYm8feuS67w==
@@ -4295,7 +4287,7 @@ lodash@^4.17.15, lodash@^4.17.21, lodash@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-log4js@^6.4.2, log4js@^6.4.5, log4js@^6.4.6:
+log4js@^6.4.2, log4js@^6.4.6:
   version "6.4.7"
   resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.4.7.tgz#adba3797606664e83567d2fbf38fa14b9d809167"
   integrity sha512-q/9Eyw/hkvQ4e9DNHLbK2AfuDDm5QnNnmF022aamyw4nUnVLQRhvGoryccN5aEI4J/UcA4W36xttBCrlrdzt2g==
