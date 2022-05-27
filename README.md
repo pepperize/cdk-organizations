@@ -11,17 +11,14 @@
 
 Manage AWS organizations, organizational units (OU), accounts and service control policies (SCP).
 
-Motivation:
-
-> Currently, there is no `aws-cdk-lib/organizations` available. See this [Issue on AWS CDK](https://github.com/aws/aws-cdk/issues/2877).
-
-## References
-
-- [CDK Organizations API Reference](https://github.com/pepperize/cdk-organizations/blob/main/API.md)
-- [AWS Account Management Reference Guide](https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html)
-- [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
-- [AWS API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html)
-- [AWS CDK Custom Resources](https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#custom-resources-for-aws-apis)
+Features:
+- [Organization](#organization)
+- [Organizational Unit (OU)](#organizational-unit-ou)
+- [Account](#account)
+- [Delegated Administrator](#delegated-administrator)
+- [Trusted Service](#enable-an-aws-service-trusted-service)
+- [Policies](#policy), [PolicyTypes](#enable-a-policy-type), [PolicyAttachment](#policyattachment)
+- [Tagging](#tagging-resources)
 
 ## Install
 
@@ -57,6 +54,21 @@ dotnet add package Pepperize.CDK.Organizations
   <artifactId>cdk-organizations</artifactId>
   <version>${cdkOrganizations.version}</version>
 </dependency>
+```
+
+## Contributing
+
+Contributions of all kinds are welcome :rocket: Check out our [contributor's guide](https://github.com/pepperize/cdk-organizations/blob/main/CONTRIBUTING.md).
+
+For a quick start, [check out](https://github.com/pepperize/cdk-organizations/fork) a development environment:
+
+```shell
+git clone git@github.com:pepperize/cdk-organizations
+cd cdk-organizations
+# install dependencies
+yarn
+# build with projen
+yarn build
 ```
 
 ## Getting Started
@@ -206,6 +218,7 @@ new Account(stack, "Account", {
 ```
 
 - The email address must not already be associated with another AWS account. You may suffix the email address, i.e. `info+account-123456789012@pepperize.com`.
+- The AWS Organizations supports only a one account creation `IN_PROGRESS`. Ensure account creation by using `account2.node.addDependency(account1)` [dependency relationship](https://docs.aws.amazon.com/cdk/api/v1/docs/core-readme.html#dependencies).
 - An account will be created and moved to the parent, if the parent is an organizational unit (OU).
 - An account can only be created from within the management account in the `us-east-1` region.
 
@@ -290,7 +303,7 @@ new Policy(stack, "Policy", {
 
 See [Policy](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.Policy)
 
-### Attach a policy
+### PolicyAttachment
 
 To attach a policy to a root, an organizational unit (OU), or an individual account call `attachPolicy` with the policy to attach:
 
@@ -370,21 +383,6 @@ AWS Organizations has some limitations:
 - An account belongs to only one organization within a single root.
 - [Quotas for AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
 
-# Contributing
-
-Contributions of all kinds are welcome :rocket: Check out our [contributor's guide](https://github.com/pepperize/cdk-organizations/blob/main/CONTRIBUTING.md).
-
-For a quick start, check out a development environment:
-
-```shell
-git clone git@github.com:pepperize/cdk-organizations
-cd cdk-organizations
-# install dependencies
-yarn
-# build with projen
-yarn build
-```
-
 # Example
 
 See [example](https://github.com/pepperize/cdk-organizations-example/blob/main/src/example-stack.ts)
@@ -416,7 +414,7 @@ const organization = new Organization(stack, "Organization", {
 organization.enableAwsServiceAccess("service-abbreviation.amazonaws.com");
 
 // Create an account
-const account = new Account(stack, "SharedAccount", {
+const account1 = new Account(stack, "SharedAccount", {
   accountName: "SharedAccount",
   email: "info+shared-account@pepperize.com",
   roleName: "OrganizationAccountAccessRole",
@@ -424,34 +422,37 @@ const account = new Account(stack, "SharedAccount", {
   parent: organization.root,
 });
 // Enable a delegated admin account
-account.delegateAdministrator("service-abbreviation.amazonaws.com");
+account1.delegateAdministrator("service-abbreviation.amazonaws.com");
 
 // Create an OU in the current organizations root
 const projects = new OrganizationalUnit(stack, "ProjectsOU", {
   organizationalUnitName: "Projects",
   parent: organization.root,
 });
-new Account(stack, "Project1Account", {
+const account2 = new Account(stack, "Project1Account", {
   accountName: "SharedAccount",
   email: "info+project1@pepperize.com",
   parent: projects,
 });
+account2.node.addDependency(account1);
 
 // Create a nested OU and attach two accounts
 const project2 = new OrganizationalUnit(stack, "Project2OU", {
   organizationalUnitName: "Project2",
   parent: projects,
 });
-new Account(stack, "Project2DevAccount", {
+const account3 = new Account(stack, "Project2DevAccount", {
   accountName: "Project 2 Dev",
   email: "info+project2-dev@pepperize.com",
   parent: project2,
 });
-new Account(stack, "Project2ProdAccount", {
+account3.node.addDependency(account2);
+const account4 = new Account(stack, "Project2ProdAccount", {
   accountName: "Project 2 Prod",
   email: "info+project2-prod@pepperize.com",
   parent: project2,
 });
+account4.node.addDependency(account3);
 
 // Enable the service control policy (SCP) type within the organization
 organization.enablePolicyType(PolicyType.SERVICE_CONTROL_POLICY);
@@ -467,6 +468,14 @@ organization.attachPolicy(policy);
 // Tagging AWS organization resources of this stack
 Tags.of(stack).add("tagKey", "tagValue");
 ```
+
+## References
+
+- [CDK Organizations API Reference](https://github.com/pepperize/cdk-organizations/blob/main/API.md)
+- [AWS Account Management Reference Guide](https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html)
+- [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
+- [AWS API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html)
+- [AWS CDK Custom Resources](https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#custom-resources-for-aws-apis)
 
 # Alternatives
 
