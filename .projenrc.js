@@ -65,6 +65,12 @@ const project = new AwsCdkConstructLibrary({
     distName: "pepperize.cdk-organizations",
     module: "pepperize_cdk_organizations",
   },
+  publishToMaven: {
+    mavenEndpoint: "https://s01.oss.sonatype.org",
+    mavenGroupId: "com.pepperize",
+    mavenArtifactId: "cdk-organizations",
+    javaPackage: "com.pepperize.cdk.organizations",
+  },
 
   gitpod: true,
 });
