@@ -1222,9 +1222,9 @@ aws-sdk-mock@^5.5.1:
     traverse "^0.6.6"
 
 aws-sdk@^2.1066.0, aws-sdk@^2.1122.0, aws-sdk@^2.814.0:
-  version "2.1145.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1145.0.tgz#9da2e0abb5aed130b0fb33d0452cc468b22d2465"
-  integrity sha512-bjZJGFxHJadnp2kbg1etKw7ID1QmmKk1ivML0Xtt6S6GnGSfX8zVuLMkJZaxPMjlyZ6xeilGwzk2F9igxBCPCQ==
+  version "2.1146.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1146.0.tgz#1b1983447baddbe7105b2ca238a3039c82155bab"
+  integrity sha512-lg83hvrK2oiJVnklUVMXIJkeYX2nlqhvxIFlZ2wfoaJyvdGsEcOUdZ/EMDgiS0V2jwGS8CtTUypcW/t2S6gdcQ==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -1233,7 +1233,7 @@ aws-sdk@^2.1066.0, aws-sdk@^2.1122.0, aws-sdk@^2.814.0:
     querystring "0.2.0"
     sax "1.2.1"
     url "0.10.3"
-    uuid "3.3.2"
+    uuid "8.0.0"
     xml2js "0.4.19"
 
 babel-jest@^27.5.1:
@@ -6212,10 +6212,10 @@ util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
-uuid@3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
-  integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
+uuid@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.0.0.tgz#bc6ccf91b5ff0ac07bbcdbf1c7c4e150db4dbb6c"
+  integrity sha512-jOXGuXZAWdsTH7eZLtyXMqUb9EcWMGZNbL9YcGBJl4MH4nrxHmZJhEHvyLFrkxo+28uLb/NYRcStH48fnD0Vzw==
 
 uuid@^8.3.2:
   version "8.3.2"
