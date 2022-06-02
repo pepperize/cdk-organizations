@@ -815,9 +815,9 @@
     "@types/istanbul-lib-report" "*"
 
 "@types/jest@^27.4.0":
-  version "27.5.1"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-27.5.1.tgz#2c8b6dc6ff85c33bcd07d0b62cb3d19ddfdb3ab9"
-  integrity sha512-fUy7YRpT+rHXto1YlL+J9rs0uLGyiqVt3ZOTQR+4ROc47yNl8WLdVLgUloBRhOxP1PZvguHl44T3H0wAWxahYQ==
+  version "27.5.2"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-27.5.2.tgz#ec49d29d926500ffb9fd22b84262e862049c026c"
+  integrity sha512-mpT8LJJ4CMeeahobofYWIjFo0xonRS/HfxnVEPMPFSQdGUt1uHCnoPT7Zhb+sjDU2wz0oKV0OLUR0WzrHNgfeA==
   dependencies:
     jest-matcher-utils "^27.0.0"
     pretty-format "^27.0.0"
@@ -1474,9 +1474,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.0.0:
-  version "2.14.21"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.14.21.tgz#df77344b1b3174581116ff35e1ffad68af767f81"
-  integrity sha512-5Wfs9SzmXV0QHYD0byZ+kqY13HQrFZmwfTeFXz4IF82P6EKJ2OCaDiypTEJbMOZ+Y9KCMz23TGSPI1Fc/Yo6SQ==
+  version "2.14.22"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.14.22.tgz#e8be0d3ae49007f665d902bfd1c7b950e28f22b0"
+  integrity sha512-2h6d6jE4XW4dZIhgdEnKwEB1cphPCPxzm2hO+Q2Oj2IAB+E7cHI4u8UmR0QYVAItBbABWqC6tAXZmieBxt274g==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
