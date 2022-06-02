@@ -1474,9 +1474,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.0.0:
-  version "2.14.21"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.14.21.tgz#df77344b1b3174581116ff35e1ffad68af767f81"
-  integrity sha512-5Wfs9SzmXV0QHYD0byZ+kqY13HQrFZmwfTeFXz4IF82P6EKJ2OCaDiypTEJbMOZ+Y9KCMz23TGSPI1Fc/Yo6SQ==
+  version "2.14.22"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.14.22.tgz#e8be0d3ae49007f665d902bfd1c7b950e28f22b0"
+  integrity sha512-2h6d6jE4XW4dZIhgdEnKwEB1cphPCPxzm2hO+Q2Oj2IAB+E7cHI4u8UmR0QYVAItBbABWqC6tAXZmieBxt274g==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
