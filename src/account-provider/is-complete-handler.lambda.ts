@@ -71,7 +71,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
   // On delete, update or create move account to destination parent
   await move(organizationsClient, accountId, event.ResourceProperties?.ParentId);
 
-  // On delete move account to root
+  // On delete close account
   if (event.RequestType == "Delete" && event.ResourceProperties?.RemovalPolicy == "destroy") {
     await close(organizationsClient, accountId);
   }
