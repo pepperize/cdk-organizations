@@ -553,6 +553,14 @@
     chalk "^4.1.2"
     semver "^7.3.7"
 
+"@jsii/check-node@1.60.1":
+  version "1.60.1"
+  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.60.1.tgz#7466cdc04615e17be7cb797198ae3a7ea1565968"
+  integrity sha512-G2EuvLwzFiMmVAeNPSruxbPGxmn7HffmyHkrAorzKFT8RN3qgbmRiWBq56jkYRXaJYlEHVoWHaPL9GVJCMfznA==
+  dependencies:
+    chalk "^4.1.2"
+    semver "^7.3.7"
+
 "@jsii/spec@1.55.1":
   version "1.55.1"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.55.1.tgz#fb8b820a6aa6c809773207e1f6be65f92ff38296"
@@ -560,10 +568,10 @@
   dependencies:
     jsonschema "^1.4.0"
 
-"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.60.0":
-  version "1.60.0"
-  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.60.0.tgz#514dfa0aadb5c6d35dbc8aa96efad822f9852f58"
-  integrity sha512-rlmicpzxrY6t93RK6UICgTmm1GQZ6U8UbA4gy1XXmcQxY4zM8/r2D5sKFIC0RPNDFR4LI3l1ltGlwrNbZJyCdw==
+"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.60.0", "@jsii/spec@^1.60.1":
+  version "1.60.1"
+  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.60.1.tgz#83b9f7083cb2d972823d46cf47c059cca5a08f72"
+  integrity sha512-k8i0id/3qICHG0mQ2Aeu3GYSTduLWW9BxSgRIsCJeAmHecd0nmyQvuIEnx57m1cT+PKl7t3g+uCU9Gau9Nq2CA==
   dependencies:
     ajv "^8.11.0"
 
@@ -4071,12 +4079,12 @@ jsii@1.55.1:
     yargs "^16.2.0"
 
 jsii@^1.52.1:
-  version "1.60.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.60.0.tgz#d4da883224e39e198b8da0ea3677507e5e8eee0c"
-  integrity sha512-ENCBJLXNu20jkjHuoBYgklQuSOYwqtlZ9VyN6mDAUeWkDDLme+L/iuSF6qW+mwgtTTsYfVft/QdgzgwlLWOImw==
+  version "1.60.1"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.60.1.tgz#100f17f1b92e800afae63280e9316182034ed02c"
+  integrity sha512-J8fhU+hZY9COYgGzolnxcWRPSKnEbzorjUZzyxHIF5iDYsOUxsqhJH95SKekYHHbriEcDqea8kX/cjhIkg2lQg==
   dependencies:
-    "@jsii/check-node" "1.60.0"
-    "@jsii/spec" "^1.60.0"
+    "@jsii/check-node" "1.60.1"
+    "@jsii/spec" "^1.60.1"
     case "^1.6.3"
     chalk "^4"
     deep-equal "^2.0.5"
