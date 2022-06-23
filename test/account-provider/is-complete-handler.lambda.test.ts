@@ -183,6 +183,66 @@ describe("account-provider.is-complete-handler.lambda", () => {
     expect(response.Data?.AccountName).toEqual("test");
   });
 
+  it("Should not be imported if account not found", async () => {
+    // Given
+    const describeCreateAccountStatusMock: SDK.Organizations.DescribeCreateAccountStatusResponse = {
+      CreateAccountStatus: {
+        Id: "car-exampleaccountcreationrequestid",
+        AccountName: "test",
+        State: "FAILED",
+        FailureReason: "EMAIL_ALREADY_EXISTS",
+      },
+    };
+    const describeCreateAccountStatusFake = sinon.fake.resolves(describeCreateAccountStatusMock);
+    AWS.mock("Organizations", "describeCreateAccountStatus", describeCreateAccountStatusFake);
+
+    const listAccountsMock: SDK.Organizations.ListAccountsResponse = {
+      Accounts: [],
+    };
+    const listAccountsFake = sinon.fake.resolves(listAccountsMock);
+    AWS.mock("Organizations", "listAccounts", listAccountsFake);
+
+    const describeAccountFake = sinon.fake.resolves(undefined);
+    AWS.mock("Organizations", "describeAccount", describeAccountFake);
+
+    const moveAccountFake = sinon.fake.resolves(undefined);
+    AWS.mock("Organizations", "moveAccount", moveAccountFake);
+
+    const request: Partial<IsCompleteRequest> = {
+      ...event,
+      RequestType: "Create",
+      Data: {
+        CreateAccountStatusId: "car-exampleaccountcreationrequestid",
+      },
+      ResourceProperties: {
+        ServiceToken: "serviceToken",
+        Email: "info@pepperize.com",
+        AccountName: "test",
+        RoleName: "SomeRoleName",
+        IamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
+        ImportOnDuplicate: String(true),
+      },
+    };
+
+    // When
+    let expectedError;
+    try {
+      await handler(request as IsCompleteRequest);
+    } catch (error) {
+      expectedError = error;
+    }
+
+    // Then
+    sinon.assert.called(describeCreateAccountStatusFake);
+    sinon.assert.called(listAccountsFake);
+    sinon.assert.notCalled(describeAccountFake);
+    sinon.assert.notCalled(moveAccountFake);
+    expect(expectedError).toBeInstanceOf(Error);
+    expect((expectedError as Error).message).toContain(
+      `Failed Create Account test, reason: EMAIL_ALREADY_EXISTS; could not find account in organization.`
+    );
+  });
+
   it("Should be not completed when in progress", async () => {
     // Given
     const mock: SDK.Organizations.DescribeCreateAccountStatusResponse = {
