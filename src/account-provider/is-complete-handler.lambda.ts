@@ -49,7 +49,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
 
       if (!account) {
         throw new Error(
-          `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}; could not find account.`
+          `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}; could not find account in organization.`
         );
       }
 
