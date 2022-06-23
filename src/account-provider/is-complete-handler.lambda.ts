@@ -47,7 +47,13 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
     ) {
       const account = await findAccountByEmail(organizationsClient, event.ResourceProperties.Email);
 
-      accountId = account?.Id!;
+      if (!account) {
+        throw new Error(
+          `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}; could not find account in organization.`
+        );
+      }
+
+      accountId = account.Id!;
     } else if (
       response.CreateAccountStatus?.FailureReason == "EMAIL_ALREADY_EXISTS" &&
       !event.ResourceProperties.ImportOnDuplicate
