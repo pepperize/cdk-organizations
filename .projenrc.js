@@ -36,7 +36,6 @@ const project = new AwsCdkConstructLibrary({
     "aws-lambda",
     "aws-sdk",
     "aws-sdk-mock",
-    "cdk-nag@^2.0.0",
     "sinon",
   ],
 
