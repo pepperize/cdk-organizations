@@ -99,6 +99,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
           Name: policyName,
           Type: policyType,
         },
+        outputPaths: ["Policy.PolicySummary.Id"],
         physicalResourceId: PhysicalResourceId.fromResponse("Policy.PolicySummary.Id"),
       },
       onUpdate: {
@@ -111,6 +112,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
           Name: policyName,
           PolicyId: new PhysicalResourceIdReference(),
         },
+        outputPaths: ["Policy.PolicySummary.Id"],
         physicalResourceId: PhysicalResourceId.fromResponse("Policy.PolicySummary.Id"),
       },
       onDelete: {
