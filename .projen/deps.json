@@ -50,11 +50,6 @@
       "type": "build"
     },
     {
-      "name": "cdk-nag",
-      "version": "^2.0.0",
-      "type": "build"
-    },
-    {
       "name": "constructs",
       "version": "10.0.5",
       "type": "build"
