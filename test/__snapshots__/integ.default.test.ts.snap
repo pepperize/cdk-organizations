@@ -1542,7 +1542,7 @@ Object {
         "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
       ],
       "Properties": Object {
-        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
         "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
         "InstallLatestAwsSdk": false,
         "ServiceToken": Object {
@@ -1551,7 +1551,7 @@ Object {
             "Arn",
           ],
         },
-        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
       },
       "Type": "Custom::Organizations_Policy",
       "UpdateReplacePolicy": "Delete",
@@ -1622,7 +1622,7 @@ Object {
         "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
       ],
       "Properties": Object {
-        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"tags\\\\\\":{\\\\n\\\\\\"CostCenter\\\\\\":{\\\\n\\\\\\"tag_key\\\\\\":{\\\\n\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"\\\\n}\\\\n}\\\\n}\\\\n}\\",\\"Description\\":\\"Defines the CostCenter tag key\\",\\"Name\\":\\"CostCenterTag\\",\\"Type\\":\\"TAG_POLICY\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"tags\\\\\\":{\\\\n\\\\\\"CostCenter\\\\\\":{\\\\n\\\\\\"tag_key\\\\\\":{\\\\n\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"\\\\n}\\\\n}\\\\n}\\\\n}\\",\\"Description\\":\\"Defines the CostCenter tag key\\",\\"Name\\":\\"CostCenterTag\\",\\"Type\\":\\"TAG_POLICY\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
         "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
         "InstallLatestAwsSdk": false,
         "ServiceToken": Object {
@@ -1631,7 +1631,7 @@ Object {
             "Arn",
           ],
         },
-        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"tags\\\\\\":{\\\\n\\\\\\"CostCenter\\\\\\":{\\\\n\\\\\\"tag_key\\\\\\":{\\\\n\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"\\\\n}\\\\n}\\\\n}\\\\n}\\",\\"Description\\":\\"Defines the CostCenter tag key\\",\\"Name\\":\\"CostCenterTag\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"tags\\\\\\":{\\\\n\\\\\\"CostCenter\\\\\\":{\\\\n\\\\\\"tag_key\\\\\\":{\\\\n\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"\\\\n}\\\\n}\\\\n}\\\\n}\\",\\"Description\\":\\"Defines the CostCenter tag key\\",\\"Name\\":\\"CostCenterTag\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
       },
       "Type": "Custom::Organizations_Policy",
       "UpdateReplacePolicy": "Delete",
