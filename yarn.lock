@@ -545,14 +545,6 @@
     chalk "^4.1.2"
     semver "^7.3.5"
 
-"@jsii/check-node@1.61.0":
-  version "1.61.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.61.0.tgz#ba70e27cd21d4b5dd2af3d3c37f74eaea40dc56d"
-  integrity sha512-U6b2iNZZweV2qRvidCCZIOLFpTe6Kc8eZc9v8CbUtK2btChNYiWTkms4VUOcONIYT5uPfNlZpHZiqTr+Oqxmkg==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.3.7"
-
 "@jsii/check-node@1.62.0":
   version "1.62.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.62.0.tgz#3d3353d37ed1537acdfb63ea3e1506d82adb09b1"
@@ -568,7 +560,7 @@
   dependencies:
     jsonschema "^1.4.0"
 
-"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.61.0", "@jsii/spec@^1.62.0":
+"@jsii/spec@^1.52.1", "@jsii/spec@^1.55.1", "@jsii/spec@^1.62.0":
   version "1.62.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.62.0.tgz#d673c6891171b19bd25d0f4c7676e5ee5e235a70"
   integrity sha512-KR2ttOgZjyNHKkPDLFUnOnLPml0KLjwfYNEQTtYQKjhhIrlZZwnc1azYZ4GapLTgnklZVNgsDsbBW0sXKYJIhA==
@@ -4164,12 +4156,12 @@ jsii@1.55.1:
     yargs "^16.2.0"
 
 jsii@^1.52.1:
-  version "1.61.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.61.0.tgz#085af3c3ccfacaf5450907062a32be0c7ecbd8a1"
-  integrity sha512-haGNRe3k0bhTqUKjMQ/ZBq9H3BR7gB88+wSdvCzQ9IIN6XJNeTB9SvB5ry9XIwn6qk8THF7LXtaLga9Nzz+gFA==
+  version "1.62.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.62.0.tgz#a943f987ad96b1ca819d181d59b9f8b7980e6b2b"
+  integrity sha512-NMUhHWNAm9Kl80r0ezY/UCglZsBUYgWG0TOAhdqhqcETgepGf2sH+8wLKzm44wejpv6MBvaDpReViOYEhUxx/g==
   dependencies:
-    "@jsii/check-node" "1.61.0"
-    "@jsii/spec" "^1.61.0"
+    "@jsii/check-node" "1.62.0"
+    "@jsii/spec" "^1.62.0"
     case "^1.6.3"
     chalk "^4"
     fast-deep-equal "^3.1.3"
@@ -4179,7 +4171,7 @@ jsii@^1.52.1:
     semver-intersect "^1.4.0"
     sort-json "^2.0.1"
     spdx-license-list "^6.6.0"
-    typescript-3.9 "npm:typescript@~3.9.10"
+    typescript "~3.9.10"
     yargs "^16.2.0"
 
 json-buffer@3.0.0:
@@ -6243,16 +6235,16 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-"typescript-3.9@npm:typescript@~3.9.10", typescript@~3.9.10:
-  name typescript-3.9
-  version "3.9.10"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
-  integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
-
 typescript@^4.5.4:
   version "4.7.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
   integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
+
+typescript@~3.9.10:
+  name typescript-3.9
+  version "3.9.10"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
+  integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
 
 uglify-js@^3.1.4:
   version "3.15.3"
