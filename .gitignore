@@ -63,3 +63,5 @@ tsconfig.json
 !/src/tag-resource-provider/on-event-handler-function.ts
 .idea/
 *.iml
+.vscode/
+!/.editorconfig

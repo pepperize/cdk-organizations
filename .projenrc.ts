@@ -1,13 +1,11 @@
-const { AwsCdkConstructLibrary } = require("@pepperize/projen-awscdk-construct");
-const { awscdk, cdk, javascript } = require("projen");
+import { AwsCdkConstructLibrary } from "@pepperize/projen-awscdk-construct";
+import { javascript } from "projen";
 const project = new AwsCdkConstructLibrary({
-  stability: cdk.Stability.EXPERIMENTAL,
-
   author: "Patrick Florek",
   authorAddress: "patrick.florek@gmail.com",
   license: "MIT",
   copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
-  cdkVersion: "2.15.0",
+  cdkVersion: "2.32.0",
   name: "@pepperize/cdk-organizations",
   description: "Manage AWS organizations, organizational units (OU), accounts and service control policies (SCP).",
   keywords: [
@@ -26,10 +24,12 @@ const project = new AwsCdkConstructLibrary({
   ],
   repositoryUrl: "https://github.com/pepperize/cdk-organizations.git",
 
+  projenrcTs: true,
+
   deps: ["pascal-case"],
   bundledDeps: ["pascal-case"],
   devDeps: [
-    "@pepperize/projen-awscdk-construct@^0.0.8",
+    "@pepperize/projen-awscdk-construct",
     "@types/aws-lambda",
     "@types/jest",
     "@types/sinon",
@@ -39,21 +39,7 @@ const project = new AwsCdkConstructLibrary({
     "sinon",
   ],
 
-  lambdaOptions: {
-    runtime: awscdk.LambdaRuntime.NODEJS_14_X,
-    bundlingOptions: {
-      sourcemap: true,
-    },
-  },
-
-  autoApproveUpgrades: true,
-  autoApproveOptions: { allowedUsernames: ["pflorek", "dependabot[bot]"], secret: "GITHUB_TOKEN" },
-  depsUpgradeOptions: {
-    workflowOptions: {
-      secret: "PROJEN_GITHUB_TOKEN",
-    },
-  },
-
+  defaultReleaseBranch: "main",
   releaseToNpm: true,
   npmAccess: javascript.NpmAccess.PUBLIC,
   publishToNuget: {
@@ -74,14 +60,18 @@ const project = new AwsCdkConstructLibrary({
   gitpod: true,
 });
 
-project.tasks.tryFind("package:python").prependExec("pip3 install packaging");
+project.addDevDeps("npm-check-updates@^15.3.3");
+project.addDevDeps("ts-node@^10");
+project.addDevDeps("@types/prettier@2.6.0");
 
-project.gitpod.addCustomTask({
+project.tasks?.tryFind("package:python")?.prependExec("pip3 install packaging");
+
+project.gitpod?.addCustomTask({
   name: "setup",
   init: "yarn install && npx projen build",
   command: "npx projen watch",
 });
 
-project.gitpod.addVscodeExtensions("dbaeumer.vscode-eslint");
+project.gitpod?.addVscodeExtensions("dbaeumer.vscode-eslint");
 
 project.synth();
