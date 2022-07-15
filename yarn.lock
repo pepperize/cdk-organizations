@@ -700,10 +700,10 @@
   resolved "https://registry.yarnpkg.com/@oozcitak/util/-/util-8.3.8.tgz#10f65fe1891fd8cde4957360835e78fd1936bfdd"
   integrity sha512-T8TbSnGsxo6TDBJx/Sgv/BlVJL3tshxZP7Aq5R1mSnM5OcHY2dQaxLMu2+E8u3gN0MLOzdjurqN4ZRVuzQycOQ==
 
-"@pepperize/projen-awscdk-construct@^0.0.160":
-  version "0.0.160"
-  resolved "https://registry.yarnpkg.com/@pepperize/projen-awscdk-construct/-/projen-awscdk-construct-0.0.160.tgz#a7e5128822cfc7f236098b4c62ae5de86b2a0549"
-  integrity sha512-W1ueTTcRqsLk29mFlGtjDS3ejqztF5qUHgH4nZfHxKxqD8/Kond8zlTmD1UlwQ33zcq+0SzPxFN8NXcj4TyT2w==
+"@pepperize/projen-awscdk-construct@^0.0.161":
+  version "0.0.161"
+  resolved "https://registry.yarnpkg.com/@pepperize/projen-awscdk-construct/-/projen-awscdk-construct-0.0.161.tgz#cae790e35f8248c2c75745c98e879d42baf55acb"
+  integrity sha512-MHrHzPQcM8Tx4XFVTy0kcmlHY0bOHeih6M3ZjI9wWl8GID3uS4lyY9g+KqZ+GwbMCjfCVZ2m7m31BPNdRn6Mpw==
   dependencies:
     projen "^0.50.33"
 

@@ -233,7 +233,7 @@
       "description": "Format with prettier",
       "steps": [
         {
-          "exec": "prettier --write src/**/*.ts test/**/*.ts .projenrc.js README.md"
+          "exec": "prettier --write src/**/*.ts test/**/*.ts .projenrc.[jt]s README.md"
         }
       ]
     },
