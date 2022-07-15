@@ -1,5 +1,6 @@
 {
   "files": [
+    ".editorconfig",
     ".eslintrc.json",
     ".gitattributes",
     ".github/dependabot.yml",

@@ -12,6 +12,7 @@
 Manage AWS organizations, organizational units (OU), accounts and service control policies (SCP).
 
 Features:
+
 - [Organization](#organization)
 - [Organizational Unit (OU)](#organizational-unit-ou)
 - [Account](#account)

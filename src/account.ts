@@ -84,6 +84,7 @@ export interface IAccount extends IPolicyAttachmentTarget, IChild, IConstruct, I
 
   /**
    * Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
+   *
    * @param servicePrincipal The supported AWS service that you specify
    */
   delegateAdministrator(servicePrincipal: string): void;
@@ -147,7 +148,8 @@ export class Account extends Construct implements IAccount, ITaggableResource {
 
   /**
    * Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
-   * @param servicePrincipal The supported AWS service that you specify
+   *
+   * @param {string} servicePrincipal The supported AWS service that you specify
    */
   public delegateAdministrator(servicePrincipal: string) {
     const delegatedAdministrator = new DelegatedAdministrator(this, `Delegate${pascalCase(servicePrincipal)}`, {

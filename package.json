@@ -50,41 +50,43 @@
     "organization": true
   },
   "devDependencies": {
-    "@pepperize/projen-awscdk-construct": "^0.0.8",
-    "@types/aws-lambda": "^8.10.89",
+    "@pepperize/projen-awscdk-construct": "^0.0.161",
+    "@types/aws-lambda": "^8.10.101",
     "@types/jest": "^27.4.0",
     "@types/node": "^12",
+    "@types/prettier": "2.6.0",
     "@types/sinon": "^10.0.6",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "aws-cdk-lib": "2.15.0",
+    "aws-cdk-lib": "2.32.0",
     "aws-lambda": "^1.0.7",
     "aws-sdk": "^2.1066.0",
     "aws-sdk-mock": "^5.5.1",
     "constructs": "10.0.5",
     "esbuild": "^0.14.11",
     "eslint": "^8",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "jest": "^27.4.7",
     "jest-junit": "^13",
     "jsii": "^1.52.1",
     "jsii-diff": "^1.52.1",
-    "jsii-docgen": "^4.2.42",
+    "jsii-docgen": "^7.0.51",
     "json-schema": "^0.4.0",
-    "npm-check-updates": "^12",
-    "prettier": "^2.5.1",
-    "projen": "^0.54.11",
+    "npm-check-updates": "^15.3.3",
+    "prettier": "^2.7.1",
+    "projen": "^0.58.30",
     "sinon": "^13.0.0",
     "standard-version": "^9",
     "ts-jest": "^27.1.3",
-    "typescript": "^4.5.4"
+    "ts-node": "^10",
+    "typescript": "^4.5.5"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.15.0",
+    "aws-cdk-lib": "^2.32.0",
     "constructs": "^10.0.5"
   },
   "dependencies": {
@@ -116,8 +118,7 @@
   "jest": {
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-      "<rootDir>/(test|src)/**/?(*.)+(spec|test).ts?(x)",
-      "**/?(*.)@(spec|test).[tj]s?(x)"
+      "<rootDir>/(test|src)/**/?(*.)+(spec|test).ts?(x)"
     ],
     "clearMocks": true,
     "collectCoverage": true,
@@ -155,7 +156,7 @@
     }
   },
   "types": "lib/index.d.ts",
-  "stability": "experimental",
+  "stability": "stable",
   "jsii": {
     "outdir": "dist",
     "targets": {

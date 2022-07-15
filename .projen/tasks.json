@@ -66,7 +66,7 @@
       "description": "Create a JavaScript bundle from src/account-provider/is-complete-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --external:aws-sdk"
         }
       ]
     },
@@ -75,7 +75,7 @@
       "description": "Continuously update the JavaScript bundle from src/account-provider/is-complete-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --external:aws-sdk --watch"
         }
       ]
     },
@@ -84,7 +84,7 @@
       "description": "Create a JavaScript bundle from src/account-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --external:aws-sdk"
         }
       ]
     },
@@ -93,7 +93,7 @@
       "description": "Continuously update the JavaScript bundle from src/account-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --watch"
         }
       ]
     },
@@ -102,7 +102,7 @@
       "description": "Create a JavaScript bundle from src/organization-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --external:aws-sdk"
         }
       ]
     },
@@ -111,7 +111,7 @@
       "description": "Continuously update the JavaScript bundle from src/organization-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --watch"
         }
       ]
     },
@@ -120,7 +120,7 @@
       "description": "Create a JavaScript bundle from src/organizational-unit-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --external:aws-sdk"
         }
       ]
     },
@@ -129,7 +129,7 @@
       "description": "Continuously update the JavaScript bundle from src/organizational-unit-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --watch"
         }
       ]
     },
@@ -138,7 +138,7 @@
       "description": "Create a JavaScript bundle from src/tag-resource-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap"
+          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --external:aws-sdk"
         }
       ]
     },
@@ -147,7 +147,7 @@
       "description": "Continuously update the JavaScript bundle from src/tag-resource-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --sourcemap --watch"
+          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --external:aws-sdk --watch"
         }
       ]
     },
@@ -206,7 +206,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "node .projenrc.js"
+          "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
         }
       ]
     },
@@ -233,7 +233,7 @@
       "description": "Format with prettier",
       "steps": [
         {
-          "exec": "prettier --write src/**/*.ts test/**/*.ts .projenrc.js README.md"
+          "exec": "prettier --write src/**/*.ts test/**/*.ts .projenrc.[jt]s README.md"
         }
       ]
     },
