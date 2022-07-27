@@ -1359,9 +1359,9 @@ aws-sdk-mock@^5.5.1:
     traverse "^0.6.6"
 
 aws-sdk@^2.1066.0, aws-sdk@^2.1122.0, aws-sdk@^2.814.0:
-  version "2.1181.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1181.0.tgz#6ec2997881ae3df76e56d7150fc2992f12ce43dc"
-  integrity sha512-AAHSknRFAIjXBA/XNAL7gS79agr1LbS0oGimOJqJauGSJfWNaOpDc7z6OLNUQqGa5Joc3maD5QJcSKp1Pm/deQ==
+  version "2.1182.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1182.0.tgz#7364e3e104f62b61018a00f19f2ffc989b1780ed"
+  integrity sha512-iemVvLTc2iy0rz3xTp8zc/kD27gIfDF/mk6bxY8/35xMulKCVANWUkAH8jWRKReHh5F/gX4bp33dnfG63ny1Ww==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -4162,15 +4162,15 @@ jsesc@^2.5.1:
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
 jsii-diff@^1.52.1:
-  version "1.62.0"
-  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.62.0.tgz#4b35c08a38700c7e821d87a5c82eee45e7627827"
-  integrity sha512-RN4pafHMKrTbRsOquN9Z1Z26+yn/lu358OcU1QOAbCxtWq8piOQeMaHVFTUwMo1kJNW6Xf7x2u69nM+ljE9s6g==
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.63.0.tgz#bf76ede5aab005d46fd1e41aabee8206fb256506"
+  integrity sha512-bk3gDnaytYuLX1WzuLRPmstHbYhqgLTpbh6uN9w3RG1xl04/mv/qsaIJT/JkQtcuQWdtDAfn7LWDvXzCLo+BSQ==
   dependencies:
-    "@jsii/check-node" "1.62.0"
-    "@jsii/spec" "^1.62.0"
+    "@jsii/check-node" "1.63.0"
+    "@jsii/spec" "^1.63.0"
     fs-extra "^10.1.0"
-    jsii-reflect "^1.62.0"
-    log4js "^6.5.2"
+    jsii-reflect "^1.63.0"
+    log4js "^6.6.0"
     yargs "^16.2.0"
 
 jsii-docgen@^7.0.51:
@@ -4188,16 +4188,16 @@ jsii-docgen@^7.0.51:
     semver "^7.3.7"
     yargs "^16.2.0"
 
-jsii-reflect@^1.62.0:
-  version "1.62.0"
-  resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.62.0.tgz#2a116e50d91f0cfe42b1501ef15cd2e95902a7be"
-  integrity sha512-oMNxK1sctAl635m6IyCV9GWAljWjN5bE29Jn2+H4hiPVbNaWgGiyl74DqVTWJlPcrqVaHP+56ZmuYqputWaMOw==
+jsii-reflect@^1.62.0, jsii-reflect@^1.63.0:
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.63.0.tgz#0cf669bbf85cba1a758f0ca4c56b074af2d47fe5"
+  integrity sha512-ToBZLo8r6HWER1NbKxwo4bZW1wWwW8YdCujBk2BBI48v5tpVStwSQqmUWKoVeuR4bjWPC9yccuAjtrfbxE2YaA==
   dependencies:
-    "@jsii/check-node" "1.62.0"
-    "@jsii/spec" "^1.62.0"
+    "@jsii/check-node" "1.63.0"
+    "@jsii/spec" "^1.63.0"
     chalk "^4"
     fs-extra "^10.1.0"
-    oo-ascii-tree "^1.62.0"
+    oo-ascii-tree "^1.63.0"
     yargs "^16.2.0"
 
 jsii-rosetta@^1.62.0:
@@ -5018,10 +5018,10 @@ onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-oo-ascii-tree@^1.62.0:
-  version "1.62.0"
-  resolved "https://registry.yarnpkg.com/oo-ascii-tree/-/oo-ascii-tree-1.62.0.tgz#6e1944a409885c0af1d6e7b8245be8d432c40e4f"
-  integrity sha512-i0TzJUeAZmo9Hqv5rgfXiMkvqNbugaCz7y8jofgApb3p8oMe5+D8aaHKY45vG+NMI97nk69vOm9z3dZZ9i1Fqg==
+oo-ascii-tree@^1.63.0:
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/oo-ascii-tree/-/oo-ascii-tree-1.63.0.tgz#7983759d783c709b5f847622032690e453e8e3c5"
+  integrity sha512-Lo8oruFqEzVASt0zp1oGxJqzX0Rlz16tAHkm4Z8yypUdX+gGQXZiyvDcuyEu07QruZTEbdbLMsOu2npR5w5Qog==
 
 optionator@^0.8.1:
   version "0.8.3"
