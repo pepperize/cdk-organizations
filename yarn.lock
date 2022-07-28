@@ -1359,9 +1359,9 @@ aws-sdk-mock@^5.5.1:
     traverse "^0.6.6"
 
 aws-sdk@^2.1066.0, aws-sdk@^2.1122.0, aws-sdk@^2.814.0:
-  version "2.1182.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1182.0.tgz#7364e3e104f62b61018a00f19f2ffc989b1780ed"
-  integrity sha512-iemVvLTc2iy0rz3xTp8zc/kD27gIfDF/mk6bxY8/35xMulKCVANWUkAH8jWRKReHh5F/gX4bp33dnfG63ny1Ww==
+  version "2.1183.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1183.0.tgz#9a34b99a9accaff96c0530fcd2cfcc9296c23329"
+  integrity sha512-KtFXbZrEzMrCPH3wF0Qj/3eqJlNKeTiLO2jERmYDSaybY9mB5F1SCugBu2LkvIT+rA+K15d6qZTl84AoOQinEg==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -4219,13 +4219,32 @@ jsii-rosetta@^1.63.0:
     workerpool "^6.2.1"
     yargs "^16.2.0"
 
-jsii@1.63.0, jsii@^1.52.1:
+jsii@1.63.0:
   version "1.63.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.63.0.tgz#b0b38166d34849ea91f7afeeb04ed46948fb1926"
   integrity sha512-vQvl/ouRMLKVWDotM3aWgq6mLWa8DmMrSF0bH1qdS4nqc61el5O3GQ6bvjusgSisR2Z207tjg3b4NM6EUDvS0w==
   dependencies:
     "@jsii/check-node" "1.63.0"
     "@jsii/spec" "^1.63.0"
+    case "^1.6.3"
+    chalk "^4"
+    fast-deep-equal "^3.1.3"
+    fs-extra "^10.1.0"
+    log4js "^6.6.0"
+    semver "^7.3.7"
+    semver-intersect "^1.4.0"
+    sort-json "^2.0.1"
+    spdx-license-list "^6.6.0"
+    typescript "~3.9.10"
+    yargs "^16.2.0"
+
+jsii@^1.52.1:
+  version "1.63.1"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.63.1.tgz#742c8659f171342d81a7786528fc7bc30052b1a3"
+  integrity sha512-5Y2hrG2UGT4PbmtdTOr9u36PyreTAtDDdTBjJyGv2v7T0bMKrVI3ZK4Z/v1UJllR/uxNnxY7eABULmSL4PrxJw==
+  dependencies:
+    "@jsii/check-node" "1.63.1"
+    "@jsii/spec" "^1.63.1"
     case "^1.6.3"
     chalk "^4"
     fast-deep-equal "^3.1.3"
