@@ -4162,15 +4162,15 @@ jsesc@^2.5.1:
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
 jsii-diff@^1.52.1:
-  version "1.63.1"
-  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.63.1.tgz#eab9cbc7e35188e206f1cf1f509567a97faddd74"
-  integrity sha512-7z9vI/J5uRoWLJ+vKF9xRFTEBUgny3vlBptlOg32LPVkyxqH7W2Qiqu0YgkUl/eywi4o3tP/ARTCi8wfT37VAg==
+  version "1.63.2"
+  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.63.2.tgz#94c9f474b31abde0da84b7d95a18c8b07e133515"
+  integrity sha512-kBOcFD+JBxZTWEx40VSL+0OmC8pmYe4zZ+OA+QvjVfYcfhpD8LUvMrJlSa6huO9vNVu8q9R6S6Lzt1F4jTsq8g==
   dependencies:
-    "@jsii/check-node" "1.63.1"
-    "@jsii/spec" "^1.63.1"
+    "@jsii/check-node" "1.63.2"
+    "@jsii/spec" "^1.63.2"
     fs-extra "^10.1.0"
-    jsii-reflect "^1.63.1"
-    log4js "^6.6.0"
+    jsii-reflect "^1.63.2"
+    log4js "^6.6.1"
     yargs "^16.2.0"
 
 jsii-docgen@^7.0.51:
@@ -4188,16 +4188,16 @@ jsii-docgen@^7.0.51:
     semver "^7.3.7"
     yargs "^16.2.0"
 
-jsii-reflect@^1.63.1:
-  version "1.63.1"
-  resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.63.1.tgz#f24b346ddc85b648eb80236e43efe7f18ec54f21"
-  integrity sha512-4tka0fPDR93UBXggTCyzKBJWsxjfV2lVcD6ulIODSLfXfHHc/0oAxEW7nbOJWA30LeUCuMMRvhGjLA0NO1A08Q==
+jsii-reflect@^1.63.1, jsii-reflect@^1.63.2:
+  version "1.63.2"
+  resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.63.2.tgz#1f8d130a1cb5a03b30651543dd52c77eb9f620fe"
+  integrity sha512-eawNN/ySYVznYY2ZJYe5FNcSly12KgC8/MBDl4qln3daag3Ts/d7ocfbS9sjFayn4AhBojq1h1DDs8sjoG38Kg==
   dependencies:
-    "@jsii/check-node" "1.63.1"
-    "@jsii/spec" "^1.63.1"
+    "@jsii/check-node" "1.63.2"
+    "@jsii/spec" "^1.63.2"
     chalk "^4"
     fs-extra "^10.1.0"
-    oo-ascii-tree "^1.63.1"
+    oo-ascii-tree "^1.63.2"
     yargs "^16.2.0"
 
 jsii-rosetta@^1.63.1:
@@ -5018,10 +5018,10 @@ onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-oo-ascii-tree@^1.63.1:
-  version "1.63.1"
-  resolved "https://registry.yarnpkg.com/oo-ascii-tree/-/oo-ascii-tree-1.63.1.tgz#07bd598f05a82aa39b92482b472efebf16571ec7"
-  integrity sha512-ztZJV5TGPo+Q3mLMQgxa4l9hpGbO7KXY++sus51+JJjJNUI5aZ9qRsAEoi2LkgspN3cs9+sOq8KZN0e9a329YQ==
+oo-ascii-tree@^1.63.2:
+  version "1.63.2"
+  resolved "https://registry.yarnpkg.com/oo-ascii-tree/-/oo-ascii-tree-1.63.2.tgz#d7688b868daa361c5f0c328bb00bff626a7e0047"
+  integrity sha512-2bfZc5i6X1jt+ecaYdsr3Sl5LBnDhe32LXR6+UrHcqr3kG2JW4KIHpTP/Au6oksJnTXIgON1rJcbscVCVtR0cg==
 
 optionator@^0.8.1:
   version "0.8.3"
