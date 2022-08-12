@@ -104,7 +104,7 @@ export class Organization extends Construct implements IOrganization {
 
   private readonly resource: CustomResource;
 
-  public constructor(scope: Construct, id: string, props: OrganizationProps) {
+  public constructor(scope: Construct, id: string, props: OrganizationProps = {}) {
     super(scope, id);
 
     const featureSet = props.featureSet || FeatureSet.ALL;
