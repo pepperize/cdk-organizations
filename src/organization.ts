@@ -1,5 +1,6 @@
 import { CustomResource, Names, TagManager, TagType } from "aws-cdk-lib";
-import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
+import * as aws_iam from "aws-cdk-lib/aws-iam";
+import * as custom_resources from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
 import { pascalCase } from "pascal-case";
 import { EnableAwsServiceAccess } from "./enable-aws-service-access";
@@ -72,35 +73,76 @@ export interface IOrganization extends IConstruct {
    */
   readonly managementAccountEmail: string;
   /**
-   * The root of the current organization, which is automatically created.
+   * The principal that represents this AWS Organization
    */
-  readonly root: Root;
-
-  /**
-   * Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf.
-   * @param servicePrincipal The supported AWS service that you specify
-   *
-   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html
-   */
-  enableAwsServiceAccess(servicePrincipal: string): void;
-
-  /**
-   * Enables policy types in the following two broad categories: Authorization policies and Management policies.
-   * @param policyType: the type of the policy that you specify
-   *
-   * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types
-   */
-  enablePolicyType(policyType: PolicyType): void;
+  readonly principal: aws_iam.IPrincipal;
 }
 
 export class Organization extends Construct implements IOrganization {
+  /**
+   * Describe the organization that the current account belongs to.
+   *
+   * @see https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html
+   */
+  public static of(scope: Construct, id: string): IOrganization {
+    class Import extends Construct implements IOrganization {
+      readonly featureSet: FeatureSet;
+      readonly managementAccountArn: string;
+      readonly managementAccountEmail: string;
+      readonly managementAccountId: string;
+      readonly organizationArn: string;
+      readonly organizationId: string;
+      readonly principal: aws_iam.IPrincipal;
+
+      public constructor() {
+        super(scope, id);
+
+        const resource = new custom_resources.AwsCustomResource(scope, "CustomResource", {
+          resourceType: "Custom::Organizations_ImportOrganization",
+          onCreate: {
+            service: "Organizations",
+            action: "describeOrganization", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeOrganization-property
+            region: "us-east-1",
+            parameters: {},
+            physicalResourceId: custom_resources.PhysicalResourceId.fromResponse("Organization.Id"),
+          },
+          onUpdate: {
+            service: "Organizations",
+            action: "describeOrganization", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeOrganization-property
+            region: "us-east-1",
+            parameters: {},
+            physicalResourceId: custom_resources.PhysicalResourceId.fromResponse("Organization.Id"),
+          },
+          installLatestAwsSdk: false,
+          policy: custom_resources.AwsCustomResourcePolicy.fromSdkCalls({
+            resources: custom_resources.AwsCustomResourcePolicy.ANY_RESOURCE,
+          }),
+        });
+
+        this.featureSet = resource.getResponseField("Organization.FeatureSet") as FeatureSet;
+        this.managementAccountArn = resource.getResponseField("Organization.MasterAccountArn");
+        this.managementAccountEmail = resource.getResponseField("Organization.MasterAccountEmail");
+        this.managementAccountId = resource.getResponseField("Organization.MasterAccountId");
+        this.organizationArn = resource.getResponseField("Organization.Arn");
+        this.organizationId = resource.getResponseField("Organization.Id");
+        this.principal = new aws_iam.OrganizationPrincipal(this.organizationId);
+      }
+    }
+
+    return new Import();
+  }
+
   public readonly organizationId: string;
   public readonly organizationArn: string;
   public readonly featureSet: FeatureSet;
   public readonly managementAccountArn: string;
   public readonly managementAccountId: string;
   public readonly managementAccountEmail: string;
-  public readonly root: Root;
+  readonly principal: aws_iam.IPrincipal;
+  /**
+   * The root of the current organization, which is automatically created.
+   */
+  readonly root: Root;
 
   private readonly resource: CustomResource;
 
@@ -124,6 +166,7 @@ export class Organization extends Construct implements IOrganization {
     this.managementAccountArn = this.resource.getAtt("MasterAccountArn").toString();
     this.managementAccountId = this.resource.getAtt("MasterAccountId").toString();
     this.managementAccountEmail = this.resource.getAtt("MasterAccountEmail").toString();
+    this.principal = new aws_iam.OrganizationPrincipal(this.organizationId);
 
     this.root = new Root(this, "Root");
     this.root.node.addDependency(this.resource);
@@ -173,26 +216,26 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
    */
   public readonly rootId: string;
 
-  protected readonly resource: AwsCustomResource;
+  protected readonly resource: custom_resources.AwsCustomResource;
 
   readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Root");
 
   public constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    this.resource = new AwsCustomResource(this, "RootCustomResource", {
+    this.resource = new custom_resources.AwsCustomResource(this, "RootCustomResource", {
       resourceType: "Custom::Organizations_Root",
       onCreate: {
         service: "Organizations",
         action: "listRoots", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listRoots-property
         region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.fromResponse("Roots.0.Id"),
+        physicalResourceId: custom_resources.PhysicalResourceId.fromResponse("Roots.0.Id"),
       },
       onUpdate: {
         service: "Organizations",
         action: "listRoots", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listRoots-property
         region: "us-east-1",
-        physicalResourceId: PhysicalResourceId.fromResponse("Roots.0.Id"),
+        physicalResourceId: custom_resources.PhysicalResourceId.fromResponse("Roots.0.Id"),
       },
       onDelete: {
         service: "Organizations",
@@ -200,8 +243,8 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
         region: "us-east-1",
       },
       installLatestAwsSdk: false,
-      policy: AwsCustomResourcePolicy.fromSdkCalls({
-        resources: AwsCustomResourcePolicy.ANY_RESOURCE,
+      policy: custom_resources.AwsCustomResourcePolicy.fromSdkCalls({
+        resources: custom_resources.AwsCustomResourcePolicy.ANY_RESOURCE,
       }),
     });
 

@@ -182,6 +182,19 @@ organization.root; // The organization's root is automatically created
 
 See [IOrganization](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IOrganization)
 
+### Organization Principal
+
+To retrieve the AWS IAM organization principal in a member account, add the following to any construct:
+
+```
+const organization = Organization.of(scope, "Organization");
+organization.principal; // The AWS IAM organization principal
+```
+
+- This helper construct can be used in any member account in the organization.
+
+See [AWS Organization API Reference - DescribeOrganization](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html)
+
 ### Organizational Unit (OU)
 
 To create a new organizational unit (OU), add the following construct to your stack:
