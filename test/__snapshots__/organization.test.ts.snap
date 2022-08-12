@@ -71,7 +71,7 @@ Object {
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
             "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832",
-            "Outputs.StackcdkorganizationsOrganizationProviderframeworkonEvent6EDE7D69Arn",
+            "Outputs.cdkorganizationsOrganizationProviderframeworkonEvent268B5E2CArn",
           ],
         },
       },
@@ -140,7 +140,7 @@ Object {
         "ServiceToken": Object {
           "Fn::GetAtt": Array [
             "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
-            "Outputs.StackcdkorganizationsTagResourceProviderframeworkonEvent916F9532Arn",
+            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
         },
       },
@@ -166,7 +166,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/9a19a20354d80b1697f6f0a5173f40a3c482f19cecb5314e855500b1b830655f.json",
+              "/9e5867c9df0902f1f9049e2bbb453c6acc604443472dccdc193c8a38dd48421c.json",
             ],
           ],
         },
@@ -193,7 +193,7 @@ Object {
               Object {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/f5e1030603aabc91b4b71a2384f169c0458d3063be255a344691b7d337186147.json",
+              "/c9777b5cddb2b81f47ba1db7d8d9b7ec7bab7f3521696d65138bb452525a6a04.json",
             ],
           ],
         },

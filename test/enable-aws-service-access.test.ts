@@ -1,12 +1,11 @@
-import { App, Stack } from "aws-cdk-lib";
+import { Stack } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
 import { EnableAwsServiceAccess } from "../src";
 
 describe("EnableAwsServiceAccess", () => {
   it("Should match snapshot", () => {
     // Given
-    const app = new App();
-    const stack = new Stack(app, "Stack");
+    const stack = new Stack();
 
     // When
     new EnableAwsServiceAccess(stack, "EnableAwsServiceAccess", {

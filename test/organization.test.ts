@@ -1,12 +1,11 @@
-import { App, Stack } from "aws-cdk-lib";
+import { Stack } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
 import { FeatureSet, Organization, PolicyType } from "../src";
 
 describe("Organization", () => {
   it("Should match snapshot", () => {
     // Given
-    const app = new App();
-    const stack = new Stack(app, "Stack");
+    const stack = new Stack();
 
     // When
     new Organization(stack, "Organization", {
