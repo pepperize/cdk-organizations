@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagResource Should match snapshot 1`] = `
+Object {
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": Object {
+    "TagTagResource41F8FD4C": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "ResourceId": "t-1234",
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "foo",
+            "Value": "bar",
+          },
+        ],
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+              },
+              "/b071dbeb76ecd569d8fbcba14c7fc1e84fac20183e5f0d3e40c5a008bda47c10.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;

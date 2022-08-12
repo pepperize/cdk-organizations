@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Organization Should match snapshot 1`] = `
+Object {
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": Object {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": Object {
+      "DependsOn": Array [
+        "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "6dbd112fe448437b3438da4382c72fccbb7d2ee1543db222620d7447fffebc50.zip",
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 120,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "Organization06E16095": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "FeatureSet": "ALL",
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832",
+            "Outputs.cdkorganizationsOrganizationProviderframeworkonEvent268B5E2CArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_Organization",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationRootRootCustomResourceBB74F060": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Organization06E16095",
+        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+      ],
+      "Properties": Object {
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
+        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\"}",
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
+      },
+      "Type": "Custom::Organizations_Root",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E": Object {
+      "DependsOn": Array [
+        "Organization06E16095",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:ListRoots",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "OrganizationRootTagsTagResourceCBEA7B2F": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Organization06E16095",
+        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+        "OrganizationRootRootCustomResourceBB74F060",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "OrganizationRootRootCustomResourceBB74F060",
+            "Roots.0.Id",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+              },
+              "/0025db61e97b3108c06b5f60c8ff2fc0e121b3c19197aaea1ee73ade79ea81dc.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.",
+              Object {
+                "Ref": "AWS::Region",
+              },
+              ".",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/",
+              Object {
+                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+              },
+              "/1f7c40127076a9c0eefa796fe3090044b5b41e584301ae9b034679d94d25c085.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
