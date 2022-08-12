@@ -1,12 +1,11 @@
-import { App, Stack } from "aws-cdk-lib";
+import { Stack } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
 import { Account, Policy, PolicyAttachment, PolicyType } from "../src";
 
 describe("PolicyAttachment", () => {
   it("Should match snapshot", () => {
     // Given
-    const app = new App();
-    const stack = new Stack(app, "Stack");
+    const stack = new Stack();
     const account = new Account(stack, "Account", {
       accountName: "Test Account",
       email: "info@pepperize.com",
