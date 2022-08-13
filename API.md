@@ -549,7 +549,7 @@ The tree node.
 ```typescript
 import { Organization } from '@pepperize/cdk-organizations'
 
-new Organization(scope: Construct, id: string, props: OrganizationProps)
+new Organization(scope: Construct, id: string, props?: OrganizationProps)
 ```
 
 | **Name** | **Type** | **Description** |
@@ -572,7 +572,7 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@pepperize/cdk-organizations.Organization.Initializer.parameter.props"></a>
+##### `props`<sup>Optional</sup> <a name="props" id="@pepperize/cdk-organizations.Organization.Initializer.parameter.props"></a>
 
 - *Type:* <a href="#@pepperize/cdk-organizations.OrganizationProps">OrganizationProps</a>
 
