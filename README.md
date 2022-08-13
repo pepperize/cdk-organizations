@@ -117,7 +117,7 @@ yarn build
 
    export class OrganizationStack extends Stack {
      constructor(scope: Construct, id: string, props: StackProps = {}) {
-       super(scope, id, { ...props, env: { ...props.env, region: "us-east-1" } }); // AWS Organizations API is only available in region us-east-1
+       super(scope, id, props);
 
        // Create your organization
        const organization = new Organization(stack, "Organization", {});
@@ -153,7 +153,7 @@ yarn build
 8. Deploy your first AWS organization
 
    ```shell
-   export CDK_DEFAULT_REGION=us-east-1
+   export CDK_DEFAULT_REGION=<your AWS region>
    export CDK_DEFAULT_ACCOUNT=<your AWS account id>
    ```
 
@@ -181,6 +181,19 @@ organization.root; // The organization's root is automatically created
 - An organization root is automatically created for you when you create the new organization.
 
 See [IOrganization](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IOrganization)
+
+### Organization Principal
+
+To retrieve the AWS IAM organization principal in a member account, add the following to any construct:
+
+```
+const organization = Organization.of(scope, "Organization");
+organization.principal; // The AWS IAM organization principal
+```
+
+- This helper construct can be used in any member account in the organization.
+
+See [AWS Organization API Reference - DescribeOrganization](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html)
 
 ### Organizational Unit (OU)
 
@@ -221,7 +234,7 @@ new Account(stack, "Account", {
 - The email address must not already be associated with another AWS account. You may suffix the email address, i.e. `info+account-123456789012@pepperize.com`.
 - The AWS Organizations supports only a one account creation `IN_PROGRESS`. Ensure account creation by using `account2.node.addDependency(account1)` [dependency relationship](https://docs.aws.amazon.com/cdk/api/v1/docs/core-readme.html#dependencies).
 - An account will be created and moved to the parent, if the parent is an organizational unit (OU).
-- An account can only be created from within the management account in the `us-east-1` region.
+- An account can only be created from within the management account.
 
 See [IAccount](https://github.com/pepperize/cdk-organizations/blob/main/API.md#@pepperize/cdk-organizations.IAccount)
 
@@ -378,13 +391,16 @@ Tags.of(policy).add("key", "value");
 
 AWS Organizations has some limitations:
 
-- The stack should be deployed in the `us-east-1` region.
 - The stack's account must be the management account of an existing organization.
 - The stack's account becomes the management account of the new organization.
 - An account belongs to only one organization within a single root.
 - [Quotas for AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
 
-# Example
+> AWS Organizations is a global service with service endpoints in `us-east-1`, `us-gov-west-1` and `cn-northwest-1`. Read also
+> [Endpoint to call When using the AWS CLI or the AWS SDK](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html).
+> Currently all custom resources of this library are hard set to use `us-east-1`.
+
+## Example
 
 See [example](https://github.com/pepperize/cdk-organizations-example/blob/main/src/example-stack.ts)
 
@@ -478,7 +494,7 @@ Tags.of(stack).add("tagKey", "tagValue");
 - [AWS API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html)
 - [AWS CDK Custom Resources](https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#custom-resources-for-aws-apis)
 
-# Alternatives
+## Alternatives
 
 - [AWS Bootstrap Kit](https://github.com/awslabs/aws-bootstrap-kit)
 - [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest)

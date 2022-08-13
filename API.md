@@ -549,7 +549,7 @@ The tree node.
 ```typescript
 import { Organization } from '@pepperize/cdk-organizations'
 
-new Organization(scope: Construct, id: string, props: OrganizationProps)
+new Organization(scope: Construct, id: string, props?: OrganizationProps)
 ```
 
 | **Name** | **Type** | **Description** |
@@ -572,7 +572,7 @@ new Organization(scope: Construct, id: string, props: OrganizationProps)
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@pepperize/cdk-organizations.Organization.Initializer.parameter.props"></a>
+##### `props`<sup>Optional</sup> <a name="props" id="@pepperize/cdk-organizations.Organization.Initializer.parameter.props"></a>
 
 - *Type:* <a href="#@pepperize/cdk-organizations.OrganizationProps">OrganizationProps</a>
 
@@ -656,6 +656,7 @@ Enables policy types in the following two broad categories: Authorization polici
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.Organization.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@pepperize/cdk-organizations.Organization.of">of</a></code> | Describe the organization that the current account belongs to. |
 
 ---
 
@@ -677,6 +678,30 @@ Any object.
 
 ---
 
+##### `of` <a name="of" id="@pepperize/cdk-organizations.Organization.of"></a>
+
+```typescript
+import { Organization } from '@pepperize/cdk-organizations'
+
+Organization.of(scope: Construct, id: string)
+```
+
+Describe the organization that the current account belongs to.
+
+> [https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html)
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@pepperize/cdk-organizations.Organization.of.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="@pepperize/cdk-organizations.Organization.of.parameter.id"></a>
+
+- *Type:* string
+
+---
+
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
@@ -688,6 +713,7 @@ Any object.
 | <code><a href="#@pepperize/cdk-organizations.Organization.property.managementAccountId">managementAccountId</a></code> | <code>string</code> | The unique identifier (ID) of the management account of an organization. |
 | <code><a href="#@pepperize/cdk-organizations.Organization.property.organizationArn">organizationArn</a></code> | <code>string</code> | The Amazon Resource Name (ARN) of an organization. |
 | <code><a href="#@pepperize/cdk-organizations.Organization.property.organizationId">organizationId</a></code> | <code>string</code> | The unique identifier (ID) of an organization. |
+| <code><a href="#@pepperize/cdk-organizations.Organization.property.principal">principal</a></code> | <code>aws-cdk-lib.aws_iam.IPrincipal</code> | The principal that represents this AWS Organization. |
 | <code><a href="#@pepperize/cdk-organizations.Organization.property.root">root</a></code> | <code><a href="#@pepperize/cdk-organizations.Root">Root</a></code> | The root of the current organization, which is automatically created. |
 
 ---
@@ -777,6 +803,18 @@ public readonly organizationId: string;
 The unique identifier (ID) of an organization.
 
 The regex pattern for an organization ID string requires "o-" followed by from 10 to 32 lowercase letters or digits.
+
+---
+
+##### `principal`<sup>Required</sup> <a name="principal" id="@pepperize/cdk-organizations.Organization.property.principal"></a>
+
+```typescript
+public readonly principal: IPrincipal;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IPrincipal
+
+The principal that represents this AWS Organization.
 
 ---
 
@@ -2584,50 +2622,6 @@ An organization has one management account along with zero or more member accoun
 
 > [https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org)
 
-#### Methods <a name="Methods" id="Methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#@pepperize/cdk-organizations.IOrganization.enableAwsServiceAccess">enableAwsServiceAccess</a></code> | Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf. |
-| <code><a href="#@pepperize/cdk-organizations.IOrganization.enablePolicyType">enablePolicyType</a></code> | Enables policy types in the following two broad categories: Authorization policies and Management policies. |
-
----
-
-##### `enableAwsServiceAccess` <a name="enableAwsServiceAccess" id="@pepperize/cdk-organizations.IOrganization.enableAwsServiceAccess"></a>
-
-```typescript
-public enableAwsServiceAccess(servicePrincipal: string): void
-```
-
-Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf.
-
-> [https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html)
-
-###### `servicePrincipal`<sup>Required</sup> <a name="servicePrincipal" id="@pepperize/cdk-organizations.IOrganization.enableAwsServiceAccess.parameter.servicePrincipal"></a>
-
-- *Type:* string
-
-The supported AWS service that you specify.
-
----
-
-##### `enablePolicyType` <a name="enablePolicyType" id="@pepperize/cdk-organizations.IOrganization.enablePolicyType"></a>
-
-```typescript
-public enablePolicyType(policyType: PolicyType): void
-```
-
-Enables policy types in the following two broad categories: Authorization policies and Management policies.
-
-> [https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#orgs-policy-types)
-
-###### `policyType`<sup>Required</sup> <a name="policyType" id="@pepperize/cdk-organizations.IOrganization.enablePolicyType.parameter.policyType"></a>
-
-- *Type:* <a href="#@pepperize/cdk-organizations.PolicyType">PolicyType</a>
-
-: the type of the policy that you specify.
-
----
 
 #### Properties <a name="Properties" id="Properties"></a>
 
@@ -2640,7 +2634,7 @@ Enables policy types in the following two broad categories: Authorization polici
 | <code><a href="#@pepperize/cdk-organizations.IOrganization.property.managementAccountId">managementAccountId</a></code> | <code>string</code> | The unique identifier (ID) of the management account of an organization. |
 | <code><a href="#@pepperize/cdk-organizations.IOrganization.property.organizationArn">organizationArn</a></code> | <code>string</code> | The Amazon Resource Name (ARN) of an organization. |
 | <code><a href="#@pepperize/cdk-organizations.IOrganization.property.organizationId">organizationId</a></code> | <code>string</code> | The unique identifier (ID) of an organization. |
-| <code><a href="#@pepperize/cdk-organizations.IOrganization.property.root">root</a></code> | <code><a href="#@pepperize/cdk-organizations.Root">Root</a></code> | The root of the current organization, which is automatically created. |
+| <code><a href="#@pepperize/cdk-organizations.IOrganization.property.principal">principal</a></code> | <code>aws-cdk-lib.aws_iam.IPrincipal</code> | The principal that represents this AWS Organization. |
 
 ---
 
@@ -2732,15 +2726,15 @@ The regex pattern for an organization ID string requires "o-" followed by from 1
 
 ---
 
-##### `root`<sup>Required</sup> <a name="root" id="@pepperize/cdk-organizations.IOrganization.property.root"></a>
+##### `principal`<sup>Required</sup> <a name="principal" id="@pepperize/cdk-organizations.IOrganization.property.principal"></a>
 
 ```typescript
-public readonly root: Root;
+public readonly principal: IPrincipal;
 ```
 
-- *Type:* <a href="#@pepperize/cdk-organizations.Root">Root</a>
+- *Type:* aws-cdk-lib.aws_iam.IPrincipal
 
-The root of the current organization, which is automatically created.
+The principal that represents this AWS Organization.
 
 ---
 

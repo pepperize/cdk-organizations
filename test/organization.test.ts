@@ -1,5 +1,6 @@
-import { Stack } from "aws-cdk-lib";
+import { Stack, Token } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
+import * as aws_iam from "aws-cdk-lib/aws-iam";
 import { FeatureSet, Organization, PolicyType } from "../src";
 
 describe("Organization", () => {
@@ -45,5 +46,20 @@ describe("Organization", () => {
     // Then
     const template = Template.fromStack(stack);
     template.resourceCountIs("Custom::Organizations_EnablePolicyType", 4);
+  });
+
+  it("Should describe current organization", () => {
+    // Given
+    const stack = new Stack();
+
+    // When
+    const organization = Organization.of(stack, "Organization");
+
+    // Then
+    const template = Template.fromStack(stack);
+    template.resourceCountIs("Custom::Organizations_ImportOrganization", 1);
+
+    expect(Token.isUnresolved(organization.organizationId)).toBeTruthy();
+    expect(organization.principal).toBeInstanceOf(aws_iam.OrganizationPrincipal);
   });
 });
