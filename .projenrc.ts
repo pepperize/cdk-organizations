@@ -12,6 +12,7 @@ const project = new AwsCdkConstructLibrary({
     "aws",
     "cdk",
     "organizations",
+    "organization-principal",
     "organizational-unit",
     "account",
     "account-management",

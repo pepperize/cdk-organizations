@@ -101,6 +101,7 @@
     "aws",
     "cdk",
     "delegated-administrator",
+    "organization-principal",
     "organizational-unit",
     "organizations",
     "policies",
