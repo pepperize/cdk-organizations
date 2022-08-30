@@ -602,10 +602,25 @@
     chalk "^4.1.2"
     semver "^7.3.7"
 
-"@jsii/spec@1.65.0", "@jsii/spec@^1.65.0":
+"@jsii/check-node@1.65.1":
+  version "1.65.1"
+  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.65.1.tgz#f2bc117ab704488d712d6a853ab830aee51bdc03"
+  integrity sha512-w4ErL8aQy/4hY4AlDVX4vf6k05pd0ZvFQH2qAQj0bk0b22uBaufRF3BO6+TlJFfwyIFVxT32npFkGC/9pbtFhA==
+  dependencies:
+    chalk "^4.1.2"
+    semver "^7.3.7"
+
+"@jsii/spec@1.65.0":
   version "1.65.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.65.0.tgz#da47e531e35589776d3ccf6dfdd699cd64025f38"
   integrity sha512-k3AWIlc0TIP8efuFsmbfxPcr3EgebM48JGoqpxpKjDICHiIiMH8UTyRDaMHIuv7aD4JmYNp981mxyK9wqlrrxw==
+  dependencies:
+    ajv "^8.11.0"
+
+"@jsii/spec@^1.65.0", "@jsii/spec@^1.65.1":
+  version "1.65.1"
+  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.65.1.tgz#8d0bfe27a0b0b1238e4af7c7cce3f95393dbf0a8"
+  integrity sha512-jHSrhQ0cdZP0NuBWQAI8EnDXOxbI5LH8jdRS09OX2d96n8H3bn2Gor1LV2YuFzabF8S96tjKJFAogf8UdGaH+A==
   dependencies:
     ajv "^8.11.0"
 
@@ -4232,13 +4247,32 @@ jsii-rosetta@^1.65.0:
     workerpool "^6.2.1"
     yargs "^16.2.0"
 
-jsii@1.65.0, jsii@^1.52.1:
+jsii@1.65.0:
   version "1.65.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.65.0.tgz#6d24b1d7095a6ad124ef2b178b1b961b312a4e9d"
   integrity sha512-c/uYdygHfJWeQnWA7PyPeK1wxy3xAoGk9/MFC0j+cw2d8EUAHuLVBLh4pFv09AdBdpsRPdwUqAIHWDN39WKk0g==
   dependencies:
     "@jsii/check-node" "1.65.0"
     "@jsii/spec" "^1.65.0"
+    case "^1.6.3"
+    chalk "^4"
+    fast-deep-equal "^3.1.3"
+    fs-extra "^10.1.0"
+    log4js "^6.6.1"
+    semver "^7.3.7"
+    semver-intersect "^1.4.0"
+    sort-json "^2.0.1"
+    spdx-license-list "^6.6.0"
+    typescript "~3.9.10"
+    yargs "^16.2.0"
+
+jsii@^1.52.1:
+  version "1.65.1"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.65.1.tgz#d97f53d252608e985c303a2c57aaaea83693fbd8"
+  integrity sha512-XHFxKlY5BCnxIXUf3OxwmVhNHzbYHid8KJHUhy3AZH6mKgIi4CIn41XSN19TMHboFKzBiSYPlcUl6HseW7zvNw==
+  dependencies:
+    "@jsii/check-node" "1.65.1"
+    "@jsii/spec" "^1.65.1"
     case "^1.6.3"
     chalk "^4"
     fast-deep-equal "^3.1.3"
