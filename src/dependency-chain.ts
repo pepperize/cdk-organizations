@@ -3,6 +3,9 @@ import { IConstruct } from "constructs";
 import { Account } from "./account";
 import { OrganizationalUnit } from "./organizational-unit";
 import { PolicyAttachment } from "./policy-attachment";
+import { EnableAwsServiceAccess } from "./enable-aws-service-access";
+import { EnablePolicyType } from "./enable-policy-type";
+import { DelegatedAdministrator } from "./delegated-administrator";
 
 /**
  * Aspect to create dependency chain of organization resource that needs to be deployed sequentially
@@ -26,6 +29,12 @@ export class DependencyChain implements IAspect {
 
   private needsChaining(current: IConstruct): boolean {
     switch (true) {
+      case current instanceof EnablePolicyType:
+        return true;
+      case current instanceof EnableAwsServiceAccess:
+        return true;
+      case current instanceof DelegatedAdministrator:
+        return true;
       case current instanceof Account:
         return true;
       case current instanceof OrganizationalUnit:
