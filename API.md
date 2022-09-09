@@ -2353,6 +2353,50 @@ public readonly tags: IResolvable;
 
 ## Classes <a name="Classes" id="Classes"></a>
 
+### DependencyChain <a name="DependencyChain" id="@pepperize/cdk-organizations.DependencyChain"></a>
+
+- *Implements:* aws-cdk-lib.IAspect
+
+Aspect to create dependency chain of organization resource that needs to be deployed sequentially.
+
+#### Initializers <a name="Initializers" id="@pepperize/cdk-organizations.DependencyChain.Initializer"></a>
+
+```typescript
+import { DependencyChain } from '@pepperize/cdk-organizations'
+
+new DependencyChain()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@pepperize/cdk-organizations.DependencyChain.visit">visit</a></code> | All aspects can visit an IConstruct. |
+
+---
+
+##### `visit` <a name="visit" id="@pepperize/cdk-organizations.DependencyChain.visit"></a>
+
+```typescript
+public visit(current: IConstruct): void
+```
+
+All aspects can visit an IConstruct.
+
+###### `current`<sup>Required</sup> <a name="current" id="@pepperize/cdk-organizations.DependencyChain.visit.parameter.current"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
+
+
+
 ### Validators <a name="Validators" id="@pepperize/cdk-organizations.Validators"></a>
 
 #### Initializers <a name="Initializers" id="@pepperize/cdk-organizations.Validators.Initializer"></a>

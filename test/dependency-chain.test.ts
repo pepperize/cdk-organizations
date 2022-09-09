@@ -1,7 +1,14 @@
 import { Aspects, Stack } from "aws-cdk-lib";
 import { Capture, Template } from "aws-cdk-lib/assertions";
-import { Account, Organization, OrganizationalUnit, Policy, PolicyAttachment, PolicyType } from "../src";
-import { DependencyChain } from "../src/dependency-chain";
+import {
+  Account,
+  DependencyChain,
+  Organization,
+  OrganizationalUnit,
+  Policy,
+  PolicyAttachment,
+  PolicyType,
+} from "../src";
 
 describe("DependencyChain", () => {
   it("Should chain accounts", () => {
