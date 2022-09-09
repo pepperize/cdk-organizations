@@ -1,11 +1,11 @@
 import { IAspect, Stack } from "aws-cdk-lib";
 import { IConstruct } from "constructs";
 import { Account } from "./account";
-import { OrganizationalUnit } from "./organizational-unit";
-import { PolicyAttachment } from "./policy-attachment";
+import { DelegatedAdministrator } from "./delegated-administrator";
 import { EnableAwsServiceAccess } from "./enable-aws-service-access";
 import { EnablePolicyType } from "./enable-policy-type";
-import { DelegatedAdministrator } from "./delegated-administrator";
+import { OrganizationalUnit } from "./organizational-unit";
+import { PolicyAttachment } from "./policy-attachment";
 
 /**
  * Aspect to create dependency chain of organization resource that needs to be deployed sequentially
