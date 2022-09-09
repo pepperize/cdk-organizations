@@ -196,7 +196,7 @@ Object {
           ],
         },
       },
-      "Type": "Custom::AWS",
+      "Type": "Custom::Organizations_PolicyAttachment",
       "UpdateReplacePolicy": "Delete",
     },
     "PolicyAttachmentCustomResourceCustomResourcePolicy9D7F91EB": Object {

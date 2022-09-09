@@ -460,7 +460,7 @@ Object {
           ],
         },
       },
-      "Type": "Custom::AWS",
+      "Type": "Custom::Organizations_PolicyAttachment",
       "UpdateReplacePolicy": "Delete",
     },
     "ImportedAccountPolicyAttachmentTagPolicyCustomResource2004384F": Object {
@@ -553,7 +553,7 @@ Object {
           ],
         },
       },
-      "Type": "Custom::AWS",
+      "Type": "Custom::Organizations_PolicyAttachment",
       "UpdateReplacePolicy": "Delete",
     },
     "ImportedAccountPolicyAttachmentTagPolicyCustomResourceCustomResourcePolicyE523677D": Object {
@@ -1045,7 +1045,7 @@ Object {
           ],
         },
       },
-      "Type": "Custom::AWS",
+      "Type": "Custom::Organizations_PolicyAttachment",
       "UpdateReplacePolicy": "Delete",
     },
     "OrganizationRootPolicyAttachmentS3PolicyCustomResourceCustomResourcePolicy598F850B": Object {
@@ -1455,7 +1455,7 @@ Object {
           ],
         },
       },
-      "Type": "Custom::AWS",
+      "Type": "Custom::Organizations_PolicyAttachment",
       "UpdateReplacePolicy": "Delete",
     },
     "ProjectsOUPolicyAttachmentTagPolicyCustomResourceCustomResourcePolicy4E70640C": Object {
