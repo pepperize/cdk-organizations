@@ -9,6 +9,7 @@ import { PolicyAttachment } from "./policy-attachment";
 
 /**
  * Aspect to create dependency chain of organization resource that needs to be deployed sequentially
+ * @experimental
  */
 export class DependencyChain implements IAspect {
   private previous: { [stackName: string]: IConstruct } = {};
