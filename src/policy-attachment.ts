@@ -26,6 +26,7 @@ export class PolicyAttachment extends Construct {
     const { target, policy } = props;
 
     new AwsCustomResource(this, "CustomResource", {
+      resourceType: "Custom::Organizations_PolicyAttachment",
       onCreate: {
         service: "Organizations",
         action: "attachPolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#attachPolicy-property
