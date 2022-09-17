@@ -5,7 +5,7 @@ import { OrganizationalUnit } from "./organizational-unit";
 import { Policy, PolicyType } from "./policy";
 
 const app = new App();
-const stack = new Stack(app);
+const stack = new Stack(app, undefined, { env: { account: "123456789012", region: "us-east-1" } });
 
 // Create an organization
 const organization = new Organization(stack, "Organization", {
