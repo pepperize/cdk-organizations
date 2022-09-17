@@ -5,7 +5,7 @@ import { Organization, OrganizationalUnit } from "../src";
 describe("OrganizationalUnit", () => {
   it("Should match snapshot", () => {
     // Given
-    const stack = new Stack();
+    const stack = new Stack(undefined, undefined, { env: { account: "123456789012", region: "us-east-1" } });
     const organization = new Organization(stack, "Organization", {});
 
     // When

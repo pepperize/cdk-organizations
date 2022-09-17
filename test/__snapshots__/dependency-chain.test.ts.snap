@@ -1,0 +1,1148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DependencyChain Should chain accounts with delegated administrator 1`] = `
+Object {
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": Object {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": Object {
+      "DependsOn": Array [
+        "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": "cdk-hnb659fds-assets-123456789012-us-east-1",
+          "S3Key": "6dbd112fe448437b3438da4382c72fccbb7d2ee1543db222620d7447fffebc50.zip",
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 120,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "AdminAccountCreateAccount96C27ABB": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "OrganizationEnableSsoAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicyCA61EA18",
+        "OrganizationEnableSsoAmazonawsComEnableAwsServiceAccessCustomResource7C1CC143",
+      ],
+      "Properties": Object {
+        "AccountName": "test1",
+        "Email": "account1@pepperize.com",
+        "IamUserAccessToBilling": "ALLOW",
+        "ImportOnDuplicate": "true",
+        "RemovalPolicy": "retain",
+        "RoleName": "OrganizationAccountAccessRole",
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5",
+            "Outputs.cdkorganizationsAccountProviderframeworkonEvent4241E2B3Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_Account",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AdminAccountTagsTagResource2B03F65D": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AdminAccountCreateAccount96C27ABB",
+        "OrganizationEnableSsoAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicyCA61EA18",
+        "OrganizationEnableSsoAmazonawsComEnableAwsServiceAccessCustomResource7C1CC143",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "AdminAccountCreateAccount96C27ABB",
+            "AccountId",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DelegateAccountAmazonawsComAdminAccountDelegatedAdministratorCustomResourceCD37BB5F": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AdminAccountCreateAccount96C27ABB",
+        "AdminAccountTagsTagResource2B03F65D",
+        "DelegateAccountAmazonawsComAdminAccountDelegatedAdministratorCustomResourceCustomResourcePolicy716955ED",
+      ],
+      "Properties": Object {
+        "Create": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              ":account.amazonaws.com\\"},\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\",\\"ServicePrincipal\\":\\"account.amazonaws.com\\"}}",
+            ],
+          ],
+        },
+        "Delete": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\",\\"ServicePrincipal\\":\\"account.amazonaws.com\\"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_DelegatedAdministrator",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DelegateAccountAmazonawsComAdminAccountDelegatedAdministratorCustomResourceCustomResourcePolicy716955ED": Object {
+      "DependsOn": Array [
+        "AdminAccountCreateAccount96C27ABB",
+        "AdminAccountTagsTagResource2B03F65D",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:RegisterDelegatedAdministrator",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "DelegateAccountAmazonawsComAdminAccountDelegatedAdministratorCustomResourceCustomResourcePolicy716955ED",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "Organization06E16095": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "FeatureSet": "ALL",
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832",
+            "Outputs.cdkorganizationsOrganizationProviderframeworkonEvent268B5E2CArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_Organization",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationEnableAccountAmazonawsComEnableAwsServiceAccessCustomResource29DFBC85": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "OrganizationEnableAccountAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy04A5FB0C",
+        "Organization06E16095",
+      ],
+      "Properties": Object {
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"enableAWSServiceAccess\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"account.amazonaws.com\\"},\\"parameters\\":{\\"ServicePrincipal\\":\\"account.amazonaws.com\\"}}",
+        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"disableAWSServiceAccess\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"ServicePrincipal\\":\\"account.amazonaws.com\\"}}",
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_EnableAwsServiceAccess",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationEnableAccountAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy04A5FB0C": Object {
+      "DependsOn": Array [
+        "Organization06E16095",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:EnableAWSServiceAccess",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DisableAWSServiceAccess",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "OrganizationEnableAccountAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy04A5FB0C",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "OrganizationEnableSsoAmazonawsComEnableAwsServiceAccessCustomResource7C1CC143": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "OrganizationEnableAccountAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy04A5FB0C",
+        "OrganizationEnableAccountAmazonawsComEnableAwsServiceAccessCustomResource29DFBC85",
+        "OrganizationEnableSsoAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicyCA61EA18",
+        "Organization06E16095",
+      ],
+      "Properties": Object {
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"enableAWSServiceAccess\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"sso.amazonaws.com\\"},\\"parameters\\":{\\"ServicePrincipal\\":\\"sso.amazonaws.com\\"}}",
+        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"disableAWSServiceAccess\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"ServicePrincipal\\":\\"sso.amazonaws.com\\"}}",
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_EnableAwsServiceAccess",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationEnableSsoAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicyCA61EA18": Object {
+      "DependsOn": Array [
+        "OrganizationEnableAccountAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy04A5FB0C",
+        "OrganizationEnableAccountAmazonawsComEnableAwsServiceAccessCustomResource29DFBC85",
+        "Organization06E16095",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:EnableAWSServiceAccess",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DisableAWSServiceAccess",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "OrganizationEnableSsoAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicyCA61EA18",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "OrganizationRootRootCustomResourceBB74F060": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Organization06E16095",
+        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+      ],
+      "Properties": Object {
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
+        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\"}",
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
+      },
+      "Type": "Custom::Organizations_Root",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E": Object {
+      "DependsOn": Array [
+        "Organization06E16095",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:ListRoots",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "OrganizationRootTagsTagResourceCBEA7B2F": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Organization06E16095",
+        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+        "OrganizationRootRootCustomResourceBB74F060",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "OrganizationRootRootCustomResourceBB74F060",
+            "Roots.0.Id",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.us-east-1.",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/0ab478630037911e90cf38d5239a14d119ca68243e3fad359bf9f7e2569d7189.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.us-east-1.",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/db8db456faaf56fef49bd2206b8fbed08b94514b66674cd3369b7e02ea020aa7.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.us-east-1.",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/d5495ccfde7e91ca12ce7c018d2623625fb6f4e4d25d9a125a52a32289c5d773.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`DependencyChain Should chain policy attachments 1`] = `
+Object {
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": Object {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": Object {
+      "DependsOn": Array [
+        "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": "cdk-hnb659fds-assets-123456789012-us-east-1",
+          "S3Key": "6dbd112fe448437b3438da4382c72fccbb7d2ee1543db222620d7447fffebc50.zip",
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 120,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "AdminAccountCreateAccount96C27ABB": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "AccountName": "test1",
+        "Email": "account1@pepperize.com",
+        "IamUserAccessToBilling": "ALLOW",
+        "ImportOnDuplicate": "true",
+        "ParentId": Object {
+          "Fn::GetAtt": Array [
+            "OrganizationRootRootCustomResourceBB74F060",
+            "Roots.0.Id",
+          ],
+        },
+        "RemovalPolicy": "retain",
+        "RoleName": "OrganizationAccountAccessRole",
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5",
+            "Outputs.cdkorganizationsAccountProviderframeworkonEvent4241E2B3Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_Account",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AdminAccountTagsTagResource2B03F65D": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AdminAccountCreateAccount96C27ABB",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "AdminAccountCreateAccount96C27ABB",
+            "AccountId",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "Organization06E16095": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "FeatureSet": "ALL",
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832",
+            "Outputs.cdkorganizationsOrganizationProviderframeworkonEvent268B5E2CArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_Organization",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationRootRootCustomResourceBB74F060": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Organization06E16095",
+        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+      ],
+      "Properties": Object {
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
+        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\"}",
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"listRoots\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"responsePath\\":\\"Roots.0.Id\\"}}",
+      },
+      "Type": "Custom::Organizations_Root",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E": Object {
+      "DependsOn": Array [
+        "Organization06E16095",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:ListRoots",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "OrganizationRootTagsTagResourceCBEA7B2F": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Organization06E16095",
+        "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
+        "OrganizationRootRootCustomResourceBB74F060",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "OrganizationRootRootCustomResourceBB74F060",
+            "Roots.0.Id",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "Policy1PolicyCustomResourceCustomResourcePolicy7BD4545C": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:CreatePolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:UpdatePolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DeletePolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "Policy1PolicyCustomResourceCustomResourcePolicy7BD4545C",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "Policy1PolicyCustomResourceF56F0D55": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Policy1PolicyCustomResourceCustomResourcePolicy7BD4545C",
+      ],
+      "Properties": Object {
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+      },
+      "Type": "Custom::Organizations_Policy",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "Policy1TagsTagResourceB3B4BDA1": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Policy1PolicyCustomResourceCustomResourcePolicy7BD4545C",
+        "Policy1PolicyCustomResourceF56F0D55",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "Policy1PolicyCustomResourceF56F0D55",
+            "Policy.PolicySummary.Id",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "Policy2PolicyCustomResourceCustomResourcePolicy0976B915": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:CreatePolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:UpdatePolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DeletePolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "Policy2PolicyCustomResourceCustomResourcePolicy0976B915",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "Policy2PolicyCustomResourceF58BCA47": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Policy2PolicyCustomResourceCustomResourcePolicy0976B915",
+      ],
+      "Properties": Object {
+        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Deny\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"*:*\\\\\\",\\\\\\"Resource\\\\\\":\\\\\\"*\\\\\\",\\\\\\"Condition\\\\\\":\\\\n{\\\\n\\\\\\"StringNotEquals\\\\\\":{\\\\\\"aws:RequestedRegion\\\\\\":[\\\\\\"us-east-1\\\\\\"]}\\\\n}\\\\n}\\\\n}\\",\\"Name\\":\\"DenyAllNotUsEast1\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Deny\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"*:*\\\\\\",\\\\\\"Resource\\\\\\":\\\\\\"*\\\\\\",\\\\\\"Condition\\\\\\":\\\\n{\\\\n\\\\\\"StringNotEquals\\\\\\":{\\\\\\"aws:RequestedRegion\\\\\\":[\\\\\\"us-east-1\\\\\\"]}\\\\n}\\\\n}\\\\n}\\",\\"Name\\":\\"DenyAllNotUsEast1\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+      },
+      "Type": "Custom::Organizations_Policy",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "Policy2TagsTagResource6E81FFB3": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Policy2PolicyCustomResourceCustomResourcePolicy0976B915",
+        "Policy2PolicyCustomResourceF58BCA47",
+      ],
+      "Properties": Object {
+        "ResourceId": Object {
+          "Fn::GetAtt": Array [
+            "Policy2PolicyCustomResourceF58BCA47",
+            "Policy.PolicySummary.Id",
+          ],
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
+            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_TagResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "PolicyAttachmentAdminAccountPolicy1CustomResourceCustomResourcePolicy2618855F": Object {
+      "DependsOn": Array [
+        "AdminAccountCreateAccount96C27ABB",
+        "AdminAccountTagsTagResource2B03F65D",
+        "Policy1PolicyCustomResourceCustomResourcePolicy7BD4545C",
+        "Policy1PolicyCustomResourceF56F0D55",
+        "Policy1TagsTagResourceB3B4BDA1",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:AttachPolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DetachPolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PolicyAttachmentAdminAccountPolicy1CustomResourceCustomResourcePolicy2618855F",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "PolicyAttachmentAdminAccountPolicy1CustomResourceEDA19BC8": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AdminAccountCreateAccount96C27ABB",
+        "AdminAccountTagsTagResource2B03F65D",
+        "Policy1PolicyCustomResourceCustomResourcePolicy7BD4545C",
+        "Policy1PolicyCustomResourceF56F0D55",
+        "Policy1TagsTagResourceB3B4BDA1",
+        "PolicyAttachmentAdminAccountPolicy1CustomResourceCustomResourcePolicy2618855F",
+      ],
+      "Properties": Object {
+        "Create": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"attachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "Policy1PolicyCustomResourceF56F0D55",
+                  "Policy.PolicySummary.Id",
+                ],
+              },
+              "\\",\\"TargetId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "Policy1PolicyCustomResourceF56F0D55",
+                  "Policy.PolicySummary.Id",
+                ],
+              },
+              ":",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\"}}",
+            ],
+          ],
+        },
+        "Delete": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"detachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "Policy1PolicyCustomResourceF56F0D55",
+                  "Policy.PolicySummary.Id",
+                ],
+              },
+              "\\",\\"TargetId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "Policy1PolicyCustomResourceF56F0D55",
+                  "Policy.PolicySummary.Id",
+                ],
+              },
+              ":",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_PolicyAttachment",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "PolicyAttachmentAdminAccountPolicy2CustomResource90BD4E0D": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AdminAccountCreateAccount96C27ABB",
+        "Policy2PolicyCustomResourceCustomResourcePolicy0976B915",
+        "Policy2PolicyCustomResourceF58BCA47",
+        "Policy2TagsTagResource6E81FFB3",
+        "PolicyAttachmentAdminAccountPolicy1CustomResourceCustomResourcePolicy2618855F",
+        "PolicyAttachmentAdminAccountPolicy1CustomResourceEDA19BC8",
+        "PolicyAttachmentAdminAccountPolicy2CustomResourceCustomResourcePolicy419A0111",
+      ],
+      "Properties": Object {
+        "Create": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"attachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "Policy2PolicyCustomResourceF58BCA47",
+                  "Policy.PolicySummary.Id",
+                ],
+              },
+              "\\",\\"TargetId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "Policy2PolicyCustomResourceF58BCA47",
+                  "Policy.PolicySummary.Id",
+                ],
+              },
+              ":",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\"}}",
+            ],
+          ],
+        },
+        "Delete": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"detachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "Policy2PolicyCustomResourceF58BCA47",
+                  "Policy.PolicySummary.Id",
+                ],
+              },
+              "\\",\\"TargetId\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "Policy2PolicyCustomResourceF58BCA47",
+                  "Policy.PolicySummary.Id",
+                ],
+              },
+              ":",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AdminAccountCreateAccount96C27ABB",
+                  "AccountId",
+                ],
+              },
+              "\\"}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Organizations_PolicyAttachment",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "PolicyAttachmentAdminAccountPolicy2CustomResourceCustomResourcePolicy419A0111": Object {
+      "DependsOn": Array [
+        "AdminAccountCreateAccount96C27ABB",
+        "Policy2PolicyCustomResourceCustomResourcePolicy0976B915",
+        "Policy2PolicyCustomResourceF58BCA47",
+        "Policy2TagsTagResource6E81FFB3",
+        "PolicyAttachmentAdminAccountPolicy1CustomResourceCustomResourcePolicy2618855F",
+        "PolicyAttachmentAdminAccountPolicy1CustomResourceEDA19BC8",
+      ],
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "organizations:AttachPolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DetachPolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "PolicyAttachmentAdminAccountPolicy2CustomResourceCustomResourcePolicy419A0111",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.us-east-1.",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/0ab478630037911e90cf38d5239a14d119ca68243e3fad359bf9f7e2569d7189.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.us-east-1.",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/db8db456faaf56fef49bd2206b8fbed08b94514b66674cd3369b7e02ea020aa7.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "TemplateURL": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "https://s3.us-east-1.",
+              Object {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/d5495ccfde7e91ca12ce7c018d2623625fb6f4e4d25d9a125a52a32289c5d773.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;

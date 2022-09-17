@@ -16,9 +16,7 @@ Object {
       ],
       "Properties": Object {
         "Code": Object {
-          "S3Bucket": Object {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
+          "S3Bucket": "cdk-hnb659fds-assets-123456789012-us-east-1",
           "S3Key": "6dbd112fe448437b3438da4382c72fccbb7d2ee1543db222620d7447fffebc50.zip",
         },
         "Handler": "index.handler",
@@ -313,19 +311,11 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "https://s3.",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ".",
+              "https://s3.us-east-1.",
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/",
-              Object {
-                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-              },
-              "/eb001b1a121924fe4f664028b87607a11b9248655f43597828f06fbf3128e899.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/0ab478630037911e90cf38d5239a14d119ca68243e3fad359bf9f7e2569d7189.json",
             ],
           ],
         },
@@ -340,19 +330,11 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "https://s3.",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ".",
+              "https://s3.us-east-1.",
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/",
-              Object {
-                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-              },
-              "/c9777b5cddb2b81f47ba1db7d8d9b7ec7bab7f3521696d65138bb452525a6a04.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/d5495ccfde7e91ca12ce7c018d2623625fb6f4e4d25d9a125a52a32289c5d773.json",
             ],
           ],
         },

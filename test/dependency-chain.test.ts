@@ -1,14 +1,6 @@
 import { Aspects, Stack } from "aws-cdk-lib";
 import { Capture, Template } from "aws-cdk-lib/assertions";
-import {
-  Account,
-  DependencyChain,
-  Organization,
-  OrganizationalUnit,
-  Policy,
-  PolicyAttachment,
-  PolicyType,
-} from "../src";
+import { Account, DependencyChain, Organization, OrganizationalUnit, Policy, PolicyType } from "../src";
 
 describe("DependencyChain", () => {
   it("Should chain accounts", () => {
@@ -37,6 +29,32 @@ describe("DependencyChain", () => {
 
     expect(capture.asArray()).toEqual(expect.arrayContaining([expect.stringMatching(account1.node.id)]));
   });
+  it("Should chain accounts with delegated administrator", () => {
+    // Given
+    const stack = new Stack(undefined, undefined, { env: { account: "123456789012", region: "us-east-1" } });
+    const organization = new Organization(stack, "Organization", {});
+    organization.enableAwsServiceAccess("account.amazonaws.com");
+    organization.enableAwsServiceAccess("sso.amazonaws.com");
+
+    const adminAccount = new Account(stack, "AdminAccount", {
+      email: "account1@pepperize.com",
+      accountName: "test1",
+    });
+    adminAccount.delegateAdministrator("account.amazonaws.com");
+
+    // When
+    Aspects.of(stack).add(new DependencyChain());
+
+    // Then
+    const capture = new Capture();
+    const template = Template.fromStack(stack);
+    expect(template.toJSON()).toMatchSnapshot();
+    template.hasResource("Custom::Organizations_DelegatedAdministrator", {
+      DependsOn: capture,
+    });
+
+    expect(capture.asArray()).toEqual(expect.arrayContaining([expect.stringMatching(adminAccount.node.id)]));
+  });
   it("Should chain organizational units", () => {
     // Given
     const stack = new Stack();
@@ -59,16 +77,13 @@ describe("DependencyChain", () => {
   });
   it("Should chain policy attachments", () => {
     // Given
-    const stack = new Stack();
+    const stack = new Stack(undefined, undefined, { env: { account: "123456789012", region: "us-east-1" } });
     const organization = new Organization(stack, "Organization", {});
+
     const policy1 = new Policy(stack, "Policy1", {
       content: '{\n"Version":"2012-10-17","Statement":{\n"Effect":"Allow","Action":"s3:*"\n}\n}',
       policyName: "AllowAllS3Actions",
       policyType: PolicyType.SERVICE_CONTROL_POLICY,
-    });
-    const policyAttachment1 = new PolicyAttachment(stack, "PolicyAttachment1", {
-      target: organization.root,
-      policy: policy1,
     });
     const policy2 = new Policy(stack, "Policy2", {
       content:
@@ -76,10 +91,14 @@ describe("DependencyChain", () => {
       policyName: "DenyAllNotUsEast1",
       policyType: PolicyType.SERVICE_CONTROL_POLICY,
     });
-    const policyAttachment2 = new PolicyAttachment(stack, "PolicyAttachment2", {
-      target: organization.root,
-      policy: policy2,
+
+    const account = new Account(stack, "AdminAccount", {
+      parent: organization.root,
+      email: "account1@pepperize.com",
+      accountName: "test1",
     });
+    account.attachPolicy(policy1);
+    account.attachPolicy(policy2);
 
     // When
     Aspects.of(stack).add(new DependencyChain());
@@ -87,12 +106,13 @@ describe("DependencyChain", () => {
     // Then
     const capture = new Capture();
     const template = Template.fromStack(stack);
+    expect(template.toJSON()).toMatchSnapshot();
     template.resourceCountIs("Custom::Organizations_PolicyAttachment", 2);
     template.hasResource("Custom::Organizations_PolicyAttachment", {
       DependsOn: capture,
     });
 
-    expect(capture.asArray()).toEqual(expect.arrayContaining([expect.stringMatching(policyAttachment1.node.id)]));
-    expect(capture.asArray()).toEqual(expect.not.arrayContaining([expect.stringMatching(policyAttachment2.node.id)]));
+    expect(capture.asArray()).toEqual(expect.arrayContaining([expect.stringMatching(policy1.node.id)]));
+    expect(capture.asArray()).toEqual(expect.arrayContaining([expect.not.stringMatching(policy2.node.id)]));
   });
 });

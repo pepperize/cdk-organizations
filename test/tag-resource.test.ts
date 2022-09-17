@@ -5,7 +5,7 @@ import { TagResource } from "../src";
 describe("TagResource", () => {
   it("Should match snapshot", () => {
     // Given
-    const stack = new Stack();
+    const stack = new Stack(undefined, undefined, { env: { account: "123456789012", region: "us-east-1" } });
     const tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_TagResource");
 
     // When

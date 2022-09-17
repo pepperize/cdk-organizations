@@ -1,4 +1,4 @@
-import { Annotations, CustomResource, Names, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
+import { Annotations, CustomResource, Names, RemovalPolicy, Stack, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
 import { OrganizationalUnitProvider } from "./organizational-unit-provider/organizational-unit-provider";
 import { IChild, IParent } from "./parent";
@@ -105,10 +105,14 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
    * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
    */
   public attachPolicy(policy: IPolicy) {
-    const policyAttachment = new PolicyAttachment(this, `PolicyAttachment-${Names.nodeUniqueId(policy.node)}`, {
-      target: this,
-      policy: policy,
-    });
+    const policyAttachment = new PolicyAttachment(
+      Stack.of(this),
+      `PolicyAttachment-${Names.nodeUniqueId(this.node)}-${Names.nodeUniqueId(policy.node)}`,
+      {
+        target: this,
+        policy: policy,
+      }
+    );
     policyAttachment.node.addDependency(this.resource, policy);
   }
 }

@@ -37,19 +37,11 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "https://s3.",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ".",
+              "https://s3.us-east-1.",
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/",
-              Object {
-                "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-              },
-              "/63c2891b8ac0c5867f7576640bfacc1eea6351cf93153a1d9738e3d9804b8d73.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/678c87d558345426c04dcd9e390c66750004536f1870535737e3f33e872eef8b.json",
             ],
           ],
         },

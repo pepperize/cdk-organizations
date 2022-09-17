@@ -1,4 +1,4 @@
-import { Annotations, CustomResource, Names, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
+import { Annotations, CustomResource, Names, RemovalPolicy, Stack, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
 import { pascalCase } from "pascal-case";
 import { AccountProvider } from "./account-provider";
@@ -152,10 +152,14 @@ export class Account extends Construct implements IAccount, ITaggableResource {
    * @param {string} servicePrincipal The supported AWS service that you specify
    */
   public delegateAdministrator(servicePrincipal: string) {
-    const delegatedAdministrator = new DelegatedAdministrator(this, `Delegate${pascalCase(servicePrincipal)}`, {
-      account: this,
-      servicePrincipal: servicePrincipal,
-    });
+    const delegatedAdministrator = new DelegatedAdministrator(
+      Stack.of(this),
+      `Delegate${pascalCase(servicePrincipal)}-${Names.nodeUniqueId(this.node)}`,
+      {
+        account: this,
+        servicePrincipal: servicePrincipal,
+      }
+    );
     delegatedAdministrator.node.addDependency(this.resource);
   }
 
@@ -165,10 +169,14 @@ export class Account extends Construct implements IAccount, ITaggableResource {
    * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html
    */
   public attachPolicy(policy: IPolicy) {
-    const policyAttachment = new PolicyAttachment(this, `PolicyAttachment-${Names.nodeUniqueId(policy.node)}`, {
-      target: this,
-      policy: policy,
-    });
+    const policyAttachment = new PolicyAttachment(
+      Stack.of(this),
+      `PolicyAttachment-${Names.nodeUniqueId(this.node)}-${Names.nodeUniqueId(policy.node)}`,
+      {
+        target: this,
+        policy: policy,
+      }
+    );
     policyAttachment.node.addDependency(this.resource, policy);
   }
 }
