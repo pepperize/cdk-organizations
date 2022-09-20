@@ -1,4 +1,4 @@
-import { Annotations, CustomResource, Names, RemovalPolicy, Stack, TagManager, TagType } from "aws-cdk-lib";
+import { Annotations, CustomResource, Names, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
 import { OrganizationalUnitProvider } from "./organizational-unit-provider/organizational-unit-provider";
 import { IChild, IParent } from "./parent";
@@ -57,10 +57,13 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
 
   protected readonly resource: CustomResource;
 
+  private readonly scope: Construct;
+
   readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_OrganizationalUnitProvider");
 
   public constructor(scope: Construct, id: string, props: OrganizationalUnitProps) {
     super(scope, id);
+    this.scope = scope;
 
     const { organizationalUnitName, parent, importOnDuplicate, removalPolicy } = props;
 
@@ -106,7 +109,7 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
    */
   public attachPolicy(policy: IPolicy) {
     const policyAttachment = new PolicyAttachment(
-      Stack.of(this),
+      this.scope,
       `PolicyAttachment-${Names.nodeUniqueId(this.node)}-${Names.nodeUniqueId(policy.node)}`,
       {
         target: this,

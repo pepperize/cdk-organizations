@@ -1,4 +1,4 @@
-import { Annotations, CustomResource, Names, RemovalPolicy, Stack, TagManager, TagType } from "aws-cdk-lib";
+import { Annotations, CustomResource, Names, RemovalPolicy, TagManager, TagType } from "aws-cdk-lib";
 import { Construct, IConstruct } from "constructs";
 import { pascalCase } from "pascal-case";
 import { AccountProvider } from "./account-provider";
@@ -101,10 +101,13 @@ export class Account extends Construct implements IAccount, ITaggableResource {
 
   protected readonly resource: CustomResource;
 
+  private readonly scope: Construct;
+
   readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Account");
 
   public constructor(scope: Construct, id: string, props: AccountProps) {
     super(scope, id);
+    this.scope = scope;
 
     const { email, accountName, roleName, iamUserAccessToBilling, parent, importOnDuplicate, removalPolicy } = props;
 
@@ -153,7 +156,7 @@ export class Account extends Construct implements IAccount, ITaggableResource {
    */
   public delegateAdministrator(servicePrincipal: string) {
     const delegatedAdministrator = new DelegatedAdministrator(
-      Stack.of(this),
+      this.scope,
       `Delegate${pascalCase(servicePrincipal)}-${Names.nodeUniqueId(this.node)}`,
       {
         account: this,
@@ -170,7 +173,7 @@ export class Account extends Construct implements IAccount, ITaggableResource {
    */
   public attachPolicy(policy: IPolicy) {
     const policyAttachment = new PolicyAttachment(
-      Stack.of(this),
+      this.scope,
       `PolicyAttachment-${Names.nodeUniqueId(this.node)}-${Names.nodeUniqueId(policy.node)}`,
       {
         target: this,

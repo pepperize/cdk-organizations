@@ -1,4 +1,4 @@
-import { CustomResource, Names, Stack, TagManager, TagType } from "aws-cdk-lib";
+import { CustomResource, Names, TagManager, TagType } from "aws-cdk-lib";
 import * as aws_iam from "aws-cdk-lib/aws-iam";
 import * as custom_resources from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
@@ -218,10 +218,13 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
 
   protected readonly resource: custom_resources.AwsCustomResource;
 
+  private readonly scope: Construct;
+
   readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Root");
 
   public constructor(scope: Construct, id: string) {
     super(scope, id);
+    this.scope = scope;
 
     this.resource = new custom_resources.AwsCustomResource(this, "RootCustomResource", {
       resourceType: "Custom::Organizations_Root",
@@ -265,7 +268,7 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
    */
   public attachPolicy(policy: IPolicy) {
     const policyAttachment = new PolicyAttachment(
-      Stack.of(this),
+      this.scope,
       `PolicyAttachment-${Names.nodeUniqueId(this.node)}-${Names.nodeUniqueId(policy.node)}`,
       {
         target: this,
@@ -281,7 +284,7 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
    * @see https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_enable-disable.html
    */
   public enablePolicyType(policyType: PolicyType) {
-    const enablePolicyType = new EnablePolicyType(Stack.of(this), `Enable${pascalCase(policyType)}`, {
+    const enablePolicyType = new EnablePolicyType(this.scope, `Enable${pascalCase(policyType)}`, {
       root: this,
       policyType: policyType,
     });
