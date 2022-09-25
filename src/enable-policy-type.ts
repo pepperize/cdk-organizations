@@ -30,6 +30,7 @@ export class EnablePolicyType extends Construct {
           RootId: root.rootId,
           PolicyType: policyType,
         },
+        ignoreErrorCodesMatching: "PolicyTypeAlreadyEnabledException", // https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html#API_EnablePolicyType_Errors
       },
       onDelete: {
         service: "Organizations",
