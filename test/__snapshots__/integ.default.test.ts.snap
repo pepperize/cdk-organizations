@@ -78,6 +78,8 @@ Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "DelegateConfigAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicy6144D93D",
+        "DelegateStacksetsCloudformationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicy36E8971F",
+        "DelegateStacksetsCloudformationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceA30F5AF0",
         "ImportedAccountCreateAccount0DDC7950",
       ],
       "Properties": Object {
@@ -131,6 +133,8 @@ Object {
     },
     "DelegateConfigAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicy6144D93D": Object {
       "DependsOn": Array [
+        "DelegateStacksetsCloudformationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicy36E8971F",
+        "DelegateStacksetsCloudformationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceA30F5AF0",
         "ImportedAccountCreateAccount0DDC7950",
       ],
       "Properties": Object {
@@ -158,6 +162,7 @@ Object {
       "DependsOn": Array [
         "DelegateServiceAbbreviationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicyF6BF55E8",
         "ImportedAccountCreateAccount0DDC7950",
+        "ImportedAccountTagsTagResourceEAA2977A",
       ],
       "Properties": Object {
         "Create": Object {
@@ -211,6 +216,7 @@ Object {
     "DelegateServiceAbbreviationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicyF6BF55E8": Object {
       "DependsOn": Array [
         "ImportedAccountCreateAccount0DDC7950",
+        "ImportedAccountTagsTagResourceEAA2977A",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -235,6 +241,8 @@ Object {
     "DelegateStacksetsCloudformationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceA30F5AF0": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
+        "DelegateServiceAbbreviationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicyF6BF55E8",
+        "DelegateServiceAbbreviationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCF552F1E",
         "DelegateStacksetsCloudformationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicy36E8971F",
         "ImportedAccountCreateAccount0DDC7950",
       ],
@@ -289,6 +297,8 @@ Object {
     },
     "DelegateStacksetsCloudformationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicy36E8971F": Object {
       "DependsOn": Array [
+        "DelegateServiceAbbreviationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicyF6BF55E8",
+        "DelegateServiceAbbreviationAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCF552F1E",
         "ImportedAccountCreateAccount0DDC7950",
       ],
       "Properties": Object {
@@ -313,6 +323,10 @@ Object {
     },
     "ImportedAccountCreateAccount0DDC7950": Object {
       "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "OrganizationEnableTagPolicyEnablePolicyTypeCustomResourceCustomResourcePolicyC8763B19",
+        "OrganizationEnableTagPolicyEnablePolicyTypeCustomResourceDCB6F18A",
+      ],
       "Properties": Object {
         "AccountName": "test",
         "Email": "info+integ-test@pepperize.com",
@@ -340,6 +354,8 @@ Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "ImportedAccountCreateAccount0DDC7950",
+        "OrganizationEnableTagPolicyEnablePolicyTypeCustomResourceCustomResourcePolicyC8763B19",
+        "OrganizationEnableTagPolicyEnablePolicyTypeCustomResourceDCB6F18A",
       ],
       "Properties": Object {
         "ResourceId": Object {
@@ -382,6 +398,8 @@ Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE",
+        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27",
+        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResource4E491170",
         "Organization06E16095",
       ],
       "Properties": Object {
@@ -400,6 +418,8 @@ Object {
     },
     "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE": Object {
       "DependsOn": Array [
+        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27",
+        "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResource4E491170",
         "Organization06E16095",
       ],
       "Properties": Object {
@@ -479,6 +499,8 @@ Object {
     "OrganizationEnableServiceControlPolicyEnablePolicyTypeCustomResource79180BC7": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
+        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE",
+        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResource3A59621B",
         "OrganizationEnableServiceControlPolicyEnablePolicyTypeCustomResourceCustomResourcePolicy0EC006E9",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
@@ -534,6 +556,8 @@ Object {
     },
     "OrganizationEnableServiceControlPolicyEnablePolicyTypeCustomResourceCustomResourcePolicy0EC006E9": Object {
       "DependsOn": Array [
+        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy2A524CEE",
+        "OrganizationEnableConfigMultiaccountsetupAmazonawsComEnableAwsServiceAccessCustomResource3A59621B",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
       ],
@@ -565,6 +589,8 @@ Object {
     "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResource4E491170": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
+        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy47A0A099",
+        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResource8698F17F",
         "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27",
         "Organization06E16095",
       ],
@@ -584,6 +610,8 @@ Object {
     },
     "OrganizationEnableSsmAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy8BE3ED27": Object {
       "DependsOn": Array [
+        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResourceCustomResourcePolicy47A0A099",
+        "OrganizationEnableServiceAbbreviationAmazonawsComEnableAwsServiceAccessCustomResource8698F17F",
         "Organization06E16095",
       ],
       "Properties": Object {
@@ -613,6 +641,8 @@ Object {
     },
     "OrganizationEnableTagPolicyEnablePolicyTypeCustomResourceCustomResourcePolicyC8763B19": Object {
       "DependsOn": Array [
+        "OrganizationPolicyAttachmentOrganizationRootAC58C4A1S3PolicyCustomResourceCustomResourcePolicy38327887",
+        "OrganizationPolicyAttachmentOrganizationRootAC58C4A1S3PolicyCustomResourceA2F2798F",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
       ],
@@ -645,6 +675,8 @@ Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "OrganizationEnableTagPolicyEnablePolicyTypeCustomResourceCustomResourcePolicyC8763B19",
+        "OrganizationPolicyAttachmentOrganizationRootAC58C4A1S3PolicyCustomResourceCustomResourcePolicy38327887",
+        "OrganizationPolicyAttachmentOrganizationRootAC58C4A1S3PolicyCustomResourceA2F2798F",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
       ],
@@ -700,6 +732,8 @@ Object {
     "OrganizationPolicyAttachmentOrganizationRootAC58C4A1S3PolicyCustomResourceA2F2798F": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
+        "OrganizationEnableServiceControlPolicyEnablePolicyTypeCustomResourceCustomResourcePolicy0EC006E9",
+        "OrganizationEnableServiceControlPolicyEnablePolicyTypeCustomResource79180BC7",
         "OrganizationPolicyAttachmentOrganizationRootAC58C4A1S3PolicyCustomResourceCustomResourcePolicy38327887",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
@@ -793,6 +827,8 @@ Object {
     },
     "OrganizationPolicyAttachmentOrganizationRootAC58C4A1S3PolicyCustomResourceCustomResourcePolicy38327887": Object {
       "DependsOn": Array [
+        "OrganizationEnableServiceControlPolicyEnablePolicyTypeCustomResourceCustomResourcePolicy0EC006E9",
+        "OrganizationEnableServiceControlPolicyEnablePolicyTypeCustomResource79180BC7",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
         "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
@@ -904,6 +940,8 @@ Object {
       "DependsOn": Array [
         "ImportedAccountCreateAccount0DDC7950",
         "PolicyAttachmentImportedAccountS3PolicyCustomResourceCustomResourcePolicy259549DD",
+        "PolicyAttachmentImportedAccountTagPolicyCustomResourceCustomResourcePolicy472CADFE",
+        "PolicyAttachmentImportedAccountTagPolicyCustomResource5A336197",
         "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
         "S3PolicyPolicyCustomResource0D921FA4",
         "S3PolicyTagsTagResource12DC413E",
@@ -995,6 +1033,8 @@ Object {
     "PolicyAttachmentImportedAccountS3PolicyCustomResourceCustomResourcePolicy259549DD": Object {
       "DependsOn": Array [
         "ImportedAccountCreateAccount0DDC7950",
+        "PolicyAttachmentImportedAccountTagPolicyCustomResourceCustomResourcePolicy472CADFE",
+        "PolicyAttachmentImportedAccountTagPolicyCustomResource5A336197",
         "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
         "S3PolicyPolicyCustomResource0D921FA4",
         "S3PolicyTagsTagResource12DC413E",
@@ -1029,6 +1069,8 @@ Object {
       "DependsOn": Array [
         "ImportedAccountCreateAccount0DDC7950",
         "PolicyAttachmentImportedAccountTagPolicyCustomResourceCustomResourcePolicy472CADFE",
+        "PolicyAttachmentProjectsOUTagPolicyCustomResourceCustomResourcePolicyE8B00F61",
+        "PolicyAttachmentProjectsOUTagPolicyCustomResource58DC6C44",
         "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
         "TagPolicyPolicyCustomResource70E64110",
         "TagPolicyTagsTagResource71A94A6C",
@@ -1120,6 +1162,8 @@ Object {
     "PolicyAttachmentImportedAccountTagPolicyCustomResourceCustomResourcePolicy472CADFE": Object {
       "DependsOn": Array [
         "ImportedAccountCreateAccount0DDC7950",
+        "PolicyAttachmentProjectsOUTagPolicyCustomResourceCustomResourcePolicyE8B00F61",
+        "PolicyAttachmentProjectsOUTagPolicyCustomResource58DC6C44",
         "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
         "TagPolicyPolicyCustomResource70E64110",
         "TagPolicyTagsTagResource71A94A6C",
@@ -1153,6 +1197,8 @@ Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "PolicyAttachmentProjectsOUTagPolicyCustomResourceCustomResourcePolicyE8B00F61",
+        "Project2DevAccountCreateAccount52C0EFA9",
+        "Project2DevAccountTagsTagResource7BBB3F37",
         "ProjectsOUOrganizationProvider5CA5D400",
         "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
         "TagPolicyPolicyCustomResource70E64110",
@@ -1244,6 +1290,8 @@ Object {
     },
     "PolicyAttachmentProjectsOUTagPolicyCustomResourceCustomResourcePolicyE8B00F61": Object {
       "DependsOn": Array [
+        "Project2DevAccountCreateAccount52C0EFA9",
+        "Project2DevAccountTagsTagResource7BBB3F37",
         "ProjectsOUOrganizationProvider5CA5D400",
         "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
         "TagPolicyPolicyCustomResource70E64110",
@@ -1276,6 +1324,10 @@ Object {
     },
     "Project1AccountCreateAccount8A604AF1": Object {
       "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagsTagResource5FC759B6",
+      ],
       "Properties": Object {
         "AccountName": "SharedAccount",
         "Email": "info+project1@pepperize.com",
@@ -1303,6 +1355,8 @@ Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "Project1AccountCreateAccount8A604AF1",
+        "ProjectsOUOrganizationProvider5CA5D400",
+        "ProjectsOUTagsTagResource5FC759B6",
       ],
       "Properties": Object {
         "ResourceId": Object {
@@ -1329,6 +1383,10 @@ Object {
     },
     "Project2DevAccountCreateAccount52C0EFA9": Object {
       "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagsTagResource42039814",
+      ],
       "Properties": Object {
         "AccountName": "Project 2 Dev",
         "Email": "info+project2-dev@pepperize.com",
@@ -1356,6 +1414,8 @@ Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "Project2DevAccountCreateAccount52C0EFA9",
+        "Project2OUOrganizationProviderA322B887",
+        "Project2OUTagsTagResource42039814",
       ],
       "Properties": Object {
         "ResourceId": Object {
@@ -1383,6 +1443,8 @@ Object {
     "Project2OUOrganizationProviderA322B887": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
+        "Project1AccountCreateAccount8A604AF1",
+        "Project1AccountTagsTagResource1020FD50",
         "ProjectsOUOrganizationProvider5CA5D400",
         "ProjectsOUTagsTagResource5FC759B6",
       ],
@@ -1409,6 +1471,8 @@ Object {
     "Project2OUTagsTagResource42039814": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
+        "Project1AccountCreateAccount8A604AF1",
+        "Project1AccountTagsTagResource1020FD50",
         "Project2OUOrganizationProviderA322B887",
         "ProjectsOUOrganizationProvider5CA5D400",
         "ProjectsOUTagsTagResource5FC759B6",
@@ -1439,6 +1503,8 @@ Object {
     "ProjectsOUOrganizationProvider5CA5D400": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
+        "DelegateConfigAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicy6144D93D",
+        "DelegateConfigAmazonawsComImportedAccountDelegatedAdministratorCustomResource0A389794",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
         "OrganizationRootTagsTagResourceCBEA7B2F",
@@ -1466,6 +1532,8 @@ Object {
     "ProjectsOUTagsTagResource5FC759B6": Object {
       "DeletionPolicy": "Delete",
       "DependsOn": Array [
+        "DelegateConfigAmazonawsComImportedAccountDelegatedAdministratorCustomResourceCustomResourcePolicy6144D93D",
+        "DelegateConfigAmazonawsComImportedAccountDelegatedAdministratorCustomResource0A389794",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
         "OrganizationRootTagsTagResourceCBEA7B2F",

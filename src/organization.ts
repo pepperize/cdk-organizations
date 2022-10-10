@@ -3,6 +3,7 @@ import * as aws_iam from "aws-cdk-lib/aws-iam";
 import * as custom_resources from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
 import { pascalCase } from "pascal-case";
+import { DependencyChain } from "./dependency-chain";
 import { EnableAwsServiceAccess } from "./enable-aws-service-access";
 import { EnablePolicyType } from "./enable-policy-type";
 import { OrganizationProvider } from "./organization-provider";
@@ -10,7 +11,6 @@ import { IParent } from "./parent";
 import { IPolicy, PolicyType } from "./policy";
 import { IPolicyAttachmentTarget, PolicyAttachment } from "./policy-attachment";
 import { ITaggableResource, TagResource } from "./tag-resource";
-import { DependencyChain } from "./dependency-chain";
 
 /**
  * Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
