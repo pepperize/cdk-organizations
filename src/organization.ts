@@ -1,4 +1,4 @@
-import { CustomResource, Names, TagManager, TagType } from "aws-cdk-lib";
+import { Aspects, CustomResource, Names, Stack, TagManager, TagType } from "aws-cdk-lib";
 import * as aws_iam from "aws-cdk-lib/aws-iam";
 import * as custom_resources from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
@@ -10,6 +10,7 @@ import { IParent } from "./parent";
 import { IPolicy, PolicyType } from "./policy";
 import { IPolicyAttachmentTarget, PolicyAttachment } from "./policy-attachment";
 import { ITaggableResource, TagResource } from "./tag-resource";
+import { DependencyChain } from "./dependency-chain";
 
 /**
  * Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
@@ -252,6 +253,9 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
     });
 
     this.rootId = this.resource.getResponseField("Roots.0.Id"); // Returns first root id. It seems AWS Organizations doesn't contain multiple roots.
+
+    const stack = Stack.of(this);
+    Aspects.of(stack).add(new DependencyChain()); // sequentially chain organization resources which can't be deployed in parallel
 
     const tagResource = new TagResource(this, "Tags", { resourceId: this.rootId, tags: this.tags.renderedTags });
     tagResource.node.addDependency(this.resource);
