@@ -61,12 +61,6 @@ const project = new AwsCdkConstructLibrary({
   gitpod: true,
 });
 
-project.addDevDeps("npm-check-updates@^15.3.3");
-project.addDevDeps("ts-node@^10");
-project.addDevDeps("@types/prettier@2.6.0");
-
-project.tasks?.tryFind("package:python")?.prependExec("pip3 install packaging");
-
 project.gitpod?.addCustomTask({
   name: "setup",
   init: "yarn install && npx projen build",

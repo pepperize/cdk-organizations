@@ -308,9 +308,6 @@
       "description": "Create python language bindings",
       "steps": [
         {
-          "exec": "pip3 install packaging"
-        },
-        {
           "exec": "jsii_version=$(node -p \"JSON.parse(fs.readFileSync('.jsii')).jsiiVersion.split(' ')[0]\")"
         },
         {

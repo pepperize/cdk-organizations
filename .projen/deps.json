@@ -18,11 +18,6 @@
       "type": "build"
     },
     {
-      "name": "@types/prettier",
-      "version": "2.6.0",
-      "type": "build"
-    },
-    {
       "name": "@types/sinon",
       "type": "build"
     },
@@ -114,7 +109,7 @@
     },
     {
       "name": "npm-check-updates",
-      "version": "^15.3.3",
+      "version": "^12",
       "type": "build"
     },
     {
