@@ -5248,9 +5248,9 @@ projen@^0.50.33:
     yargs "^16.2.0"
 
 projen@^0.63.23:
-  version "0.63.23"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.63.23.tgz#2df443fc8a83f860e0c5f5484999172436c693c8"
-  integrity sha512-g5eOYXoe1rI84yCRxwu2QKku4qtk0UmVTIkrzy528BeNnumw00iGHLxBzuSZ0NIQX8+19qQ8tbYkGC09mpLEgA==
+  version "0.63.24"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.63.24.tgz#ebd45f84cb1fa60b03e0e98b5372381f1ec5190b"
+  integrity sha512-nL8oYZnHF7D8EvSxtr6mp7eKwRYXxAIo1Z31OiwlqLNFiWvhYHgo3/K7U2WWkkcDQ/GtVpcir4w+5Y5RBOAxqQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
