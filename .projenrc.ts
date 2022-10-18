@@ -40,6 +40,10 @@ const project = new AwsCdkConstructLibrary({
     "sinon",
   ],
 
+  versionrcOptions: {
+    types: [{ type: "chore", section: "Chore", hidden: false }],
+  },
+
   defaultReleaseBranch: "main",
   releaseToNpm: true,
   npmAccess: javascript.NpmAccess.PUBLIC,
