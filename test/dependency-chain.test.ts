@@ -48,7 +48,7 @@ describe("DependencyChain", () => {
     // Then
     const capture = new Capture();
     const template = Template.fromStack(stack);
-    expect(template.toJSON()).toMatchSnapshot();
+    expect(template).toMatchSnapshot();
     template.hasResource("Custom::Organizations_DelegatedAdministrator", {
       DependsOn: capture,
     });
@@ -106,7 +106,7 @@ describe("DependencyChain", () => {
     // Then
     const capture = new Capture();
     const template = Template.fromStack(stack);
-    expect(template.toJSON()).toMatchSnapshot();
+    expect(template).toMatchSnapshot();
     template.resourceCountIs("Custom::Organizations_PolicyAttachment", 2);
     template.hasResource("Custom::Organizations_PolicyAttachment", {
       DependsOn: capture,
