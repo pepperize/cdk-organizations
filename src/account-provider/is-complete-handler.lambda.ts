@@ -157,7 +157,7 @@ const findAccountByEmail = async (client: Organizations, email: string): Promise
   while (response.NextToken) {
     response = await client
       // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listAccounts-property
-      .listAccounts({NextToken: response.NextToken})
+      .listAccounts({ NextToken: response.NextToken })
       .promise();
     for (const account of response.Accounts ?? []) {
       if (account.Email == email) {
