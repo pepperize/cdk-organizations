@@ -1428,6 +1428,8 @@ Check whether the given construct is a Resource.
 | <code><a href="#@pepperize/cdk-organizations.Policy.property.env">env</a></code> | <code>aws-cdk-lib.ResourceEnvironment</code> | The environment this resource belongs to. |
 | <code><a href="#@pepperize/cdk-organizations.Policy.property.stack">stack</a></code> | <code>aws-cdk-lib.Stack</code> | The stack in which this resource is defined. |
 | <code><a href="#@pepperize/cdk-organizations.Policy.property.policyId">policyId</a></code> | <code>string</code> | The unique identifier (ID) of the policy. |
+| <code><a href="#@pepperize/cdk-organizations.Policy.property.policyName">policyName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@pepperize/cdk-organizations.Policy.property.policyType">policyType</a></code> | <code><a href="#@pepperize/cdk-organizations.PolicyType">PolicyType</a></code> | *No description.* |
 
 ---
 
@@ -1485,6 +1487,26 @@ public readonly policyId: string;
 The unique identifier (ID) of the policy.
 
 The regex pattern for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
+
+---
+
+##### `policyName`<sup>Required</sup> <a name="policyName" id="@pepperize/cdk-organizations.Policy.property.policyName"></a>
+
+```typescript
+public readonly policyName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `policyType`<sup>Required</sup> <a name="policyType" id="@pepperize/cdk-organizations.Policy.property.policyType"></a>
+
+```typescript
+public readonly policyType: PolicyType;
+```
+
+- *Type:* <a href="#@pepperize/cdk-organizations.PolicyType">PolicyType</a>
 
 ---
 
