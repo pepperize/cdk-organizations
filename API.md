@@ -1285,7 +1285,7 @@ public readonly parentId: string;
 
 ### Policy <a name="Policy" id="@pepperize/cdk-organizations.Policy"></a>
 
-- *Implements:* <a href="#@pepperize/cdk-organizations.IPolicy">IPolicy</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>
+- *Implements:* <a href="#@pepperize/cdk-organizations.IPolicy">IPolicy</a>
 
 #### Initializers <a name="Initializers" id="@pepperize/cdk-organizations.Policy.Initializer"></a>
 
@@ -1326,7 +1326,7 @@ new Policy(scope: Construct, id: string, props: PolicyProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.Policy.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@pepperize/cdk-organizations.Policy.identifier">identifier</a></code> | *No description.* |
+| <code><a href="#@pepperize/cdk-organizations.Policy.applyRemovalPolicy">applyRemovalPolicy</a></code> | Apply the given removal policy to this resource. |
 
 ---
 
@@ -1338,17 +1338,35 @@ public toString(): string
 
 Returns a string representation of this construct.
 
-##### `identifier` <a name="identifier" id="@pepperize/cdk-organizations.Policy.identifier"></a>
+##### `applyRemovalPolicy` <a name="applyRemovalPolicy" id="@pepperize/cdk-organizations.Policy.applyRemovalPolicy"></a>
 
 ```typescript
-public identifier(): string
+public applyRemovalPolicy(policy: RemovalPolicy): void
 ```
+
+Apply the given removal policy to this resource.
+
+The Removal Policy controls what happens to this resource when it stops
+being managed by CloudFormation, either because you've removed it from the
+CDK application or because you've made a change that requires the resource
+to be replaced.
+
+The resource can be deleted (`RemovalPolicy.DESTROY`), or left in your AWS
+account for data recovery and cleanup later (`RemovalPolicy.RETAIN`).
+
+###### `policy`<sup>Required</sup> <a name="policy" id="@pepperize/cdk-organizations.Policy.applyRemovalPolicy.parameter.policy"></a>
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.Policy.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@pepperize/cdk-organizations.Policy.isOwnedResource">isOwnedResource</a></code> | Returns true if the construct was created by CDK, and false otherwise. |
+| <code><a href="#@pepperize/cdk-organizations.Policy.isResource">isResource</a></code> | Check whether the given construct is a Resource. |
 
 ---
 
@@ -1370,13 +1388,46 @@ Any object.
 
 ---
 
+##### `isOwnedResource` <a name="isOwnedResource" id="@pepperize/cdk-organizations.Policy.isOwnedResource"></a>
+
+```typescript
+import { Policy } from '@pepperize/cdk-organizations'
+
+Policy.isOwnedResource(construct: IConstruct)
+```
+
+Returns true if the construct was created by CDK, and false otherwise.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="@pepperize/cdk-organizations.Policy.isOwnedResource.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
+##### `isResource` <a name="isResource" id="@pepperize/cdk-organizations.Policy.isResource"></a>
+
+```typescript
+import { Policy } from '@pepperize/cdk-organizations'
+
+Policy.isResource(construct: IConstruct)
+```
+
+Check whether the given construct is a Resource.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="@pepperize/cdk-organizations.Policy.isResource.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.Policy.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@pepperize/cdk-organizations.Policy.property.env">env</a></code> | <code>aws-cdk-lib.ResourceEnvironment</code> | The environment this resource belongs to. |
+| <code><a href="#@pepperize/cdk-organizations.Policy.property.stack">stack</a></code> | <code>aws-cdk-lib.Stack</code> | The stack in which this resource is defined. |
 | <code><a href="#@pepperize/cdk-organizations.Policy.property.policyId">policyId</a></code> | <code>string</code> | The unique identifier (ID) of the policy. |
-| <code><a href="#@pepperize/cdk-organizations.Policy.property.tags">tags</a></code> | <code>aws-cdk-lib.TagManager</code> | TagManager to set, remove and format tags. |
 
 ---
 
@@ -1392,6 +1443,37 @@ The tree node.
 
 ---
 
+##### `env`<sup>Required</sup> <a name="env" id="@pepperize/cdk-organizations.Policy.property.env"></a>
+
+```typescript
+public readonly env: ResourceEnvironment;
+```
+
+- *Type:* aws-cdk-lib.ResourceEnvironment
+
+The environment this resource belongs to.
+
+For resources that are created and managed by the CDK
+(generally, those created by creating new class instances like Role, Bucket, etc.),
+this is always the same as the environment of the stack they belong to;
+however, for imported resources
+(those obtained from static methods like fromRoleArn, fromBucketName, etc.),
+that might be different than the stack they were imported into.
+
+---
+
+##### `stack`<sup>Required</sup> <a name="stack" id="@pepperize/cdk-organizations.Policy.property.stack"></a>
+
+```typescript
+public readonly stack: Stack;
+```
+
+- *Type:* aws-cdk-lib.Stack
+
+The stack in which this resource is defined.
+
+---
+
 ##### `policyId`<sup>Required</sup> <a name="policyId" id="@pepperize/cdk-organizations.Policy.property.policyId"></a>
 
 ```typescript
@@ -1403,18 +1485,6 @@ public readonly policyId: string;
 The unique identifier (ID) of the policy.
 
 The regex pattern for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
-
----
-
-##### `tags`<sup>Required</sup> <a name="tags" id="@pepperize/cdk-organizations.Policy.property.tags"></a>
-
-```typescript
-public readonly tags: TagManager;
-```
-
-- *Type:* aws-cdk-lib.TagManager
-
-TagManager to set, remove and format tags.
 
 ---
 
@@ -2970,7 +3040,7 @@ The unique identifier (ID) of the parent root, organizational unit (OU), account
 
 - *Extends:* aws-cdk-lib.ITaggable
 
-- *Implemented By:* <a href="#@pepperize/cdk-organizations.Account">Account</a>, <a href="#@pepperize/cdk-organizations.OrganizationalUnit">OrganizationalUnit</a>, <a href="#@pepperize/cdk-organizations.Policy">Policy</a>, <a href="#@pepperize/cdk-organizations.Root">Root</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>
+- *Implemented By:* <a href="#@pepperize/cdk-organizations.Account">Account</a>, <a href="#@pepperize/cdk-organizations.OrganizationalUnit">OrganizationalUnit</a>, <a href="#@pepperize/cdk-organizations.Root">Root</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>
 
 
 #### Properties <a name="Properties" id="Properties"></a>

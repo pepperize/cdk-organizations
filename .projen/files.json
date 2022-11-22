@@ -9,7 +9,6 @@
     ".github/workflows/build.yml",
     ".github/workflows/pull-request-lint.yml",
     ".github/workflows/release.yml",
-    ".github/workflows/stale.yml",
     ".gitignore",
     ".gitpod.yml",
     ".mergify.yml",

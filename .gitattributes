@@ -10,7 +10,6 @@
 /.github/workflows/build.yml linguist-generated
 /.github/workflows/pull-request-lint.yml linguist-generated
 /.github/workflows/release.yml linguist-generated
-/.github/workflows/stale.yml linguist-generated
 /.gitignore linguist-generated
 /.gitpod.yml linguist-generated
 /.mergify.yml linguist-generated
@@ -21,6 +20,7 @@
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
 /.projen/tasks.json linguist-generated
+/API.md linguist-generated
 /LICENSE linguist-generated
 /package.json linguist-generated
 /src/account-provider/is-complete-handler-function.ts linguist-generated

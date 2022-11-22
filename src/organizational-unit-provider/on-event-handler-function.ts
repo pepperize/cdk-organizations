@@ -17,9 +17,10 @@ export class OnEventHandlerFunction extends lambda.Function {
     super(scope, id, {
       description: 'src/organizational-unit-provider/on-event-handler.lambda.ts',
       ...props,
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: new lambda.Runtime('nodejs14.x', lambda.RuntimeFamily.NODEJS),
       handler: 'index.handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../assets/organizational-unit-provider/on-event-handler.lambda')),
     });
+    this.addEnvironment('AWS_NODEJS_CONNECTION_REUSE_ENABLED', '1', { removeInEdge: true });
   }
 }

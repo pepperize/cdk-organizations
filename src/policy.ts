@@ -1,12 +1,6 @@
-import { Annotations, TagManager, TagType } from "aws-cdk-lib";
-import {
-  AwsCustomResource,
-  AwsCustomResourcePolicy,
-  PhysicalResourceId,
-  PhysicalResourceIdReference,
-} from "aws-cdk-lib/custom-resources";
+import { Annotations, Resource } from "aws-cdk-lib";
+import * as organizations from "aws-cdk-lib/aws-organizations";
 import { Construct, IConstruct } from "constructs";
-import { ITaggableResource, TagResource } from "./tag-resource";
 import { Validators } from "./validators";
 
 /**
@@ -71,10 +65,10 @@ export interface IPolicy extends IConstruct {
   readonly policyId: string;
 }
 
-export class Policy extends Construct implements IPolicy, ITaggableResource {
+export class Policy extends Resource implements IPolicy {
   public readonly policyId: string;
-
-  readonly tags = new TagManager(TagType.KEY_VALUE, "Custom::Organizations_Policy");
+  public readonly policyName: string;
+  public readonly policyType: PolicyType;
 
   public constructor(scope: Construct, id: string, props: PolicyProps) {
     super(scope, id);
@@ -87,52 +81,14 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
       );
     }
 
-    const policy = new AwsCustomResource(this, "PolicyCustomResource", {
-      resourceType: "Custom::Organizations_Policy",
-      onCreate: {
-        service: "Organizations",
-        action: "createPolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createPolicy-property
-        region: "us-east-1",
-        parameters: {
-          Content: content,
-          Description: description,
-          Name: policyName,
-          Type: policyType,
-        },
-        outputPaths: ["Policy.PolicySummary.Id"],
-        physicalResourceId: PhysicalResourceId.fromResponse("Policy.PolicySummary.Id"),
-      },
-      onUpdate: {
-        service: "Organizations",
-        action: "updatePolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#updatePolicy-property
-        region: "us-east-1",
-        parameters: {
-          Content: content,
-          Description: description,
-          Name: policyName,
-          PolicyId: new PhysicalResourceIdReference(),
-        },
-        outputPaths: ["Policy.PolicySummary.Id"],
-        physicalResourceId: PhysicalResourceId.fromResponse("Policy.PolicySummary.Id"),
-      },
-      onDelete: {
-        service: "Organizations",
-        action: "deletePolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deletePolicy-property
-        region: "us-east-1",
-        parameters: {
-          PolicyId: new PhysicalResourceIdReference(),
-        },
-      },
-      installLatestAwsSdk: false,
-      policy: AwsCustomResourcePolicy.fromSdkCalls({ resources: AwsCustomResourcePolicy.ANY_RESOURCE }),
+    const resource = new organizations.CfnPolicy(this, "Resource", {
+      content: content,
+      description: description,
+      name: policyName,
+      type: policyType,
     });
-    this.policyId = policy.getResponseField("Policy.PolicySummary.Id");
-
-    const tagResource = new TagResource(this, "Tags", { resourceId: this.policyId, tags: this.tags.renderedTags });
-    tagResource.node.addDependency(policy);
-  }
-
-  identifier(): string {
-    return this.policyId;
+    this.policyId = resource.ref;
+    this.policyName = policyName;
+    this.policyType = policyType;
   }
 }

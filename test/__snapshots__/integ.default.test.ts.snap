@@ -17,7 +17,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": "cdk-hnb659fds-assets-123456789012-us-east-1",
-          "S3Key": "6dbd112fe448437b3438da4382c72fccbb7d2ee1543db222620d7447fffebc50.zip",
+          "S3Key": "e845402ce43b66fc6f20df4a239f20f8662eb6c7f920b94cf6542dd0e64ce0f7.zip",
         },
         "Handler": "index.handler",
         "Role": Object {
@@ -737,9 +737,7 @@ Object {
         "OrganizationPolicyAttachmentOrganizationRootAC58C4A1S3PolicyCustomResourceCustomResourcePolicy38327887",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
-        "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
-        "S3PolicyPolicyCustomResource0D921FA4",
-        "S3PolicyTagsTagResource12DC413E",
+        "S3Policy8FACFAB8",
       ],
       "Properties": Object {
         "Create": Object {
@@ -748,10 +746,7 @@ Object {
             Array [
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"attachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "S3PolicyPolicyCustomResource0D921FA4",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "S3Policy8FACFAB8",
               },
               "\\",\\"TargetId\\":\\"",
               Object {
@@ -762,10 +757,7 @@ Object {
               },
               "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "S3PolicyPolicyCustomResource0D921FA4",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "S3Policy8FACFAB8",
               },
               ":",
               Object {
@@ -784,10 +776,7 @@ Object {
             Array [
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"detachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "S3PolicyPolicyCustomResource0D921FA4",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "S3Policy8FACFAB8",
               },
               "\\",\\"TargetId\\":\\"",
               Object {
@@ -798,10 +787,7 @@ Object {
               },
               "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "S3PolicyPolicyCustomResource0D921FA4",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "S3Policy8FACFAB8",
               },
               ":",
               Object {
@@ -831,9 +817,7 @@ Object {
         "OrganizationEnableServiceControlPolicyEnablePolicyTypeCustomResource79180BC7",
         "OrganizationRootRootCustomResourceCustomResourcePolicyB45F831E",
         "OrganizationRootRootCustomResourceBB74F060",
-        "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
-        "S3PolicyPolicyCustomResource0D921FA4",
-        "S3PolicyTagsTagResource12DC413E",
+        "S3Policy8FACFAB8",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -942,9 +926,7 @@ Object {
         "PolicyAttachmentImportedAccountS3PolicyCustomResourceCustomResourcePolicy259549DD",
         "PolicyAttachmentImportedAccountTagPolicyCustomResourceCustomResourcePolicy472CADFE",
         "PolicyAttachmentImportedAccountTagPolicyCustomResource5A336197",
-        "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
-        "S3PolicyPolicyCustomResource0D921FA4",
-        "S3PolicyTagsTagResource12DC413E",
+        "S3Policy8FACFAB8",
       ],
       "Properties": Object {
         "Create": Object {
@@ -953,10 +935,7 @@ Object {
             Array [
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"attachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "S3PolicyPolicyCustomResource0D921FA4",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "S3Policy8FACFAB8",
               },
               "\\",\\"TargetId\\":\\"",
               Object {
@@ -967,10 +946,7 @@ Object {
               },
               "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "S3PolicyPolicyCustomResource0D921FA4",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "S3Policy8FACFAB8",
               },
               ":",
               Object {
@@ -989,10 +965,7 @@ Object {
             Array [
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"detachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "S3PolicyPolicyCustomResource0D921FA4",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "S3Policy8FACFAB8",
               },
               "\\",\\"TargetId\\":\\"",
               Object {
@@ -1003,10 +976,7 @@ Object {
               },
               "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "S3PolicyPolicyCustomResource0D921FA4",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "S3Policy8FACFAB8",
               },
               ":",
               Object {
@@ -1035,9 +1005,7 @@ Object {
         "ImportedAccountCreateAccount0DDC7950",
         "PolicyAttachmentImportedAccountTagPolicyCustomResourceCustomResourcePolicy472CADFE",
         "PolicyAttachmentImportedAccountTagPolicyCustomResource5A336197",
-        "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
-        "S3PolicyPolicyCustomResource0D921FA4",
-        "S3PolicyTagsTagResource12DC413E",
+        "S3Policy8FACFAB8",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -1071,9 +1039,7 @@ Object {
         "PolicyAttachmentImportedAccountTagPolicyCustomResourceCustomResourcePolicy472CADFE",
         "PolicyAttachmentProjectsOUTagPolicyCustomResourceCustomResourcePolicyE8B00F61",
         "PolicyAttachmentProjectsOUTagPolicyCustomResource58DC6C44",
-        "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
-        "TagPolicyPolicyCustomResource70E64110",
-        "TagPolicyTagsTagResource71A94A6C",
+        "TagPolicy00F603BF",
       ],
       "Properties": Object {
         "Create": Object {
@@ -1082,10 +1048,7 @@ Object {
             Array [
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"attachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "TagPolicyPolicyCustomResource70E64110",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "TagPolicy00F603BF",
               },
               "\\",\\"TargetId\\":\\"",
               Object {
@@ -1096,10 +1059,7 @@ Object {
               },
               "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "TagPolicyPolicyCustomResource70E64110",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "TagPolicy00F603BF",
               },
               ":",
               Object {
@@ -1118,10 +1078,7 @@ Object {
             Array [
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"detachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "TagPolicyPolicyCustomResource70E64110",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "TagPolicy00F603BF",
               },
               "\\",\\"TargetId\\":\\"",
               Object {
@@ -1132,10 +1089,7 @@ Object {
               },
               "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "TagPolicyPolicyCustomResource70E64110",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "TagPolicy00F603BF",
               },
               ":",
               Object {
@@ -1164,9 +1118,7 @@ Object {
         "ImportedAccountCreateAccount0DDC7950",
         "PolicyAttachmentProjectsOUTagPolicyCustomResourceCustomResourcePolicyE8B00F61",
         "PolicyAttachmentProjectsOUTagPolicyCustomResource58DC6C44",
-        "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
-        "TagPolicyPolicyCustomResource70E64110",
-        "TagPolicyTagsTagResource71A94A6C",
+        "TagPolicy00F603BF",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -1200,9 +1152,7 @@ Object {
         "Project2DevAccountCreateAccount52C0EFA9",
         "Project2DevAccountTagsTagResource7BBB3F37",
         "ProjectsOUOrganizationProvider5CA5D400",
-        "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
-        "TagPolicyPolicyCustomResource70E64110",
-        "TagPolicyTagsTagResource71A94A6C",
+        "TagPolicy00F603BF",
       ],
       "Properties": Object {
         "Create": Object {
@@ -1211,10 +1161,7 @@ Object {
             Array [
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"attachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "TagPolicyPolicyCustomResource70E64110",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "TagPolicy00F603BF",
               },
               "\\",\\"TargetId\\":\\"",
               Object {
@@ -1225,10 +1172,7 @@ Object {
               },
               "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "TagPolicyPolicyCustomResource70E64110",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "TagPolicy00F603BF",
               },
               ":",
               Object {
@@ -1247,10 +1191,7 @@ Object {
             Array [
               "{\\"service\\":\\"Organizations\\",\\"action\\":\\"detachPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "TagPolicyPolicyCustomResource70E64110",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "TagPolicy00F603BF",
               },
               "\\",\\"TargetId\\":\\"",
               Object {
@@ -1261,10 +1202,7 @@ Object {
               },
               "\\"},\\"physicalResourceId\\":{\\"id\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "TagPolicyPolicyCustomResource70E64110",
-                  "Policy.PolicySummary.Id",
-                ],
+                "Ref": "TagPolicy00F603BF",
               },
               ":",
               Object {
@@ -1293,9 +1231,7 @@ Object {
         "Project2DevAccountCreateAccount52C0EFA9",
         "Project2DevAccountTagsTagResource7BBB3F37",
         "ProjectsOUOrganizationProvider5CA5D400",
-        "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
-        "TagPolicyPolicyCustomResource70E64110",
-        "TagPolicyTagsTagResource71A94A6C",
+        "TagPolicy00F603BF",
       ],
       "Properties": Object {
         "PolicyDocument": Object {
@@ -1562,165 +1498,47 @@ Object {
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "S3PolicyPolicyCustomResource0D921FA4": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
-      ],
+    "S3Policy8FACFAB8": Object {
       "Properties": Object {
-        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
-        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
-        "InstallLatestAwsSdk": false,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
-            "Arn",
-          ],
-        },
-        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\n\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"\\\\n}\\\\n}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
-      },
-      "Type": "Custom::Organizations_Policy",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "organizations:CreatePolicy",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": "organizations:UpdatePolicy",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": "organizations:DeletePolicy",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
-        "Roles": Array [
-          Object {
-            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "S3PolicyTagsTagResource12DC413E": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "S3PolicyPolicyCustomResourceCustomResourcePolicyCA33F036",
-        "S3PolicyPolicyCustomResource0D921FA4",
-      ],
-      "Properties": Object {
-        "ResourceId": Object {
-          "Fn::GetAtt": Array [
-            "S3PolicyPolicyCustomResource0D921FA4",
-            "Policy.PolicySummary.Id",
-          ],
-        },
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
-            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
-          ],
-        },
+        "Content": "{
+\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{
+\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"
+}
+}",
+        "Description": "Enables admins of attached accounts to delegate all S3 permissions",
+        "Name": "AllowAllS3Actions",
         "Tags": Array [
           Object {
             "Key": "tagKey",
             "Value": "tagValue",
           },
         ],
+        "Type": "SERVICE_CONTROL_POLICY",
       },
-      "Type": "Custom::Organizations_TagResource",
-      "UpdateReplacePolicy": "Delete",
+      "Type": "AWS::Organizations::Policy",
     },
-    "TagPolicyPolicyCustomResource70E64110": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
-      ],
+    "TagPolicy00F603BF": Object {
       "Properties": Object {
-        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"tags\\\\\\":{\\\\n\\\\\\"CostCenter\\\\\\":{\\\\n\\\\\\"tag_key\\\\\\":{\\\\n\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"\\\\n}\\\\n}\\\\n}\\\\n}\\",\\"Description\\":\\"Defines the CostCenter tag key\\",\\"Name\\":\\"CostCenterTag\\",\\"Type\\":\\"TAG_POLICY\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
-        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
-        "InstallLatestAwsSdk": false,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
-            "Arn",
-          ],
-        },
-        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\n\\\\\\"tags\\\\\\":{\\\\n\\\\\\"CostCenter\\\\\\":{\\\\n\\\\\\"tag_key\\\\\\":{\\\\n\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"\\\\n}\\\\n}\\\\n}\\\\n}\\",\\"Description\\":\\"Defines the CostCenter tag key\\",\\"Name\\":\\"CostCenterTag\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
-      },
-      "Type": "Custom::Organizations_Policy",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "organizations:CreatePolicy",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": "organizations:UpdatePolicy",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": "organizations:DeletePolicy",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
-        "Roles": Array [
-          Object {
-            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "TagPolicyTagsTagResource71A94A6C": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "TagPolicyPolicyCustomResourceCustomResourcePolicyBC4C6C1B",
-        "TagPolicyPolicyCustomResource70E64110",
-      ],
-      "Properties": Object {
-        "ResourceId": Object {
-          "Fn::GetAtt": Array [
-            "TagPolicyPolicyCustomResource70E64110",
-            "Policy.PolicySummary.Id",
-          ],
-        },
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
-            "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
-          ],
-        },
+        "Content": "{
+\\"tags\\":{
+\\"CostCenter\\":{
+\\"tag_key\\":{
+\\"@@assign\\":\\"CostCenter\\"
+}
+}
+}
+}",
+        "Description": "Defines the CostCenter tag key",
+        "Name": "CostCenterTag",
         "Tags": Array [
           Object {
             "Key": "tagKey",
             "Value": "tagValue",
           },
         ],
+        "Type": "TAG_POLICY",
       },
-      "Type": "Custom::Organizations_TagResource",
-      "UpdateReplacePolicy": "Delete",
+      "Type": "AWS::Organizations::Policy",
     },
     "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5": Object {
       "DeletionPolicy": "Delete",
@@ -1739,7 +1557,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/89c36ed662e158dfbeda50e34363a0fb0027de78ef5826b02e7d251ec5dfc380.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/86a9d45830ea2abb62229b05753ad8366870aa4f1803459ce649a7c784c76ce3.json",
             ],
           ],
         },
@@ -1764,7 +1582,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/2c8774ebe3c4ec99a56e3c664f4614380fc34e03154acadd8d89871551ace97e.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/ad175685586a6cdda083cfbab74204f95bbd9a9c50a843d2156cb33ee66ba397.json",
             ],
           ],
         },
@@ -1789,7 +1607,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/c3018da5bb7cb0841d42f9dce1b36d76ddd7134c2e5378879e84d11e52d5b356.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/b9fde87f8020c0de9552a8f4de956164d00e932d59dd5f99a5e1ca142db999ec.json",
             ],
           ],
         },
@@ -1814,7 +1632,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/d0a6f787f7773b81956738fdd429b484c0fedefd8ae5808c350c653946bf74b4.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/8ef0e14b341f542f61f218123dca88a215fdce7970fdefccbbced1b7a665d90d.json",
             ],
           ],
         },

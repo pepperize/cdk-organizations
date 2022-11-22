@@ -15,7 +15,7 @@ pull_request_rules:
     actions:
       delete_head_branch: {}
       queue:
-        method: squash
+        method: merge
         name: default
         commit_message_template: |-
           {{ title }} (#{{ number }})
