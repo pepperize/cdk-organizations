@@ -1314,9 +1314,9 @@ aws-sdk-mock@^5.5.1:
     traverse "^0.6.6"
 
 aws-sdk@^2.1066.0, aws-sdk@^2.1231.0, aws-sdk@^2.814.0:
-  version "2.1293.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1293.0.tgz#01d5755e1e77935c85f0204e298ddd8afe5d5502"
-  integrity sha512-Wq4zPwJsrYLerXkWzllrTky3DM/Gwg8rKmC/79cDckGzDT8vZ2w/JfI5lW94ckRHjbqQXalChMH3GmWp0sV29Q==
+  version "2.1294.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1294.0.tgz#4cd86f210182f6d854543df0e15adced4de1a1bb"
+  integrity sha512-/n/xbae0efRA/wpaMyF/0Jip8V0MMPEFicreDHRmiy/4iUrsqMvHdeaO8OW0kUYKHyUClKsc36Fu4GyhONKISw==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -4252,9 +4252,9 @@ jsii-diff@^1.52.1:
     yargs "^16.2.0"
 
 jsii-docgen@^7.0.51:
-  version "7.0.201"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.0.201.tgz#2dac63c692e9bfed454aa26c22d26700e0d6b886"
-  integrity sha512-3fMJUG8yGmcL5B0E0UBtFvNRVG3HcPHWOBGh/VBc+/8opCR7aW/1W2+Uu56B9YdORwOc3qBEBKBYBFtSAxoBHg==
+  version "7.0.202"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.0.202.tgz#682e1ba521e6cdc05862938ff26a01f860216b24"
+  integrity sha512-C1/e+PSGNFFli4oc3NtXI3X0E39ychA/vze+GL56YE8fR5XurAaXzHNQb9JWpZLv4h+C4dvXc5Rgu+Y5Eb7Lwg==
   dependencies:
     "@jsii/spec" "^1.73.0"
     case "^1.6.3"
