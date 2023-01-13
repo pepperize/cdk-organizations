@@ -171,7 +171,7 @@ To create a new organization or import an existing organization, add the followi
 
 ```typescript
 const organization = new Organization(stack, "Organization", {
-  featureSet: FeatureSet.ALL, // (default) required later on to enable SCPs, enable AWS services or delegate an adminsitrator account
+  featureSet: FeatureSet.ALL, // (default) required later on to enable SCPs, enable AWS services or delegate an administrator account
 });
 organization.root; // The organization's root is automatically created
 ```
