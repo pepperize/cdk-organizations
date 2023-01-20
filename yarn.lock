@@ -4252,9 +4252,9 @@ jsii-diff@^1.52.1:
     yargs "^16.2.0"
 
 jsii-docgen@^7.0.51:
-  version "7.0.207"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.0.207.tgz#38cf1ecf62c198040aeacfdc1049d47f26cc5fd3"
-  integrity sha512-WrJ+j9qYssdiyxuy3NcGaytdeyPKh9s/k3GSam8kc2v62/3R/xYgS3Qv/bOTv4/6pmoB6c9J5TaGp81E4/eQGw==
+  version "7.0.208"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.0.208.tgz#1ae6f812c22d30bf8b337dc111378c1c16efbbf6"
+  integrity sha512-54d9yke4AmI3qPRRwRdzuEubhntwN2qjfRAlKUDgIgtr3yKMyfNJuXsKGF+j6JyydcT4YP83UJ/8V9cv7mWK5w==
   dependencies:
     "@jsii/spec" "^1.73.0"
     case "^1.6.3"
