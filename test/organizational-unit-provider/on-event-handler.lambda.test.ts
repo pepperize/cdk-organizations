@@ -1,5 +1,5 @@
 import { RemovalPolicy } from "aws-cdk-lib";
-import { OnEventHandler, OnEventRequest } from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
+import { CdkCustomResourceEvent as OnEventRequest, CdkCustomResourceResponse as OnEventResponse } from "aws-lambda";
 import * as SDK from "aws-sdk";
 import * as AWS from "aws-sdk-mock";
 import * as sinon from "sinon";
@@ -8,7 +8,7 @@ describe("organizational-unit-provider.on-event-handler.lambda", () => {
   jest.setTimeout(60_000);
   console.log = jest.fn();
 
-  let handler: OnEventHandler;
+  let handler: (event: OnEventRequest) => Promise<OnEventResponse>;
   beforeEach(async () => {
     AWS.setSDK(require.resolve("aws-sdk"));
     handler = (await import("../../src/organizational-unit-provider/on-event-handler.lambda")).handler;

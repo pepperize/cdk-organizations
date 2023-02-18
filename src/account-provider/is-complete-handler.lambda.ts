@@ -1,4 +1,7 @@
-import { IsCompleteRequest, IsCompleteResponse } from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
+import {
+  CdkCustomResourceIsCompleteEvent as IsCompleteRequest,
+  CdkCustomResourceIsCompleteResponse as IsCompleteResponse,
+} from "aws-lambda";
 import * as AWS from "aws-sdk";
 import { Organizations } from "aws-sdk";
 
@@ -29,6 +32,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
       .promise();
 
     if (response.CreateAccountStatus?.State == "IN_PROGRESS") {
+      // @ts-ignore
       return { IsComplete: false, Data: {} };
     }
 
@@ -84,6 +88,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
 
   return {
     IsComplete: true,
+    // @ts-ignore
     PhysicalResourceId: accountId,
     Data: {
       ...event.ResourceProperties,
