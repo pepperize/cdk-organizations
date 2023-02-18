@@ -1,5 +1,5 @@
 import { AwsCdkConstructLibrary } from "@pepperize/projen-awscdk-construct";
-import { javascript } from "projen";
+import { awscdk, javascript } from "projen";
 const project = new AwsCdkConstructLibrary({
   author: "Patrick Florek",
   authorAddress: "patrick.florek@gmail.com",
@@ -63,6 +63,10 @@ const project = new AwsCdkConstructLibrary({
   },
 
   gitpod: true,
+
+  lambdaOptions: {
+    runtime: awscdk.LambdaRuntime.NODEJS_16_X,
+  },
 });
 
 project.gitpod?.addCustomTask({
