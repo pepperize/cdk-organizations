@@ -1,8 +1,4 @@
-import {
-  OnEventHandler,
-  OnEventRequest,
-  OnEventResponse,
-} from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
+import { CdkCustomResourceEvent as OnEventRequest, CdkCustomResourceResponse as OnEventResponse } from "aws-lambda";
 import { AWSError, Organizations } from "aws-sdk";
 
 let organizationsClient: Organizations;
@@ -12,7 +8,7 @@ let organizationsClient: Organizations;
  *
  * @see https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html#handling-lifecycle-events-onevent
  */
-export const handler: OnEventHandler = async (event: OnEventRequest): Promise<OnEventResponse | undefined> => {
+export const handler = async (event: OnEventRequest): Promise<OnEventResponse> => {
   console.log(`Request of type ${event.RequestType} received`);
 
   if (!organizationsClient) {

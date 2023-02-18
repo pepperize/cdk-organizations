@@ -1,5 +1,5 @@
 import { AwsCdkConstructLibrary } from "@pepperize/projen-awscdk-construct";
-import { javascript } from "projen";
+import { awscdk, javascript } from "projen";
 const project = new AwsCdkConstructLibrary({
   author: "Patrick Florek",
   authorAddress: "patrick.florek@gmail.com",
@@ -37,6 +37,7 @@ const project = new AwsCdkConstructLibrary({
     "aws-lambda",
     "aws-sdk",
     "aws-sdk-mock",
+    "cdk-nag",
     "sinon",
   ],
 
@@ -63,7 +64,16 @@ const project = new AwsCdkConstructLibrary({
   },
 
   gitpod: true,
+
+  lambdaOptions: {
+    runtime: awscdk.LambdaRuntime.NODEJS_16_X,
+    bundlingOptions: {
+      externals: [],
+    },
+  },
 });
+
+project.tasks.tryFind("docgen")?.reset("jsii-docgen -f md -o ./API");
 
 project.gitpod?.addCustomTask({
   name: "setup",

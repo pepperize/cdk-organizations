@@ -1,4 +1,7 @@
-import { IsCompleteHandler, IsCompleteRequest } from "aws-cdk-lib/custom-resources/lib/provider-framework/types";
+import {
+  CdkCustomResourceIsCompleteEvent as IsCompleteRequest,
+  CdkCustomResourceResponse as OnEventResponse,
+} from "aws-lambda";
 import * as SDK from "aws-sdk";
 import * as AWS from "aws-sdk-mock";
 import * as sinon from "sinon";
@@ -8,7 +11,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
   jest.setTimeout(60_000);
   console.log = jest.fn();
 
-  let handler: IsCompleteHandler;
+  let handler: (event: IsCompleteRequest) => Promise<OnEventResponse>;
   beforeEach(async () => {
     //AWS.setSDKInstance(SDK);
     AWS.setSDK(require.resolve("aws-sdk"));

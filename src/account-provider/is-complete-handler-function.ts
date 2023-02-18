@@ -17,9 +17,10 @@ export class IsCompleteHandlerFunction extends lambda.Function {
     super(scope, id, {
       description: 'src/account-provider/is-complete-handler.lambda.ts',
       ...props,
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: new lambda.Runtime('nodejs16.x', lambda.RuntimeFamily.NODEJS),
       handler: 'index.handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../assets/account-provider/is-complete-handler.lambda')),
     });
+    this.addEnvironment('AWS_NODEJS_CONNECTION_REUSE_ENABLED', '1', { removeInEdge: true });
   }
 }
