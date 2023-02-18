@@ -71,7 +71,7 @@
     "jest-junit": "^13",
     "jsii": "^1.75.0",
     "jsii-diff": "^1.75.0",
-    "jsii-docgen": "^7.1.1",
+    "jsii-docgen": "^7.0.236",
     "jsii-pacmak": "^1.75.0",
     "json-schema": "^0.4.0",
     "prettier": "^2.8.4",
