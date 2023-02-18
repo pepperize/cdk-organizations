@@ -68,7 +68,7 @@
       "description": "Create a JavaScript bundle from src/account-provider/is-complete-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\""
         }
       ]
     },
@@ -77,7 +77,7 @@
       "description": "Continuously update the JavaScript bundle from src/account-provider/is-complete-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/account-provider/is-complete-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/account-provider/is-complete-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --watch"
         }
       ]
     },
@@ -86,7 +86,7 @@
       "description": "Create a JavaScript bundle from src/account-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\""
         }
       ]
     },
@@ -95,7 +95,7 @@
       "description": "Continuously update the JavaScript bundle from src/account-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/account-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/account-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --watch"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "description": "Create a JavaScript bundle from src/organization-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\""
         }
       ]
     },
@@ -113,7 +113,7 @@
       "description": "Continuously update the JavaScript bundle from src/organization-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/organization-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/organization-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --watch"
         }
       ]
     },
@@ -122,7 +122,7 @@
       "description": "Create a JavaScript bundle from src/organizational-unit-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\""
         }
       ]
     },
@@ -131,7 +131,7 @@
       "description": "Continuously update the JavaScript bundle from src/organizational-unit-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/organizational-unit-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/organizational-unit-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --watch"
         }
       ]
     },
@@ -140,7 +140,7 @@
       "description": "Create a JavaScript bundle from src/tag-resource-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\""
         }
       ]
     },
@@ -149,7 +149,7 @@
       "description": "Continuously update the JavaScript bundle from src/tag-resource-provider/on-event-handler.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/tag-resource-provider/on-event-handler.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/tag-resource-provider/on-event-handler.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --watch"
         }
       ]
     },

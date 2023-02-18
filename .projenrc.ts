@@ -66,6 +66,9 @@ const project = new AwsCdkConstructLibrary({
 
   lambdaOptions: {
     runtime: awscdk.LambdaRuntime.NODEJS_16_X,
+    bundlingOptions: {
+      externals: [],
+    },
   },
 });
 
