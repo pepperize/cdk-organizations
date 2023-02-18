@@ -59,6 +59,7 @@
     "aws-lambda": "^1.0.7",
     "aws-sdk": "^2.1318.0",
     "aws-sdk-mock": "^5.8.0",
+    "cdk-nag": "^2.22.10",
     "constructs": "10.0.5",
     "esbuild": "^0.17.8",
     "eslint": "^8",
