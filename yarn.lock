@@ -3836,7 +3836,7 @@ jsii-reflect@^1.75.0, jsii-reflect@^1.76.0:
     oo-ascii-tree "^1.76.0"
     yargs "^16.2.0"
 
-jsii-rosetta@^1.75.0, jsii-rosetta@^1.76.0:
+jsii-rosetta@^1.76.0:
   version "1.76.0"
   resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-1.76.0.tgz#450256361bdbb0d6d5524c4817a7b345d9647a57"
   integrity sha512-y3OcYebjMdK/4Yxt8P9tMalK9Szmq8Xc4VXD3kGDIEulMjUxo3TpEUZc9WEfzVu6A+lSl/WRAwV50ZgzQyVWZg==
