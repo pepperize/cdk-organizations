@@ -3779,14 +3779,14 @@ jsesc@^2.5.1:
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
 jsii-diff@^1.75.0:
-  version "1.75.0"
-  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.75.0.tgz#d4b02e8ed16aa07e0ac618fa90792ff99d5e73f0"
-  integrity sha512-4MRc2ikiTHs3kKMFjcvwSeLjDMTRVQ5+ImgU8+NvfdmMANkP7DG6tbKotZy6Jz2/Afnu2PtSKXlnLBKHNMFmfg==
+  version "1.76.0"
+  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.76.0.tgz#8aba54481e1ac7dcd7e2c592d1ef11defe244b2a"
+  integrity sha512-i3U753ae5WzaiGLJV8ZFTu9rlGQGVuSJADCHxteP2UuHuFSWRSPY2iMhtyg7tEoQmdNYjPznM7fesqrDHLxBOg==
   dependencies:
-    "@jsii/check-node" "1.75.0"
-    "@jsii/spec" "^1.75.0"
+    "@jsii/check-node" "1.76.0"
+    "@jsii/spec" "^1.76.0"
     fs-extra "^10.1.0"
-    jsii-reflect "^1.75.0"
+    jsii-reflect "^1.76.0"
     log4js "^6.7.1"
     yargs "^16.2.0"
 
@@ -3824,7 +3824,7 @@ jsii-pacmak@^1.75.0:
     xmlbuilder "^15.1.1"
     yargs "^16.2.0"
 
-jsii-reflect@^1.75.0, jsii-reflect@^1.76.0:
+jsii-reflect@^1.76.0:
   version "1.76.0"
   resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.76.0.tgz#a80ab48f9bea9f1ad4212e8b2057eb0ae325e1e0"
   integrity sha512-voS5WyeitP3o0knus00v00NlxVLbaU9ykvEDamFw5KPEc4z4wvAwDG9wBfNmdO1OulXgID41WhMzJOEJFKle6A==
