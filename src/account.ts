@@ -86,8 +86,9 @@ export interface IAccount extends IPolicyAttachmentTarget, IChild, IConstruct, I
    * Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
    *
    * @param servicePrincipal The supported AWS service that you specify
+   * @param region The region to delegate in
    */
-  delegateAdministrator(servicePrincipal: string): void;
+  delegateAdministrator(servicePrincipal: string, region?: string): void;
 }
 
 /**
@@ -153,14 +154,16 @@ export class Account extends Construct implements IAccount, ITaggableResource {
    * Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
    *
    * @param {string} servicePrincipal The supported AWS service that you specify
+   * @param {string} region The region to delegate in
    */
-  public delegateAdministrator(servicePrincipal: string) {
+  public delegateAdministrator(servicePrincipal: string, region?: string) {
     const delegatedAdministrator = new DelegatedAdministrator(
       this.scope,
       `Delegate${pascalCase(servicePrincipal)}-${Names.nodeUniqueId(this.node)}`,
       {
         account: this,
         servicePrincipal: servicePrincipal,
+        region,
       }
     );
     delegatedAdministrator.node.addDependency(this.resource);
