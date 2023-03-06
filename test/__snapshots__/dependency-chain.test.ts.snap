@@ -135,7 +135,7 @@ Object {
                   "AccountId",
                 ],
               },
-              "\\",\\"ServicePrincipal\\":\\"account.amazonaws.com\\"}}",
+              "\\",\\"ServicePrincipal\\":\\"account.amazonaws.com\\"},\\"ignoreErrorCodesMatching\\":\\"AccountAlreadyRegisteredException\\"}",
             ],
           ],
         },
