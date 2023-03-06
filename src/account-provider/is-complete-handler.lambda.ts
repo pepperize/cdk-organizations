@@ -2,10 +2,9 @@ import {
   CdkCustomResourceIsCompleteEvent as IsCompleteRequest,
   CdkCustomResourceIsCompleteResponse as IsCompleteResponse,
 } from "aws-lambda";
-import * as AWS from "aws-sdk";
-import { Organizations } from "aws-sdk";
+import * as Organizations from "aws-sdk/clients/organizations";
 
-let organizationsClient: AWS.Organizations;
+let organizationsClient: Organizations;
 
 /**
  * The isComplete handler is repeatedly invoked checking CreateAccountStatus until SUCCEEDED or FAILED.
@@ -15,7 +14,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
   console.log(`Request of type ${event.RequestType} received`);
 
   if (!organizationsClient) {
-    organizationsClient = new AWS.Organizations({ region: "us-east-1" });
+    organizationsClient = new Organizations({ region: "us-east-1" });
   }
 
   console.log("Payload: %j", event);

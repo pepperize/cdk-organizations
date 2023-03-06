@@ -1,5 +1,6 @@
 import { CdkCustomResourceEvent as OnEventRequest, CdkCustomResourceResponse as OnEventResponse } from "aws-lambda";
-import { AWSError, Organizations } from "aws-sdk";
+import * as Organizations from "aws-sdk/clients/organizations";
+import { AWSError } from "aws-sdk";
 
 let organizationsClient: Organizations;
 
