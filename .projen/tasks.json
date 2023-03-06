@@ -217,7 +217,7 @@
       "description": "Generate API.md from .jsii manifest",
       "steps": [
         {
-          "exec": "jsii-docgen -f md -o ./API"
+          "exec": "jsii-docgen -o API.md"
         }
       ]
     },

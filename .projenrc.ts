@@ -73,8 +73,6 @@ const project = new AwsCdkConstructLibrary({
   },
 });
 
-project.tasks.tryFind("docgen")?.reset("jsii-docgen -f md -o ./API");
-
 project.gitpod?.addCustomTask({
   name: "setup",
   init: "yarn install && npx projen build",
