@@ -11,6 +11,10 @@ export interface DelegatedAdministratorProps {
    * The service principal of the AWS service for which you want to make the member account a delegated administrator.
    */
   readonly servicePrincipal: string;
+  /**
+   * The region to delegate the administrator in.
+   */
+  readonly region?: string;
 }
 
 /**
@@ -24,14 +28,14 @@ export class DelegatedAdministrator extends Construct {
   public constructor(scope: Construct, id: string, props: DelegatedAdministratorProps) {
     super(scope, id);
 
-    const { account, servicePrincipal } = props;
+    const { account, servicePrincipal, region } = props;
 
     new AwsCustomResource(this, "DelegatedAdministratorCustomResource", {
       resourceType: "Custom::Organizations_DelegatedAdministrator",
       onCreate: {
         service: "Organizations",
         action: "registerDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#registerDelegatedAdministrator-property
-        region: "us-east-1",
+        region: region ?? "us-east-1",
         physicalResourceId: PhysicalResourceId.of(`${account.accountId}:${servicePrincipal}`),
         parameters: {
           AccountId: account.accountId,
@@ -42,7 +46,7 @@ export class DelegatedAdministrator extends Construct {
       onDelete: {
         service: "Organizations",
         action: "registerDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deregisterDelegatedAdministrator-property
-        region: "us-east-1",
+        region: region ?? "us-east-1",
         parameters: {
           AccountId: account.accountId,
           ServicePrincipal: servicePrincipal,
