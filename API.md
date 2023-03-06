@@ -84,7 +84,7 @@ Before you can attach the policy, you must enable that policy type for use. You 
 ##### `delegateAdministrator` <a name="delegateAdministrator" id="@pepperize/cdk-organizations.Account.delegateAdministrator"></a>
 
 ```typescript
-public delegateAdministrator(servicePrincipal: string): void
+public delegateAdministrator(servicePrincipal: string, region?: string): void
 ```
 
 Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
@@ -94,6 +94,14 @@ Enables trusted access for the AWS service (trusted service) as <strong>Delegate
 - *Type:* string
 
 The supported AWS service that you specify.
+
+---
+
+###### `region`<sup>Optional</sup> <a name="region" id="@pepperize/cdk-organizations.Account.delegateAdministrator.parameter.region"></a>
+
+- *Type:* string
+
+The region to delegate in.
 
 ---
 
@@ -1938,6 +1946,7 @@ const delegatedAdministratorProps: DelegatedAdministratorProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.DelegatedAdministratorProps.property.account">account</a></code> | <code><a href="#@pepperize/cdk-organizations.IAccount">IAccount</a></code> | The member account in the organization to register as a delegated administrator. |
 | <code><a href="#@pepperize/cdk-organizations.DelegatedAdministratorProps.property.servicePrincipal">servicePrincipal</a></code> | <code>string</code> | The service principal of the AWS service for which you want to make the member account a delegated administrator. |
+| <code><a href="#@pepperize/cdk-organizations.DelegatedAdministratorProps.property.region">region</a></code> | <code>string</code> | The region to delegate the administrator in. |
 
 ---
 
@@ -1962,6 +1971,18 @@ public readonly servicePrincipal: string;
 - *Type:* string
 
 The service principal of the AWS service for which you want to make the member account a delegated administrator.
+
+---
+
+##### `region`<sup>Optional</sup> <a name="region" id="@pepperize/cdk-organizations.DelegatedAdministratorProps.property.region"></a>
+
+```typescript
+public readonly region: string;
+```
+
+- *Type:* string
+
+The region to delegate the administrator in.
 
 ---
 
@@ -2534,7 +2555,7 @@ Validators.of()
 ##### `delegateAdministrator` <a name="delegateAdministrator" id="@pepperize/cdk-organizations.IAccount.delegateAdministrator"></a>
 
 ```typescript
-public delegateAdministrator(servicePrincipal: string): void
+public delegateAdministrator(servicePrincipal: string, region?: string): void
 ```
 
 Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
@@ -2544,6 +2565,14 @@ Enables trusted access for the AWS service (trusted service) as <strong>Delegate
 - *Type:* string
 
 The supported AWS service that you specify.
+
+---
+
+###### `region`<sup>Optional</sup> <a name="region" id="@pepperize/cdk-organizations.IAccount.delegateAdministrator.parameter.region"></a>
+
+- *Type:* string
+
+The region to delegate in.
 
 ---
 
