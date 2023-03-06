@@ -37,6 +37,7 @@ export class DelegatedAdministrator extends Construct {
           AccountId: account.accountId,
           ServicePrincipal: servicePrincipal,
         },
+        ignoreErrorCodesMatching: "AccountAlreadyRegisteredException", // https://docs.aws.amazon.com/organizations/latest/APIReference/API_RegisterDelegatedAdministrator.html#API_RegisterDelegatedAdministrator_Errors
       },
       onDelete: {
         service: "Organizations",
