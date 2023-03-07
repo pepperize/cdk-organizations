@@ -704,7 +704,7 @@
     chalk "^4.1.2"
     semver "^7.3.8"
 
-"@jsii/spec@1.77.0", "@jsii/spec@^1.76.0", "@jsii/spec@^1.77.0":
+"@jsii/spec@1.77.0", "@jsii/spec@^1.77.0":
   version "1.77.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.77.0.tgz#2ee31c32e26d61880e422a546a62296c6543bff9"
   integrity sha512-QmwXRREX8W1YOdKHbfu+Tw0rygdCJ2AYcKt7iu56Is2giQ9doyRLKvzywXoKxJjZtj9E7Sp0GdDob8pl8cwmlg==
@@ -3782,17 +3782,17 @@ jsii-diff@^1.77.0:
     yargs "^16.2.0"
 
 jsii-docgen@^7.1.17:
-  version "7.1.17"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.17.tgz#703ece739090c726ae47c82b56f1a69a8946a71e"
-  integrity sha512-eRCvsNvqpZOBcYYO0O1VWzRKyAgkilaSwdl66ncL45Rg6vmkg92fDMglwxjIbnfRCt2KjehenlNY+lfD1XMTiw==
+  version "7.1.18"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.18.tgz#a1c6d1feddba0c657c0282b425876544af15db53"
+  integrity sha512-FKpgG+rwXocFOJL6VkWBspReSNZNu/7A1z8IWr1+MtthDuwP9EV/D0e+xUFqzeJojBi1G78BtQvcLeXGnW1FSg==
   dependencies:
-    "@jsii/spec" "^1.76.0"
+    "@jsii/spec" "^1.77.0"
     case "^1.6.3"
     fs-extra "^10.1.0"
     glob "^7.2.3"
     glob-promise "^3.4.0"
-    jsii-reflect "^1.76.0"
-    jsii-rosetta "^1.76.0"
+    jsii-reflect "^1.77.0"
+    jsii-rosetta "^1.77.0"
     semver "^7.3.8"
     yargs "^16.2.0"
 
@@ -3815,7 +3815,7 @@ jsii-pacmak@^1.77.0:
     xmlbuilder "^15.1.1"
     yargs "^16.2.0"
 
-jsii-reflect@^1.76.0, jsii-reflect@^1.77.0:
+jsii-reflect@^1.77.0:
   version "1.77.0"
   resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.77.0.tgz#f4fa0c43f550f6af065b118427763dc00f861a7c"
   integrity sha512-wSEkBxdEjuZHp2qLPpUPFamhppvDBW+vUJi8/VnQlAYJMCOIvQPdj8GVfiMllc+6tir9xIHl8q30PZaanbQpXA==
@@ -3827,7 +3827,7 @@ jsii-reflect@^1.76.0, jsii-reflect@^1.77.0:
     oo-ascii-tree "^1.77.0"
     yargs "^16.2.0"
 
-jsii-rosetta@^1.76.0, jsii-rosetta@^1.77.0:
+jsii-rosetta@^1.77.0:
   version "1.77.0"
   resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-1.77.0.tgz#12e99f0e43c5028456883f46d3ac92bd8c77a22e"
   integrity sha512-gOpK7YxGb64Fwy6zvEpRV3umC3u77HAmltP3kSF/eGPmM04ggTQ17UEfN+XsEO4NXJh1LDniMDyMjOIa3QViBw==
