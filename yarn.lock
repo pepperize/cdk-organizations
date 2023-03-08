@@ -1524,9 +1524,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.22.27:
-  version "2.22.28"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.22.28.tgz#c7a11f18d0230a4ab24224e0dc412adae66a33c1"
-  integrity sha512-0kImhvxYWL8Xrle6in+2ZpAkbNIMT2vHJ0HR3Xtgu0NzTi1Zsb5FAYA3oiLTqg8kUaonrrKycXTR49iYFWPykw==
+  version "2.22.29"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.22.29.tgz#e334e5a0eb6f418d736f8b20c6809ea3770a447d"
+  integrity sha512-SgF8h696UZ05FzSHCwq4jQ5oypHr3uO3wiHNmkmtb12mg/3xzGGlzjJf0hR6U/+SwnhEOpSNttRZboNatIDNsA==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
@@ -3782,9 +3782,9 @@ jsii-diff@^1.77.0:
     yargs "^16.2.0"
 
 jsii-docgen@^7.1.17:
-  version "7.1.18"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.18.tgz#a1c6d1feddba0c657c0282b425876544af15db53"
-  integrity sha512-FKpgG+rwXocFOJL6VkWBspReSNZNu/7A1z8IWr1+MtthDuwP9EV/D0e+xUFqzeJojBi1G78BtQvcLeXGnW1FSg==
+  version "7.1.19"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.19.tgz#1c40567d90141253c4d821df803429f21caa39be"
+  integrity sha512-1ZjrVMcMBIlFAAEh7y/jAoYOgwhJlnq3q61Ety/jgsqf3lOhljw8cYMZ6Ap0VE+NZYkD9XD95SOB6YYOpK4PQQ==
   dependencies:
     "@jsii/spec" "^1.77.0"
     case "^1.6.3"
