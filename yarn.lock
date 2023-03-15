@@ -872,9 +872,9 @@
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
 "@types/aws-lambda@^8.10.111":
-  version "8.10.111"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.111.tgz#9107c405f3011a5c423b5ac93fbf279439558571"
-  integrity sha512-8HR9UjIKmoemEzE2BviVtFkeenxfbizSu8raFjnT2VXxguZZ2JTlNww7INOH7IA0J/zRa3TjOftkYq6hVNkxDA==
+  version "8.10.112"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.112.tgz#87bb324373ce0a8fd23ea4db44f9a80322f37ac1"
+  integrity sha512-1auQeFhclqU93Tb5kzk/0KaMIqkehwQpYz9a1H8AFZl7quihPh0mJTqNrxJIzIFM6R7rmUNDIU5hdBB9iDES6A==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14":
   version "7.20.0"
@@ -977,9 +977,9 @@
   integrity sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==
 
 "@types/node@^14":
-  version "14.18.37"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.37.tgz#0bfcd173e8e1e328337473a8317e37b3b14fd30d"
-  integrity sha512-7GgtHCs/QZrBrDzgIJnQtuSvhFSwhyYSI2uafSwZoNt1iOGhEN5fwNrQMjtONyHm9+/LoA4453jH0CMYcr06Pg==
+  version "14.18.38"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.38.tgz#2169ca4b70aa59aa5a8923509e50619dde48b0cf"
+  integrity sha512-zMRIidN2Huikv/+/U7gRPFYsXDR/7IGqFZzTLnCEj5+gkrQjsowfamaxEnyvArct5hxGA3bTxMXlYhH78V6Cew==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -1543,9 +1543,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.22.27:
-  version "2.22.35"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.22.35.tgz#045237261feacc9aa10ae9f4b3cde1cd6b6824e8"
-  integrity sha512-9j6MOzR1TlZ/0eYUtdS4EsJqUXNyLW44gcunoMOkuZIk4J/oXSp+6N5ncJcX1XT5nD/MY5HEBAsdxbvdiny4RQ==
+  version "2.22.36"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.22.36.tgz#d12b44d16d7ae597cb7b9037ed16790b310e569b"
+  integrity sha512-L0Eae4I7gig5EGSQ1f/gVYVgmuhBfPZSqshX5A3UKLAK2+X+dWNSwCroZ75GucY/LiDZH/bef8ztdOS/+k83pA==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
