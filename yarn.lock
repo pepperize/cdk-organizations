@@ -872,9 +872,9 @@
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
 "@types/aws-lambda@^8.10.111":
-  version "8.10.112"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.112.tgz#87bb324373ce0a8fd23ea4db44f9a80322f37ac1"
-  integrity sha512-1auQeFhclqU93Tb5kzk/0KaMIqkehwQpYz9a1H8AFZl7quihPh0mJTqNrxJIzIFM6R7rmUNDIU5hdBB9iDES6A==
+  version "8.10.113"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.113.tgz#5c8434049c5944ab80ae5ff76e74b270a4795024"
+  integrity sha512-JHxKRi7Nz2Bjqp0CKllm9Fl5GZwRfMF+lilSfl12ATyvBx0cRM09ztBVgebeJ8wrjJggHxxjSU2/U+SvSG+K1A==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14":
   version "7.20.0"
@@ -1543,9 +1543,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.22.27:
-  version "2.22.36"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.22.36.tgz#d12b44d16d7ae597cb7b9037ed16790b310e569b"
-  integrity sha512-L0Eae4I7gig5EGSQ1f/gVYVgmuhBfPZSqshX5A3UKLAK2+X+dWNSwCroZ75GucY/LiDZH/bef8ztdOS/+k83pA==
+  version "2.22.37"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.22.37.tgz#5231186efe5f9ffae2800dce124e074d82b58f6d"
+  integrity sha512-ytk3RM9CQPSida6w0TTPzVGd6KCTODH5rYXMvMsRuE5skLKDtMDzS7nnO9n71XagJL8CIK+WElqwLCVIKN3nGg==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
@@ -3789,9 +3789,9 @@ jsii-diff@^1.77.0:
     yargs "^16.2.0"
 
 jsii-docgen@^7.1.17:
-  version "7.1.26"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.26.tgz#8a8db4c74d1788971327b593a4a6c8216da9c9b4"
-  integrity sha512-fIdDWxKtN/TVyvl1xUcI/iDHhkkn0M1kMOYIOmjX2FSYT1tLCtFfPfarKQM6HMtGlU9CvGfl7C075b62IfGmHw==
+  version "7.1.27"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.27.tgz#cfdae19f3a663deb819992318c8a02c63759e3b0"
+  integrity sha512-6k6IQeudilLE7LyJC7o9cymhRReI2GWMDiJkdcBgg0s7QVejVdLCKAhyVXoAICduNrCRwZ4Xc7xh+MsTTLKnhQ==
   dependencies:
     "@jsii/spec" "^1.77.0"
     case "^1.6.3"
