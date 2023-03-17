@@ -1357,9 +1357,9 @@ aws-sdk-mock@^5.8.0:
     traverse "^0.6.6"
 
 aws-sdk@^2.1231.0, aws-sdk@^2.1328.0, aws-sdk@^2.814.0:
-  version "2.1336.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1336.0.tgz#105527471320a9183e03d5fb42cc6fa2d1e270ec"
-  integrity sha512-DmnuMr1tK30At8n4gAHohb3nP/qCgUNjTrgZSl1+6gK8U5Yt6qPSqHM3ieWTm6VMSQTRp9aaR91l6soznnuxuA==
+  version "2.1337.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1337.0.tgz#2e40171b3ff70dfb3b7d698bdc0c8568743eb04f"
+  integrity sha512-Nq6EnocdYP7LScN3kbG1ZKQr5iMEIkObW4ikSjkSz9SofPNDlOr4EFfYNaGzuF91M93YZ++7JIGMTb05ubjHlA==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -1551,9 +1551,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.22.27:
-  version "2.22.37"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.22.37.tgz#5231186efe5f9ffae2800dce124e074d82b58f6d"
-  integrity sha512-ytk3RM9CQPSida6w0TTPzVGd6KCTODH5rYXMvMsRuE5skLKDtMDzS7nnO9n71XagJL8CIK+WElqwLCVIKN3nGg==
+  version "2.23.1"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.23.1.tgz#2b7bf994e69566542d3f031d11cca65f8a44f8ed"
+  integrity sha512-TIJYYDEGhLuSQW2HyONrLZ8mW75nybeQJ0TKW6+is2ahGH2SiDw8W8VMpDc0YXwHWjn8mPvDSmQTizNOhwBPjQ==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
@@ -3797,17 +3797,17 @@ jsii-diff@^1.77.0:
     yargs "^16.2.0"
 
 jsii-docgen@^7.1.17:
-  version "7.1.27"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.27.tgz#cfdae19f3a663deb819992318c8a02c63759e3b0"
-  integrity sha512-6k6IQeudilLE7LyJC7o9cymhRReI2GWMDiJkdcBgg0s7QVejVdLCKAhyVXoAICduNrCRwZ4Xc7xh+MsTTLKnhQ==
+  version "7.1.28"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.28.tgz#2f05462e8c7ccfd32f11d3bec285927d481921b5"
+  integrity sha512-XHVxvOH08eOm+gUk3YRrOBFMUIYE2/3s+NHA3R8PWZyArSUDjAMH0pKN7hqYb99dJTf7sfl099EEWhCLozwuEQ==
   dependencies:
-    "@jsii/spec" "^1.77.0"
+    "@jsii/spec" "^1.78.1"
     case "^1.6.3"
     fs-extra "^10.1.0"
     glob "^7.2.3"
     glob-promise "^3.4.0"
-    jsii-reflect "^1.77.0"
-    jsii-rosetta "^1.77.0"
+    jsii-reflect "^1.78.1"
+    jsii-rosetta "^1.78.1"
     semver "^7.3.8"
     yargs "^16.2.0"
 
@@ -3842,7 +3842,7 @@ jsii-reflect@^1.77.0, jsii-reflect@^1.78.1:
     oo-ascii-tree "^1.78.1"
     yargs "^16.2.0"
 
-jsii-rosetta@^1.77.0, jsii-rosetta@^1.78.1:
+jsii-rosetta@^1.78.1:
   version "1.78.1"
   resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-1.78.1.tgz#e3bba787263135e96d80a503e27e7ce61ba3c343"
   integrity sha512-HljTgK3/Pnvjm6raHuTr8aQL1V/y+ZxHb8fEQEHCE+HshwUYdxz5j4LGdS8E6ZBReHYMPCbtMVGWnwxjXcsoGQ==
