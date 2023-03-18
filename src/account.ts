@@ -159,7 +159,9 @@ export class Account extends Construct implements IAccount, ITaggableResource {
   public delegateAdministrator(servicePrincipal: string, region?: string) {
     const delegatedAdministrator = new DelegatedAdministrator(
       this.scope,
-      `Delegate${pascalCase(servicePrincipal)}-${Names.nodeUniqueId(this.node)}`,
+      `Delegate${pascalCase(servicePrincipal)}${
+        region && region !== "us-east-1" ? `-${region}` : ""
+      }-${Names.nodeUniqueId(this.node)}`,
       {
         account: this,
         servicePrincipal: servicePrincipal,
