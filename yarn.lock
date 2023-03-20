@@ -708,14 +708,6 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@jsii/check-node@1.77.0":
-  version "1.77.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.77.0.tgz#46e0e4201f5006cef0c5d11a1ce4b00b6ce27801"
-  integrity sha512-kgq4h5SrpIuM9CZ6uZVZ9KrJCPSn6zwz4y60ZEIFMA5aqkBN1n7MhTJglG6I8IaL2uYm7P5kZf6+eGNI+n3tig==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.3.8"
-
 "@jsii/check-node@1.78.1":
   version "1.78.1"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.78.1.tgz#3023d13d3b7077a3e764d7d34dd70671be1052d0"
@@ -724,7 +716,7 @@
     chalk "^4.1.2"
     semver "^7.3.8"
 
-"@jsii/spec@1.78.1", "@jsii/spec@^1.77.0", "@jsii/spec@^1.78.1":
+"@jsii/spec@1.78.1", "@jsii/spec@^1.78.1":
   version "1.78.1"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.78.1.tgz#e4c4dd8b7a39a5c6381cd33b170ad40301a757c6"
   integrity sha512-pp8R/ihRX/9KrKBnLO9naLVZsyF3K30Ibzd8nUK1fzDu3QV5FhVoGVRCspoB0U10TJAsxxaI0HL0dk5qpGPzKQ==
@@ -3859,32 +3851,13 @@ jsii-rosetta@^1.78.1:
     workerpool "^6.4.0"
     yargs "^16.2.0"
 
-jsii@1.78.1:
+jsii@1.78.1, jsii@^1.77.0:
   version "1.78.1"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.78.1.tgz#21a919e0a4515fdf3dddc634133085d9079d5026"
   integrity sha512-IQu18rVRVi5hnwl7vd7UNFPd9ZlX40P/GdaybO3qgYp8meyLbuvIlFIZ7mPQYUHA8TqFD51bo2byyocm+jHBkQ==
   dependencies:
     "@jsii/check-node" "1.78.1"
     "@jsii/spec" "^1.78.1"
-    case "^1.6.3"
-    chalk "^4"
-    fast-deep-equal "^3.1.3"
-    fs-extra "^10.1.0"
-    log4js "^6.8.0"
-    semver "^7.3.8"
-    semver-intersect "^1.4.0"
-    sort-json "^2.0.1"
-    spdx-license-list "^6.6.0"
-    typescript "~3.9.10"
-    yargs "^16.2.0"
-
-jsii@^1.77.0:
-  version "1.77.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.77.0.tgz#bc3f4e3c475045f5d8d49c3c6fe202b33a1d0705"
-  integrity sha512-3VODnWUhljro1+PmWlTWAEUPxWGWwCOmzOS6EG7l5E1KthurCgQDzhpTySlw80U85mGU9XvDJMcpvwuj3ESrKA==
-  dependencies:
-    "@jsii/check-node" "1.77.0"
-    "@jsii/spec" "^1.77.0"
     case "^1.6.3"
     chalk "^4"
     fast-deep-equal "^3.1.3"
