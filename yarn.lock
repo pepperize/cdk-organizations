@@ -872,9 +872,9 @@
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
 "@types/aws-lambda@^8.10.111":
-  version "8.10.113"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.113.tgz#5c8434049c5944ab80ae5ff76e74b270a4795024"
-  integrity sha512-JHxKRi7Nz2Bjqp0CKllm9Fl5GZwRfMF+lilSfl12ATyvBx0cRM09ztBVgebeJ8wrjJggHxxjSU2/U+SvSG+K1A==
+  version "8.10.114"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.114.tgz#4048273ebcd517dd118ecaa34b1368d275b6c7ad"
+  integrity sha512-M8WpEGfC9iQ6V2Ccq6nGIXoQgeVc6z0Ngk8yCOL5V/TYIxshvb0MWQYLFFTZDesL0zmsoBc4OBjG9DB/4rei6w==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14":
   version "7.20.0"
@@ -1543,9 +1543,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.22.27:
-  version "2.23.1"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.23.1.tgz#2b7bf994e69566542d3f031d11cca65f8a44f8ed"
-  integrity sha512-TIJYYDEGhLuSQW2HyONrLZ8mW75nybeQJ0TKW6+is2ahGH2SiDw8W8VMpDc0YXwHWjn8mPvDSmQTizNOhwBPjQ==
+  version "2.23.4"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.23.4.tgz#eebe55351c944a1b04a27f2eb22a23d9a5cee058"
+  integrity sha512-dawUXU3354CydM5/ZGKqEtb0meIgwz7puNpDyJAozIWq8kMYmhbiKix3WCosEsbkYW0H+if9przRqVeaxYkzeQ==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
@@ -3789,9 +3789,9 @@ jsii-diff@^1.77.0:
     yargs "^16.2.0"
 
 jsii-docgen@^7.1.17:
-  version "7.1.28"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.28.tgz#2f05462e8c7ccfd32f11d3bec285927d481921b5"
-  integrity sha512-XHVxvOH08eOm+gUk3YRrOBFMUIYE2/3s+NHA3R8PWZyArSUDjAMH0pKN7hqYb99dJTf7sfl099EEWhCLozwuEQ==
+  version "7.1.31"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.1.31.tgz#92ad0f7332b81b7d96d4feca816d3ee677a8f98a"
+  integrity sha512-RCUbLU6fpXQn90TTzJ+n2gcgjvSSO7pxraVXv/dRRdH+vXB9M4mKDuuUr8L1BiUD/FhhjaR2rv0A4Rc4NV25dg==
   dependencies:
     "@jsii/spec" "^1.78.1"
     case "^1.6.3"
