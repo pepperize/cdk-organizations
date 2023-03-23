@@ -37,4 +37,22 @@ describe("Account", () => {
     const template = Template.fromStack(stack);
     template.resourceCountIs("Custom::Organizations_DelegatedAdministrator", 1);
   });
+
+  it("Should have delegated region administrator", () => {
+    // Given
+    const stack = new Stack();
+    const organization = new Organization(stack, "Organization", {});
+    const account = new Account(stack, "Account", {
+      email: "info@pepperize.com",
+      accountName: "test",
+      parent: organization.root,
+    });
+
+    // When
+    account.delegateAdministrator("service-abbreviation.amazonaws.com", "eu-west-1");
+
+    // Then
+    const template = Template.fromStack(stack);
+    template.resourceCountIs("Custom::Organizations_DelegatedAdministrator", 1);
+  });
 });
