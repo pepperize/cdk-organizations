@@ -3973,7 +3973,7 @@ jsii-rosetta@^1.80.0, jsii-rosetta@^1.85.0:
     workerpool "^6.4.0"
     yargs "^16.2.0"
 
-jsii@1.85.0, jsii@^1.77.0:
+jsii@1.85.0:
   version "1.85.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.85.0.tgz#a70d5b2b5842fb8f029de3d0848fea356a2bd6b5"
   integrity sha512-RKB3qZwIXafNUiILD+rKI1EQDtHtfpHN78VVVnfLcp1uAkPLA5zVVqy6cKu2cpAmlz8R5hzIFsw4uEnWA+XE4w==
@@ -3986,6 +3986,25 @@ jsii@1.85.0, jsii@^1.77.0:
     fs-extra "^10.1.0"
     log4js "^6.9.1"
     semver "^7.5.1"
+    semver-intersect "^1.4.0"
+    sort-json "^2.0.1"
+    spdx-license-list "^6.6.0"
+    typescript "~3.9.10"
+    yargs "^16.2.0"
+
+jsii@^1.77.0:
+  version "1.86.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.86.0.tgz#c1c4e116fd57f66de836520ba1a7072cbcd2478b"
+  integrity sha512-FIIbGLOfCvbAV/TNsEoHC/JJuQy5VSpCejlmvahG8s9D53rTOd9XKpOHwlNmV3ZQ47g2p381mnnioOl7dx7uug==
+  dependencies:
+    "@jsii/check-node" "1.86.0"
+    "@jsii/spec" "^1.86.0"
+    case "^1.6.3"
+    chalk "^4"
+    fast-deep-equal "^3.1.3"
+    fs-extra "^10.1.0"
+    log4js "^6.9.1"
+    semver "^7.5.4"
     semver-intersect "^1.4.0"
     sort-json "^2.0.1"
     spdx-license-list "^6.6.0"
@@ -5030,10 +5049,10 @@ semver-intersect@^1.4.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
 
-semver@7.x, semver@^7.1.1, semver@^7.3.2, semver@^7.3.4, semver@^7.3.7, semver@^7.3.8, semver@^7.5.0, semver@^7.5.1:
-  version "7.5.1"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.1.tgz#c90c4d631cf74720e46b21c1d37ea07edfab91ec"
-  integrity sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==
+semver@7.x, semver@^7.1.1, semver@^7.3.2, semver@^7.3.4, semver@^7.3.7, semver@^7.3.8, semver@^7.5.0, semver@^7.5.1, semver@^7.5.4:
+  version "7.5.4"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
+  integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
   dependencies:
     lru-cache "^6.0.0"
 
@@ -5041,13 +5060,6 @@ semver@^6.0.0, semver@^6.3.0, semver@^6.3.1:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.1.tgz#556d2ef8689146e46dcea4bfdd095f3434dffcb4"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
-
-semver@^7.5.4:
-  version "7.5.4"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
-  integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
-  dependencies:
-    lru-cache "^6.0.0"
 
 shebang-command@^2.0.0:
   version "2.0.0"
