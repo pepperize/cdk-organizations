@@ -713,14 +713,6 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@jsii/check-node@1.87.0":
-  version "1.87.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.87.0.tgz#5b7e426187f46e3d18159f71ab3f9abd02e36162"
-  integrity sha512-P4mhtFMwntFpqGNanp0L86bskuiNEw1TVKJzhemR3OK2vWb3IyYn1ZHc/o3Sn2xjpwX/OLwVhcuXOOcMFMQViQ==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.5.4"
-
 "@jsii/check-node@1.88.0":
   version "1.88.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.88.0.tgz#fa20e012230c692ad36976cde29301be1ed28c67"
@@ -729,7 +721,7 @@
     chalk "^4.1.2"
     semver "^7.5.4"
 
-"@jsii/spec@1.88.0", "@jsii/spec@^1.80.0", "@jsii/spec@^1.87.0", "@jsii/spec@^1.88.0":
+"@jsii/spec@1.88.0", "@jsii/spec@^1.80.0", "@jsii/spec@^1.88.0":
   version "1.88.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.88.0.tgz#46216d3ca93872b4d878bb81f0cc7b28dc621c28"
   integrity sha512-Q6xirxPM06TRW0GcsHa+tzPZLwe9I+mFYx5BaNMimcv21u6bQnxfynZMgNhHqvLYCmP37HWg0SboUYTa5JROzw==
@@ -3839,14 +3831,14 @@ jsesc@^2.5.1:
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
 jsii-diff@^1.77.0:
-  version "1.87.0"
-  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.87.0.tgz#bf0f9949e4b3fd4370d3a0f575c07447c490e8ef"
-  integrity sha512-6wqd3PVyqeXuFhFMeh20qNZ2sw4hNe1OyzlT0ZbPF1ALhycxHZ5e1voPqjvwIACnO6rRREffGWHdBVlNKschzw==
+  version "1.88.0"
+  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.88.0.tgz#965668341405134c37e7e6fba232614123cae2b5"
+  integrity sha512-5Wjig/1GvZckAS1G8f+kztNDZVP4TFqUu/NsSiIb4hHHM+MvUy7O9ihVuWDVE+QodSTxPXy3RMKp+ILsiRcuqg==
   dependencies:
-    "@jsii/check-node" "1.87.0"
-    "@jsii/spec" "^1.87.0"
+    "@jsii/check-node" "1.88.0"
+    "@jsii/spec" "^1.88.0"
     fs-extra "^10.1.0"
-    jsii-reflect "^1.87.0"
+    jsii-reflect "^1.88.0"
     log4js "^6.9.1"
     yargs "^16.2.0"
 
@@ -3884,7 +3876,7 @@ jsii-pacmak@^1.77.0:
     xmlbuilder "^15.1.1"
     yargs "^16.2.0"
 
-jsii-reflect@^1.80.0, jsii-reflect@^1.87.0, jsii-reflect@^1.88.0:
+jsii-reflect@^1.80.0, jsii-reflect@^1.88.0:
   version "1.88.0"
   resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.88.0.tgz#d7f020db2621e8b672c082eea752c47153da5a63"
   integrity sha512-YYZTEQpayvwMDtRMCjgNraTFUqsj4/KEOE8ChvDCkpxv6aH89vpZSsAJM5ymhNLDHj4XZ2OW3XE0sNOz31NbvA==
