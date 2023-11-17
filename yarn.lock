@@ -3936,7 +3936,7 @@ jsii-rosetta@^1.80.0, jsii-rosetta@^1.91.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii@1.91.0, jsii@^1.77.0:
+jsii@1.91.0:
   version "1.91.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.91.0.tgz#55ae8c036c6547590b5e93e9eeace2c7b78ec461"
   integrity sha512-dJ2FbnUfX5Eg9BdZx6Cz2JhDsvzGi2DoQeomzdjO9ltvVUouAFPWkpcUtJdLXaNmHQtPM4/I+AzelUX7w2mWVw==
@@ -3952,6 +3952,25 @@ jsii@1.91.0, jsii@^1.77.0:
     semver-intersect "^1.4.0"
     sort-json "^2.0.1"
     spdx-license-list "^6.7.0"
+    typescript "~3.9.10"
+    yargs "^16.2.0"
+
+jsii@^1.77.0:
+  version "1.92.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.92.0.tgz#dc89cf48b2cf681fe9c6a77ee2d94911178348ae"
+  integrity sha512-UHuPVMkUXBcbnSAsylQSea7BFNkr6hkx6NhGGoZ5Xnb3fZV7wwr9DHnE14yQJUIsrCL8WcqhCU79QTbWmnKpag==
+  dependencies:
+    "@jsii/check-node" "1.92.0"
+    "@jsii/spec" "^1.92.0"
+    case "^1.6.3"
+    chalk "^4"
+    fast-deep-equal "^3.1.3"
+    fs-extra "^10.1.0"
+    log4js "^6.9.1"
+    semver "^7.5.4"
+    semver-intersect "^1.4.0"
+    sort-json "^2.0.1"
+    spdx-license-list "^6.8.0"
     typescript "~3.9.10"
     yargs "^16.2.0"
 
@@ -5141,10 +5160,10 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.12.tgz#69077835abe2710b65f03969898b6637b505a779"
   integrity sha512-rr+VVSXtRhO4OHbXUiAF7xW3Bo9DuuF6C5jH+q/x15j2jniycgKbxU09Hr0WqlSLUs4i4ltHGXqTe7VHclYWyA==
 
-spdx-license-list@^6.7.0:
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/spdx-license-list/-/spdx-license-list-6.7.0.tgz#dd8c6aba00e7a3f9549e473d0be2b83c4cae081f"
-  integrity sha512-NFqavuJxNsHdwSy/0PjmUpcc76XwlmHQRPjVVtE62qmSLhKJUnzSvJCkU9nrY6TsChfGU1xqGePriBkNtNRMiA==
+spdx-license-list@^6.7.0, spdx-license-list@^6.8.0:
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/spdx-license-list/-/spdx-license-list-6.8.0.tgz#92a99cd6c8b97fe98ae83c54deaffd4d9d503f74"
+  integrity sha512-5UdM7r9yJ1EvsPQZWfa41AZjLQngl9iMMysm9XBW7Lqhq7aF8cllfqjS+rFCHB8FFMGSM0yFWue2LUV9mR0QzQ==
 
 split2@^3.0.0:
   version "3.2.2"
