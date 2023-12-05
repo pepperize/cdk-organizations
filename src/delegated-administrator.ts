@@ -45,7 +45,7 @@ export class DelegatedAdministrator extends Construct {
       },
       onDelete: {
         service: "Organizations",
-        action: "registerDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deregisterDelegatedAdministrator-property
+        action: "deregisterDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deregisterDelegatedAdministrator-property
         region: region ?? "us-east-1",
         parameters: {
           AccountId: account.accountId,
