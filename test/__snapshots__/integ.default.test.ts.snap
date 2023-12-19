@@ -109,7 +109,7 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deregisterDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
                   "ImportedAccountCreateAccount0DDC7950",
@@ -142,6 +142,11 @@ Object {
           "Statement": Array [
             Object {
               "Action": "organizations:RegisterDelegatedAdministrator",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DeregisterDelegatedAdministrator",
               "Effect": "Allow",
               "Resource": "*",
             },
@@ -191,7 +196,7 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deregisterDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
                   "ImportedAccountCreateAccount0DDC7950",
@@ -223,6 +228,11 @@ Object {
           "Statement": Array [
             Object {
               "Action": "organizations:RegisterDelegatedAdministrator",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DeregisterDelegatedAdministrator",
               "Effect": "Allow",
               "Resource": "*",
             },
@@ -273,7 +283,7 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
+              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deregisterDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
                   "ImportedAccountCreateAccount0DDC7950",
@@ -306,6 +316,11 @@ Object {
           "Statement": Array [
             Object {
               "Action": "organizations:RegisterDelegatedAdministrator",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "organizations:DeregisterDelegatedAdministrator",
               "Effect": "Allow",
               "Resource": "*",
             },
