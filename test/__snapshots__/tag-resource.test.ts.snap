@@ -41,7 +41,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/67bac358c622c63837bbb82e2cc3e78b8525dc223ad99f252fc305973bf3320d.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/0fc5c0417cded3119ae0d13c7f52e04fa35f8c8f2408fd1e9eaa76cacad0ea55.json",
             ],
           ],
         },
