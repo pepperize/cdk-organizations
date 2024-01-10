@@ -713,14 +713,6 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@jsii/check-node@1.93.0":
-  version "1.93.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.93.0.tgz#3adcc6012654bb69fb8dc508e757b83ea9cd1708"
-  integrity sha512-NLn1Js6wEG2hYjH7gE5Q8s/hPlp3I+KhK/T8ykGdYVod7iODnk/0QVSZsk2iEyuw8NzvvgXUDBWreadUIWSz+g==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.5.4"
-
 "@jsii/check-node@1.94.0":
   version "1.94.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.94.0.tgz#cf6caf02004ed27eef0ade7d01e69bf5020bdc2d"
@@ -729,7 +721,7 @@
     chalk "^4.1.2"
     semver "^7.5.4"
 
-"@jsii/spec@1.94.0", "@jsii/spec@^1.80.0", "@jsii/spec@^1.93.0", "@jsii/spec@^1.94.0":
+"@jsii/spec@1.94.0", "@jsii/spec@^1.80.0", "@jsii/spec@^1.94.0":
   version "1.94.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.94.0.tgz#a4584179cd83e50110169a3f5ec1b6ab4ad362f4"
   integrity sha512-ur1aUMPsdZgflUIZC4feyJzrkGYzvtiIJxRowkSxr7Ip/sLCKvi61dvImWtJY9ZhEAl7Kiq7I/R32WVyxW0JrQ==
@@ -3935,32 +3927,13 @@ jsii-rosetta@^1.80.0, jsii-rosetta@^1.94.0:
     workerpool "^6.5.1"
     yargs "^16.2.0"
 
-jsii@1.94.0:
+jsii@1.94.0, jsii@^1.77.0:
   version "1.94.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.94.0.tgz#46dab7b2feee00e3d0316216f551156c1084597c"
   integrity sha512-20KlKsBZlo7Ti6vfqTpKfZXnT2MKRGfh5bIPrwDODoCQmHNATfPFt1fs5+Wqd7xdrEj+A+sLAtjfHTw6i+sxCw==
   dependencies:
     "@jsii/check-node" "1.94.0"
     "@jsii/spec" "^1.94.0"
-    case "^1.6.3"
-    chalk "^4"
-    fast-deep-equal "^3.1.3"
-    fs-extra "^10.1.0"
-    log4js "^6.9.1"
-    semver "^7.5.4"
-    semver-intersect "^1.4.0"
-    sort-json "^2.0.1"
-    spdx-license-list "^6.8.0"
-    typescript "~3.9.10"
-    yargs "^16.2.0"
-
-jsii@^1.77.0:
-  version "1.93.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.93.0.tgz#a30e077883235c7fdd09772e0637eeefeef975d9"
-  integrity sha512-J6In5MDWcmVosOwZxdwcW+NisQZ2p9g2zWFwCO3RpMoHmpzYasChZSvRvpgR5iFB7m10QRebU+45R2WCGsadfg==
-  dependencies:
-    "@jsii/check-node" "1.93.0"
-    "@jsii/spec" "^1.93.0"
     case "^1.6.3"
     chalk "^4"
     fast-deep-equal "^3.1.3"
