@@ -1754,7 +1754,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/4116fda19048610ab67ea59b9ccf962d03cd903cef3c927943056134b689e9b1.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/28bca31749bf04b4cc8a70f85d17cf3f795c235eeb8250e1aa657457b633c2ed.json",
             ],
           ],
         },
@@ -1779,7 +1779,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/3c122a063c3b0abdfac03b83f423e973cb6e74c621d6e95fdf0a31008be40a09.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/6163e88e1786d4a3d50fadbc59b453bef6096092e046bf610cd9fea4355de7d2.json",
             ],
           ],
         },
@@ -1804,7 +1804,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/0a2a2f6ff8a2fa2195b841f739c429d4e2b6100c9168fbb04add34ab55033879.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/40b5a96661baf34b9fdc4c1de736c52a4f215695eb38e7331afdcebbafe059f0.json",
             ],
           ],
         },
@@ -1829,7 +1829,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/5215952194d53fdefa5e2f6f46fbcc070788d738f7529bd5571c84181f72877a.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/ab254f4000d01f9e8e5a461b95b1c8d8c314a47efacbd862fb0814dd30bcdb75.json",
             ],
           ],
         },
