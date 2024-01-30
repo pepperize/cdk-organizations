@@ -874,9 +874,9 @@
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
 "@types/aws-lambda@^8.10.111":
-  version "8.10.132"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.132.tgz#13a72a5486168edab1199c24282e612282507565"
-  integrity sha512-fXP6xK+f0Ir9dt4Tp2NjMmu/nOcQb8e0c8b7z7ql1xo/r4h/uJjGe+1aeH11yhbWU2wakJ5i4gtQAviu6h8OOg==
+  version "8.10.133"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.133.tgz#cc21de2edc623f0fd9a5290674c4b9f30971bc58"
+  integrity sha512-sr852MAL/79rjDelXP6ZuJ6GwOvXIRrFAoC8a+w91mZ5XR71CuzSgo1d0+pG1qgfPhjFgaibu7SWaoC5BA7pyQ==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14":
   version "7.20.0"
@@ -1591,9 +1591,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.22.27:
-  version "2.28.24"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.28.24.tgz#e4f034c700232f8ba8450338a84df84a12325d9c"
-  integrity sha512-OwoqNoS2zFuNI6xZ9U4oTRO5GgAPwUYOEeWH5Gw+tYQGRWhKaxYHl0vfEp7qgrr086YwmLZjJ3zbel+nwpXy8Q==
+  version "2.28.25"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.28.25.tgz#63571ef3c6b51a93d5d5e504b790e551372018e4"
+  integrity sha512-TM6aKYSqSeV8Mv27gIqCbRedVquVvbvUzJA/h+dbuFP+/x+Ux4bBHY08Xd7oKI6rtNTsc7SNkj+hrQzYkzxw0Q==
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
