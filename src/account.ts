@@ -157,10 +157,12 @@ export class Account extends Construct implements IAccount, ITaggableResource {
    * @param {string} region The region to delegate in
    */
   public delegateAdministrator(servicePrincipal: string, region?: string) {
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+
     const delegatedAdministrator = new DelegatedAdministrator(
       this.scope,
       `Delegate${pascalCase(servicePrincipal)}${
-        region && region !== "us-east-1" ? `-${region}` : ""
+        region && region !== organizationsRegion ? `-${region}` : ""
       }-${Names.nodeUniqueId(this.node)}`,
       {
         account: this,

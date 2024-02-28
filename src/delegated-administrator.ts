@@ -29,13 +29,14 @@ export class DelegatedAdministrator extends Construct {
     super(scope, id);
 
     const { account, servicePrincipal, region } = props;
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
 
     new AwsCustomResource(this, "DelegatedAdministratorCustomResource", {
       resourceType: "Custom::Organizations_DelegatedAdministrator",
       onCreate: {
         service: "Organizations",
         action: "registerDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#registerDelegatedAdministrator-property
-        region: region ?? "us-east-1",
+        region: region ?? organizationsRegion,
         physicalResourceId: PhysicalResourceId.of(`${account.accountId}:${servicePrincipal}`),
         parameters: {
           AccountId: account.accountId,
@@ -46,7 +47,7 @@ export class DelegatedAdministrator extends Construct {
       onDelete: {
         service: "Organizations",
         action: "deregisterDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deregisterDelegatedAdministrator-property
-        region: region ?? "us-east-1",
+        region: region ?? organizationsRegion,
         parameters: {
           AccountId: account.accountId,
           ServicePrincipal: servicePrincipal,

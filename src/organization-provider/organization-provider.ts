@@ -44,7 +44,12 @@ export class OrganizationProvider extends NestedStack {
   constructor(scope: Construct, id: string, props: OrganizationProviderProps) {
     super(scope, id, props);
 
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+
     this.onEventHandler = new OnEventHandlerFunction(this, "OnEventHandlerFunction", {
+      environment: {
+        ORGANIZATIONS_ENDPOINT_REGION: organizationsRegion,
+      },
       timeout: Duration.minutes(10),
       initialPolicy: [
         new PolicyStatement({

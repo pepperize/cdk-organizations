@@ -24,13 +24,14 @@ export class PolicyAttachment extends Construct {
     super(scope, id);
 
     const { target, policy } = props;
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
 
     new AwsCustomResource(this, "CustomResource", {
       resourceType: "Custom::Organizations_PolicyAttachment",
       onCreate: {
         service: "Organizations",
         action: "attachPolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#attachPolicy-property
-        region: "us-east-1",
+        region: organizationsRegion,
         parameters: {
           PolicyId: policy.policyId,
           TargetId: target.identifier(),
@@ -40,7 +41,7 @@ export class PolicyAttachment extends Construct {
       onDelete: {
         service: "Organizations",
         action: "detachPolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#detachPolicy-property
-        region: "us-east-1",
+        region: organizationsRegion,
         parameters: {
           PolicyId: policy.policyId,
           TargetId: target.identifier(),
