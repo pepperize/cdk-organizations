@@ -401,7 +401,8 @@ AWS Organizations has some limitations:
 
 > AWS Organizations is a global service with service endpoints in `us-east-1`, `us-gov-west-1` and `cn-northwest-1`. Read also
 > [Endpoint to call When using the AWS CLI or the AWS SDK](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html).
-> Currently all custom resources of this library are hard set to use `us-east-1`.
+> Currently all custom resources of this library defaults to use `us-east-1`, but it can be configured to use `cn-northwest-1`
+> with the environment variable `CDK_AWS_PARTITION` set to `aws-cn`.
 
 ## Example
 
