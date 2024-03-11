@@ -21,12 +21,13 @@ export abstract class ParentBase extends Construct implements IParent {
     super(scope, id);
 
     const { childId } = props;
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
 
     const parent = new AwsCustomResource(this, "ListParentsCustomResource", {
       onCreate: {
         service: "Organizations",
         action: "listParents", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listParents-property
-        region: "us-east-1",
+        region: organizationsRegion,
         physicalResourceId: PhysicalResourceId.fromResponse("Parents.0.Id"),
         parameters: {
           ChildId: childId,
@@ -35,7 +36,7 @@ export abstract class ParentBase extends Construct implements IParent {
       onUpdate: {
         service: "Organizations",
         action: "listParents", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listParents-property
-        region: "us-east-1",
+        region: organizationsRegion,
         physicalResourceId: PhysicalResourceId.fromResponse("Parents.0.Id"),
         parameters: {
           ChildId: childId,
@@ -44,7 +45,7 @@ export abstract class ParentBase extends Construct implements IParent {
       onDelete: {
         service: "Organizations",
         action: "listParents", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listParents-property
-        region: "us-east-1",
+        region: organizationsRegion,
         parameters: {
           ChildId: childId,
         },

@@ -1,4 +1,4 @@
-import { Duration, NestedStack, NestedStackProps, Stack } from "aws-cdk-lib";
+import { Aws, Duration, NestedStack, NestedStackProps, Stack } from "aws-cdk-lib";
 import { PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { Function } from "aws-cdk-lib/aws-lambda";
 import { Provider } from "aws-cdk-lib/custom-resources";
@@ -44,7 +44,12 @@ export class OrganizationProvider extends NestedStack {
   constructor(scope: Construct, id: string, props: OrganizationProviderProps) {
     super(scope, id, props);
 
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+
     this.onEventHandler = new OnEventHandlerFunction(this, "OnEventHandlerFunction", {
+      environment: {
+        ORGANIZATIONS_ENDPOINT_REGION: organizationsRegion,
+      },
       timeout: Duration.minutes(10),
       initialPolicy: [
         new PolicyStatement({
@@ -54,7 +59,7 @@ export class OrganizationProvider extends NestedStack {
         // permit the creation of service-linked role https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_create.html#create-org
         new PolicyStatement({
           actions: ["iam:CreateServiceLinkedRole"],
-          resources: ["arn:aws:iam::*:role/*"],
+          resources: [`arn:${Aws.PARTITION}:iam::*:role/*`],
         }),
       ],
     });

@@ -2,6 +2,7 @@ import { CdkCustomResourceEvent as OnEventRequest, CdkCustomResourceResponse as 
 import { Organizations } from "aws-sdk";
 
 let organizationsClient: Organizations;
+const organizationsRegion = process.env.ORGANIZATIONS_ENDPOINT_REGION ?? "us-east-1";
 
 /**
  * The onEvent handler is invoked whenever a resource lifecycle event for a TagResource occurs
@@ -12,7 +13,7 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse> {
   console.log(`Request of type ${event.RequestType} received`);
 
   if (!organizationsClient) {
-    organizationsClient = new Organizations({ region: "us-east-1" });
+    organizationsClient = new Organizations({ region: organizationsRegion });
   }
 
   console.log("Payload: %j", event);

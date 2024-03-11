@@ -20,13 +20,14 @@ export class EnableAwsServiceAccess extends Construct {
     super(scope, id);
 
     const { servicePrincipal } = props;
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
 
     new AwsCustomResource(this, "EnableAwsServiceAccessCustomResource", {
       resourceType: "Custom::Organizations_EnableAwsServiceAccess",
       onCreate: {
         service: "Organizations",
         action: "enableAWSServiceAccess", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#enableAWSServiceAccess-property
-        region: "us-east-1",
+        region: organizationsRegion,
         physicalResourceId: PhysicalResourceId.of(`${servicePrincipal}`),
         parameters: {
           ServicePrincipal: servicePrincipal,
@@ -35,7 +36,7 @@ export class EnableAwsServiceAccess extends Construct {
       onDelete: {
         service: "Organizations",
         action: "disableAWSServiceAccess", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#disableAWSServiceAccess-property
-        region: "us-east-1",
+        region: organizationsRegion,
         parameters: {
           ServicePrincipal: servicePrincipal,
         },
