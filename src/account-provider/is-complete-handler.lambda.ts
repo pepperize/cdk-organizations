@@ -6,6 +6,7 @@ import * as AWS from "aws-sdk";
 import { Organizations } from "aws-sdk";
 
 let organizationsClient: AWS.Organizations;
+const organizationsRegion = process.env.ORGANIZATIONS_ENDPOINT_REGION ?? "us-east-1";
 
 /**
  * The isComplete handler is repeatedly invoked checking CreateAccountStatus until SUCCEEDED or FAILED.
@@ -15,7 +16,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
   console.log(`Request of type ${event.RequestType} received`);
 
   if (!organizationsClient) {
-    organizationsClient = new AWS.Organizations({ region: "us-east-1" });
+    organizationsClient = new AWS.Organizations({ region: organizationsRegion });
   }
 
   console.log("Payload: %j", event);
