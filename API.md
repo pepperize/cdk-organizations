@@ -591,7 +591,7 @@ Before you can attach the policy, you must enable that policy type for use. You 
 ##### `delegateAdministrator` <a name="delegateAdministrator" id="@pepperize/cdk-organizations.Account.delegateAdministrator"></a>
 
 ```typescript
-public delegateAdministrator(servicePrincipal: string, region?: string): void
+public delegateAdministrator(servicePrincipal: string, region?: string, props?: {[ key: string ]: any}): void
 ```
 
 Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
@@ -609,6 +609,14 @@ The supported AWS service that you specify.
 - *Type:* string
 
 The region to delegate in.
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@pepperize/cdk-organizations.Account.delegateAdministrator.parameter.props"></a>
+
+- *Type:* {[ key: string ]: any}
+
+additional DelegatedAdministrator props.
 
 ---
 
@@ -2454,6 +2462,7 @@ const delegatedAdministratorProps: DelegatedAdministratorProps = { ... }
 | <code><a href="#@pepperize/cdk-organizations.DelegatedAdministratorProps.property.account">account</a></code> | <code><a href="#@pepperize/cdk-organizations.IAccount">IAccount</a></code> | The member account in the organization to register as a delegated administrator. |
 | <code><a href="#@pepperize/cdk-organizations.DelegatedAdministratorProps.property.servicePrincipal">servicePrincipal</a></code> | <code>string</code> | The service principal of the AWS service for which you want to make the member account a delegated administrator. |
 | <code><a href="#@pepperize/cdk-organizations.DelegatedAdministratorProps.property.region">region</a></code> | <code>string</code> | The region to delegate the administrator in. |
+| <code><a href="#@pepperize/cdk-organizations.DelegatedAdministratorProps.property.removalPolicy">removalPolicy</a></code> | <code>aws-cdk-lib.RemovalPolicy</code> | If set to RemovalPolicy.RETAIN, the delegation will not be removed. |
 
 ---
 
@@ -2490,6 +2499,19 @@ public readonly region: string;
 - *Type:* string
 
 The region to delegate the administrator in.
+
+---
+
+##### `removalPolicy`<sup>Optional</sup> <a name="removalPolicy" id="@pepperize/cdk-organizations.DelegatedAdministratorProps.property.removalPolicy"></a>
+
+```typescript
+public readonly removalPolicy: RemovalPolicy;
+```
+
+- *Type:* aws-cdk-lib.RemovalPolicy
+- *Default:* RemovalPolicy.DESTROY
+
+If set to RemovalPolicy.RETAIN, the delegation will not be removed.
 
 ---
 
@@ -3062,7 +3084,7 @@ Validators.of()
 ##### `delegateAdministrator` <a name="delegateAdministrator" id="@pepperize/cdk-organizations.IAccount.delegateAdministrator"></a>
 
 ```typescript
-public delegateAdministrator(servicePrincipal: string, region?: string): void
+public delegateAdministrator(servicePrincipal: string, region?: string, props?: {[ key: string ]: any}): void
 ```
 
 Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf.
@@ -3080,6 +3102,14 @@ The supported AWS service that you specify.
 - *Type:* string
 
 The region to delegate in.
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@pepperize/cdk-organizations.IAccount.delegateAdministrator.parameter.props"></a>
+
+- *Type:* {[ key: string ]: any}
+
+additional DelegatedAdministrator props.
 
 ---
 
