@@ -729,14 +729,6 @@
     chalk "^4.1.2"
     semver "^7.5.4"
 
-"@jsii/check-node@1.99.0":
-  version "1.99.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.99.0.tgz#fdf1d030bc9c456727ebb2f53a60af1d7712641f"
-  integrity sha512-RJeVopU3U+/ZxGj//KKJgXmDM8N7uP5QIqypb0QFVJPtIcQMM9nuEQWp4hOB3ajhk4VNaXGrG6PwlqFtFsqbbQ==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.6.0"
-
 "@jsii/spec@1.97.0":
   version "1.97.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.97.0.tgz#951109ad43bdd7c1ea2de96a74e4fa645bd9a413"
@@ -744,7 +736,7 @@
   dependencies:
     ajv "^8.12.0"
 
-"@jsii/spec@^1.100.0", "@jsii/spec@^1.80.0", "@jsii/spec@^1.97.0", "@jsii/spec@^1.99.0":
+"@jsii/spec@^1.100.0", "@jsii/spec@^1.80.0", "@jsii/spec@^1.97.0":
   version "1.100.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.100.0.tgz#44e5c6fb84299664f40479b2ebe11e2aee0b727e"
   integrity sha512-4LJCpSkmi3Hfcbmbchv+2JPIquV+cgrkhQcwglBAWqS4liLGbWPwgfHRL22sMXEKXiyXeHfitVwkP+IoGIyJ8g==
@@ -4159,14 +4151,14 @@ jsesc@^2.5.1:
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
 jsii-diff@^1.77.0:
-  version "1.99.0"
-  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.99.0.tgz#bf9bb4fa64012eb8f25fede08cbe17d255719cdc"
-  integrity sha512-SO/KM76jxT2sn1EFw9kogCCi5zWk+EWUpUyWAZJOUki5vPzfmhP04yrCGwGayYXNKjOY7IA7t9GLUcBI73K2SA==
+  version "1.100.0"
+  resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.100.0.tgz#aea28ca2360cc6a1f1089c7105fb61076d7b3f4a"
+  integrity sha512-/Rs2jPmIlcQTwHEuse8SGx/ztSh4F0JYE4OnIBmRZ4ljppPqSGSOoa7pp10IpSmmF2ac+2sgOGuEadwjrDDi4w==
   dependencies:
-    "@jsii/check-node" "1.99.0"
-    "@jsii/spec" "^1.99.0"
+    "@jsii/check-node" "1.100.0"
+    "@jsii/spec" "^1.100.0"
     fs-extra "^10.1.0"
-    jsii-reflect "^1.99.0"
+    jsii-reflect "^1.100.0"
     log4js "^6.9.1"
     yargs "^16.2.0"
 
@@ -4203,7 +4195,7 @@ jsii-pacmak@^1.77.0:
     xmlbuilder "^15.1.1"
     yargs "^16.2.0"
 
-jsii-reflect@^1.100.0, jsii-reflect@^1.80.0, jsii-reflect@^1.99.0:
+jsii-reflect@^1.100.0, jsii-reflect@^1.80.0:
   version "1.100.0"
   resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.100.0.tgz#82b21ad160a7c3d830ec8990b6cba52da7910049"
   integrity sha512-4hicwZirzhSqFRpX/USpvy6RewDi5mCkDESLjBSNpnGWhc3oVByX3x/KJyKQdjEfjVkflHWxSGJEA0qEMoXFUw==
