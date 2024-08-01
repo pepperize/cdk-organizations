@@ -66,7 +66,7 @@ const project = new AwsCdkConstructLibrary({
   gitpod: true,
 
   lambdaOptions: {
-    runtime: awscdk.LambdaRuntime.NODEJS_16_X,
+    runtime: awscdk.LambdaRuntime.NODEJS_18_X,
     bundlingOptions: {
       externals: [],
     },
