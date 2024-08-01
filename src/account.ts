@@ -87,8 +87,9 @@ export interface IAccount extends IPolicyAttachmentTarget, IChild, IConstruct, I
    *
    * @param servicePrincipal The supported AWS service that you specify
    * @param region The region to delegate in
+   * @param {DelegatedAdministratorProps} props additional DelegatedAdministrator props
    */
-  delegateAdministrator(servicePrincipal: string, region?: string): void;
+  delegateAdministrator(servicePrincipal: string, region?: string, props?: Record<string, any>): void;
 }
 
 /**
@@ -155,14 +156,16 @@ export class Account extends Construct implements IAccount, ITaggableResource {
    *
    * @param {string} servicePrincipal The supported AWS service that you specify
    * @param {string} region The region to delegate in
+   * @param {DelegatedAdministratorProps} props additional DelegatedAdministrator props
    */
-  public delegateAdministrator(servicePrincipal: string, region?: string) {
+  public delegateAdministrator(servicePrincipal: string, region?: string, props: Record<string, any> = {}) {
     const delegatedAdministrator = new DelegatedAdministrator(
       this.scope,
       `Delegate${pascalCase(servicePrincipal)}${
         region && region !== "us-east-1" ? `-${region}` : ""
       }-${Names.nodeUniqueId(this.node)}`,
       {
+        ...props,
         account: this,
         servicePrincipal: servicePrincipal,
         region,
