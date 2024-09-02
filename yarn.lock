@@ -713,14 +713,6 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@jsii/check-node@1.103.0":
-  version "1.103.0"
-  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.103.0.tgz#a85ff4968fdd27bdb89de01e66d5d173600d0b57"
-  integrity sha512-fnlzGcQSJ5/SPSOoSv7qaJMSARz2MN7gER0ZKbkHhTrBQU3A/TNrLvTLzOtRnygx9xOlKZkgt05UXG5Ovr4iww==
-  dependencies:
-    chalk "^4.1.2"
-    semver "^7.6.3"
-
 "@jsii/check-node@1.103.1":
   version "1.103.1"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.103.1.tgz#6eb9147993b9f035ae1730c5821a75872a5e4928"
@@ -744,7 +736,7 @@
   dependencies:
     ajv "^8.12.0"
 
-"@jsii/spec@^1.103.0", "@jsii/spec@^1.103.1", "@jsii/spec@^1.80.0", "@jsii/spec@^1.97.0":
+"@jsii/spec@^1.103.1", "@jsii/spec@^1.80.0", "@jsii/spec@^1.97.0":
   version "1.103.1"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.103.1.tgz#2f8e61c603238c56d30d26100eb7ee9f51aa35b8"
   integrity sha512-14OGYM3DjEBjUOUaih+bwPgkhFnR8L9TSNSM0oE0L0hjWscTapvClqOgMDJ1ID52qkROCAgKl1d71Vmm4v0Buw==
