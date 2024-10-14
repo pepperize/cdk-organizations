@@ -721,6 +721,14 @@
     chalk "^4.1.2"
     semver "^7.6.3"
 
+"@jsii/check-node@1.104.0":
+  version "1.104.0"
+  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.104.0.tgz#093a616ab4a80abc9b932906c4f68c32362faa6c"
+  integrity sha512-5rAn4y11APxq69DmTKtAACmDuOymcTiz29CE7s0AeWA5jzpxBRhkaj8xwixiSQtkoBFk+Vpoi2eNctCvwLdFaw==
+  dependencies:
+    chalk "^4.1.2"
+    semver "^7.6.3"
+
 "@jsii/check-node@1.97.0":
   version "1.97.0"
   resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.97.0.tgz#aeeb3fd1a9f4d5c7a2f24faeb106f31e6015cc4f"
@@ -736,10 +744,10 @@
   dependencies:
     ajv "^8.12.0"
 
-"@jsii/spec@^1.103.1", "@jsii/spec@^1.80.0", "@jsii/spec@^1.97.0":
-  version "1.103.1"
-  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.103.1.tgz#2f8e61c603238c56d30d26100eb7ee9f51aa35b8"
-  integrity sha512-14OGYM3DjEBjUOUaih+bwPgkhFnR8L9TSNSM0oE0L0hjWscTapvClqOgMDJ1ID52qkROCAgKl1d71Vmm4v0Buw==
+"@jsii/spec@^1.103.1", "@jsii/spec@^1.104.0", "@jsii/spec@^1.80.0", "@jsii/spec@^1.97.0":
+  version "1.104.0"
+  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.104.0.tgz#9f1206b3712808ad7cbbdbf6cf333a77a8f3df8c"
+  integrity sha512-7jxU8iRowA3O7Dpn8XAsX8o4Y8Fy8plbEVg0CnjvIQsJh3puI3KFHspXur70OOccfGkoL1TWnXBZ+BwCcvhu1g==
   dependencies:
     ajv "^8.17.1"
 
@@ -3994,12 +4002,12 @@ jsii@1.97.0:
     yargs "^16.2.0"
 
 jsii@^1.77.0:
-  version "1.103.1"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.103.1.tgz#614888435e24891a3ea93dd293c8a97352e5bc26"
-  integrity sha512-SjS/g9iq8UJIEPBcaGUIYUJ3/oCboBKpDlJOOzMj2w4MpXQbXP3eyRO6NWBWkWsrIczyJ7HZiRWUJ7J4rUJ0sg==
+  version "1.104.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.104.0.tgz#3f7bc416c6d947fa6cfaf6d72d3b513c90b3f532"
+  integrity sha512-txdalBQAQtcNjV59pL3nz2jYqXsVOBFJjepcXVMAl44Jdh+EKCVpewAW5u7Honq+LSwkcMMszqWmTSIqyXNtuA==
   dependencies:
-    "@jsii/check-node" "1.103.1"
-    "@jsii/spec" "^1.103.1"
+    "@jsii/check-node" "1.104.0"
+    "@jsii/spec" "^1.104.0"
     case "^1.6.3"
     chalk "^4"
     fast-deep-equal "^3.1.3"
