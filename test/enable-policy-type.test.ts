@@ -1,6 +1,6 @@
 import { Stack } from "aws-cdk-lib";
-import { Template } from "aws-cdk-lib/assertions";
 import { EnablePolicyType, FeatureSet, Organization, PolicyType } from "../src";
+import "jest-cdk-snapshot";
 
 describe("EnablePolicyType", () => {
   it("Should match snapshot", () => {
@@ -17,7 +17,11 @@ describe("EnablePolicyType", () => {
     });
 
     // Then
-    const template = Template.fromStack(stack);
-    expect(template).toMatchSnapshot();
+    expect(stack).toMatchCdkSnapshot({
+      ignoreAssets: true,
+      ignoreCurrentVersion: true,
+      ignoreMetadata: true,
+      ignoreTags: true,
+    });
   });
 });

@@ -1,6 +1,7 @@
 import { Stack } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
 import { Account, Organization } from "../src";
+import "jest-cdk-snapshot";
 
 describe("Account", () => {
   it("Should match snapshot", () => {
@@ -16,8 +17,12 @@ describe("Account", () => {
     });
 
     // Then
-    const template = Template.fromStack(stack);
-    expect(template).toMatchSnapshot();
+    expect(stack).toMatchCdkSnapshot({
+      ignoreAssets: true,
+      ignoreCurrentVersion: true,
+      ignoreMetadata: true,
+      ignoreTags: true,
+    });
   });
 
   it("Should have delegated administrator", () => {

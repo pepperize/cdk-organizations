@@ -1,3 +1,4 @@
+import { RemovalPolicy } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
 import { IAccount } from "./account";
@@ -15,6 +16,12 @@ export interface DelegatedAdministratorProps {
    * The region to delegate the administrator in.
    */
   readonly region?: string;
+  /**
+   * If set to RemovalPolicy.RETAIN, the delegation will not be removed.
+   *
+   * @default RemovalPolicy.DESTROY
+   */
+  readonly removalPolicy?: RemovalPolicy;
 }
 
 /**
@@ -44,15 +51,19 @@ export class DelegatedAdministrator extends Construct {
         },
         ignoreErrorCodesMatching: "AccountAlreadyRegisteredException", // https://docs.aws.amazon.com/organizations/latest/APIReference/API_RegisterDelegatedAdministrator.html#API_RegisterDelegatedAdministrator_Errors
       },
-      onDelete: {
-        service: "Organizations",
-        action: "deregisterDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deregisterDelegatedAdministrator-property
-        region: region ?? organizationsRegion,
-        parameters: {
-          AccountId: account.accountId,
-          ServicePrincipal: servicePrincipal,
-        },
-      },
+      ...(props.removalPolicy === RemovalPolicy.RETAIN
+        ? {}
+        : {
+            onDelete: {
+              service: "Organizations",
+              action: "deregisterDelegatedAdministrator", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deregisterDelegatedAdministrator-property
+              region: region ?? organizationsRegion,
+              parameters: {
+                AccountId: account.accountId,
+                ServicePrincipal: servicePrincipal,
+              },
+            },
+          }),
       installLatestAwsSdk: false,
       policy: AwsCustomResourcePolicy.fromSdkCalls({
         resources: AwsCustomResourcePolicy.ANY_RESOURCE,

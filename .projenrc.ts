@@ -30,7 +30,7 @@ const project = new AwsCdkConstructLibrary({
   deps: ["pascal-case"],
   bundledDeps: ["pascal-case"],
   devDeps: [
-    "@pepperize/projen-awscdk-construct",
+    "@pepperize/projen-awscdk-construct@~0.0.730",
     "@types/aws-lambda",
     "@types/jest",
     "@types/sinon",
@@ -38,6 +38,7 @@ const project = new AwsCdkConstructLibrary({
     "aws-sdk",
     "aws-sdk-mock",
     "cdk-nag",
+    "jest-cdk-snapshot",
     "sinon",
   ],
 
@@ -66,7 +67,7 @@ const project = new AwsCdkConstructLibrary({
   gitpod: true,
 
   lambdaOptions: {
-    runtime: awscdk.LambdaRuntime.NODEJS_16_X,
+    runtime: awscdk.LambdaRuntime.NODEJS_18_X,
     bundlingOptions: {
       externals: [],
     },
