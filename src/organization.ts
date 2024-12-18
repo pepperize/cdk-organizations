@@ -98,19 +98,21 @@ export class Organization extends Construct implements IOrganization {
       public constructor() {
         super(scope, id);
 
+        const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+
         const resource = new custom_resources.AwsCustomResource(scope, "CustomResource", {
           resourceType: "Custom::Organizations_ImportOrganization",
           onCreate: {
             service: "Organizations",
             action: "describeOrganization", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeOrganization-property
-            region: "us-east-1",
+            region: organizationsRegion,
             parameters: {},
             physicalResourceId: custom_resources.PhysicalResourceId.fromResponse("Organization.Id"),
           },
           onUpdate: {
             service: "Organizations",
             action: "describeOrganization", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#describeOrganization-property
-            region: "us-east-1",
+            region: organizationsRegion,
             parameters: {},
             physicalResourceId: custom_resources.PhysicalResourceId.fromResponse("Organization.Id"),
           },
@@ -227,24 +229,26 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
     super(scope, id);
     this.scope = scope;
 
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+
     this.resource = new custom_resources.AwsCustomResource(this, "RootCustomResource", {
       resourceType: "Custom::Organizations_Root",
       onCreate: {
         service: "Organizations",
         action: "listRoots", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listRoots-property
-        region: "us-east-1",
+        region: organizationsRegion,
         physicalResourceId: custom_resources.PhysicalResourceId.fromResponse("Roots.0.Id"),
       },
       onUpdate: {
         service: "Organizations",
         action: "listRoots", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listRoots-property
-        region: "us-east-1",
+        region: organizationsRegion,
         physicalResourceId: custom_resources.PhysicalResourceId.fromResponse("Roots.0.Id"),
       },
       onDelete: {
         service: "Organizations",
         action: "listRoots", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listRoots-property
-        region: "us-east-1",
+        region: organizationsRegion,
       },
       installLatestAwsSdk: false,
       policy: custom_resources.AwsCustomResourcePolicy.fromSdkCalls({

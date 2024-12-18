@@ -80,6 +80,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
     super(scope, id);
 
     const { content, description, policyName, policyType } = props;
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
 
     if (!Validators.of().policyContent(content)) {
       Annotations.of(this).addError(
@@ -92,7 +93,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
       onCreate: {
         service: "Organizations",
         action: "createPolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createPolicy-property
-        region: "us-east-1",
+        region: organizationsRegion,
         parameters: {
           Content: content,
           Description: description,
@@ -105,7 +106,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
       onUpdate: {
         service: "Organizations",
         action: "updatePolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#updatePolicy-property
-        region: "us-east-1",
+        region: organizationsRegion,
         parameters: {
           Content: content,
           Description: description,
@@ -118,7 +119,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
       onDelete: {
         service: "Organizations",
         action: "deletePolicy", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#deletePolicy-property
-        region: "us-east-1",
+        region: organizationsRegion,
         parameters: {
           PolicyId: new PhysicalResourceIdReference(),
         },

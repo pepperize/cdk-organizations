@@ -18,13 +18,14 @@ export class EnablePolicyType extends Construct {
     super(scope, id);
 
     const { root, policyType } = props;
+    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
 
     new AwsCustomResource(this, "EnablePolicyTypeCustomResource", {
       resourceType: "Custom::Organizations_EnablePolicyType",
       onCreate: {
         service: "Organizations",
         action: "enablePolicyType", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#enablePolicyType-property
-        region: "us-east-1",
+        region: organizationsRegion,
         physicalResourceId: PhysicalResourceId.of(`${root.rootId}:${policyType}`),
         parameters: {
           RootId: root.rootId,
@@ -35,7 +36,7 @@ export class EnablePolicyType extends Construct {
       onDelete: {
         service: "Organizations",
         action: "disablePolicyType", // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#disablePolicyType-property
-        region: "us-east-1",
+        region: organizationsRegion,
         parameters: {
           RootId: root.rootId,
           PolicyType: policyType,
