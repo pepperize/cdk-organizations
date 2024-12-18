@@ -2,6 +2,7 @@ import { Stack, Token } from "aws-cdk-lib";
 import { Template } from "aws-cdk-lib/assertions";
 import * as aws_iam from "aws-cdk-lib/aws-iam";
 import { FeatureSet, Organization, PolicyType } from "../src";
+import "jest-cdk-snapshot";
 
 describe("Organization", () => {
   it("Should match snapshot", () => {
@@ -14,8 +15,13 @@ describe("Organization", () => {
     });
 
     // Then
-    const template = Template.fromStack(stack);
-    expect(template).toMatchSnapshot();
+
+    expect(stack).toMatchCdkSnapshot({
+      ignoreAssets: true,
+      ignoreCurrentVersion: true,
+      ignoreMetadata: true,
+      ignoreTags: true,
+    });
   });
 
   it("Should have trusted service enabled", () => {

@@ -2,23 +2,13 @@
 
 exports[`integ.default Should match snapshot 1`] = `
 Object {
-  "Parameters": Object {
-    "BootstrapVersion": Object {
-      "Default": "/cdk-bootstrap/hnb659fds/version",
-      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
-      "Type": "AWS::SSM::Parameter::Value<String>",
-    },
-  },
   "Resources": Object {
     "AWS679f53fac002430cb0da5b7982bd22872D164C4C": Object {
       "DependsOn": Array [
         "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
       ],
       "Properties": Object {
-        "Code": Object {
-          "S3Bucket": "cdk-hnb659fds-assets-123456789012-us-east-1",
-          "S3Key": "6dbd112fe448437b3438da4382c72fccbb7d2ee1543db222620d7447fffebc50.zip",
-        },
+        "Code": Any<Object>,
         "Handler": "index.handler",
         "Role": Object {
           "Fn::GetAtt": Array [
@@ -27,12 +17,6 @@ Object {
           ],
         },
         "Runtime": "nodejs14.x",
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
         "Timeout": 120,
       },
       "Type": "AWS::Lambda::Function",
@@ -63,12 +47,6 @@ Object {
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
               ],
             ],
-          },
-        ],
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
           },
         ],
       },
@@ -385,12 +363,6 @@ Object {
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
         },
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -940,12 +912,6 @@ Object {
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
         },
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1386,12 +1352,6 @@ Object {
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
         },
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1445,12 +1405,6 @@ Object {
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
         },
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1505,12 +1459,6 @@ Object {
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
         },
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1567,12 +1515,6 @@ Object {
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
         },
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1647,12 +1589,6 @@ Object {
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
         },
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1727,12 +1663,6 @@ Object {
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
         },
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
       },
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
@@ -1740,12 +1670,6 @@ Object {
     "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1754,7 +1678,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/701b31448c7f0cc6a35094d68cd3c6f611145beb222cf8df495f272e5807b3bc.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/410e509c30034a6cae8d1320b39baa9c68e96119014551ad5f21d0acd4fa54cf.json",
             ],
           ],
         },
@@ -1765,12 +1689,6 @@ Object {
     "cdkorganizationsOrganizationProviderNestedStackcdkorganizationsOrganizationProviderNestedStackResourceE0751832": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1779,7 +1697,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/e1bf230acb0775cd6d6c32481f708a6876be8dfb239918ff7139017c9096a506.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/ed4e80e7a773baee2aa57728f7820f93d3adac8d25b6d14a73af8b49d2671862.json",
             ],
           ],
         },
@@ -1790,12 +1708,6 @@ Object {
     "cdkorganizationsOrganizationalUnitProviderNestedStackcdkorganizationsOrganizationalUnitProviderNestedStackResource4FB360EE": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1804,7 +1716,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/5129121bb2b678948d1e1b457c3ec2a10a823247df86f1ab6e8720f5a82345ed.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/2a8c1c1be1040f6ea85d793a06cbeb4f435aeea7fcce845a08605fe06dd8f57d.json",
             ],
           ],
         },
@@ -1815,12 +1727,6 @@ Object {
     "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
-        "Tags": Array [
-          Object {
-            "Key": "tagKey",
-            "Value": "tagValue",
-          },
-        ],
         "TemplateURL": Object {
           "Fn::Join": Array [
             "",
@@ -1829,40 +1735,13 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/3a618cb6db850925d3c7f518d3d2b49515b8882dfc8486d8ea17092301e41fa7.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/3ee12be2955ca332a64e5d1c9d1945607e6db92e29cb04163ec8e6a0a2bbb034.json",
             ],
           ],
         },
       },
       "Type": "AWS::CloudFormation::Stack",
       "UpdateReplacePolicy": "Delete",
-    },
-  },
-  "Rules": Object {
-    "CheckBootstrapVersion": Object {
-      "Assertions": Array [
-        Object {
-          "Assert": Object {
-            "Fn::Not": Array [
-              Object {
-                "Fn::Contains": Array [
-                  Array [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                  ],
-                  Object {
-                    "Ref": "BootstrapVersion",
-                  },
-                ],
-              },
-            ],
-          },
-          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
-        },
-      ],
     },
   },
 }

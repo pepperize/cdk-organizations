@@ -1,6 +1,7 @@
 import { Aspects, Stack } from "aws-cdk-lib";
 import { Capture, Template } from "aws-cdk-lib/assertions";
 import { Account, DependencyChain, Organization, OrganizationalUnit, Policy, PolicyType } from "../src";
+import "jest-cdk-snapshot";
 
 describe("DependencyChain", () => {
   it("Should chain accounts", () => {
@@ -48,12 +49,18 @@ describe("DependencyChain", () => {
     // Then
     const capture = new Capture();
     const template = Template.fromStack(stack);
-    expect(template).toMatchSnapshot();
     template.hasResource("Custom::Organizations_DelegatedAdministrator", {
       DependsOn: capture,
     });
 
     expect(capture.asArray()).toEqual(expect.arrayContaining([expect.stringMatching(adminAccount.node.id)]));
+
+    expect(stack).toMatchCdkSnapshot({
+      ignoreAssets: true,
+      ignoreCurrentVersion: true,
+      ignoreMetadata: true,
+      ignoreTags: true,
+    });
   });
   it("Should chain organizational units", () => {
     // Given
@@ -106,7 +113,6 @@ describe("DependencyChain", () => {
     // Then
     const capture = new Capture();
     const template = Template.fromStack(stack);
-    expect(template).toMatchSnapshot();
     template.resourceCountIs("Custom::Organizations_PolicyAttachment", 2);
     template.hasResource("Custom::Organizations_PolicyAttachment", {
       DependsOn: capture,
@@ -114,5 +120,12 @@ describe("DependencyChain", () => {
 
     expect(capture.asArray()).toEqual(expect.arrayContaining([expect.stringMatching(policy1.node.id)]));
     expect(capture.asArray()).toEqual(expect.arrayContaining([expect.not.stringMatching(policy2.node.id)]));
+
+    expect(stack).toMatchCdkSnapshot({
+      ignoreAssets: true,
+      ignoreCurrentVersion: true,
+      ignoreMetadata: true,
+      ignoreTags: true,
+    });
   });
 });
