@@ -4054,9 +4054,9 @@ jsii-rosetta@~5.6.0:
     yargs "^17.7.2"
 
 jsii@~5.6.0:
-  version "5.6.8"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.6.8.tgz#97c3e1b428f210acbf491fe33c44b32a4aa172d3"
-  integrity sha512-2t3RrO9DT57YsEhW7k5J0lrW/tzJKMlEWxsSQ9BVvyyl933tM/juFh9RcJ5gGBvo+EJyoLBzMZN8tC/n8YEA5g==
+  version "5.6.9"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.6.9.tgz#caf1393a231169e8604bd79c4d4a280e4f0e90e8"
+  integrity sha512-SS6jTt627XZKXymuB/4EBlyyoiGR6l4mrDnlBQY35pXr9rbvtT/NS16W5cNRvEnosv3Wtm5kSM0JZt5oUfZypw==
   dependencies:
     "@jsii/check-node" "1.106.0"
     "@jsii/spec" "^1.106.0"
@@ -4064,7 +4064,7 @@ jsii@~5.6.0:
     chalk "^4"
     fast-deep-equal "^3.1.3"
     log4js "^6.9.1"
-    semver "^7.6.3"
+    semver "^7.7.0"
     semver-intersect "^1.5.0"
     sort-json "^2.0.1"
     spdx-license-list "^6.9.0"
