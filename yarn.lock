@@ -4066,12 +4066,12 @@ jsii-rosetta@~5.6.0:
     yargs "^17.7.2"
 
 jsii@~5.6.0:
-  version "5.6.10"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.6.10.tgz#4eeca0708a0a57e8f61d392f8df0bf14afa23ed3"
-  integrity sha512-3hKSzGP86wdKvEzmTSRHwxaGhFomx9TNN085HfoXdODtS9nvvdUWmXdTrnQghXsgzWRTWxRwBS5x0Xu+cRuqhQ==
+  version "5.6.11"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.6.11.tgz#32ab94c01e464b36e302a2c9de8cef3dcda91104"
+  integrity sha512-ynT/thHoPZT1jk56cIAt+n2baC4676PLsMDIvAsphyjPiPnUPH4/mEm5k9QQ8qdL9BeZAZEwkU23EKN4jKwdQg==
   dependencies:
-    "@jsii/check-node" "1.106.0"
-    "@jsii/spec" "^1.106.0"
+    "@jsii/check-node" "1.107.0"
+    "@jsii/spec" "^1.107.0"
     case "^1.6.3"
     chalk "^4"
     fast-deep-equal "^3.1.3"
