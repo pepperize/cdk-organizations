@@ -1695,10 +1695,10 @@ co@^4.6.0:
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
   integrity sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==
 
-codemaker@^1.108.0:
-  version "1.108.0"
-  resolved "https://registry.yarnpkg.com/codemaker/-/codemaker-1.108.0.tgz#1e66e032636f5cdcb32d14ac5c3ebb175d1e9200"
-  integrity sha512-EwMvLf3tkBXllS4hZbr3WYm4kZiAH5Spd01MaRd+yJ636RfwIvpGgCGVqYbjW0RJ7yyfnakZ0HvCc8PxqyYWbA==
+codemaker@^1.109.0:
+  version "1.109.0"
+  resolved "https://registry.yarnpkg.com/codemaker/-/codemaker-1.109.0.tgz#478042182415303a6dd70e3e116706bbeca5028e"
+  integrity sha512-hDz+p5ZROu20gS8+Fm0e0/Etlke2TyqajN9hzki9m5N3kkfcA0YVTDj3AJjT82k/kwMoTcXNrgdEr33kdOBNNQ==
   dependencies:
     camelcase "^6.3.0"
     decamelize "^5.0.1"
@@ -2429,9 +2429,9 @@ eslint-import-resolver-node@^0.3.9:
     resolve "^1.22.4"
 
 eslint-import-resolver-typescript@^3.5.3:
-  version "3.8.4"
-  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-3.8.4.tgz#6729767f638de277946ae7349c4e53cc6f798ae5"
-  integrity sha512-vjTGvhr528DzCOLQnBxvoB9a2YuzegT1ogfrUwOqMXS/J6vNYQKSHDJxxDVU1gRuTiUK8N2wyp8Uik9JSPAygA==
+  version "3.8.5"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-3.8.5.tgz#ef7113c83d5b14d036efbf6bc354581b56afa8a5"
+  integrity sha512-0ZRnzOqKc7TRm85w6REOUkVLHevN6nWd/xZsmKhSD/dcDktoxQaQAg59e5EK/QEsGFf7o5JSpE6qTwCEz0WjTw==
   dependencies:
     "@nolyfill/is-core-module" "1.0.39"
     debug "^4.3.7"
@@ -4058,19 +4058,19 @@ jsii-docgen@^10.5.0:
     yargs "^16.2.0"
 
 jsii-pacmak@^1.77.0:
-  version "1.108.0"
-  resolved "https://registry.yarnpkg.com/jsii-pacmak/-/jsii-pacmak-1.108.0.tgz#4755a2b2bff2ab57eefa1f2cc4b092ef4421b6ee"
-  integrity sha512-qj/dGQkALH/YTMGUIyg+EgFD9+WXyrJPug8cwQureNyRK90gHLrTMo7oFQhhTlW2OVH6WAGlQO5FPLtkbujgmQ==
+  version "1.109.0"
+  resolved "https://registry.yarnpkg.com/jsii-pacmak/-/jsii-pacmak-1.109.0.tgz#7dffd5924bf685c7dabe61db226730a097520720"
+  integrity sha512-KiP7+ir1EXgMxFwnN+RH1tpt7EfkrWnMjsYVsYsi5HMXnBRcnsVi5F6BSgDuDxqEG54dQg4aQ2b4Hp795GcDig==
   dependencies:
-    "@jsii/check-node" "1.108.0"
-    "@jsii/spec" "^1.108.0"
+    "@jsii/check-node" "1.109.0"
+    "@jsii/spec" "^1.109.0"
     clone "^2.1.2"
-    codemaker "^1.108.0"
+    codemaker "^1.109.0"
     commonmark "^0.31.2"
     escape-string-regexp "^4.0.0"
     fs-extra "^10.1.0"
-    jsii-reflect "^1.108.0"
-    semver "^7.6.3"
+    jsii-reflect "^1.109.0"
+    semver "^7.7.1"
     spdx-license-list "^6.9.0"
     xmlbuilder "^15.1.1"
     yargs "^16.2.0"
