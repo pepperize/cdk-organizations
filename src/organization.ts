@@ -1,4 +1,4 @@
-import { Aspects, CustomResource, Names, Stack, TagManager, TagType } from "aws-cdk-lib";
+import { Aspects, CustomResource, Names, Stack, TagManager, TagType, Token } from "aws-cdk-lib";
 import * as aws_iam from "aws-cdk-lib/aws-iam";
 import * as custom_resources from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
@@ -169,7 +169,12 @@ export class Organization extends Construct implements IOrganization {
     this.managementAccountArn = this.resource.getAtt("MasterAccountArn").toString();
     this.managementAccountId = this.resource.getAtt("MasterAccountId").toString();
     this.managementAccountEmail = this.resource.getAtt("MasterAccountEmail").toString();
-    this.principal = new aws_iam.OrganizationPrincipal(this.organizationId);
+
+    // Use a dummy organization ID for validation during synthesis
+    // The actual ID will be used at deployment time
+    this.principal = Token.isUnresolved(this.organizationId)
+      ? new aws_iam.OrganizationPrincipal("o-0000000000")
+      : new aws_iam.OrganizationPrincipal(this.organizationId);
 
     this.root = new Root(this, "Root");
     this.root.node.addDependency(this.resource);
