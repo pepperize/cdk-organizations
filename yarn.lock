@@ -4159,12 +4159,12 @@ jsii-rosetta@~5.6.0:
     yargs "^17.7.2"
 
 jsii@~5.6.0:
-  version "5.6.12"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.6.12.tgz#861ec378b7e038824b12ef27a2af1d3be332a50c"
-  integrity sha512-HQm/n5REC2JnMGOioZL6X3Y+pp8nK5wziuhlSm2gha4ggXXSYK6kF3RSQWQP0GjsIzhd/iO/9pvEqKGHIXjELQ==
+  version "5.6.13"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.6.13.tgz#03332ecc4be822e5769aceb45c0211b8a8bc5f24"
+  integrity sha512-ZkENp5w1Pj2VGtLixhmUuemZWRlieTKPLxxxs4cz+n3Wlpovit5dzy8wyx5CXiRjlwDMLRWnt7axn0qe7UFjpg==
   dependencies:
-    "@jsii/check-node" "1.108.0"
-    "@jsii/spec" "^1.108.0"
+    "@jsii/check-node" "1.109.0"
+    "@jsii/spec" "^1.109.0"
     case "^1.6.3"
     chalk "^4"
     fast-deep-equal "^3.1.3"
