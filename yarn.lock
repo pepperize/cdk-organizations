@@ -4377,9 +4377,9 @@ jsii-rosetta@~5.6.0:
     yargs "^17.7.2"
 
 jsii@~5.6.0:
-  version "5.6.18"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.6.18.tgz#b8a419d8ab891347ec1be032ea45bda3c0f07046"
-  integrity sha512-nNVjXTyrBNo40iSRhwnMLv9aJxo5NbDahwK70X+R1Ehz0cORgVEhZyxZ/96QOdZ9nyG0rxWUgoLhBR+ZJl+IZg==
+  version "5.6.19"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-5.6.19.tgz#dfdc3035b7930b4e55b01d02a4906206692df9b9"
+  integrity sha512-GU6IddXCZZ4Jc51/9cr4QgLT2ofOuelpnfcbHsXB4OL0DJmj/PaqeLBpGbb3MDCuJbxOemfKnNav/vrqZV7qqQ==
   dependencies:
     "@jsii/check-node" "1.111.0"
     "@jsii/spec" "^1.111.0"
