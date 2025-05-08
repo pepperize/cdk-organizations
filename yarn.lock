@@ -4322,16 +4322,16 @@ jsii-diff@^1.77.0:
     yargs "^16.2.0"
 
 jsii-docgen@^10.5.0:
-  version "10.7.2"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-10.7.2.tgz#67e5d85a3a0844c4fdac58ddf8c9d8fdba0a4c5f"
-  integrity sha512-8pd1RdNPQ3AUg9vwStknxbmSTyjOHgVC6NWN9Z2uGP5winvyUNqGShaef90jR/NerefWLRoLlDUEcXp1k0fFxQ==
+  version "10.7.3"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-10.7.3.tgz#9b67533c77c6bd79a674c3a289f0d5142b776571"
+  integrity sha512-dHDfJUcM0mxg2iACikSUTk8lv09xW7Oa50lKNduF13yPUJJ0ay9XMNpTDAX+M6V7t8uY/vv32tj4fBIIHJ6Njg==
   dependencies:
-    "@jsii/spec" "^1.111.0"
+    "@jsii/spec" "^1.112.0"
     case "^1.6.3"
     fs-extra "^10.1.0"
     glob "^8.1.0"
     glob-promise "^6.0.7"
-    jsii-reflect "^1.111.0"
+    jsii-reflect "^1.112.0"
     semver "^7.7.1"
     yargs "^16.2.0"
 
