@@ -3602,9 +3602,9 @@ istanbul-reports@^3.1.3:
     istanbul-lib-report "^3.0.0"
 
 jest-cdk-snapshot@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/jest-cdk-snapshot/-/jest-cdk-snapshot-2.2.5.tgz#e49eca4cdbcb461392a3df92e53d8492400b6bdb"
-  integrity sha512-+7TLHTRwfWm1Cslu8fnSSc53cFufE89BbRTBtytZN0Ac4uS6ha9yMsEiN4tOl/SLAsu+q/8/ppAs0LCX0GP/AQ==
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/jest-cdk-snapshot/-/jest-cdk-snapshot-2.3.5.tgz#108ad40858d931afce8d7d9515d993eb7ac34fe8"
+  integrity sha512-t6nnsRkBflTTLCx/Gx1XJ6MER52S6pOqxSbrGuuaMn1hOo2U3JDcVsHcdgbWmTwsJIWceWBU0JxptOXLtuIRJQ==
   dependencies:
     js-yaml "^3.13.1"
 
