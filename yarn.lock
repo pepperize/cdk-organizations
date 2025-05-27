@@ -1708,9 +1708,9 @@ case@1.6.3, case@^1.6.3:
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
 cdk-nag@^2.22.27:
-  version "2.35.106"
-  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.35.106.tgz#afdbfaa9b54115dfa6cbfef4e726b2e0ecd8dc58"
-  integrity sha512-TKyOFQhetwuEiUZ8q3eoLJu9Ycst5MAM7j1UOnylCm4vWcSIqMkJExAjjxSsmNH7T51s+ve1V4LZ7lN3wf2oZQ==
+  version "2.35.107"
+  resolved "https://registry.yarnpkg.com/cdk-nag/-/cdk-nag-2.35.107.tgz#5d25db6576d1464070afd093e35771d9d3109477"
+  integrity sha512-mSbW1gieyc28TbwZt1HaOJF+Ud0aLeRCa8+fFUVcv+X1i7P6OfBBFdUDYRq8HARSjQzhv2ceIGKP+2ZA2Lt8sA==
 
 chalk@^2.4.2:
   version "2.4.2"
@@ -3594,9 +3594,9 @@ istanbul-reports@^3.1.3:
     istanbul-lib-report "^3.0.0"
 
 jest-cdk-snapshot@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/jest-cdk-snapshot/-/jest-cdk-snapshot-2.2.5.tgz#e49eca4cdbcb461392a3df92e53d8492400b6bdb"
-  integrity sha512-+7TLHTRwfWm1Cslu8fnSSc53cFufE89BbRTBtytZN0Ac4uS6ha9yMsEiN4tOl/SLAsu+q/8/ppAs0LCX0GP/AQ==
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/jest-cdk-snapshot/-/jest-cdk-snapshot-2.3.5.tgz#108ad40858d931afce8d7d9515d993eb7ac34fe8"
+  integrity sha512-t6nnsRkBflTTLCx/Gx1XJ6MER52S6pOqxSbrGuuaMn1hOo2U3JDcVsHcdgbWmTwsJIWceWBU0JxptOXLtuIRJQ==
   dependencies:
     js-yaml "^3.13.1"
 
