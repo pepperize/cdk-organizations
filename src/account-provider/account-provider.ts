@@ -1,6 +1,7 @@
 import { Duration, NestedStack, NestedStackProps, Stack } from "aws-cdk-lib";
 import { PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { Function } from "aws-cdk-lib/aws-lambda";
+import { LogLevel } from "aws-cdk-lib/aws-stepfunctions";
 import { Provider } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
 import { IsCompleteHandlerFunction } from "./is-complete-handler-function";
@@ -85,6 +86,10 @@ export class AccountProvider extends NestedStack {
       onEventHandler: this.onEventHandler,
       isCompleteHandler: this.isCompleteHandler,
       queryInterval: Duration.seconds(5),
+      waiterStateMachineLogOptions: {
+        level: LogLevel.ALL,
+        includeExecutionData: false,
+      },
     });
   }
 }

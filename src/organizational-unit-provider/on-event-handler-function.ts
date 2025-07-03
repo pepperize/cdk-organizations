@@ -17,7 +17,7 @@ export class OnEventHandlerFunction extends lambda.Function {
     super(scope, id, {
       description: 'src/organizational-unit-provider/on-event-handler.lambda.ts',
       ...props,
-      runtime: new lambda.Runtime('nodejs18.x', lambda.RuntimeFamily.NODEJS),
+      runtime: new lambda.Runtime('nodejs22.x', lambda.RuntimeFamily.NODEJS),
       handler: 'index.handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../assets/organizational-unit-provider/on-event-handler.lambda')),
     });
