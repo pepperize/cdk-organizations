@@ -16,7 +16,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs22.x",
         "Timeout": 120,
       },
       "Type": "AWS::Lambda::Function",
@@ -137,7 +137,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/02ece5c04dee6fcbd3532c20a43a8163b7c39cd9868a821fddca2b4bb1bcf5f4.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/c60a8751aef1c3f0621aacf9ac86c3c35f02def937b9617548a70c8910069b96.json",
             ],
           ],
         },
