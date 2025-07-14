@@ -17,6 +17,7 @@
     ".projen/deps.json",
     ".projen/files.json",
     ".projen/tasks.json",
+    ".yarnrc.yml",
     "LICENSE",
     "src/account-provider/is-complete-handler-function.ts",
     "src/account-provider/on-event-handler-function.ts",

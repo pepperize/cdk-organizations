@@ -19,6 +19,14 @@ describe("cdk-nag", () => {
           reason: "Custom resource providers are meant to modify * resources in the organizations api",
         },
         { id: "AwsSolutions-L1", reason: "Custom resource providers bundled with the sdk" },
+        {
+          id: "AwsSolutions-SF1",
+          reason: "The Step Functions is not required to log all events to CloudWatch.",
+        },
+        {
+          id: "AwsSolutions-SF2",
+          reason: "The Step Functions does not require X-Ray tracing.",
+        },
       ],
       true
     );

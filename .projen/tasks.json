@@ -261,7 +261,7 @@
       "description": "Install project dependencies and update lockfile (non-frozen)",
       "steps": [
         {
-          "exec": "yarn install --check-files"
+          "exec": "yarn install"
         }
       ]
     },
@@ -270,7 +270,7 @@
       "description": "Install project dependencies using frozen lockfile",
       "steps": [
         {
-          "exec": "yarn install --check-files --frozen-lockfile"
+          "exec": "yarn install --immutable"
         }
       ]
     },
@@ -294,33 +294,6 @@
       "steps": [
         {
           "spawn": "package:js"
-        },
-        {
-          "spawn": "package:java"
-        },
-        {
-          "spawn": "package:python"
-        },
-        {
-          "spawn": "package:dotnet"
-        }
-      ]
-    },
-    "package:dotnet": {
-      "name": "package:dotnet",
-      "description": "Create dotnet language bindings",
-      "steps": [
-        {
-          "exec": "jsii-pacmak -v --target dotnet"
-        }
-      ]
-    },
-    "package:java": {
-      "name": "package:java",
-      "description": "Create java language bindings",
-      "steps": [
-        {
-          "exec": "jsii-pacmak -v --target java"
         }
       ]
     },
@@ -330,15 +303,6 @@
       "steps": [
         {
           "exec": "jsii-pacmak -v --target js"
-        }
-      ]
-    },
-    "package:python": {
-      "name": "package:python",
-      "description": "Create python language bindings",
-      "steps": [
-        {
-          "exec": "jsii-pacmak -v --target python"
         }
       ]
     },
