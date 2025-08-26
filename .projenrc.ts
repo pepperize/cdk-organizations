@@ -5,7 +5,8 @@ const project = new AwsCdkConstructLibrary({
   authorAddress: "patrick.florek@gmail.com",
   license: "MIT",
   copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
-  cdkVersion: "2.37.1",
+  cdkVersion: "2.203.1",
+  jsiiVersion: "~5.8.0",
   name: "@pepperize/cdk-organizations",
   description: "Manage AWS organizations, organizational units (OU), accounts and service control policies (SCP).",
   keywords: [
@@ -67,7 +68,7 @@ const project = new AwsCdkConstructLibrary({
   gitpod: true,
 
   lambdaOptions: {
-    runtime: awscdk.LambdaRuntime.NODEJS_18_X,
+    runtime: awscdk.LambdaRuntime.NODEJS_22_X,
     bundlingOptions: {
       externals: [],
     },

@@ -16,7 +16,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs22.x",
         "Timeout": 120,
       },
       "Type": "AWS::Lambda::Function",
@@ -198,7 +198,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/2089be8c8b2e57aef8bfc8cc25ca4174c3e1d74b8d665b9963f04d81a92f35c5.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/18cbdf1d711377ad2fe614944d4e439053805c916f0a8acbba0d52662ae599d3.json",
             ],
           ],
         },
@@ -217,7 +217,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/acccdb584cf721114b4c1539022c7cf28c3c2bd080e85cd9b89d64e2743b4dfd.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/c8cc7d88013565bcb0db3b7887c682edad94a41a1786f7ef1785306907e3a6fc.json",
             ],
           ],
         },
@@ -236,7 +236,7 @@ Object {
               Object {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/02ece5c04dee6fcbd3532c20a43a8163b7c39cd9868a821fddca2b4bb1bcf5f4.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/c60a8751aef1c3f0621aacf9ac86c3c35f02def937b9617548a70c8910069b96.json",
             ],
           ],
         },
