@@ -59,7 +59,7 @@ const project = new AwsCdkConstructLibrary({
     module: "pepperize_cdk_organizations",
   },
   publishToMaven: {
-    mavenEndpoint: "https://s01.oss.sonatype.org",
+    mavenEndpoint: "https://ossrh-staging-api.central.sonatype.com",
     mavenGroupId: "com.pepperize",
     mavenArtifactId: "cdk-organizations",
     javaPackage: "com.pepperize.cdk.organizations",
