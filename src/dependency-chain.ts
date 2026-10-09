@@ -13,11 +13,15 @@ import { PolicyAttachment } from "./policy-attachment";
  */
 export class DependencyChain implements IAspect {
   private previous: { [stackName: string]: IConstruct } = {};
+  // CDK invokes aspects again when an app is synthesized again, for example by `app.synth({ force: true })`.
+  // Chaining a construct twice would make it depend on the last construct of the previous pass and form a cycle.
+  private readonly chained = new WeakSet<IConstruct>();
 
   visit(current: IConstruct): void {
-    if (!this.needsChaining(current)) {
+    if (!this.needsChaining(current) || this.chained.has(current)) {
       return;
     }
+    this.chained.add(current);
 
     const stackName = Stack.of(current).stackName;
 

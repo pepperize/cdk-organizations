@@ -1,4 +1,4 @@
-import { Aspects, Stack } from "aws-cdk-lib";
+import { App, Aspects, Stack } from "aws-cdk-lib";
 import { Capture, Template } from "aws-cdk-lib/assertions";
 import { Account, DependencyChain, Organization, OrganizationalUnit, Policy, PolicyType } from "../src";
 import "jest-cdk-snapshot";
@@ -127,5 +127,46 @@ describe("DependencyChain", () => {
       ignoreMetadata: true,
       ignoreTags: true,
     });
+  });
+  it("Should keep the chain when the app is synthesized again", () => {
+    // Given
+    const app = new App();
+    const stack = new Stack(app, "Stack");
+    const organization = new Organization(stack, "Organization", {});
+    new OrganizationalUnit(stack, "OU1", { parent: organization.root, organizationalUnitName: "test1" });
+    new OrganizationalUnit(stack, "OU2", { parent: organization.root, organizationalUnitName: "test2" });
+    const dependsOn = () =>
+      Object.fromEntries(
+        Object.entries(app.synth({ force: true }).getStackByName(stack.stackName).template.Resources).map(
+          ([id, resource]) => [id, (resource as { DependsOn?: string[] }).DependsOn ?? []]
+        )
+      );
+
+    // When
+    const first = dependsOn();
+    const second = dependsOn();
+
+    // Then
+    expect(second).toEqual(first);
+  });
+  it("Should chain constructs added after a synthesis after the existing chain", () => {
+    // Given
+    const app = new App();
+    const stack = new Stack(app, "Stack");
+    const organization = new Organization(stack, "Organization", {});
+    new OrganizationalUnit(stack, "OU1", { parent: organization.root, organizationalUnitName: "test1" });
+    const ou2 = new OrganizationalUnit(stack, "OU2", { parent: organization.root, organizationalUnitName: "test2" });
+    app.synth();
+
+    // When
+    new OrganizationalUnit(stack, "OU3", { parent: organization.root, organizationalUnitName: "test3" });
+
+    // Then
+    const capture = new Capture();
+    Template.fromJSON(app.synth({ force: true }).getStackByName(stack.stackName).template).hasResource(
+      "Custom::Organizations_OrganizationalUnitProvider",
+      { Properties: { Name: "test3" }, DependsOn: capture }
+    );
+    expect(capture.asArray()).toEqual(expect.arrayContaining([expect.stringMatching(ou2.node.id)]));
   });
 });
