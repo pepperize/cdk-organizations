@@ -7,6 +7,7 @@ import { DependencyChain } from "./dependency-chain";
 import { EnableAwsServiceAccess } from "./enable-aws-service-access";
 import { EnablePolicyType } from "./enable-policy-type";
 import { OrganizationProvider } from "./organization-provider";
+import { organizationsEndpointRegion } from "./organizations-region";
 import { IParent } from "./parent";
 import { IPolicy, PolicyType } from "./policy";
 import { IPolicyAttachmentTarget, PolicyAttachment } from "./policy-attachment";
@@ -98,7 +99,7 @@ export class Organization extends Construct implements IOrganization {
       public constructor() {
         super(scope, id);
 
-        const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+        const organizationsRegion = organizationsEndpointRegion();
 
         const resource = new custom_resources.AwsCustomResource(scope, "CustomResource", {
           resourceType: "Custom::Organizations_ImportOrganization",
@@ -229,7 +230,7 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
     super(scope, id);
     this.scope = scope;
 
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
 
     this.resource = new custom_resources.AwsCustomResource(this, "RootCustomResource", {
       resourceType: "Custom::Organizations_Root",

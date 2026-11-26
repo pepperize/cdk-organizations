@@ -1,5 +1,6 @@
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
+import { organizationsEndpointRegion } from "./organizations-region";
 import { IResource } from "./resource";
 
 export interface IParent extends IConstruct, IResource {}
@@ -21,7 +22,7 @@ export abstract class ParentBase extends Construct implements IParent {
     super(scope, id);
 
     const { childId } = props;
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
 
     const parent = new AwsCustomResource(this, "ListParentsCustomResource", {
       onCreate: {
