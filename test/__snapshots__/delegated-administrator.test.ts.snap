@@ -1,47 +1,47 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DelegatedAdministrator Should match snapshot 1`] = `
-Object {
-  "Resources": Object {
-    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": Object {
-      "DependsOn": Array [
+{
+  "Resources": {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": {
+      "DependsOn": [
         "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
       ],
-      "Properties": Object {
+      "Properties": {
         "Code": Any<Object>,
         "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
+        "Role": {
+          "Fn::GetAtt": [
             "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
             "Arn",
           ],
         },
-        "Runtime": "nodejs22.x",
+        "Runtime": "nodejs24.x",
         "Timeout": 120,
       },
       "Type": "AWS::Lambda::Function",
     },
-    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
@@ -52,17 +52,17 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "AccountCreateAccount833709C2": Object {
+    "AccountCreateAccount833709C2": {
       "DeletionPolicy": "Delete",
-      "Properties": Object {
+      "Properties": {
         "AccountName": "TestAccount",
         "Email": "info@pepperize.com",
         "IamUserAccessToBilling": "ALLOW",
         "ImportOnDuplicate": "true",
         "RemovalPolicy": "retain",
         "RoleName": "OrganizationAccountAccessRole",
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
+        "ServiceToken": {
+          "Fn::GetAtt": [
             "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5",
             "Outputs.cdkorganizationsAccountProviderframeworkonEvent4241E2B3Arn",
           ],
@@ -71,20 +71,20 @@ Object {
       "Type": "Custom::Organizations_Account",
       "UpdateReplacePolicy": "Delete",
     },
-    "AccountTagsTagResourceB6D57C22": Object {
+    "AccountTagsTagResourceB6D57C22": {
       "DeletionPolicy": "Delete",
-      "DependsOn": Array [
+      "DependsOn": [
         "AccountCreateAccount833709C2",
       ],
-      "Properties": Object {
-        "ResourceId": Object {
-          "Fn::GetAtt": Array [
+      "Properties": {
+        "ResourceId": {
+          "Fn::GetAtt": [
             "AccountCreateAccount833709C2",
             "AccountId",
           ],
         },
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
+        "ServiceToken": {
+          "Fn::GetAtt": [
             "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
@@ -93,52 +93,52 @@ Object {
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "DelegatedAdministratorDelegatedAdministratorCustomResource8756F10E": Object {
+    "DelegatedAdministratorDelegatedAdministratorCustomResource8756F10E": {
       "DeletionPolicy": "Delete",
-      "DependsOn": Array [
+      "DependsOn": [
         "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201",
       ],
-      "Properties": Object {
-        "Create": Object {
-          "Fn::Join": Array [
+      "Properties": {
+        "Create": {
+          "Fn::Join": [
             "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"registerDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"physicalResourceId\\":{\\"id\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
+            [
+              "{"service":"Organizations","action":"registerDelegatedAdministrator","region":"us-east-1","physicalResourceId":{"id":"",
+              {
+                "Fn::GetAtt": [
                   "AccountCreateAccount833709C2",
                   "AccountId",
                 ],
               },
-              ":service-abbreviation.amazonaws.com\\"},\\"parameters\\":{\\"AccountId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
+              ":service-abbreviation.amazonaws.com"},"parameters":{"AccountId":"",
+              {
+                "Fn::GetAtt": [
                   "AccountCreateAccount833709C2",
                   "AccountId",
                 ],
               },
-              "\\",\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"},\\"ignoreErrorCodesMatching\\":\\"AccountAlreadyRegisteredException\\"}",
+              "","ServicePrincipal":"service-abbreviation.amazonaws.com"},"ignoreErrorCodesMatching":"AccountAlreadyRegisteredException"}",
             ],
           ],
         },
-        "Delete": Object {
-          "Fn::Join": Array [
+        "Delete": {
+          "Fn::Join": [
             "",
-            Array [
-              "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deregisterDelegatedAdministrator\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"AccountId\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
+            [
+              "{"service":"Organizations","action":"deregisterDelegatedAdministrator","region":"us-east-1","parameters":{"AccountId":"",
+              {
+                "Fn::GetAtt": [
                   "AccountCreateAccount833709C2",
                   "AccountId",
                 ],
               },
-              "\\",\\"ServicePrincipal\\":\\"service-abbreviation.amazonaws.com\\"}}",
+              "","ServicePrincipal":"service-abbreviation.amazonaws.com"}}",
             ],
           ],
         },
         "InstallLatestAwsSdk": false,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
+        "ServiceToken": {
+          "Fn::GetAtt": [
             "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
             "Arn",
           ],
@@ -147,16 +147,16 @@ Object {
       "Type": "Custom::Organizations_DelegatedAdministrator",
       "UpdateReplacePolicy": "Delete",
     },
-    "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
               "Action": "organizations:RegisterDelegatedAdministrator",
               "Effect": "Allow",
               "Resource": "*",
             },
-            Object {
+            {
               "Action": "organizations:DeregisterDelegatedAdministrator",
               "Effect": "Allow",
               "Resource": "*",
@@ -165,26 +165,26 @@ Object {
           "Version": "2012-10-17",
         },
         "PolicyName": "DelegatedAdministratorDelegatedAdministratorCustomResourceCustomResourcePolicyCBFF6201",
-        "Roles": Array [
-          Object {
+        "Roles": [
+          {
             "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
           },
         ],
       },
       "Type": "AWS::IAM::Policy",
     },
-    "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5": Object {
+    "cdkorganizationsAccountProviderNestedStackcdkorganizationsAccountProviderNestedStackResourceA1C2E3D5": {
       "DeletionPolicy": "Delete",
-      "Properties": Object {
-        "TemplateURL": Object {
-          "Fn::Join": Array [
+      "Properties": {
+        "TemplateURL": {
+          "Fn::Join": [
             "",
-            Array [
+            [
               "https://s3.us-east-1.",
-              Object {
+              {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/a21fb725b010605290a857fcc53edc2b939abd5698b47d7a18fea8f922926d74.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/fce6d7637afce1ac203b6f41756a116b72aa54223b33b73b9b49b441a264ecb3.json",
             ],
           ],
         },
@@ -192,18 +192,18 @@ Object {
       "Type": "AWS::CloudFormation::Stack",
       "UpdateReplacePolicy": "Delete",
     },
-    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": Object {
+    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": {
       "DeletionPolicy": "Delete",
-      "Properties": Object {
-        "TemplateURL": Object {
-          "Fn::Join": Array [
+      "Properties": {
+        "TemplateURL": {
+          "Fn::Join": [
             "",
-            Array [
+            [
               "https://s3.us-east-1.",
-              Object {
+              {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/97e9e3bf7fc3447432bd4e7398ac495512689323a60f7c8f921df5663a45a95d.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/92b523aa22d46dcfeca6e6063b15d632004c4c45b681d0ecbd085cfac8b88824.json",
             ],
           ],
         },

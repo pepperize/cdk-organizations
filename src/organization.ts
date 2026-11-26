@@ -281,7 +281,7 @@ export class Root extends Construct implements IParent, IPolicyAttachmentTarget,
       {
         target: this,
         policy: policy,
-      }
+      },
     );
     policyAttachment.node.addDependency(this.resource, policy);
   }

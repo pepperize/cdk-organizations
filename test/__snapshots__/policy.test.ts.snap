@@ -1,47 +1,47 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Policy Should match snapshot 1`] = `
-Object {
-  "Resources": Object {
-    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": Object {
-      "DependsOn": Array [
+{
+  "Resources": {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": {
+      "DependsOn": [
         "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
       ],
-      "Properties": Object {
+      "Properties": {
         "Code": Any<Object>,
         "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
+        "Role": {
+          "Fn::GetAtt": [
             "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
             "Arn",
           ],
         },
-        "Runtime": "nodejs22.x",
+        "Runtime": "nodejs24.x",
         "Timeout": 120,
       },
       "Type": "AWS::Lambda::Function",
     },
-    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
@@ -52,41 +52,41 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "PolicyPolicyCustomResource79938510": Object {
+    "PolicyPolicyCustomResource79938510": {
       "DeletionPolicy": "Delete",
-      "DependsOn": Array [
+      "DependsOn": [
         "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
       ],
-      "Properties": Object {
-        "Create": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"createPolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\\\\\\\\\\\"Version\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2012-10-17\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Statement\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\"Effect\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Allow\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Action\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"s3:*\\\\\\\\\\\\\\"}}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"Type\\":\\"SERVICE_CONTROL_POLICY\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
-        "Delete": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"deletePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"}}",
+      "Properties": {
+        "Create": "{"service":"Organizations","action":"createPolicy","region":"us-east-1","parameters":{"Content":"{\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"}}","Description":"Enables admins of attached accounts to delegate all S3 permissions","Name":"AllowAllS3Actions","Type":"SERVICE_CONTROL_POLICY"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
+        "Delete": "{"service":"Organizations","action":"deletePolicy","region":"us-east-1","parameters":{"PolicyId":"PHYSICAL:RESOURCEID:"}}",
         "InstallLatestAwsSdk": false,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
+        "ServiceToken": {
+          "Fn::GetAtt": [
             "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
             "Arn",
           ],
         },
-        "Update": "{\\"service\\":\\"Organizations\\",\\"action\\":\\"updatePolicy\\",\\"region\\":\\"us-east-1\\",\\"parameters\\":{\\"Content\\":\\"{\\\\\\\\\\\\\\"Version\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"2012-10-17\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Statement\\\\\\\\\\\\\\":{\\\\\\\\\\\\\\"Effect\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"Allow\\\\\\\\\\\\\\",\\\\\\\\\\\\\\"Action\\\\\\\\\\\\\\":\\\\\\\\\\\\\\"s3:*\\\\\\\\\\\\\\"}}\\",\\"Description\\":\\"Enables admins of attached accounts to delegate all S3 permissions\\",\\"Name\\":\\"AllowAllS3Actions\\",\\"PolicyId\\":\\"PHYSICAL:RESOURCEID:\\"},\\"outputPaths\\":[\\"Policy.PolicySummary.Id\\"],\\"physicalResourceId\\":{\\"responsePath\\":\\"Policy.PolicySummary.Id\\"}}",
+        "Update": "{"service":"Organizations","action":"updatePolicy","region":"us-east-1","parameters":{"Content":"{\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Action\\\\\\":\\\\\\"s3:*\\\\\\"}}","Description":"Enables admins of attached accounts to delegate all S3 permissions","Name":"AllowAllS3Actions","PolicyId":"PHYSICAL:RESOURCEID:"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
       },
       "Type": "Custom::Organizations_Policy",
       "UpdateReplacePolicy": "Delete",
     },
-    "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
               "Action": "organizations:CreatePolicy",
               "Effect": "Allow",
               "Resource": "*",
             },
-            Object {
+            {
               "Action": "organizations:UpdatePolicy",
               "Effect": "Allow",
               "Resource": "*",
             },
-            Object {
+            {
               "Action": "organizations:DeletePolicy",
               "Effect": "Allow",
               "Resource": "*",
@@ -95,29 +95,29 @@ Object {
           "Version": "2012-10-17",
         },
         "PolicyName": "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
-        "Roles": Array [
-          Object {
+        "Roles": [
+          {
             "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
           },
         ],
       },
       "Type": "AWS::IAM::Policy",
     },
-    "PolicyTagsTagResource27BB67A1": Object {
+    "PolicyTagsTagResource27BB67A1": {
       "DeletionPolicy": "Delete",
-      "DependsOn": Array [
+      "DependsOn": [
         "PolicyPolicyCustomResourceCustomResourcePolicy05A7F4A4",
         "PolicyPolicyCustomResource79938510",
       ],
-      "Properties": Object {
-        "ResourceId": Object {
-          "Fn::GetAtt": Array [
+      "Properties": {
+        "ResourceId": {
+          "Fn::GetAtt": [
             "PolicyPolicyCustomResource79938510",
             "Policy.PolicySummary.Id",
           ],
         },
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
+        "ServiceToken": {
+          "Fn::GetAtt": [
             "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
@@ -126,18 +126,18 @@ Object {
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": Object {
+    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": {
       "DeletionPolicy": "Delete",
-      "Properties": Object {
-        "TemplateURL": Object {
-          "Fn::Join": Array [
+      "Properties": {
+        "TemplateURL": {
+          "Fn::Join": [
             "",
-            Array [
+            [
               "https://s3.us-east-1.",
-              Object {
+              {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/97e9e3bf7fc3447432bd4e7398ac495512689323a60f7c8f921df5663a45a95d.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/92b523aa22d46dcfeca6e6063b15d632004c4c45b681d0ecbd085cfac8b88824.json",
             ],
           ],
         },

@@ -5,8 +5,8 @@ const project = new AwsCdkConstructLibrary({
   authorAddress: "patrick.florek@gmail.com",
   license: "MIT",
   copyrightOwner: "Pepperize UG (haftungsbeschränkt)",
-  cdkVersion: "2.203.1",
-  jsiiVersion: "~5.8.0",
+  cdkVersion: "2.278.0",
+  jsiiVersion: "~6.0.0",
   name: "@pepperize/cdk-organizations",
   description: "Manage AWS organizations, organizational units (OU), accounts and service control policies (SCP).",
   keywords: [
@@ -27,18 +27,26 @@ const project = new AwsCdkConstructLibrary({
   repositoryUrl: "https://github.com/pepperize/cdk-organizations.git",
 
   projenrcTs: true,
+  minNodeVersion: "22.13.0",
+  workflowNodeVersion: "24.x",
+  jestOptions: {
+    jestVersion: "^30",
+  },
+  packageManager: javascript.NodePackageManager.YARN_CLASSIC,
 
-  deps: ["pascal-case"],
-  bundledDeps: ["pascal-case"],
+  deps: ["pascal-case@^3"],
+  bundledDeps: ["pascal-case@^3"],
   devDeps: [
-    "@pepperize/projen-awscdk-construct@~0.0.730",
+    "@pepperize/projen-awscdk-construct@~0.1.0",
+    "@types/node@^22",
+    "typescript@~6.0",
     "@types/aws-lambda",
     "@types/jest",
     "@types/sinon",
     "aws-lambda",
     "aws-sdk",
     "aws-sdk-mock",
-    "cdk-nag",
+    "cdk-nag@^2",
     "jest-cdk-snapshot",
     "sinon",
   ],
@@ -59,7 +67,6 @@ const project = new AwsCdkConstructLibrary({
     module: "pepperize_cdk_organizations",
   },
   publishToMaven: {
-    mavenEndpoint: "https://ossrh-staging-api.central.sonatype.com",
     mavenGroupId: "com.pepperize",
     mavenArtifactId: "cdk-organizations",
     javaPackage: "com.pepperize.cdk.organizations",
@@ -68,7 +75,7 @@ const project = new AwsCdkConstructLibrary({
   gitpod: true,
 
   lambdaOptions: {
-    runtime: awscdk.LambdaRuntime.NODEJS_22_X,
+    runtime: awscdk.LambdaRuntime.NODEJS_26_X,
     bundlingOptions: {
       externals: [],
     },
@@ -82,5 +89,8 @@ project.gitpod?.addCustomTask({
 });
 
 project.gitpod?.addVscodeExtensions("dbaeumer.vscode-eslint");
+
+// handler tests use dynamic import(); jest needs vm modules for that
+project.testTask.env("NODE_OPTIONS", "--experimental-vm-modules");
 
 project.synth();

@@ -2,7 +2,7 @@
   "dependencies": [
     {
       "name": "@pepperize/projen-awscdk-construct",
-      "version": "~0.0.730",
+      "version": "~0.1.0",
       "type": "build"
     },
     {
@@ -11,10 +11,12 @@
     },
     {
       "name": "@types/jest",
+      "version": "^30",
       "type": "build"
     },
     {
       "name": "@types/node",
+      "version": "^22",
       "type": "build"
     },
     {
@@ -45,11 +47,12 @@
     },
     {
       "name": "cdk-nag",
+      "version": "^2",
       "type": "build"
     },
     {
       "name": "commit-and-tag-version",
-      "version": "^12",
+      "version": "^13",
       "type": "build"
     },
     {
@@ -78,16 +81,17 @@
       "type": "build"
     },
     {
-      "name": "jest",
-      "type": "build"
-    },
-    {
       "name": "jest-cdk-snapshot",
       "type": "build"
     },
     {
       "name": "jest-junit",
-      "version": "^15",
+      "version": "^17",
+      "type": "build"
+    },
+    {
+      "name": "jest",
+      "version": "^30",
       "type": "build"
     },
     {
@@ -105,12 +109,12 @@
     },
     {
       "name": "jsii-rosetta",
-      "version": "~5.8.0",
+      "version": "~6.0.0",
       "type": "build"
     },
     {
       "name": "jsii",
-      "version": "~5.8.0",
+      "version": "~6.0.0",
       "type": "build"
     },
     {
@@ -127,6 +131,7 @@
     },
     {
       "name": "ts-jest",
+      "version": "^29",
       "type": "build"
     },
     {
@@ -139,25 +144,27 @@
     },
     {
       "name": "pascal-case",
+      "version": "^3",
       "type": "bundled"
     },
     {
       "name": "projen",
-      "version": "~0.91.1",
+      "version": "~0.105.12",
       "type": "devenv"
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.203.1",
+      "version": "^2.278.0",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": "^10.0.5",
+      "version": "^10.5.1",
       "type": "peer"
     },
     {
       "name": "pascal-case",
+      "version": "^3",
       "type": "runtime"
     }
   ],

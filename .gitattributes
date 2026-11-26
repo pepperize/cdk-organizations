@@ -3,7 +3,7 @@
 * text=auto eol=lf
 *.snap linguist-generated
 /.editorconfig linguist-generated
-/.eslintrc.json linguist-generated
+/.eslintrc.json linguist-generated linguist-language=JSON-with-Comments
 /.gitattributes linguist-generated
 /.github/dependabot.yml linguist-generated
 /.github/pull_request_template.md linguist-generated
@@ -11,6 +11,7 @@
 /.github/workflows/build.yml linguist-generated
 /.github/workflows/pull-request-lint.yml linguist-generated
 /.github/workflows/release.yml linguist-generated
+/.github/workflows/self-mutation.yml linguist-generated
 /.gitignore linguist-generated
 /.gitpod.yml linguist-generated
 /.mergify.yml linguist-generated
@@ -24,10 +25,12 @@
 /API.md linguist-generated
 /LICENSE linguist-generated
 /package.json linguist-generated
+/projenrc/tsconfig.json linguist-generated linguist-language=JSON-with-Comments
 /src/account-provider/is-complete-handler-function.ts linguist-generated
 /src/account-provider/on-event-handler-function.ts linguist-generated
 /src/organization-provider/on-event-handler-function.ts linguist-generated
 /src/organizational-unit-provider/on-event-handler-function.ts linguist-generated
 /src/tag-resource-provider/on-event-handler-function.ts linguist-generated
-/tsconfig.dev.json linguist-generated
+/test/tsconfig.json linguist-generated linguist-language=JSON-with-Comments
+/tsconfig.json linguist-generated
 /yarn.lock linguist-generated

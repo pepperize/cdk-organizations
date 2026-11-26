@@ -63,7 +63,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     // Then
     await expect(async () => {
       await response;
-    }).rejects.toThrowError("Failed Create Account undefined, reason: Some reason");
+    }).rejects.toThrow("Failed Create Account undefined, reason: Some reason");
     sinon.assert.called(describeCreateAccountStatusFake);
     sinon.assert.notCalled(describeAccountFake);
   });
@@ -242,7 +242,7 @@ describe("account-provider.is-complete-handler.lambda", () => {
     sinon.assert.notCalled(moveAccountFake);
     expect(expectedError).toBeInstanceOf(Error);
     expect((expectedError as Error).message).toContain(
-      `Failed Create Account test, reason: EMAIL_ALREADY_EXISTS; could not find account in organization.`
+      `Failed Create Account test, reason: EMAIL_ALREADY_EXISTS; could not find account in organization.`,
     );
   });
 

@@ -170,7 +170,7 @@ export class Account extends Construct implements IAccount, ITaggableResource {
         account: this,
         servicePrincipal: servicePrincipal,
         region,
-      }
+      },
     );
     delegatedAdministrator.node.addDependency(this.resource);
   }
@@ -187,7 +187,7 @@ export class Account extends Construct implements IAccount, ITaggableResource {
       {
         target: this,
         policy: policy,
-      }
+      },
     );
     policyAttachment.node.addDependency(this.resource, policy);
   }

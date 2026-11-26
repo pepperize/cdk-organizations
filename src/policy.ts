@@ -84,7 +84,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
 
     if (!Validators.of().policyContent(content)) {
       Annotations.of(this).addError(
-        "The text content of the policy must be valid and between 1 and 1,000,000 characters long."
+        "The text content of the policy must be valid and between 1 and 1,000,000 characters long.",
       );
     }
 

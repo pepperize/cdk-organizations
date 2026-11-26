@@ -42,7 +42,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
       response.CreateAccountStatus?.FailureReason != "EMAIL_ALREADY_EXISTS"
     ) {
       throw new Error(
-        `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}`
+        `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}`,
       );
     }
 
@@ -54,7 +54,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
 
       if (!account) {
         throw new Error(
-          `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}; could not find account in organization.`
+          `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}; could not find account in organization.`,
         );
       }
 
@@ -64,7 +64,7 @@ export async function handler(event: IsCompleteRequest): Promise<IsCompleteRespo
       !event.ResourceProperties.ImportOnDuplicate
     ) {
       throw new Error(
-        `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}.`
+        `Failed ${event.RequestType} Account ${response.CreateAccountStatus?.AccountName}, reason: ${response.CreateAccountStatus?.FailureReason}.`,
       );
     } else {
       // State == SUCCEEDED
@@ -120,7 +120,7 @@ const findCurrentParent = async (client: Organizations, id: string): Promise<Org
 const move = async (
   client: Organizations,
   accountId: string,
-  destinationParentId: string | undefined
+  destinationParentId: string | undefined,
 ): Promise<void> => {
   if (!destinationParentId) {
     return;
