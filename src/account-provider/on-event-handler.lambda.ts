@@ -20,6 +20,15 @@ export async function handler(event: OnEventRequest): Promise<OnEventResponse> {
 
   const { Email, AccountName, RoleName, IamUserAccessToBilling } = event.ResourceProperties;
 
+  if (event.RequestType == "Update") {
+    // https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_update_primary_email.html
+    for (const property of ["Email", "AccountName"]) {
+      if (event.OldResourceProperties?.[property] !== event.ResourceProperties[property]) {
+        throw new Error(`Updating the ${property} of account ${event.PhysicalResourceId} is not supported`);
+      }
+    }
+  }
+
   if (event.RequestType == "Create") {
     const response: Organizations.CreateAccountResponse = await organizationsClient
       // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createAccount-property
