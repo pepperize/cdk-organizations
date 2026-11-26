@@ -1678,7 +1678,7 @@ exports[`integ.default Should match snapshot 1`] = `
               {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/1b2cd0b109b65ed58960ccbd64ea54fcc4b958dc004753aa3607ee6fdad705fd.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/28ec08761b19a5d2cb30afa701fbf19a761bc14ab1f05a9ee88e750706449a89.json",
             ],
           ],
         },
