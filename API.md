@@ -3571,6 +3571,7 @@ Organizations offers policy types in the following two broad categories: <ol>   
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.PolicyType.SERVICE_CONTROL_POLICY">SERVICE_CONTROL_POLICY</a></code> | Service control policies (SCPs) offer central control over the maximum available permissions for all of the accounts in your organization. |
+| <code><a href="#@pepperize/cdk-organizations.PolicyType.RESOURCE_CONTROL_POLICY">RESOURCE_CONTROL_POLICY</a></code> | Resource control policies (RCPs) offer central control over the maximum available permissions for resources in your organization. |
 | <code><a href="#@pepperize/cdk-organizations.PolicyType.TAG_POLICY">TAG_POLICY</a></code> | Tag policies help you standardize the tags attached to the AWS resources in your organization's accounts. |
 | <code><a href="#@pepperize/cdk-organizations.PolicyType.BACKUP_POLICY">BACKUP_POLICY</a></code> | Backup policies help you centrally manage and apply backup plans to the AWS resources across your organization's accounts. |
 | <code><a href="#@pepperize/cdk-organizations.PolicyType.AISERVICES_OPT_OUT_POLICY">AISERVICES_OPT_OUT_POLICY</a></code> | Artificial Intelligence (AI) services opt-out policies enable you to control data collection for AWS AI services for all of your organization's accounts. |
@@ -3580,6 +3581,13 @@ Organizations offers policy types in the following two broad categories: <ol>   
 ##### `SERVICE_CONTROL_POLICY` <a name="SERVICE_CONTROL_POLICY" id="@pepperize/cdk-organizations.PolicyType.SERVICE_CONTROL_POLICY"></a>
 
 Service control policies (SCPs) offer central control over the maximum available permissions for all of the accounts in your organization.
+
+---
+
+
+##### `RESOURCE_CONTROL_POLICY` <a name="RESOURCE_CONTROL_POLICY" id="@pepperize/cdk-organizations.PolicyType.RESOURCE_CONTROL_POLICY"></a>
+
+Resource control policies (RCPs) offer central control over the maximum available permissions for resources in your organization.
 
 ---
 

@@ -25,6 +25,10 @@ export enum PolicyType {
    */
   SERVICE_CONTROL_POLICY = "SERVICE_CONTROL_POLICY",
   /**
+   * Resource control policies (RCPs) offer central control over the maximum available permissions for resources in your organization.
+   */
+  RESOURCE_CONTROL_POLICY = "RESOURCE_CONTROL_POLICY",
+  /**
    * Tag policies help you standardize the tags attached to the AWS resources in your organization's accounts.
    */
   TAG_POLICY = "TAG_POLICY",
