@@ -650,7 +650,7 @@ exports[`DependencyChain Should chain policy attachments 1`] = `
         "Policy1PolicyCustomResourceCustomResourcePolicy7BD4545C",
       ],
       "Properties": {
-        "Create": "{"service":"Organizations","action":"createPolicy","region":"us-east-1","parameters":{"Content":"{\\n\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\n\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"\\n}\\n}","Name":"AllowAllS3Actions","Type":"SERVICE_CONTROL_POLICY"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
+        "Create": "{"service":"Organizations","action":"createPolicy","region":"us-east-1","parameters":{"Content":"{\\n\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\n\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"\\n}\\n}","Description":"","Name":"AllowAllS3Actions","Type":"SERVICE_CONTROL_POLICY"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
         "Delete": "{"service":"Organizations","action":"deletePolicy","region":"us-east-1","parameters":{"PolicyId":"PHYSICAL:RESOURCEID:"}}",
         "InstallLatestAwsSdk": false,
         "ServiceToken": {
@@ -659,7 +659,7 @@ exports[`DependencyChain Should chain policy attachments 1`] = `
             "Arn",
           ],
         },
-        "Update": "{"service":"Organizations","action":"updatePolicy","region":"us-east-1","parameters":{"Content":"{\\n\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\n\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"\\n}\\n}","Name":"AllowAllS3Actions","PolicyId":"PHYSICAL:RESOURCEID:"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
+        "Update": "{"service":"Organizations","action":"updatePolicy","region":"us-east-1","parameters":{"Content":"{\\n\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\n\\"Effect\\":\\"Allow\\",\\"Action\\":\\"s3:*\\"\\n}\\n}","Description":"","Name":"AllowAllS3Actions","PolicyId":"PHYSICAL:RESOURCEID:"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
       },
       "Type": "Custom::Organizations_Policy",
       "UpdateReplacePolicy": "Delete",
@@ -724,7 +724,7 @@ exports[`DependencyChain Should chain policy attachments 1`] = `
         "Policy2PolicyCustomResourceCustomResourcePolicy0976B915",
       ],
       "Properties": {
-        "Create": "{"service":"Organizations","action":"createPolicy","region":"us-east-1","parameters":{"Content":"{\\n\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\n\\"Effect\\":\\"Deny\\",\\"Action\\":\\"*:*\\",\\"Resource\\":\\"*\\",\\"Condition\\":\\n{\\n\\"StringNotEquals\\":{\\"aws:RequestedRegion\\":[\\"us-east-1\\"]}\\n}\\n}\\n}","Name":"DenyAllNotUsEast1","Type":"SERVICE_CONTROL_POLICY"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
+        "Create": "{"service":"Organizations","action":"createPolicy","region":"us-east-1","parameters":{"Content":"{\\n\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\n\\"Effect\\":\\"Deny\\",\\"Action\\":\\"*:*\\",\\"Resource\\":\\"*\\",\\"Condition\\":\\n{\\n\\"StringNotEquals\\":{\\"aws:RequestedRegion\\":[\\"us-east-1\\"]}\\n}\\n}\\n}","Description":"","Name":"DenyAllNotUsEast1","Type":"SERVICE_CONTROL_POLICY"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
         "Delete": "{"service":"Organizations","action":"deletePolicy","region":"us-east-1","parameters":{"PolicyId":"PHYSICAL:RESOURCEID:"}}",
         "InstallLatestAwsSdk": false,
         "ServiceToken": {
@@ -733,7 +733,7 @@ exports[`DependencyChain Should chain policy attachments 1`] = `
             "Arn",
           ],
         },
-        "Update": "{"service":"Organizations","action":"updatePolicy","region":"us-east-1","parameters":{"Content":"{\\n\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\n\\"Effect\\":\\"Deny\\",\\"Action\\":\\"*:*\\",\\"Resource\\":\\"*\\",\\"Condition\\":\\n{\\n\\"StringNotEquals\\":{\\"aws:RequestedRegion\\":[\\"us-east-1\\"]}\\n}\\n}\\n}","Name":"DenyAllNotUsEast1","PolicyId":"PHYSICAL:RESOURCEID:"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
+        "Update": "{"service":"Organizations","action":"updatePolicy","region":"us-east-1","parameters":{"Content":"{\\n\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\n\\"Effect\\":\\"Deny\\",\\"Action\\":\\"*:*\\",\\"Resource\\":\\"*\\",\\"Condition\\":\\n{\\n\\"StringNotEquals\\":{\\"aws:RequestedRegion\\":[\\"us-east-1\\"]}\\n}\\n}\\n}","Description":"","Name":"DenyAllNotUsEast1","PolicyId":"PHYSICAL:RESOURCEID:"},"outputPaths":["Policy.PolicySummary.Id"],"physicalResourceId":{"responsePath":"Policy.PolicySummary.Id"}}",
       },
       "Type": "Custom::Organizations_Policy",
       "UpdateReplacePolicy": "Delete",

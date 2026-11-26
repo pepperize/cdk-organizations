@@ -97,7 +97,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
         region: organizationsRegion,
         parameters: {
           Content: content,
-          Description: description,
+          Description: description ?? "",
           Name: policyName,
           Type: policyType,
         },
@@ -110,7 +110,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
         region: organizationsRegion,
         parameters: {
           Content: content,
-          Description: description,
+          Description: description ?? "",
           Name: policyName,
           PolicyId: new PhysicalResourceIdReference(),
         },
