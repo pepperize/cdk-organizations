@@ -1056,10 +1056,10 @@
     "@parcel/watcher-win32-arm64" "2.6.0"
     "@parcel/watcher-win32-x64" "2.6.0"
 
-"@pepperize/projen-awscdk-construct@~0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@pepperize/projen-awscdk-construct/-/projen-awscdk-construct-0.1.0.tgz#bd8c24c7a38fc1a2cd7b621b7a3d055bb36d22fd"
-  integrity sha512-c0vYQsm+vBccR8r3SeNTkBA0VLvD5kfWFxME1V92orz9U9xU4735O+dYYGK/I3q6MIxOZjx3WWIBgpjU+HIToA==
+"@pepperize/projen-awscdk-construct@~0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@pepperize/projen-awscdk-construct/-/projen-awscdk-construct-0.1.1.tgz#60d1d5432181b38ecd8078499fad2273094d1e1b"
+  integrity sha512-CoxF/NC3EMc6L9L1yZ6Ex/DBTEYAZhl027dvEm8s2xEz4G8uRUPJWl0uzrzaOTPtBVcg1mzMR5a8f3Xssc3z9w==
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"

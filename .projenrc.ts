@@ -37,7 +37,7 @@ const project = new AwsCdkConstructLibrary({
   deps: ["pascal-case@^3"],
   bundledDeps: ["pascal-case@^3"],
   devDeps: [
-    "@pepperize/projen-awscdk-construct@~0.1.0",
+    "@pepperize/projen-awscdk-construct@~0.1.1",
     "@types/node@^22",
     "typescript@~6.0",
     "@types/aws-lambda",
@@ -92,8 +92,5 @@ project.gitpod?.addVscodeExtensions("dbaeumer.vscode-eslint");
 
 // handler tests use dynamic import(); jest needs vm modules for that
 project.testTask.env("NODE_OPTIONS", "--experimental-vm-modules");
-
-// mergify no longer accepts queue.method, merge_method is set on the queue rule
-project.tryFindObjectFile(".mergify.yml")?.addDeletionOverride("pull_request_rules.0.actions.queue.method");
 
 project.synth();
