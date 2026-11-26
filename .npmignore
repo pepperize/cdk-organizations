@@ -10,7 +10,7 @@ permissions-backup.acl
 /.prettierignore
 /.prettierrc.json
 /test/
-/tsconfig.dev.json
+/test/tsconfig.json
 /src/
 !/lib/
 !/lib/**/*.js
@@ -23,6 +23,7 @@ dist
 /.projenrc.js
 tsconfig.tsbuildinfo
 /.eslintrc.json
+/projenrc/tsconfig.json
 !.jsii
 !/assets/
 /.gitattributes

@@ -69,7 +69,7 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
 
     if (!Validators.of().organizationalUnitName(organizationalUnitName)) {
       Annotations.of(this).addError(
-        "The organizational unit's name must be of type string and between 1 and 128 characters long."
+        "The organizational unit's name must be of type string and between 1 and 128 characters long.",
       );
     }
 
@@ -114,7 +114,7 @@ export class OrganizationalUnit extends Construct implements IOrganizationalUnit
       {
         target: this,
         policy: policy,
-      }
+      },
     );
     policyAttachment.node.addDependency(this.resource, policy);
   }

@@ -6,41 +6,42 @@
     "url": "https://github.com/pepperize/cdk-organizations.git"
   },
   "scripts": {
-    "build": "npx projen build",
-    "bump": "npx projen bump",
-    "bundle": "npx projen bundle",
-    "bundle:account-provider/is-complete-handler.lambda": "npx projen bundle:account-provider/is-complete-handler.lambda",
-    "bundle:account-provider/is-complete-handler.lambda:watch": "npx projen bundle:account-provider/is-complete-handler.lambda:watch",
-    "bundle:account-provider/on-event-handler.lambda": "npx projen bundle:account-provider/on-event-handler.lambda",
-    "bundle:account-provider/on-event-handler.lambda:watch": "npx projen bundle:account-provider/on-event-handler.lambda:watch",
-    "bundle:organization-provider/on-event-handler.lambda": "npx projen bundle:organization-provider/on-event-handler.lambda",
-    "bundle:organization-provider/on-event-handler.lambda:watch": "npx projen bundle:organization-provider/on-event-handler.lambda:watch",
-    "bundle:organizational-unit-provider/on-event-handler.lambda": "npx projen bundle:organizational-unit-provider/on-event-handler.lambda",
-    "bundle:organizational-unit-provider/on-event-handler.lambda:watch": "npx projen bundle:organizational-unit-provider/on-event-handler.lambda:watch",
-    "bundle:tag-resource-provider/on-event-handler.lambda": "npx projen bundle:tag-resource-provider/on-event-handler.lambda",
-    "bundle:tag-resource-provider/on-event-handler.lambda:watch": "npx projen bundle:tag-resource-provider/on-event-handler.lambda:watch",
-    "clobber": "npx projen clobber",
-    "compat": "npx projen compat",
-    "compile": "npx projen compile",
-    "default": "npx projen default",
-    "docgen": "npx projen docgen",
-    "eject": "npx projen eject",
-    "eslint": "npx projen eslint",
-    "format": "npx projen format",
-    "package": "npx projen package",
-    "package-all": "npx projen package-all",
-    "package:dotnet": "npx projen package:dotnet",
-    "package:java": "npx projen package:java",
-    "package:js": "npx projen package:js",
-    "package:python": "npx projen package:python",
-    "post-compile": "npx projen post-compile",
-    "pre-compile": "npx projen pre-compile",
-    "release": "npx projen release",
-    "test": "npx projen test",
-    "test:watch": "npx projen test:watch",
-    "unbump": "npx projen unbump",
-    "watch": "npx projen watch",
-    "projen": "npx projen"
+    "build": "projen build",
+    "bump": "projen bump",
+    "bump:releasable-commits": "projen bump:releasable-commits",
+    "bundle": "projen bundle",
+    "bundle:account-provider/is-complete-handler.lambda": "projen bundle:account-provider/is-complete-handler.lambda",
+    "bundle:account-provider/is-complete-handler.lambda:watch": "projen bundle:account-provider/is-complete-handler.lambda:watch",
+    "bundle:account-provider/on-event-handler.lambda": "projen bundle:account-provider/on-event-handler.lambda",
+    "bundle:account-provider/on-event-handler.lambda:watch": "projen bundle:account-provider/on-event-handler.lambda:watch",
+    "bundle:organization-provider/on-event-handler.lambda": "projen bundle:organization-provider/on-event-handler.lambda",
+    "bundle:organization-provider/on-event-handler.lambda:watch": "projen bundle:organization-provider/on-event-handler.lambda:watch",
+    "bundle:organizational-unit-provider/on-event-handler.lambda": "projen bundle:organizational-unit-provider/on-event-handler.lambda",
+    "bundle:organizational-unit-provider/on-event-handler.lambda:watch": "projen bundle:organizational-unit-provider/on-event-handler.lambda:watch",
+    "bundle:tag-resource-provider/on-event-handler.lambda": "projen bundle:tag-resource-provider/on-event-handler.lambda",
+    "bundle:tag-resource-provider/on-event-handler.lambda:watch": "projen bundle:tag-resource-provider/on-event-handler.lambda:watch",
+    "clobber": "projen clobber",
+    "compat": "projen compat",
+    "compile": "projen compile",
+    "default": "projen default",
+    "docgen": "projen docgen",
+    "eject": "projen eject",
+    "eslint": "projen eslint",
+    "format": "projen format",
+    "package": "projen package",
+    "package-all": "projen package-all",
+    "package:dotnet": "projen package:dotnet",
+    "package:java": "projen package:java",
+    "package:js": "projen package:js",
+    "package:python": "projen package:python",
+    "post-compile": "projen post-compile",
+    "pre-compile": "projen pre-compile",
+    "release": "projen release",
+    "test": "projen test",
+    "test:watch": "projen test:watch",
+    "unbump": "projen unbump",
+    "watch": "projen watch",
+    "projen": "projen"
   },
   "author": {
     "name": "Patrick Florek",
@@ -48,47 +49,47 @@
     "organization": true
   },
   "devDependencies": {
-    "@pepperize/projen-awscdk-construct": "~0.0.730",
-    "@types/aws-lambda": "^8.10.111",
-    "@types/jest": "^27",
-    "@types/node": "^14",
-    "@types/sinon": "^10.0.13",
+    "@pepperize/projen-awscdk-construct": "~0.1.0",
+    "@types/aws-lambda": "^8.10.164",
+    "@types/jest": "^30",
+    "@types/node": "^22",
+    "@types/sinon": "^22.0.2",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "aws-cdk-lib": "2.203.1",
+    "aws-cdk-lib": "2.278.0",
     "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1328.0",
-    "aws-sdk-mock": "^5.8.0",
-    "cdk-nag": "^2.22.27",
-    "commit-and-tag-version": "^12",
-    "constructs": "10.0.5",
-    "esbuild": "^0.17.11",
+    "aws-sdk": "^2.1693.0",
+    "aws-sdk-mock": "^6.2.2",
+    "cdk-nag": "^2",
+    "commit-and-tag-version": "^13",
+    "constructs": "10.5.1",
+    "esbuild": "^0.28.2",
     "eslint": "^9",
-    "eslint-config-prettier": "^8.7.0",
-    "eslint-import-resolver-typescript": "^3.5.3",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-prettier": "^4.2.1",
-    "jest": "^27",
-    "jest-cdk-snapshot": "^2.2.5",
-    "jest-junit": "^15",
-    "jsii": "~5.8.0",
-    "jsii-diff": "^1.77.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.7",
+    "jest": "^30",
+    "jest-cdk-snapshot": "^2.3.6",
+    "jest-junit": "^17",
+    "jsii": "~6.0.0",
+    "jsii-diff": "^1.143.0",
     "jsii-docgen": "^10.5.0",
-    "jsii-pacmak": "^1.77.0",
-    "jsii-rosetta": "~5.8.0",
-    "prettier": "^2.8.4",
-    "projen": "~0.91.1",
-    "sinon": "^15.0.1",
-    "ts-jest": "^27",
-    "ts-node": "^10",
-    "typescript": "^4.9.5"
+    "jsii-pacmak": "^1.143.0",
+    "jsii-rosetta": "~6.0.0",
+    "prettier": "^3.10.1",
+    "projen": "~0.105.12",
+    "sinon": "^22.1.0",
+    "ts-jest": "^29",
+    "ts-node": "^10.9.2",
+    "typescript": "~6.0"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.203.1",
-    "constructs": "^10.0.5"
+    "aws-cdk-lib": "^2.278.0",
+    "constructs": "^10.5.1"
   },
   "dependencies": {
-    "pascal-case": "^3.1.2"
+    "pascal-case": "^3"
   },
   "bundledDependencies": [
     "pascal-case"
@@ -108,8 +109,19 @@
     "trusted-access",
     "trusted-service"
   ],
+  "engines": {
+    "node": ">= 22.13.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "yarn",
+      "version": "1.22.22",
+      "onFail": "ignore"
+    }
+  },
   "main": "lib/index.js",
   "license": "MIT",
+  "stability": "stable",
   "publishConfig": {
     "access": "public"
   },
@@ -150,15 +162,16 @@
         }
       ]
     ],
-    "preset": "ts-jest",
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.dev.json"
-      }
+    "transform": {
+      "^.+\\.[t]sx?$": [
+        "ts-jest",
+        {
+          "tsconfig": "test/tsconfig.json"
+        }
+      ]
     }
   },
   "types": "lib/index.d.ts",
-  "stability": "stable",
   "jsii": {
     "outdir": "dist",
     "targets": {
@@ -178,10 +191,8 @@
         "packageId": "Pepperize.CDK.Organizations"
       }
     },
-    "tsc": {
-      "outDir": "lib",
-      "rootDir": "src"
-    }
+    "tsconfig": "tsconfig.json",
+    "validateTsconfig": "strict"
   },
   "//": "~~ Generated by projen. To modify, edit .projenrc.ts and run \"npx projen\"."
 }

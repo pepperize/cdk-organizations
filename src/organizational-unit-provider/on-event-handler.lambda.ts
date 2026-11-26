@@ -75,7 +75,7 @@ export const handler = async (event: OnEventRequest): Promise<OnEventResponse> =
 const findOrganizationalUnitByParentAndName = async (
   client: Organizations,
   parentId: string,
-  name: string
+  name: string,
 ): Promise<Organizations.OrganizationalUnit> => {
   let response: Organizations.ListOrganizationalUnitsForParentResponse = await client
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#listOrganizationalUnitsForParent-property
@@ -104,7 +104,7 @@ const findOrganizationalUnitByParentAndName = async (
 const createOrganizationalUnit = async (
   client: Organizations,
   parentId: string,
-  name: string
+  name: string,
 ): Promise<Organizations.OrganizationalUnit> => {
   const response: Organizations.CreateOrganizationalUnitResponse = await client
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#createOrganizationalUnit-property
@@ -125,7 +125,7 @@ const createOrganizationalUnit = async (
 const updateOrganizationalUnit = async (
   client: Organizations,
   id: string,
-  name: string
+  name: string,
 ): Promise<Organizations.OrganizationalUnit> => {
   const response: Organizations.UpdateOrganizationalUnitResponse = await client
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Organizations.html#updateOrganizationalUnit-property

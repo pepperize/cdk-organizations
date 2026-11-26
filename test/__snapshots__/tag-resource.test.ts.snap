@@ -1,14 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TagResource Should match snapshot 1`] = `
-Object {
-  "Resources": Object {
-    "TagTagResource41F8FD4C": Object {
+{
+  "Resources": {
+    "TagTagResource41F8FD4C": {
       "DeletionPolicy": "Delete",
-      "Properties": Object {
+      "Properties": {
         "ResourceId": "t-1234",
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
+        "ServiceToken": {
+          "Fn::GetAtt": [
             "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96",
             "Outputs.cdkorganizationsTagResourceProviderframeworkonEventDD009DFBArn",
           ],
@@ -17,18 +17,18 @@ Object {
       "Type": "Custom::Organizations_TagResource",
       "UpdateReplacePolicy": "Delete",
     },
-    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": Object {
+    "cdkorganizationsTagResourceProviderNestedStackcdkorganizationsTagResourceProviderNestedStackResourceA7B8DF96": {
       "DeletionPolicy": "Delete",
-      "Properties": Object {
-        "TemplateURL": Object {
-          "Fn::Join": Array [
+      "Properties": {
+        "TemplateURL": {
+          "Fn::Join": [
             "",
-            Array [
+            [
               "https://s3.us-east-1.",
-              Object {
+              {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/da69b5059200b7f72e886114982f24f94e7e8f075c704e4bcbbd8aa2c6561410.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/1737715f38f4780d9f4d9b8beccbd1b2725b2251d9b9e76262f43849f9ece574.json",
             ],
           ],
         },

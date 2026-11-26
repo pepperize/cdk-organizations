@@ -4,7 +4,7 @@
 
 ### Account <a name="Account" id="@pepperize/cdk-organizations.Account"></a>
 
-- *Implements:* <a href="#@pepperize/cdk-organizations.IAccount">IAccount</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>
+- *Implements:* constructs.IConstruct, constructs.IDependable, <a href="#@pepperize/cdk-organizations.IAccount">IAccount</a>, <a href="#@pepperize/cdk-organizations.IResource">IResource</a>, <a href="#@pepperize/cdk-organizations.IPolicyAttachmentTarget">IPolicyAttachmentTarget</a>, <a href="#@pepperize/cdk-organizations.IChild">IChild</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>, aws-cdk-lib.ITaggable
 
 Creates or imports an AWS account that is automatically a member of the organization whose credentials made the request.
 
@@ -49,6 +49,7 @@ new Account(scope: Construct, id: string, props: AccountProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.Account.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.Account.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@pepperize/cdk-organizations.Account.attachPolicy">attachPolicy</a></code> | Attach a policy. |
 | <code><a href="#@pepperize/cdk-organizations.Account.delegateAdministrator">delegateAdministrator</a></code> | Enables trusted access for the AWS service (trusted service) as <strong>Delegated Administrator</strong>, which performs tasks in your organization and its accounts on your behalf. |
 | <code><a href="#@pepperize/cdk-organizations.Account.identifier">identifier</a></code> | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
@@ -62,6 +63,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@pepperize/cdk-organizations.Account.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.Account.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `attachPolicy` <a name="attachPolicy" id="@pepperize/cdk-organizations.Account.attachPolicy"></a>
 
@@ -129,7 +151,7 @@ The unique identifier (ID) of the parent root, organizational unit (OU), account
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.Account.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.Account.isConstruct"></a>
 
 ```typescript
 import { Account } from '@pepperize/cdk-organizations'
@@ -138,6 +160,20 @@ Account.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.Account.isConstruct.parameter.x"></a>
 
@@ -239,6 +275,8 @@ TagManager to set, remove and format tags.
 
 ### DelegatedAdministrator <a name="DelegatedAdministrator" id="@pepperize/cdk-organizations.DelegatedAdministrator"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 Enables the specified member account to administer the Organizations features of the specified AWS service.
 
 It grants read-only access to AWS Organizations service data. The account still requires IAM permissions to access and administer the AWS service.
@@ -286,6 +324,7 @@ new DelegatedAdministrator(scope: Construct, id: string, props: DelegatedAdminis
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.DelegatedAdministrator.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.DelegatedAdministrator.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -297,6 +336,27 @@ public toString(): string
 
 Returns a string representation of this construct.
 
+##### `with` <a name="with" id="@pepperize/cdk-organizations.DelegatedAdministrator.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.DelegatedAdministrator.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -305,7 +365,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.DelegatedAdministrator.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.DelegatedAdministrator.isConstruct"></a>
 
 ```typescript
 import { DelegatedAdministrator } from '@pepperize/cdk-organizations'
@@ -314,6 +374,20 @@ DelegatedAdministrator.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.DelegatedAdministrator.isConstruct.parameter.x"></a>
 
@@ -345,6 +419,8 @@ The tree node.
 
 
 ### EnableAwsServiceAccess <a name="EnableAwsServiceAccess" id="@pepperize/cdk-organizations.EnableAwsServiceAccess"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Enables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations.
 
@@ -393,6 +469,7 @@ new EnableAwsServiceAccess(scope: Construct, id: string, props: EnableAwsService
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.EnableAwsServiceAccess.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.EnableAwsServiceAccess.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -404,6 +481,27 @@ public toString(): string
 
 Returns a string representation of this construct.
 
+##### `with` <a name="with" id="@pepperize/cdk-organizations.EnableAwsServiceAccess.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.EnableAwsServiceAccess.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -412,7 +510,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.EnableAwsServiceAccess.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.EnableAwsServiceAccess.isConstruct"></a>
 
 ```typescript
 import { EnableAwsServiceAccess } from '@pepperize/cdk-organizations'
@@ -421,6 +519,20 @@ EnableAwsServiceAccess.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.EnableAwsServiceAccess.isConstruct.parameter.x"></a>
 
@@ -452,6 +564,8 @@ The tree node.
 
 
 ### EnablePolicyType <a name="EnablePolicyType" id="@pepperize/cdk-organizations.EnablePolicyType"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Enables and disables Enables a policy type in a root.
 
@@ -498,6 +612,7 @@ new EnablePolicyType(scope: Construct, id: string, props: EnablePolicyTypeProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.EnablePolicyType.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.EnablePolicyType.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -509,6 +624,27 @@ public toString(): string
 
 Returns a string representation of this construct.
 
+##### `with` <a name="with" id="@pepperize/cdk-organizations.EnablePolicyType.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.EnablePolicyType.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -517,7 +653,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.EnablePolicyType.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.EnablePolicyType.isConstruct"></a>
 
 ```typescript
 import { EnablePolicyType } from '@pepperize/cdk-organizations'
@@ -526,6 +662,20 @@ EnablePolicyType.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.EnablePolicyType.isConstruct.parameter.x"></a>
 
@@ -558,7 +708,7 @@ The tree node.
 
 ### Organization <a name="Organization" id="@pepperize/cdk-organizations.Organization"></a>
 
-- *Implements:* <a href="#@pepperize/cdk-organizations.IOrganization">IOrganization</a>
+- *Implements:* constructs.IConstruct, constructs.IDependable, <a href="#@pepperize/cdk-organizations.IOrganization">IOrganization</a>
 
 #### Initializers <a name="Initializers" id="@pepperize/cdk-organizations.Organization.Initializer"></a>
 
@@ -599,6 +749,7 @@ new Organization(scope: Construct, id: string, props?: OrganizationProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.Organization.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.Organization.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@pepperize/cdk-organizations.Organization.attachPolicy">attachPolicy</a></code> | Attach a policy. |
 | <code><a href="#@pepperize/cdk-organizations.Organization.enableAwsServiceAccess">enableAwsServiceAccess</a></code> | Enables trusted access for a supported AWS service (trusted service), which performs tasks in your organization and its accounts on your behalf. |
 | <code><a href="#@pepperize/cdk-organizations.Organization.enablePolicyType">enablePolicyType</a></code> | Enables policy types in the following two broad categories: Authorization policies and Management policies. |
@@ -612,6 +763,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@pepperize/cdk-organizations.Organization.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.Organization.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `attachPolicy` <a name="attachPolicy" id="@pepperize/cdk-organizations.Organization.attachPolicy"></a>
 
@@ -676,7 +848,7 @@ Enables policy types in the following two broad categories: Authorization polici
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.Organization.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.Organization.isConstruct"></a>
 
 ```typescript
 import { Organization } from '@pepperize/cdk-organizations'
@@ -685,6 +857,20 @@ Organization.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.Organization.isConstruct.parameter.x"></a>
 
@@ -849,7 +1035,7 @@ The root of the current organization, which is automatically created.
 
 ### OrganizationalUnit <a name="OrganizationalUnit" id="@pepperize/cdk-organizations.OrganizationalUnit"></a>
 
-- *Implements:* <a href="#@pepperize/cdk-organizations.IOrganizationalUnit">IOrganizationalUnit</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>
+- *Implements:* constructs.IConstruct, constructs.IDependable, <a href="#@pepperize/cdk-organizations.IOrganizationalUnit">IOrganizationalUnit</a>, <a href="#@pepperize/cdk-organizations.IResource">IResource</a>, <a href="#@pepperize/cdk-organizations.IPolicyAttachmentTarget">IPolicyAttachmentTarget</a>, <a href="#@pepperize/cdk-organizations.IParent">IParent</a>, <a href="#@pepperize/cdk-organizations.IChild">IChild</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>, aws-cdk-lib.ITaggable
 
 #### Initializers <a name="Initializers" id="@pepperize/cdk-organizations.OrganizationalUnit.Initializer"></a>
 
@@ -890,6 +1076,7 @@ new OrganizationalUnit(scope: Construct, id: string, props: OrganizationalUnitPr
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.OrganizationalUnit.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.OrganizationalUnit.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@pepperize/cdk-organizations.OrganizationalUnit.attachPolicy">attachPolicy</a></code> | Attach a policy. |
 | <code><a href="#@pepperize/cdk-organizations.OrganizationalUnit.identifier">identifier</a></code> | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
@@ -902,6 +1089,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@pepperize/cdk-organizations.OrganizationalUnit.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.OrganizationalUnit.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `attachPolicy` <a name="attachPolicy" id="@pepperize/cdk-organizations.OrganizationalUnit.attachPolicy"></a>
 
@@ -937,7 +1145,7 @@ The unique identifier (ID) of the parent root, organizational unit (OU), account
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.OrganizationalUnit.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.OrganizationalUnit.isConstruct"></a>
 
 ```typescript
 import { OrganizationalUnit } from '@pepperize/cdk-organizations'
@@ -946,6 +1154,20 @@ OrganizationalUnit.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.OrganizationalUnit.isConstruct.parameter.x"></a>
 
@@ -1034,6 +1256,8 @@ TagManager to set, remove and format tags.
 
 ### Parent <a name="Parent" id="@pepperize/cdk-organizations.Parent"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable, <a href="#@pepperize/cdk-organizations.IParent">IParent</a>, <a href="#@pepperize/cdk-organizations.IResource">IResource</a>
+
 #### Initializers <a name="Initializers" id="@pepperize/cdk-organizations.Parent.Initializer"></a>
 
 ```typescript
@@ -1073,6 +1297,7 @@ new Parent(scope: Construct, id: string, props: ParentProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.Parent.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.Parent.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@pepperize/cdk-organizations.Parent.identifier">identifier</a></code> | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
 ---
@@ -1084,6 +1309,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@pepperize/cdk-organizations.Parent.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.Parent.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `identifier` <a name="identifier" id="@pepperize/cdk-organizations.Parent.identifier"></a>
 
@@ -1102,7 +1348,7 @@ The unique identifier (ID) of the parent root, organizational unit (OU), account
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.Parent.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.Parent.isConstruct"></a>
 
 ```typescript
 import { Parent } from '@pepperize/cdk-organizations'
@@ -1111,6 +1357,20 @@ Parent.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.Parent.isConstruct.parameter.x"></a>
 
@@ -1180,7 +1440,7 @@ public readonly parentId: string;
 
 ### ParentBase <a name="ParentBase" id="@pepperize/cdk-organizations.ParentBase"></a>
 
-- *Implements:* <a href="#@pepperize/cdk-organizations.IParent">IParent</a>
+- *Implements:* constructs.IConstruct, constructs.IDependable, <a href="#@pepperize/cdk-organizations.IParent">IParent</a>, <a href="#@pepperize/cdk-organizations.IResource">IResource</a>
 
 #### Initializers <a name="Initializers" id="@pepperize/cdk-organizations.ParentBase.Initializer"></a>
 
@@ -1221,6 +1481,7 @@ new ParentBase(scope: Construct, id: string, props: ParentBaseProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.ParentBase.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.ParentBase.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@pepperize/cdk-organizations.ParentBase.identifier">identifier</a></code> | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
 
 ---
@@ -1232,6 +1493,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@pepperize/cdk-organizations.ParentBase.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.ParentBase.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `identifier` <a name="identifier" id="@pepperize/cdk-organizations.ParentBase.identifier"></a>
 
@@ -1249,7 +1531,7 @@ The unique identifier (ID) of the parent root, organizational unit (OU), account
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.ParentBase.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.ParentBase.isConstruct"></a>
 
 ```typescript
 import { ParentBase } from '@pepperize/cdk-organizations'
@@ -1258,6 +1540,20 @@ ParentBase.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.ParentBase.isConstruct.parameter.x"></a>
 
@@ -1301,7 +1597,7 @@ public readonly parentId: string;
 
 ### Policy <a name="Policy" id="@pepperize/cdk-organizations.Policy"></a>
 
-- *Implements:* <a href="#@pepperize/cdk-organizations.IPolicy">IPolicy</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>
+- *Implements:* constructs.IConstruct, constructs.IDependable, <a href="#@pepperize/cdk-organizations.IPolicy">IPolicy</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>, aws-cdk-lib.ITaggable
 
 #### Initializers <a name="Initializers" id="@pepperize/cdk-organizations.Policy.Initializer"></a>
 
@@ -1342,6 +1638,7 @@ new Policy(scope: Construct, id: string, props: PolicyProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.Policy.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.Policy.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@pepperize/cdk-organizations.Policy.identifier">identifier</a></code> | *No description.* |
 
 ---
@@ -1353,6 +1650,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@pepperize/cdk-organizations.Policy.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.Policy.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `identifier` <a name="identifier" id="@pepperize/cdk-organizations.Policy.identifier"></a>
 
@@ -1368,7 +1686,7 @@ public identifier(): string
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.Policy.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.Policy.isConstruct"></a>
 
 ```typescript
 import { Policy } from '@pepperize/cdk-organizations'
@@ -1377,6 +1695,20 @@ Policy.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.Policy.isConstruct.parameter.x"></a>
 
@@ -1437,6 +1769,8 @@ TagManager to set, remove and format tags.
 
 ### PolicyAttachment <a name="PolicyAttachment" id="@pepperize/cdk-organizations.PolicyAttachment"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 Attaches a policy to a root, an organizational unit (OU), or an individual account.
 
 How the policy affects accounts depends on the type of policy. Refer to the AWS Organizations User Guide for information about each policy type:
@@ -1480,6 +1814,7 @@ new PolicyAttachment(scope: Construct, id: string, props: PolicyAttachmentProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.PolicyAttachment.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.PolicyAttachment.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -1491,6 +1826,27 @@ public toString(): string
 
 Returns a string representation of this construct.
 
+##### `with` <a name="with" id="@pepperize/cdk-organizations.PolicyAttachment.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.PolicyAttachment.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -1499,7 +1855,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.PolicyAttachment.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.PolicyAttachment.isConstruct"></a>
 
 ```typescript
 import { PolicyAttachment } from '@pepperize/cdk-organizations'
@@ -1508,6 +1864,20 @@ PolicyAttachment.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.PolicyAttachment.isConstruct.parameter.x"></a>
 
@@ -1540,7 +1910,7 @@ The tree node.
 
 ### Root <a name="Root" id="@pepperize/cdk-organizations.Root"></a>
 
-- *Implements:* <a href="#@pepperize/cdk-organizations.IParent">IParent</a>, <a href="#@pepperize/cdk-organizations.IPolicyAttachmentTarget">IPolicyAttachmentTarget</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>
+- *Implements:* constructs.IConstruct, constructs.IDependable, <a href="#@pepperize/cdk-organizations.IParent">IParent</a>, <a href="#@pepperize/cdk-organizations.IResource">IResource</a>, <a href="#@pepperize/cdk-organizations.IPolicyAttachmentTarget">IPolicyAttachmentTarget</a>, <a href="#@pepperize/cdk-organizations.ITaggableResource">ITaggableResource</a>, aws-cdk-lib.ITaggable
 
 The parent container for all the accounts for your organization.
 
@@ -1581,6 +1951,7 @@ new Root(scope: Construct, id: string)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.Root.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.Root.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@pepperize/cdk-organizations.Root.attachPolicy">attachPolicy</a></code> | Attach a policy. |
 | <code><a href="#@pepperize/cdk-organizations.Root.enablePolicyType">enablePolicyType</a></code> | Enables and disables Enables a policy type. |
 | <code><a href="#@pepperize/cdk-organizations.Root.identifier">identifier</a></code> | The unique identifier (ID) of the parent root, organizational unit (OU), account, or policy that you want to create the new OU in. |
@@ -1594,6 +1965,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@pepperize/cdk-organizations.Root.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.Root.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `attachPolicy` <a name="attachPolicy" id="@pepperize/cdk-organizations.Root.attachPolicy"></a>
 
@@ -1647,7 +2039,7 @@ The unique identifier (ID) of the parent root, organizational unit (OU), account
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.Root.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.Root.isConstruct"></a>
 
 ```typescript
 import { Root } from '@pepperize/cdk-organizations'
@@ -1656,6 +2048,20 @@ Root.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.Root.isConstruct.parameter.x"></a>
 
@@ -1716,6 +2122,8 @@ TagManager to set, remove and format tags.
 
 ### TagResource <a name="TagResource" id="@pepperize/cdk-organizations.TagResource"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 Add tags to an AWS Organizations resource to make it easier to identify, organize, and search.
 
 > [https://docs.aws.amazon.com/ARG/latest/APIReference/API_Tag.html](https://docs.aws.amazon.com/ARG/latest/APIReference/API_Tag.html)
@@ -1759,6 +2167,7 @@ new TagResource(scope: Construct, id: string, props: TagResourceProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@pepperize/cdk-organizations.TagResource.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@pepperize/cdk-organizations.TagResource.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -1770,6 +2179,27 @@ public toString(): string
 
 Returns a string representation of this construct.
 
+##### `with` <a name="with" id="@pepperize/cdk-organizations.TagResource.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@pepperize/cdk-organizations.TagResource.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -1778,7 +2208,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@pepperize/cdk-organizations.TagResource.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@pepperize/cdk-organizations.TagResource.isConstruct"></a>
 
 ```typescript
 import { TagResource } from '@pepperize/cdk-organizations'
@@ -1787,6 +2217,20 @@ TagResource.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@pepperize/cdk-organizations.TagResource.isConstruct.parameter.x"></a>
 
