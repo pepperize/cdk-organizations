@@ -1,5 +1,6 @@
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
+import { organizationsEndpointRegion } from "./organizations-region";
 
 export interface EnableAwsServiceAccessProps {
   /**
@@ -20,7 +21,7 @@ export class EnableAwsServiceAccess extends Construct {
     super(scope, id);
 
     const { servicePrincipal } = props;
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
 
     new AwsCustomResource(this, "EnableAwsServiceAccessCustomResource", {
       resourceType: "Custom::Organizations_EnableAwsServiceAccess",

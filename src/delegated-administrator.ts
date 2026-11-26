@@ -2,6 +2,7 @@ import { RemovalPolicy } from "aws-cdk-lib";
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
 import { IAccount } from "./account";
+import { organizationsEndpointRegion } from "./organizations-region";
 
 export interface DelegatedAdministratorProps {
   /**
@@ -36,7 +37,7 @@ export class DelegatedAdministrator extends Construct {
     super(scope, id);
 
     const { account, servicePrincipal, region } = props;
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
 
     new AwsCustomResource(this, "DelegatedAdministratorCustomResource", {
       resourceType: "Custom::Organizations_DelegatedAdministrator",
