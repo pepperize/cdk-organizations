@@ -11,7 +11,7 @@ queue_rules:
       - status-success=package-java
       - status-success=package-python
       - status-success=package-dotnet
-    merge_method: squash
+    merge_method: merge
     commit_message_format:
       title: pr-title
       body: pr-body
