@@ -72,17 +72,19 @@ describe("account-provider.on-event-handler.lambda", () => {
     const listAccountsFake = sinon.fake.resolves(undefined);
     AWS.mock("Organizations", "listAccounts", listAccountsFake);
 
+    const properties = {
+      ...event.ResourceProperties,
+      Email: "info@pepperize.com",
+      AccountName: "test",
+      RoleName: "SomeRoleName",
+      IamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
+      ImportOnDuplicate: String(true),
+    };
     const request = {
       ...event,
       RequestType: "Update",
-      ResourceProperties: {
-        ...event.ResourceProperties,
-        Email: "info@pepperize.com",
-        AccountName: "test",
-        RoleName: "SomeRoleName",
-        IamUserAccessToBilling: IamUserAccessToBilling.ALLOW,
-        ImportOnDuplicate: String(true),
-      },
+      ResourceProperties: properties,
+      OldResourceProperties: properties,
       PhysicalResourceId: "car-exampleaccountcreationrequestid",
     };
 
@@ -94,5 +96,30 @@ describe("account-provider.on-event-handler.lambda", () => {
     expect(response?.PhysicalResourceId).toEqual("car-exampleaccountcreationrequestid");
     sinon.assert.notCalled(createAccountStatusFake);
     sinon.assert.notCalled(listAccountsFake);
+  });
+
+  it.each([
+    ["Email", "changed@pepperize.com"],
+    ["AccountName", "changed"],
+  ])("Should reject an update of %s", async (property, value) => {
+    // Given
+    const properties = {
+      ...event.ResourceProperties,
+      Email: "info@pepperize.com",
+      AccountName: "test",
+    };
+    const request = {
+      ...event,
+      RequestType: "Update",
+      ResourceProperties: { ...properties, [property]: value },
+      OldResourceProperties: properties,
+      PhysicalResourceId: "123456789012",
+    };
+
+    // When
+    const response = handler(request as OnEventRequest);
+
+    // Then
+    await expect(response).rejects.toThrow(`Updating the ${property} of account 123456789012 is not supported`);
   });
 });
