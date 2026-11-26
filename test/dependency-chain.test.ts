@@ -138,8 +138,8 @@ describe("DependencyChain", () => {
     const dependsOn = () =>
       Object.fromEntries(
         Object.entries(app.synth({ force: true }).getStackByName(stack.stackName).template.Resources).map(
-          ([id, resource]) => [id, (resource as { DependsOn?: string[] }).DependsOn ?? []]
-        )
+          ([id, resource]) => [id, (resource as { DependsOn?: string[] }).DependsOn ?? []],
+        ),
       );
 
     // When
@@ -165,7 +165,7 @@ describe("DependencyChain", () => {
     const capture = new Capture();
     Template.fromJSON(app.synth({ force: true }).getStackByName(stack.stackName).template).hasResource(
       "Custom::Organizations_OrganizationalUnitProvider",
-      { Properties: { Name: "test3" }, DependsOn: capture }
+      { Properties: { Name: "test3" }, DependsOn: capture },
     );
     expect(capture.asArray()).toEqual(expect.arrayContaining([expect.stringMatching(ou2.node.id)]));
   });
