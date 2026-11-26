@@ -193,7 +193,7 @@ exports[`Account Should match snapshot 1`] = `
               {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-123456789012-us-east-1/fce6d7637afce1ac203b6f41756a116b72aa54223b33b73b9b49b441a264ecb3.json",
+              "/cdk-hnb659fds-assets-123456789012-us-east-1/b8465e7a35b7916abf1cb15f27d64af0730948a9554f935f1b2418a9dc96fc72.json",
             ],
           ],
         },
