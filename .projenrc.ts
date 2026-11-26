@@ -93,4 +93,7 @@ project.gitpod?.addVscodeExtensions("dbaeumer.vscode-eslint");
 // handler tests use dynamic import(); jest needs vm modules for that
 project.testTask.env("NODE_OPTIONS", "--experimental-vm-modules");
 
+// mergify no longer accepts queue.method, merge_method is set on the queue rule
+project.tryFindObjectFile(".mergify.yml")?.addDeletionOverride("pull_request_rules.0.actions.queue.method");
+
 project.synth();

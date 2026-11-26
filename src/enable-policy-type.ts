@@ -1,6 +1,7 @@
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
 import { Root } from "./organization";
+import { organizationsEndpointRegion } from "./organizations-region";
 import { PolicyType } from "./policy";
 
 export interface EnablePolicyTypeProps {
@@ -18,7 +19,7 @@ export class EnablePolicyType extends Construct {
     super(scope, id);
 
     const { root, policyType } = props;
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
 
     new AwsCustomResource(this, "EnablePolicyTypeCustomResource", {
       resourceType: "Custom::Organizations_EnablePolicyType",

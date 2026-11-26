@@ -1,5 +1,6 @@
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from "aws-cdk-lib/custom-resources";
 import { Construct, IDependable } from "constructs";
+import { organizationsEndpointRegion } from "./organizations-region";
 import { IPolicy } from "./policy";
 import { IResource } from "./resource";
 
@@ -24,7 +25,7 @@ export class PolicyAttachment extends Construct {
     super(scope, id);
 
     const { target, policy } = props;
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
 
     new AwsCustomResource(this, "CustomResource", {
       resourceType: "Custom::Organizations_PolicyAttachment",

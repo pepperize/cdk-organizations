@@ -4,6 +4,7 @@ import { Function } from "aws-cdk-lib/aws-lambda";
 import { Provider } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
 import { OnEventHandlerFunction } from "./on-event-handler-function";
+import { organizationsEndpointRegion } from "../organizations-region";
 
 export interface OrganizationalUnitProviderProps extends NestedStackProps {}
 
@@ -46,7 +47,7 @@ export class OrganizationalUnitProvider extends NestedStack {
   constructor(scope: Construct, id: string, props: OrganizationalUnitProviderProps) {
     super(scope, id, props);
 
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
 
     this.onEventHandler = new OnEventHandlerFunction(this, "OnEventHandlerFunction", {
       environment: {
