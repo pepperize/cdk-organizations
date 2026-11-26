@@ -6,6 +6,7 @@ import {
   PhysicalResourceIdReference,
 } from "aws-cdk-lib/custom-resources";
 import { Construct, IConstruct } from "constructs";
+import { organizationsEndpointRegion } from "./organizations-region";
 import { ITaggableResource, TagResource } from "./tag-resource";
 import { Validators } from "./validators";
 
@@ -84,7 +85,7 @@ export class Policy extends Construct implements IPolicy, ITaggableResource {
     super(scope, id);
 
     const { content, description, policyName, policyType } = props;
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
 
     if (!Validators.of().policyContent(content)) {
       Annotations.of(this).addError(
