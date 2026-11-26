@@ -6,6 +6,7 @@ import { Provider } from "aws-cdk-lib/custom-resources";
 import { Construct } from "constructs";
 import { IsCompleteHandlerFunction } from "./is-complete-handler-function";
 import { OnEventHandlerFunction } from "./on-event-handler-function";
+import { organizationsEndpointRegion } from "../organizations-region";
 export interface AccountProviderProps extends NestedStackProps {}
 
 /**
@@ -47,7 +48,7 @@ export class AccountProvider extends NestedStack {
   constructor(scope: Construct, id: string, props: AccountProviderProps) {
     super(scope, id, props);
 
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
 
     this.onEventHandler = new OnEventHandlerFunction(this, "OnEventHandlerFunction", {
       environment: {

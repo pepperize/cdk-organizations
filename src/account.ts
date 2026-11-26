@@ -3,6 +3,7 @@ import { Construct, IConstruct } from "constructs";
 import { pascalCase } from "pascal-case";
 import { AccountProvider } from "./account-provider";
 import { DelegatedAdministrator } from "./delegated-administrator";
+import { organizationsEndpointRegion } from "./organizations-region";
 import { IChild, IParent } from "./parent";
 import { IPolicy } from "./policy";
 import { IPolicyAttachmentTarget, PolicyAttachment } from "./policy-attachment";
@@ -159,7 +160,7 @@ export class Account extends Construct implements IAccount, ITaggableResource {
    * @param {DelegatedAdministratorProps} props additional DelegatedAdministrator props
    */
   public delegateAdministrator(servicePrincipal: string, region?: string, props: Record<string, any> = {}) {
-    const organizationsRegion = process.env.CDK_AWS_PARTITION === "aws-cn" ? "cn-northwest-1" : "us-east-1";
+    const organizationsRegion = organizationsEndpointRegion();
     const delegatedAdministrator = new DelegatedAdministrator(
       this.scope,
       `Delegate${pascalCase(servicePrincipal)}${
