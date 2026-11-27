@@ -37,7 +37,7 @@ const project = new AwsCdkConstructLibrary({
   deps: ["pascal-case@^3"],
   bundledDeps: ["pascal-case@^3"],
   devDeps: [
-    "@pepperize/projen-awscdk-construct@~0.1.1",
+    "@pepperize/projen-awscdk-construct@~0.1.2",
     "@types/node@^22",
     "typescript@~6.0",
     "@types/aws-lambda",

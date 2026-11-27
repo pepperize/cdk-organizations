@@ -49,7 +49,7 @@
     "organization": true
   },
   "devDependencies": {
-    "@pepperize/projen-awscdk-construct": "~0.1.1",
+    "@pepperize/projen-awscdk-construct": "~0.1.2",
     "@types/aws-lambda": "^8.10.164",
     "@types/jest": "^30",
     "@types/node": "^22",
